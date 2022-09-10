@@ -39,10 +39,14 @@ public class GroundTile : MonoBehaviour
 
     void SpawnCoins()
     {
-        int coinsToSpawn = 10;
+        int coinsToSpawn = 5;
         for(int i = 0; i < coinsToSpawn; i++)
         {
             GameObject temp = Instantiate(coinPrefab, transform);
+            if (i % 2 == 1) {
+                temp.GetComponent<Renderer>().material.color = Color.green; 
+            } 
+
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         }
     }
