@@ -15,11 +15,11 @@ public class GroundTile : MonoBehaviour
         SpawnCoins();
     }
 
-    private void OnTriggerExit(Collider other) 
-    {
-        groundSpawner.SpawnTile();
-        Destroy(gameObject, 2);
-    }
+    // private void OnTriggerExit(Collider other) 
+    // {
+    //     groundSpawner.SpawnTile();
+    //     Destroy(gameObject, 2);
+    // }
 
     // Update is called once per frame
     void Update()
