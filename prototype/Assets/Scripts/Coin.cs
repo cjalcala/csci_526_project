@@ -23,7 +23,14 @@ public class Coin : MonoBehaviour
 
         // Add to the player's score
         GameManager.inst.IncrementScore();
-
+       
+        if (gameObject.GetComponent<MeshRenderer>().material.color == new Color32(236, 195, 48, 255)) {
+            GameManager.inst.IncrementYellowScore();
+        }
+        else if (gameObject.GetComponent<MeshRenderer>().material.color == Color.green) {
+            GameManager.inst.IncrementGreenScore();
+        }
+        
         // Destroy this coin object
         Destroy(gameObject);
     }
