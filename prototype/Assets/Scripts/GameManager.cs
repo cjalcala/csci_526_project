@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(score<0)
+        if(score<0 || (greenScore == 5 && yellowScore == 3))
         {
             Invoke("Restart", 1);
         }
