@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-/Users/devangsharma/Endless Runner Tutorial
-=======
-/Users/jiayupu/Documents/USC/USC_docs/FALL2022/CSCI_526/Github/csci_526_project/prototype
->>>>>>> Stashed changes
+/Users/devangsharma/Documents/GitHub/csci_526_project/prototype
