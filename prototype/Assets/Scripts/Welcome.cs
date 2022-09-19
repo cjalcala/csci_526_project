@@ -10,14 +10,14 @@ public class Welcome : MonoBehaviour
     }
 
     public void Beginner() {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Goals");
     }
 
     public void Junior() {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Goals");
     }
 
     public void Executive() {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Goals");
     }
 }
