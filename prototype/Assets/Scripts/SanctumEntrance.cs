@@ -16,7 +16,7 @@ public class SanctumEntrance : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Sanctum");
     }
 
     // Update is called once per frame
