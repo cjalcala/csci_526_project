@@ -49,7 +49,7 @@ public class SanctumQuiz : MonoBehaviour
     {
         questionAnswers.RemoveAt(currQuestion);
         //gameOver();
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Game");
         //questionGenerator();
     }
 
@@ -62,7 +62,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void continueGame()
     {
-     SceneManager.LoadScene("SampleScene");   
+     SceneManager.LoadScene("Game");   
     }
 
     void setAnswers()
