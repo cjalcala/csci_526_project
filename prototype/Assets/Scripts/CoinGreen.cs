@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class CoinGreen : MonoBehaviour
 {
 
     public float turnSpeed = 90f;
@@ -22,20 +22,8 @@ public class Coin : MonoBehaviour
         }
 
         // Add to the player's score
-<<<<<<< Updated upstream
-        GameManager.inst.IncrementScore();
-
-=======
         //GameManager.inst.IncrementScore();
-       
-        if (gameObject.GetComponent<MeshRenderer>().material.color == new Color32(236, 195, 48, 255)) {
-            GameManager.inst.IncrementCoinCount();
-        }
-        //else if (gameObject.GetComponent<MeshRenderer>().material.color == Color.green) {
-        //    GameManager.inst.IncrementGreenScore();
-        //}
-        
->>>>>>> Stashed changes
+
         // Destroy this coin object
         Destroy(gameObject);
     }
