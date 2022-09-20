@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44671863, g: 0.496575, b: 0.5750147, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -479,10 +479,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "What will you do in the game?\n1. Collect coins to use in the Sanctum.\n2.
-    Cross a designated block to enter the Sanctum.\n3. Answer a question in the Sanctum
-    -\n\ta) If correct, get an ingrident.\n\tb) If wrong, either pay certain\n\t   
-    amount of coins to redo the\n\t    question or give up and go back\n\t    to
-    the main dimension.\n4. Collect all ingridents needed to pass the level"
+    Cross a designated blue block to enter the Sanctum.\n3. Answer a question in
+    the Sanctum -\n\ta) If correct, get an ingrident.\n\tb) If wrong, either pay
+    certain\n\t    amount of coins to redo the\n\t    question or give up and go
+    back\n\t    to the main dimension.\n4. Collect all ingridents needed to pass
+    the level"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -2,67 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-<<<<<<< Updated upstream
-
-    public int score;
     public static GameManager inst;
-    public Text scoreText;
-
-    public void IncrementScore()
-    {
-        score++;
-        scoreText.text = "Score: " + score;
-=======
-    public static GameManager inst;
-    public int coins = 0, broco;
+    //public int coins = 0;
     public Text coinText;
-    public float timeRemain, originalTime;
     public Text timeText;
     public Text goalText;
     public GameOverScreen gameOverScreen;
     public WinningScreen winningScreen;
-    public bool won = false;
+    public bool won;
     PlayerMovement playerMovement;
-    public SortedDictionary<string, Ingredient> ingredientsList;
-    
-    //public int score;
-    //public int greenScore;
-    //public Text scoreText;
-    //public Text greenScoreText;
-    
-    /*
-    public void IncrementScore()
-    {
-        score--;
-        scoreText.text = "Bag Size: " + score;
-    }
-    public void IncrementGreenScore()
-    {
-        greenScore++;
-        greenScoreText.text = "Green Score: " + greenScore; 
-    }
-    */
+    //public SortedDictionary<string, Ingredient> ingredientsList;
+
     public void IncrementCoinCount()
     {
-        coins++;
-        coinText.text = "Coins: " + coins;
+        ScoreTracker.coins++;
+        coinText.text = "Coins: " + ScoreTracker.coins;
     }
 
     public void increaseIngredient(string name)
     {
-        ingredientsList[name].currentCount++;
+        ScoreTracker.ingredientsList[name].currentCount++;
         goalText.text = "Goal :" + goalProgress();
     }
 
     public bool checkIngredientsGoal()
     {
         bool goalReached = true;
-        foreach (KeyValuePair<string, Ingredient> pair in ingredientsList)
+        foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
         {
-            goalReached = goalReached && pair.Value.currentCount == pair.Value.requiredCount;
+            goalReached = goalReached && pair.Value.currentCount >= pair.Value.requiredCount;
         }
 
         return goalReached;
@@ -71,13 +43,12 @@ public class GameManager : MonoBehaviour
     public string goalProgress()
     {
         string goal = "";
-        foreach (KeyValuePair<string, Ingredient> pair in ingredientsList)
+        foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
         {
             goal += " " + pair.Key.ToString() + " (" + pair.Value.currentCount + "/" + pair.Value.requiredCount + ")";
         }
 
         return goal;
->>>>>>> Stashed changes
     }
 
     private void Awake()
@@ -88,44 +59,34 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< Updated upstream
-        
-=======
-        //score=10;
-        originalTime = timeRemain;
-        ingredientsList = new SortedDictionary<string, Ingredient>();
-        ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1));
-        ingredientsList.Add("Onion", new Ingredient("Onion", 1));
-        ingredientsList.Add("Chicken", new Ingredient("Chicken", 1));
-
-        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
-
+        coinText.text = "Coins: " + ScoreTracker.coins;
         goalText.text = "Goal :" + goalProgress();
->>>>>>> Stashed changes
+        won = false;
+        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        
-=======
 
-        if (timeRemain >= 0 && checkIngredientsGoal())
+        if (won)
+        {
+            ScoreTracker.timeRemain = 0;
+            playerMovement.stayStill = true;
+        }
+        else if (ScoreTracker.timeRemain >= 0 && checkIngredientsGoal())
         {
             if (!won)
             {
-                winningScreen.Setup(originalTime - timeRemain);
+                winningScreen.Setup(ScoreTracker.originalTime - ScoreTracker.timeRemain);
                 won = true;
             }
-            timeRemain = 0;
-            playerMovement.stayStill = true;
-            
         }
-        if (timeRemain > 0)
+
+        if (ScoreTracker.timeRemain > 0)
         {
-            timeRemain -= Time.deltaTime;
-            timeText.text = "Time Remaining: " + timeRemain.ToString("0") + " Sec";
+            ScoreTracker.timeRemain -= Time.deltaTime;
+            timeText.text = "Time Remaining: " + ScoreTracker.timeRemain.ToString("0") + " Sec";
 
             /* testing
             if (timeRemain < 110 && !testIngredient)
@@ -141,22 +102,14 @@ public class GameManager : MonoBehaviour
         else
         {
             gameOverScreen.Setup();
-            timeRemain = -1;
+            ScoreTracker.timeRemain = -1;
             playerMovement.stayStill = true;
             //Invoke("Restart", 1);
         }
-
-        /*
-        if(score<0 || (greenScore == 5 && yellowScore == 3))
-        {
-            Invoke("Restart", 1);
-        }
-        */
     }
 
     void Restart ()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
->>>>>>> Stashed changes
     }
 }

@@ -24,7 +24,7 @@ public class SanctumQuiz : MonoBehaviour
     private void Start()
     {
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
-        numCoins = tempCoinvalue;
+        //numCoins = tempCoinvalue;
         //coin.text = "Coins : " + numCoins.ToString();
         totalQuestions = questionAnswers.Count;
         BPanel.SetActive(false);
@@ -33,7 +33,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void retry()
     {
-        tempCoinvalue -= 10;
+        ScoreTracker.coins -= 10;
         //coin.text = numCoins.ToString();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -42,13 +42,16 @@ public class SanctumQuiz : MonoBehaviour
     {
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
-        coin.text = "Coins : " + numCoins.ToString();
+        coin.text = "Coins : " + ScoreTracker.coins.ToString();
     }
 
     public void correct()
     {
         questionAnswers.RemoveAt(currQuestion);
         //gameOver();
+        List<string> keyList = ScoreTracker.uncompletedIngredients();
+        int randValue = Random.Range(0, keyList.Count);
+        ScoreTracker.increaseIngredient(keyList[randValue]);
         SceneManager.LoadScene("Game");
         //questionGenerator();
     }
@@ -62,7 +65,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void continueGame()
     {
-     SceneManager.LoadScene("Game");   
+        SceneManager.LoadScene("Game");   
     }
 
     void setAnswers()

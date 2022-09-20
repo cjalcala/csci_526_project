@@ -8,7 +8,7 @@ public class GroundSpawner : MonoBehaviour
     public SanctumEntrance entrance;
     Vector3 nextSpawnPoint;
 
-    public void SpawnTile(bool spawnItems)
+    public void SpawnTile(bool spawnItems, bool spawmTile)
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
@@ -17,7 +17,7 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCoins();
-            if (SpawnEntrance())
+            if (SpawnEntrance() && spawmTile)
             {
                 temp.GetComponent<GroundTile>().SpawnEntrance();
             }
@@ -27,10 +27,11 @@ public class GroundSpawner : MonoBehaviour
     public bool SpawnEntrance()
     {
         bool spawn = false;
-        float time = (gameManager.originalTime - gameManager.timeRemain) % 11;
+        float time = (ScoreTracker.originalTime - ScoreTracker.timeRemain) % 7;
         entrance = GameObject.FindObjectOfType<SanctumEntrance>();
 
-        if (entrance == null && (gameManager.originalTime - gameManager.timeRemain) > 5 && time < 5)
+        if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5 && time < 5)
+        //if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5)
         {
             spawn = true;
         }
@@ -43,13 +44,18 @@ public class GroundSpawner : MonoBehaviour
     {
         for (int i = 0; i < 15; i++)
         {
-            if (i < 2)
+            if (i < 2 && ScoreTracker.timeRemain >= 118)
             {
-                SpawnTile(false);
+                SpawnTile(false, false);
+            }
+
+            else if (i < 2)
+            {
+                SpawnTile(true, false);
             }
             else
             {
-                SpawnTile(true);
+                SpawnTile(true, true);
             }
             
         }

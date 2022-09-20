@@ -15,19 +15,11 @@ public class GroundTile : MonoBehaviour
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
     }
 
-<<<<<<< Updated upstream
-    private void OnTriggerExit(Collider other) 
-    {
-        groundSpawner.SpawnTile();
-        Destroy(gameObject, 2);
-    }
-=======
      private void OnTriggerExit(Collider other) 
      {
-         groundSpawner.SpawnTile(true);
+         groundSpawner.SpawnTile(true, true);
          Destroy(gameObject, 2);
      }
->>>>>>> Stashed changes
 
     // Update is called once per frame
     void Update()
@@ -47,11 +39,7 @@ public class GroundTile : MonoBehaviour
 
     public void SpawnCoins()
     {
-<<<<<<< Updated upstream
-        int coinsToSpawn = 10;
-=======
         int coinsToSpawn = 2;
->>>>>>> Stashed changes
         for(int i = 0; i < coinsToSpawn; i++)
         {
             GameObject temp = Instantiate(coinPrefab, transform);
