@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,19 +7,25 @@ public class PlayerMovement : MonoBehaviour
     bool alive = true;
     public float speed = 10;
     public Rigidbody rb;
-    public float horizontalMultiplier = 2;
+    public float horizontalMultiplier = 0.5f;
     public float jumpForce = 600f;
     public LayerMask groundMask;
-    public Text distanceRemaining;
+
     float horizontalInput;
+    public GameOverScreen gameOverScreen;
+    public bool stayStill = false;
+
+    public int flag = 0;
 
     private void FixedUpdate()
     {
         if(!alive) return;
-
-        Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
-        Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
-        rb.MovePosition(rb.position + forwardMove + horizontalMove);
+        if (!stayStill)
+        {
+            Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
+            Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
+            rb.MovePosition(rb.position + forwardMove + horizontalMove);
+        }
     }
 
     // Update is called once per frame
@@ -34,21 +39,34 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(transform.position.y < -5) {
-            Die();
+            flag++;
+            Die("fall");
+            
         }
 
-        distanceRemaining.text = "Distance Remaining: " + (150-rb.position.z).ToString("0"); 
+        //distanceRemaining.text = "Distance Remaining: " + (150-rb.position.z).ToString("0"); 
     }
 
-    public void Die()
+    public void Die(string tp)
     {
         alive = false;
-        Invoke("Restart", 2);
+        if (tp == "obstacle"){
+            GameManager.inst.Send(tp);
+        }
+        else{
+
+            if (flag == 1){
+            GameManager.inst.Send(tp);
+        }
+        }
+        
+        
+        Invoke("Restart", (float)0.25);
     }
 
     void Restart ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameOverScreen.Setup();
     }
 
     void Jump() 
@@ -58,11 +76,15 @@ public class PlayerMovement : MonoBehaviour
         bool isGrounded = Physics.Raycast(transform.position, Vector3.down, (height/2)+0.1f, groundMask);
 
         // If we are, jump
-        rb.AddForce(Vector3.up*jumpForce);
+        if (isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce);
+        }
+        
     }
 
     void Start()
     {
-        distanceRemaining = GameObject.Find("DistanceText").GetComponent<Text>();
+        //distanceRemaining = GameObject.Find("DistanceText").GetComponent<Text>();
     }
 }

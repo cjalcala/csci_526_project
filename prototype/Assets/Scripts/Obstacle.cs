@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    public int flag =0;
+
 
     PlayerMovement playerMovement;
 
@@ -17,8 +19,12 @@ public class Obstacle : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
+            flag++;
+            if (flag == 1){
+                playerMovement.Die("obstacle");
+            }
             // Kill the player
-            playerMovement.Die();
+            
         }
     }
 

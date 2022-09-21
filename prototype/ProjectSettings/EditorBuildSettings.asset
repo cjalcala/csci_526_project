@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/WelcomeScreen.unity
+    guid: e288d5ff8d84c42b2b532b00c6be063d
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 3d79a94289fe644ba9c1f3796faafc40
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Goals.unity
+    guid: d68a8f383d2a4814c8bf7acb7da0fc80
+  - enabled: 1
+    path: Assets/Scenes/Sanctum.unity
+    guid: 5b3d9f7ce48994783996e840ac0bd01a
   m_configObjects: {}

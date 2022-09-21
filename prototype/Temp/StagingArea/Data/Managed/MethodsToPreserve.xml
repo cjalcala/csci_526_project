@@ -1,0 +1,35 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="AnswerScript">
+			<method name="Answer"/>
+			<method name="Answer"/>
+			<method name="Answer"/>
+			<method name="Answer"/>
+		</type>
+		<type fullname="GameOverScreen">
+			<method name="ExitButton"/>
+			<method name="RestartButton"/>
+		</type>
+		<type fullname="GoalScreen">
+			<method name="ContinueButton"/>
+		</type>
+		<type fullname="SanctumQuiz">
+			<method name="continueGame"/>
+			<method name="retry"/>
+		</type>
+		<type fullname="TutorialSceneManager">
+			<method name="OkButton"/>
+		</type>
+		<type fullname="Welcome">
+			<method name="Beginner"/>
+			<method name="Executive"/>
+			<method name="Junior"/>
+			<method name="Tutorial"/>
+		</type>
+		<type fullname="WinningScreen">
+			<method name="ExitButton"/>
+			<method name="NextLevelButton"/>
+			<method name="RestartButton"/>
+		</type>
+	</assembly>
+</linker>
