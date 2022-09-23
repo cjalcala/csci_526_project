@@ -27,11 +27,11 @@ public class GroundSpawner : MonoBehaviour
     public bool SpawnEntrance()
     {
         bool spawn = false;
-        float time = (ScoreTracker.originalTime - ScoreTracker.timeRemain) % 7;
+        // float time = (ScoreTracker.originalTime - ScoreTracker.timeRemain) % 5;
         entrance = GameObject.FindObjectOfType<SanctumEntrance>();
 
-        if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5 && time < 5)
-        //if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5)
+        // if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5 && time < 5)
+        if (entrance == null && ScoreTracker.timeRemain % 3 < 1)
         {
             spawn = true;
         }
@@ -49,7 +49,7 @@ public class GroundSpawner : MonoBehaviour
                 SpawnTile(false, false);
             }
 
-            else if (i < 2)
+            else if (i < 1)
             {
                 SpawnTile(true, false);
             }
