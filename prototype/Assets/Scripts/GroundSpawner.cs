@@ -7,6 +7,8 @@ public class GroundSpawner : MonoBehaviour
     public GameObject groundTile;
     public SanctumEntrance entrance;
     Vector3 nextSpawnPoint;
+    int cnt = 0;
+
 
     public void SpawnTile(bool spawnItems, bool spawmTile)
     {
@@ -31,10 +33,11 @@ public class GroundSpawner : MonoBehaviour
         entrance = GameObject.FindObjectOfType<SanctumEntrance>();
 
         // if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5 && time < 5)
-        if (entrance == null)
-        {
-            spawn = true;
-        }
+        // if (cnt < 3)
+        // {
+        spawn = true;
+        cnt++;
+        // }
 
         return spawn;
     }
@@ -44,18 +47,18 @@ public class GroundSpawner : MonoBehaviour
     {
         for (int i = 0; i < 15; i++)
         {
-            if (i < 2 && ScoreTracker.timeRemain >= 118)
+            if (i < 2 && ScoreTracker.timeRemain > 118)
             {
                 SpawnTile(false, false);
             }
 
-            // else if (i < 1)
-            // {
-            //     SpawnTile(true, false);
-            // }
-            else
+            else if (cnt < 2 && i % 8 == 0)
             {
                 SpawnTile(true, true);
+            }
+            else
+            {
+                SpawnTile(true, false);
             }
 
         }
