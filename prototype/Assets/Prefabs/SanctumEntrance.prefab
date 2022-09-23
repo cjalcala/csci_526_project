@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3590685985430180073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 2, y: 3, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 15, y: 14.96654, z: 4.906868}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,7 +96,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 5, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &3590685985430179860
 MonoBehaviour:
@@ -110,3 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d58197a54ce434cb009fac9fe8e236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mesh:
+  - {fileID: 4300000, guid: 8f3f2404a883f5949a22eb1182951c9e, type: 3}
+  - {fileID: 4300000, guid: e59c418d989aca7499feb8d40c6977b1, type: 3}
+  - {fileID: 4300000, guid: 9e7adcb4180bd9f43a80542600df73c2, type: 3}
+  mat:
+  - {fileID: 2100000, guid: 57baea97f0f6b964bab40d15485b6588, type: 2}
+  - {fileID: 2100000, guid: fc39a0ecc0ce56145a5580c197d049d2, type: 2}
+  - {fileID: 2100000, guid: b7906238964c6084584e67c6f53eb7c8, type: 2}

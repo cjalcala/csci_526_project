@@ -31,7 +31,7 @@ public class GroundSpawner : MonoBehaviour
         entrance = GameObject.FindObjectOfType<SanctumEntrance>();
 
         // if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5 && time < 5)
-        if (entrance == null && ScoreTracker.timeRemain % 3 < 1)
+        if (entrance == null)
         {
             spawn = true;
         }
@@ -49,15 +49,15 @@ public class GroundSpawner : MonoBehaviour
                 SpawnTile(false, false);
             }
 
-            else if (i < 1)
-            {
-                SpawnTile(true, false);
-            }
+            // else if (i < 1)
+            // {
+            //     SpawnTile(true, false);
+            // }
             else
             {
                 SpawnTile(true, true);
             }
-            
+
         }
     }
 }
