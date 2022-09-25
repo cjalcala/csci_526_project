@@ -7,10 +7,15 @@ public class TutorialGroundSpawner : MonoBehaviour
     Vector3 nextSpawnPoint;
 
 
-    public void SpawnTutorialTile()
+    public void SpawnTutorialTile(bool SpawnObstacle)
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
+
+        if(SpawnObstacle)
+        {
+            temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
+        }
     }
 
 
@@ -19,7 +24,14 @@ public class TutorialGroundSpawner : MonoBehaviour
     {
         for (int i = 0; i < 15; i++)
         {
-            SpawnTutorialTile();
+            if(i < 5)
+            {
+                SpawnTutorialTile(false);
+            }
+            else
+            {
+                SpawnTutorialTile(true);
+            }
         }
     }
 }

@@ -6,33 +6,33 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popUpIndex;
+    //TutorialGroundTile tutorialgroundTile;
+    public GameObject tutorialobstacleSpawner;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //tutorialgroundTile=GameObject.FindObjectOfType<TutorialGroundTile>();
+        //tutorialobstacleSpawner.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         for(int i=0;i<popUps.Length; i++)
         {
             if(i == popUpIndex)
             {
-                popUps[popUpIndex].SetActive(true);
+                popUps[i].SetActive(true);
             }
             else
             {
-                popUps[popUpIndex].SetActive(false);
+                popUps[i].SetActive(false);
             }
         }
 
-
         if(popUpIndex==0)
         {
-            GameObject.Find("LeftRight").SetActive(true);
             if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
                 popUpIndex++;
@@ -43,8 +43,11 @@ public class TutorialManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 popUpIndex++;
+                //tutorialgroundTile.TutorialSpawnObstacle();
+                //GameObject.FindObjectOfType<TutorialGroundTile>().TutorialSpawnObstacle();
+                //tutorialobstacleSpawner.SetActive(true);
             }
         }
-        
+
     }
 }
