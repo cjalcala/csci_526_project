@@ -9,7 +9,7 @@ public class TutorialManager : MonoBehaviour
     private int popUpIndex;
     public GameObject tutorialobstacleSpawner;
     public float coinWaitTime = 1.75f;
-    public float coinDelTime = 3f;
+    public float coinDelTime = 2f;
     public float sanctumWaitTime = 1.75f;
     public float sanctumDelTime = 3f;
 

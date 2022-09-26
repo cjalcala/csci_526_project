@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sanctum.unity
     guid: 5b3d9f7ce48994783996e840ac0bd01a
+  - enabled: 1
+    path: Assets/Scenes/TutorialComplete.unity
+    guid: 2c7b61e71f48d43da959af5972776a85
   m_configObjects: {}

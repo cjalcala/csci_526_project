@@ -42,7 +42,7 @@ public class TutorialGroundSpawner : MonoBehaviour
             {
                 SpawnTutorialTile(true, false, false);
             }
-            else if(i>7 && i<14)
+            else if(i>7 && i<15)
             {
                 SpawnTutorialTile(true, true, false);
             }

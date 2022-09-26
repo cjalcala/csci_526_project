@@ -13,6 +13,11 @@ public class TutorialSanctumEntrance : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+         if(other.gameObject.GetComponent<TutorialObstacle>()!=null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         SceneManager.LoadScene("Sanctum");
     }

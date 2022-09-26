@@ -56,7 +56,14 @@ public class SanctumQuiz : MonoBehaviour
         //     int randValue = Random.Range(0, keyList.Count);
         //     ScoreTracker.increaseIngredient(keyList[randValue]);
         // }
-        SceneManager.LoadScene("Game");
+        if(TutorialManager.tutorialActive)
+        {
+            SceneManager.LoadScene("TutorialComplete");
+        }
+        else
+        {
+            SceneManager.LoadScene("Game");
+        }
         //questionGenerator();
     }
 
