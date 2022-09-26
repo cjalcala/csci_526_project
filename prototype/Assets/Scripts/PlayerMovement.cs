@@ -40,12 +40,10 @@ public class PlayerMovement : MonoBehaviour
 
         if(transform.position.y < -5) {
             flag++;
-            Die("fall");
-            
+            Die("fall");    
         }
-
-        //distanceRemaining.text = "Distance Remaining: " + (150-rb.position.z).ToString("0"); 
-    }
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f),transform.position.y,transform.position.z);
+}
 
     public void Die(string tp)
     {
@@ -54,12 +52,10 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.Send(tp);
         }
         else{
-
             if (flag == 1){
             GameManager.inst.Send(tp);
+            }
         }
-        }
-        
         
         Invoke("Restart", (float)0.25);
     }
@@ -85,6 +81,5 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        //distanceRemaining = GameObject.Find("DistanceText").GetComponent<Text>();
     }
 }

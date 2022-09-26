@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string URL;
     public static GameManager inst;
     public int coins;
-    //public int coins = 0;
     public Text coinText;
     public Text timeText;
     public Text goalText;
     public GameOverScreen gameOverScreen;
     public WinningScreen winningScreen;
     public bool won;
+    public Image[] ingredientIcon;
     public DateTime sessionid;
 
     PlayerMovement playerMovement;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         ScoreTracker.coins++;
         coins = ScoreTracker.coins;
-        coinText.text = "Coins: " + ScoreTracker.coins;
+        coinText.text = ": " + ScoreTracker.coins;
     }
 
     public void increaseIngredient(string name)
@@ -51,9 +51,12 @@ public class GameManager : MonoBehaviour
     public string goalProgress()
     {
         string goal = "";
+        int index = 0;
         foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
         {
-            goal += " " + pair.Key.ToString() + " (" + pair.Value.currentCount + "/" + pair.Value.requiredCount + ")";
+            goal += "           x" + pair.Value.currentCount + "/" + pair.Value.requiredCount;
+            ingredientIcon[index].sprite = Resources.Load<Sprite>("Sprites/" + pair.Key.ToString());
+            index++;
         }
 
         return goal;
@@ -68,12 +71,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = "Coins: " + ScoreTracker.coins;
+        coinText.text = ": " + ScoreTracker.coins;
         goalText.text = "Goal :" + goalProgress();
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
-        
+
     }
 
     // Update is called once per frame
@@ -97,17 +100,7 @@ public class GameManager : MonoBehaviour
         if (ScoreTracker.timeRemain > 0)
         {
             ScoreTracker.timeRemain -= Time.deltaTime;
-            timeText.text = "Time Remaining: " + ScoreTracker.timeRemain.ToString("0") + " Sec";
-
-            /* testing
-            if (timeRemain < 110 && !testIngredient)
-            {
-                testIngredient = true;
-                increaseIngredient("Broccoli");
-                increaseIngredient("Onion");
-                increaseIngredient("Chicken");
-            }
-            */
+            timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
             
         }
         else

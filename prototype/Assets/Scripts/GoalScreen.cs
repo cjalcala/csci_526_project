@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class GoalScreen : MonoBehaviour
 {
     public Text ingredientText;
+    public Sprite[] spritesList;
+    public Image[] ingredientIcon;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +24,15 @@ public class GoalScreen : MonoBehaviour
         ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1));
         ScoreTracker.ingredientsList.Add("Chicken", new Ingredient("Chicken", 1));
 
-        string ingredientList = "";
+        GameObject canvas = GameObject.Find("Canvas");
+        int index = 0;
+        string ingredientList = "                 ";
         foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
         {
-            ingredientList += " " + pair.Key.ToString() + " x" + pair.Value.requiredCount;
+            //ingredientList += " " + pair.Key.ToString() + " x" + pair.Value.requiredCount;
+            ingredientList += "         x" + pair.Value.requiredCount;
+            ingredientIcon[index].sprite = Resources.Load<Sprite>("Sprites/" + pair.Key.ToString());
+            index++;
         }
         ingredientText.text = ingredientList;
         
