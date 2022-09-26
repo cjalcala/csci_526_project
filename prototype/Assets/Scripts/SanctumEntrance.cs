@@ -26,6 +26,18 @@ public class SanctumEntrance : MonoBehaviour
     {
         //PlayerPrefs.SetInt("IngredientID", ingredientID);
         PlayerPrefs.SetString("IngredientID", ingredientList[ingredientID]);
+        if(other.gameObject.GetComponent<Obstacle>()!=null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if(other.gameObject.name != "Player")
+        {
+            return;
+        }
+
+        Destroy(gameObject);
 
         SceneManager.LoadScene("Sanctum");
     }
