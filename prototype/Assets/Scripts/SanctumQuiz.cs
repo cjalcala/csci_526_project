@@ -50,6 +50,7 @@ public class SanctumQuiz : MonoBehaviour
     {
         questionAnswers.RemoveAt(currQuestion);
         //gameOver();
+        
         // if(ScoreTracker.uncompletedIngredients().Count > 0)
         // {
         //     List<string> keyList = ScoreTracker.uncompletedIngredients();
@@ -62,21 +63,26 @@ public class SanctumQuiz : MonoBehaviour
         }
         else
         {
-            if(ScoreTracker.uncompletedIngredients().Count > 0)
-            {
-                List<string> keyList = ScoreTracker.uncompletedIngredients();
-                int randValue = Random.Range(0, keyList.Count);
-                ScoreTracker.increaseIngredient(keyList[randValue]);
-            }
+            string Ingredient = PlayerPrefs.GetString("IngredientID");// Change to index later
+            ScoreTracker.increaseIngredient(Ingredient);//use map to find the ingredient string /change increaseIngredient param to index
             SceneManager.LoadScene("Game");
         }
         //questionGenerator();
+
+
     }
 
     public void wrong()
     {
         //questionAnswers.RemoveAt(currQuestion);
-        Invoke("gameOver", 2.0f);
+        if (ScoreTracker.coins < 10)
+        {
+            continueGame();
+        }
+        else {
+            Invoke("gameOver", 2.0f);
+        }
+        
         //questionGenerator();
     }
 
