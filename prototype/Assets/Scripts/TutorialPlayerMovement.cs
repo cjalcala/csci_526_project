@@ -25,6 +25,8 @@ public class TutorialPlayerMovement : MonoBehaviour
             Die();
         }
 
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f), transform.position.y, transform.position.z);
+
     }
 
     private void FixedUpdate() 

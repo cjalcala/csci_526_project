@@ -19,7 +19,7 @@ public class TutorialGameManager : MonoBehaviour
     public void IncrementScore()
     {
         score++;
-        tutorialCoinText.text="Coin: "+score;
+        tutorialCoinText.text= "        : " + score;
     }
 
     void Start()
