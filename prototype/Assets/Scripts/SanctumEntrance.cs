@@ -9,7 +9,7 @@ public class SanctumEntrance : MonoBehaviour
     public Mesh[] mesh;
     public Material[] mat;
     public int ingredientID;
-    public string[] ingredientList = { "Broccoli", "Onion", "Meat" };//TODO: Create spresdsheet to match index to ingredient
+    public string[] ingredientList = { "Broccoli", "Onion", "Chicken" };//TODO: Create spresdsheet to match index to ingredient
     // Start is called before the first frame update
     void Start()
     {

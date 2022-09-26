@@ -63,12 +63,8 @@ public class SanctumQuiz : MonoBehaviour
         }
         else
         {
-            if(ScoreTracker.uncompletedIngredients().Count > 0)
-            {
-               string Ingredient =  PlayerPrefs.GetString("IngredientID");// Change to index later
-                ScoreTracker.increaseIngredient(Ingredient);//use map to find the ingredient string /change increaseIngredient param to index
-                SceneManager.LoadScene("Game");
-            }
+            string Ingredient = PlayerPrefs.GetString("IngredientID");// Change to index later
+            ScoreTracker.increaseIngredient(Ingredient);//use map to find the ingredient string /change increaseIngredient param to index
             SceneManager.LoadScene("Game");
         }
         //questionGenerator();
