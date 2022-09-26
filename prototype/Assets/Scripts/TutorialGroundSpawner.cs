@@ -32,7 +32,7 @@ public class TutorialGroundSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 18; i++)
+        for (int i = 0; i < 25; i++)
         {
             if(i < 5)
             {
