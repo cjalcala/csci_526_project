@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         goalText.text = "Goal :" + goalProgress();
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+        TutorialManager.tutorialActive = false;
         
     }
 
