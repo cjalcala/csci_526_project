@@ -6,14 +6,14 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popUpIndex;
-    //TutorialGroundTile tutorialgroundTile;
     public GameObject tutorialobstacleSpawner;
+    public float coinWaitTime = 1.75f;
+    public float coinDelTime = 4f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //tutorialgroundTile=GameObject.FindObjectOfType<TutorialGroundTile>();
-        //tutorialobstacleSpawner.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -42,11 +42,30 @@ public class TutorialManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                popUpIndex++;
-                //tutorialgroundTile.TutorialSpawnObstacle();
-                //GameObject.FindObjectOfType<TutorialGroundTile>().TutorialSpawnObstacle();
-                //tutorialobstacleSpawner.SetActive(true);
+                popUpIndex=5;
             }
+        }
+        else if(popUpIndex==5)
+        {
+            if(coinWaitTime>0)
+            {
+                coinWaitTime-=Time.deltaTime;
+            }
+            else
+            {
+                popUpIndex=2;
+            }
+        }
+        else if(popUpIndex==2)
+        {
+            if(coinDelTime>0)
+            {
+                coinDelTime-=Time.deltaTime;
+            }
+            else
+            {
+                popUpIndex++;
+            }   
         }
 
     }

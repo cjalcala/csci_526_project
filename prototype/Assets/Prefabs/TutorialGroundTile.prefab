@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialobstaclePrefab: {fileID: 2483905378157037388, guid: eb74e2bb46d364448822bf5842f33372, type: 3}
+  tutorialcoinPrefab: {fileID: 2675459047600711637, guid: f274dbbe66c764a6ea6d9d957dc91445, type: 3}
 --- !u!1 &1823149369848973537
 GameObject:
   m_ObjectHideFlags: 0

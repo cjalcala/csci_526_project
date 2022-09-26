@@ -7,7 +7,7 @@ public class TutorialGroundSpawner : MonoBehaviour
     Vector3 nextSpawnPoint;
 
 
-    public void SpawnTutorialTile(bool SpawnObstacle)
+    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnCoins) 
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
@@ -15,6 +15,11 @@ public class TutorialGroundSpawner : MonoBehaviour
         if(SpawnObstacle)
         {
             temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
+        }
+
+        if(SpawnCoins)
+        {
+            temp.GetComponent<TutorialGroundTile>().TutorialSpawnCoins();
         }
     }
 
@@ -26,11 +31,15 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
             if(i < 5)
             {
-                SpawnTutorialTile(false);
+                SpawnTutorialTile(false, false);
+            }
+            else if(i>=5 && i<=7)
+            {
+                SpawnTutorialTile(true, false);
             }
             else
             {
-                SpawnTutorialTile(true);
+                SpawnTutorialTile(true, true);
             }
         }
     }
