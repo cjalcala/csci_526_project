@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+    public static bool tutorialActive = false;
     public GameObject[] popUps;
     private int popUpIndex;
     public GameObject tutorialobstacleSpawner;
     public float coinWaitTime = 1.75f;
-    public float coinDelTime = 4f;
+    public float coinDelTime = 3f;
+    public float sanctumWaitTime = 1.75f;
+    public float sanctumDelTime = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        tutorialActive = true;
     }
 
     // Update is called once per frame
@@ -64,7 +67,31 @@ public class TutorialManager : MonoBehaviour
             }
             else
             {
+                popUpIndex=6;
+
+            }   
+        }
+        else if(popUpIndex==6)
+        {
+            if(sanctumWaitTime>0)
+            {
+                sanctumWaitTime-=Time.deltaTime;
+            }
+            else
+            {
+                popUpIndex=3;
+            }
+        }
+        else if(popUpIndex==3)
+        {
+            if(sanctumDelTime>0)
+            {
+                sanctumDelTime-=Time.deltaTime;
+            }
+            else
+            {
                 popUpIndex++;
+
             }   
         }
 

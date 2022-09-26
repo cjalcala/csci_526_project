@@ -6,6 +6,7 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialobstaclePrefab;
     TutorialGroundSpawner tutorialgroundSpawner;
     public GameObject tutorialcoinPrefab;
+    public GameObject tutorialsanctumEntrancePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class TutorialGroundTile : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        tutorialgroundSpawner.SpawnTutorialTile(true, true); 
+        tutorialgroundSpawner.SpawnTutorialTile(true, true, true); 
         Destroy(gameObject, 2);
     }
 
@@ -45,6 +46,18 @@ public class TutorialGroundTile : MonoBehaviour
             GameObject temp = Instantiate(tutorialcoinPrefab, transform);
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         }
+    }
+
+    public void TutorialSpawnEntrance()
+    {
+        Collider collider = GetComponent<Collider>();
+        Vector3 position = new Vector3(Random.Range(collider.bounds.min.x, collider.bounds.max.x), 1, Random.Range(collider.bounds.min.z, collider.bounds.max.z));
+        if (position != collider.ClosestPoint(position))
+        {
+            position = GetRandomPointInCollider(collider);
+        }
+        Instantiate(tutorialsanctumEntrancePrefab, position, Quaternion.identity, transform);
+        //temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
     Vector3 GetRandomPointInCollider(Collider collider)

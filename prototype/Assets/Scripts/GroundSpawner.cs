@@ -10,7 +10,7 @@ public class GroundSpawner : MonoBehaviour
     int cnt = 0;
 
 
-    public void SpawnTile(bool spawnItems, bool spawmTile)
+    public void SpawnTile(bool spawnItems, bool spawnTile)
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
@@ -19,7 +19,7 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCoins();
-            if (SpawnEntrance() && spawmTile)
+            if (SpawnEntrance() && spawnTile)
             {
                 temp.GetComponent<GroundTile>().SpawnEntrance();
             }
