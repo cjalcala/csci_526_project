@@ -18,7 +18,7 @@ public class ScoreTracker : MonoBehaviour
 
         foreach (KeyValuePair<string, Ingredient> pair in ingredientsList)
         {
-            if (pair.Value.currentCount <= pair.Value.requiredCount)
+            if (pair.Value.currentCount < pair.Value.requiredCount)
             {
                 keyList.Add(pair.Key);
             }

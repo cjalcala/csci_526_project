@@ -9,12 +9,51 @@ public class SanctumEntrance : MonoBehaviour
     public Mesh[] mesh;
     public Material[] mat;
     public int ingredientID;
+    List<string> result ;
+    static System.Random random=new System.Random();
     public string[] ingredientList = { "Broccoli", "Onion", "Chicken" };//TODO: Create spresdsheet to match index to ingredient
     // Start is called before the first frame update
     void Start()
     {
+        List<int> indx= new List<int>();
+        result=ScoreTracker.uncompletedIngredients();
+        foreach (var x in result)
+        {
+            Debug.Log(x );
+
+        }
+        
+        for(int i=0;i<result.Count;i++)
+        {
+            if(result[i]=="Broccoli")
+            {
+                indx.Add(0);
+
+            }
+
+            if(result[i]=="Onion")
+            {
+                indx.Add(1);
+
+            }
+            if(result[i]=="Chicken")
+            {
+                indx.Add(2);
+
+            }
+
+        }
+        
+         foreach (var x in indx)
+        {
+            Debug.Log(x.ToString());
+
+        }
+
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
-        int idx = Random.Range(0, mesh.Length);
+        //int idx = Random.Range(0, mesh.Length);
+       // var random=new Random();
+        int idx=indx[random.Next(indx.Count)];
         ingredientID = idx;
         Mesh curr = mesh[idx];
         GetComponent<MeshFilter>().mesh = curr;
