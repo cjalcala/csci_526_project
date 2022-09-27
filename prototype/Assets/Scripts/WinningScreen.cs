@@ -27,7 +27,7 @@ public class WinningScreen : MonoBehaviour
         ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();
         ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1));
         ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1));
-        ScoreTracker.ingredientsList.Add("Chicken", new Ingredient("Chicken", 1));
+        ScoreTracker.ingredientsList.Add("Steak", new Ingredient("Steak", 1));
         gameObject.SetActive(true);
         timeText.text = "Your Score: " + ScoreTracker.timeRemain.ToString("0") + "!";
     }

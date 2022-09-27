@@ -119,6 +119,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 57baea97f0f6b964bab40d15485b6588, type: 2}
   - {fileID: 2100000, guid: fc39a0ecc0ce56145a5580c197d049d2, type: 2}
   - {fileID: 2100000, guid: b7906238964c6084584e67c6f53eb7c8, type: 2}
+  ingredientID: 0
+  ingredientList:
+  - Broccoli
+  - Onion
+  - Steak
 --- !u!54 &671462192713864136
 Rigidbody:
   m_ObjectHideFlags: 0

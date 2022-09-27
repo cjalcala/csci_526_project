@@ -22,7 +22,7 @@ public class GoalScreen : MonoBehaviour
         ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();
         ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1));
         ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1));
-        ScoreTracker.ingredientsList.Add("Chicken", new Ingredient("Chicken", 1));
+        ScoreTracker.ingredientsList.Add("Steak", new Ingredient("Steak", 1));
 
         GameObject canvas = GameObject.Find("Canvas");
         int index = 0;

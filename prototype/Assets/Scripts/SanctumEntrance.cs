@@ -11,7 +11,7 @@ public class SanctumEntrance : MonoBehaviour
     public int ingredientID;
     List<string> result ;
     static System.Random random=new System.Random();
-    public string[] ingredientList = { "Broccoli", "Onion", "Chicken" };//TODO: Create spresdsheet to match index to ingredient
+    public string[] ingredientList = { "Broccoli", "Onion", "Steak" };//TODO: Create spresdsheet to match index to ingredient
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,7 @@ public class SanctumEntrance : MonoBehaviour
                 indx.Add(1);
 
             }
-            if(result[i]=="Chicken")
+            if(result[i]== "Steak")
             {
                 indx.Add(2);
 
