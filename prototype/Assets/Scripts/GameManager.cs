@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private string URL;
     [SerializeField] private string URLforLevel;
+    public string deathUrl = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfuhQ1nIxbyLGl3O0aXOQ1RGkX3M_9UU1UV1WJy6daNP6AEpw/formResponse";
+    public string[] deathFields = { "entry.2014458776", "entry.1123890612", "entry.462759076", "entry.1893677595", "entry.811987276" };
+    public static int deathFieldsCount = 5;
+    public string[] deathValues = new string[deathFieldsCount];
+    public bool hasHitObstacle = false;
 
     public static GameManager inst;
     public int coins;
@@ -24,6 +29,9 @@ public class GameManager : MonoBehaviour
     public DateTime sessionid;
     public int level = 1;
     public int level_flag = 0;
+    public long sessionNum;
+    public DateTime timestamp;
+    public int flag = 0;
 
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
@@ -70,6 +78,9 @@ public class GameManager : MonoBehaviour
     {
         inst = this;
         sessionid = System.DateTime.Now;
+        sessionNum = DateTime.Now.Ticks;
+        timestamp = System.DateTime.Now;
+
     }
 
     // Start is called before the first frame update
@@ -92,10 +103,11 @@ public class GameManager : MonoBehaviour
             ScoreTracker.timeRemain = 0;
             playerMovement.stayStill = true;
             level_flag++;
-            if (level_flag == 1){
+            if (level_flag == 1)
+            {
                 NewSend("true");
             }
-            
+
         }
         else if (ScoreTracker.timeRemain >= 0 && checkIngredientsGoal())
         {
@@ -103,6 +115,17 @@ public class GameManager : MonoBehaviour
             {
                 winningScreen.Setup(ScoreTracker.originalTime - ScoreTracker.timeRemain);
                 won = true;
+                flag++;
+                if (flag == 1)
+                {
+                    deathValues[0] = GameManager.inst.timestamp.ToString();
+                    deathValues[1] = GameManager.inst.sessionNum.ToString();
+                    deathValues[2] = "won";
+                    deathValues[3] = "";
+                    deathValues[4] = (120 - ScoreTracker.timeRemain).ToString("0");
+                    //TODO: Get the value of 120 above dynamically
+                    Send("deathTracker");
+                }
             }
         }
 
@@ -110,15 +133,28 @@ public class GameManager : MonoBehaviour
         {
             ScoreTracker.timeRemain -= Time.deltaTime;
             timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
-            
+
         }
         else
         {
             level_flag++;
-            if (level_flag == 1){
+            if (level_flag == 1)
+            {
                 NewSend("false");
             }
-            
+
+            flag++;
+            if ((flag == 1) && (hasHitObstacle == false))
+            {
+                deathValues[0] = GameManager.inst.timestamp.ToString();
+                deathValues[1] = GameManager.inst.sessionNum.ToString();
+                deathValues[2] = "lost";
+                deathValues[3] = "time";
+                deathValues[4] = 120.ToString();
+                //TODO: Get the value of 120 above dynamically
+                Send("deathTracker");
+            }
+
             gameOverScreen.Setup();
             ScoreTracker.timeRemain = -1;
             playerMovement.stayStill = true;
@@ -126,24 +162,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Restart ()
+    void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void NewSend(String level_complete){
+    public void NewSend(String level_complete)
+    {
         StartCoroutine(Post(level.ToString(), level_complete.ToString()));
-        
+
     }
 
+    //public void Send(string deathtype){
+    public void Send(string analyticsName)
+    {
+        //StartCoroutine(Post(sessionid.ToString(), deathtype.ToString(), coins.ToString()));
+        StartCoroutine(PostAnalytics(analyticsName));
 
-    private IEnumerator Post(string level, string level_complete){ 
+    }
+
+    private IEnumerator Post(string level, string level_complete)
+    {
 
         // WWWForm form = new WWWForm();
         // form.AddField("entry.1946343437", sessionid);    
         // form.AddField("entry.1371321124", deathtype); 
         // form.AddField("entry.1055635473", numcoins);
-        
+
 
 
         // using (UnityWebRequest www = UnityWebRequest.Post(URL, form))    {
@@ -163,22 +208,63 @@ public class GameManager : MonoBehaviour
 
 
         WWWForm form = new WWWForm();
-        form.AddField("entry.1136704430", level);    
-        form.AddField("entry.1145566479", level_complete); 
-        
-        
+        form.AddField("entry.1136704430", level);
+        form.AddField("entry.1145566479", level_complete);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post(URLforLevel, form))    {
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URLforLevel, form))
+        {
             yield return www.SendWebRequest();
-            if (www.result != UnityWebRequest.Result.Success) 
-                {            
-                    Debug.Log(www.error);        
-                }       
-            else       
-                {           
-                      Debug.Log("Form upload complete!");        
-                }    
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+
+            www.Dispose();
+        }
+
+    }
+
+    //private IEnumerator Post(string sessionid, string deathtype, string numcoins){
+    private IEnumerator PostAnalytics(string analyticsName)
+    {
+        string URL = "";
+        WWWForm form = new WWWForm();
+
+        if (analyticsName == "deathTracker")
+        {
+            URL = deathUrl;
+            for (int i = 0; i < deathFieldsCount; i++)
+            {
+                form.AddField(deathFields[i], deathValues[i]);
+            }
+        }
+
+        //form.AddField("entry.2014458776", sessionid);    
+        //form.AddField("entry.1123890612", deathtype); 
+        //form.AddField("entry.462759076", numcoins);
+        //form.AddField("entry.1893677595", sessionid);
+        //form.AddField("entry.811987276", deathtype);
+
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
 
             www.Dispose();
         }
