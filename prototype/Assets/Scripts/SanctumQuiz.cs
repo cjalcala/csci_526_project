@@ -28,7 +28,16 @@ public class SanctumQuiz : MonoBehaviour
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
         //coin.text = "Coins : " + numCoins.ToString();
-        sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
+        if(TutorialManager.tutorialActive)
+        {
+            TutorialGameManager.tutCoinCnt-=2;
+            sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+        }
+        else
+        {
+            sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
+        }
+        
 
 
 

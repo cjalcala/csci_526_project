@@ -9,6 +9,7 @@ public class TutorialGameManager : MonoBehaviour
     public int score;
     public static TutorialGameManager inst;
     public Text tutorialCoinText;
+    public static int tutCoinCnt;
     // Start is called before the first frame update
 
     private void Awake()
@@ -30,6 +31,6 @@ public class TutorialGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        tutCoinCnt=score;
     }
 }

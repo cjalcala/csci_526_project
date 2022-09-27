@@ -52,12 +52,16 @@ public class SanctumEntrance : MonoBehaviour
 
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         //int idx = Random.Range(0, mesh.Length);
-       // var random=new Random();
-        int idx=indx[random.Next(indx.Count)];
-        ingredientID = idx;
-        Mesh curr = mesh[idx];
-        GetComponent<MeshFilter>().mesh = curr;
-        GetComponent<Renderer>().material = mat[idx];
+        // var random=new Random();
+
+        if(indx.Count != 0)
+        {
+            int idx=indx[random.Next(indx.Count)];
+            ingredientID = idx;
+            Mesh curr = mesh[idx];
+            GetComponent<MeshFilter>().mesh = curr;
+            GetComponent<Renderer>().material = mat[idx];
+        }
 
     }
 
