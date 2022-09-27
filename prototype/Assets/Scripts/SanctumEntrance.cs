@@ -39,7 +39,20 @@ public class SanctumEntrance : MonoBehaviour
 
         Destroy(gameObject);
 
-        SceneManager.LoadScene("Sanctum");
+        if (ScoreTracker.coins >= 2)
+        {
+
+            ScoreTracker.coins -= 2;
+            SceneManager.LoadScene("Sanctum");
+
+
+        }
+        else
+        {
+            return;
+        }
+
+        
     }
 
     // Update is called once per frame

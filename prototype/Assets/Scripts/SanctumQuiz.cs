@@ -21,11 +21,17 @@ public class SanctumQuiz : MonoBehaviour
     public int numCoins;
     public static int tempCoinvalue = 100;
 
+    public Text sanctumCoins;
+
     private void Start()
     {
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
         //coin.text = "Coins : " + numCoins.ToString();
+        sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
+
+
+
         Debug.Log(TutorialManager.tutorialActive);
         totalQuestions = questionAnswers.Count;
         BPanel.SetActive(false);
