@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private string URL;
+    [SerializeField] private string URLforLevel;
+
     public static GameManager inst;
     public int coins;
     public Text coinText;
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour
     public bool won;
     public Image[] ingredientIcon;
     public DateTime sessionid;
+    public int level = 1;
+    public int level_flag = 0;
 
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
@@ -87,6 +91,11 @@ public class GameManager : MonoBehaviour
         {
             ScoreTracker.timeRemain = 0;
             playerMovement.stayStill = true;
+            level_flag++;
+            if (level_flag == 1){
+                NewSend("true");
+            }
+            
         }
         else if (ScoreTracker.timeRemain >= 0 && checkIngredientsGoal())
         {
@@ -105,6 +114,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            level_flag++;
+            if (level_flag == 1){
+                NewSend("false");
+            }
+            
             gameOverScreen.Setup();
             ScoreTracker.timeRemain = -1;
             playerMovement.stayStill = true;
@@ -117,22 +131,45 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Send(String deathtype){
-        StartCoroutine(Post(sessionid.ToString(), deathtype.ToString(), coins.ToString()));
+    public void NewSend(String level_complete){
+        StartCoroutine(Post(level.ToString(), level_complete.ToString()));
         
     }
-    
 
-    private IEnumerator Post(string sessionid, string deathtype, string numcoins){ 
 
-        WWWForm form = new WWWForm();
-        form.AddField("entry.1946343437", sessionid);    
-        form.AddField("entry.1371321124", deathtype); 
-        form.AddField("entry.1055635473", numcoins);
+    private IEnumerator Post(string level, string level_complete){ 
+
+        // WWWForm form = new WWWForm();
+        // form.AddField("entry.1946343437", sessionid);    
+        // form.AddField("entry.1371321124", deathtype); 
+        // form.AddField("entry.1055635473", numcoins);
         
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post(URL, form))    {
+        // using (UnityWebRequest www = UnityWebRequest.Post(URL, form))    {
+        //     yield return www.SendWebRequest();
+        //     if (www.result != UnityWebRequest.Result.Success) 
+        //         {            
+        //             Debug.Log(www.error);        
+        //         }       
+        //     else       
+        //         {           
+        //               Debug.Log("Form upload complete!");        
+        //         }    
+
+        //     www.Dispose();
+        // }
+
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1136704430", level);    
+        form.AddField("entry.1145566479", level_complete); 
+        
+        
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URLforLevel, form))    {
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success) 
                 {            

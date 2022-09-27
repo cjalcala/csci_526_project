@@ -49,13 +49,14 @@ public class PlayerMovement : MonoBehaviour
     {
         alive = false;
         if (tp == "obstacle"){
-            GameManager.inst.Send(tp);
+            GameManager.inst.NewSend("false");
         }
-        else{
-            if (flag == 1){
-            GameManager.inst.Send(tp);
-            }
-        }
+        // else{
+        //     if (flag == 1){
+        //     GameManager.inst.Send(tp);
+        //     }
+        // }
+
         
         Invoke("Restart", (float)0.25);
     }
