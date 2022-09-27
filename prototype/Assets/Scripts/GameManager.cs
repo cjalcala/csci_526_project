@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Post(sessionid.ToString(), deathtype.ToString(), coins.ToString()));
         
     }
+    
 
     private IEnumerator Post(string sessionid, string deathtype, string numcoins){ 
 
