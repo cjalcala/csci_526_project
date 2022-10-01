@@ -34,66 +34,69 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        if(popUpIndex==0)
+        if(!TutorialGameManager.isPaused)
         {
-            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            if(popUpIndex==0)
             {
-                popUpIndex++;
+                if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+                {
+                    popUpIndex++;
+                }
             }
-        }
-        else if(popUpIndex==1)
-        {
-            if(Input.GetKeyDown(KeyCode.Space))
+            else if(popUpIndex==1)
             {
-                popUpIndex=5;
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    popUpIndex=5;
+                }
             }
-        }
-        else if(popUpIndex==5)
-        {
-            if(coinWaitTime>0)
+            else if(popUpIndex==5)
             {
-                coinWaitTime-=Time.deltaTime;
+                if(coinWaitTime>0)
+                {
+                    coinWaitTime-=Time.deltaTime;
+                }
+                else
+                {
+                    popUpIndex=2;
+                }
             }
-            else
+            else if(popUpIndex==2)
             {
-                popUpIndex=2;
-            }
-        }
-        else if(popUpIndex==2)
-        {
-            if(coinDelTime>0)
-            {
-                coinDelTime-=Time.deltaTime;
-            }
-            else
-            {
-                popUpIndex=6;
+                if(coinDelTime>0)
+                {
+                    coinDelTime-=Time.deltaTime;
+                }
+                else
+                {
+                    popUpIndex=6;
 
-            }   
-        }
-        else if(popUpIndex==6)
-        {
-            if(sanctumWaitTime>0)
-            {
-                sanctumWaitTime-=Time.deltaTime;
+                }   
             }
-            else
+            else if(popUpIndex==6)
             {
-                popUpIndex=3;
+                if(sanctumWaitTime>0)
+                {
+                    sanctumWaitTime-=Time.deltaTime;
+                }
+                else
+                {
+                    popUpIndex=3;
+                }
             }
-        }
-        else if(popUpIndex==3)
-        {
-            if(sanctumDelTime>0)
+            else if(popUpIndex==3)
             {
-                sanctumDelTime-=Time.deltaTime;
-            }
-            else
-            {
-                popUpIndex++;
+                if(sanctumDelTime>0)
+                {
+                    sanctumDelTime-=Time.deltaTime;
+                }
+                else
+                {
+                    popUpIndex++;
 
-            }   
-        }
+                }   
+            }
 
+        }
     }
 }
