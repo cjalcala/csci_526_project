@@ -77,7 +77,7 @@ public class SanctumQuiz : MonoBehaviour
         // }
         if(TutorialManager.tutorialActive)
         {
-            SceneManager.LoadScene("TutorialComplete");
+            Invoke("LoadTutorialComplete", 1.5f);
         }
         else
         {
@@ -88,6 +88,11 @@ public class SanctumQuiz : MonoBehaviour
         //questionGenerator();
 
 
+    }
+
+    public void LoadTutorialComplete()
+    {
+        SceneManager.LoadScene("TutorialComplete");
     }
 
     public void wrong()
