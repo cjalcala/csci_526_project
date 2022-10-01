@@ -10,6 +10,7 @@ public class TutorialPlayerMovement : MonoBehaviour
     public float horizontalMultiplier = 1.25f;
     public float jumpForce = 600f;
     public LayerMask groundMask;
+    public GameObject LosePanel;
 
     // Update is called once per frame
     void Update()
@@ -40,7 +41,8 @@ public class TutorialPlayerMovement : MonoBehaviour
     public void Die()
     {
         alive = false;        
-        Invoke("Restart", 1);
+        // Invoke("Restart", 1);
+        LosePanel.SetActive(true);
     }
 
     void Jump()
