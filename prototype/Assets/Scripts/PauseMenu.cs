@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PauseMenu : MonoBehaviour
+{
+    [SerializeField] public GameObject PauseMenuPanel;
+
+    public void Pause() {
+        PauseMenuPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume() {
+        PauseMenuPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    
+    public void Restart() {
+        Time.timeScale = 1f;
+        ScoreTracker.coins = 0;
+        ScoreTracker.timeRemain = 120;
+        ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();
+        ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1));
+        ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1));
+        ScoreTracker.ingredientsList.Add("Steak", new Ingredient("Steak", 1));
+        SceneManager.LoadScene("Game");
+    }
+
+    public void Exit() {
+        SceneManager.LoadScene("WelcomeScreen");
+    }
+
+
+}
