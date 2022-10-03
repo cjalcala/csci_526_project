@@ -65,7 +65,14 @@ public class SanctumQuiz : MonoBehaviour
 
     public void correct()
     {
-        questionAnswers.RemoveAt(currQuestion);
+
+        if (currQuestion != questionAnswers.Count-1) {
+           QuizQA last = questionAnswers[questionAnswers.Count-1];
+           questionAnswers[currQuestion] = last;
+        } 
+        questionAnswers.RemoveAt(questionAnswers.Count-1);
+        
+
         Send(currQuestion, 1, 0);
         //gameOver();
         
@@ -164,6 +171,7 @@ public class SanctumQuiz : MonoBehaviour
         if(questionAnswers.Count > 0)
         {
             currQuestion = Random.Range(0, questionAnswers.Count);
+
 
             questionText.text = questionAnswers[currQuestion].question;
 
