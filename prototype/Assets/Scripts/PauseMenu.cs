@@ -8,19 +8,23 @@ public class PauseMenu : MonoBehaviour
 {
     // Start is called before the first frame update
    [SerializeField] public GameObject PauseMenuPanel;
+   public static bool GameIsPaused = false;
 
    public void Pause() {
     PauseMenuPanel.SetActive(true);
     Time.timeScale = 0f;
+    GameIsPaused = true;
    }
 
    public void Resume() {
     PauseMenuPanel.SetActive(false);
     Time.timeScale = 1f;
+    GameIsPaused = false;
    }
 
    public void Restart() {
     Time.timeScale = 1f;
+    GameIsPaused = false;
     ScoreTracker.coins = 0;
     ScoreTracker.timeRemain = 120;
     ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();
@@ -32,6 +36,7 @@ public class PauseMenu : MonoBehaviour
 
 
    public void ExitButton() {
+    GameIsPaused = true;
     SceneManager.LoadScene("WelcomeScreen");
    }
 

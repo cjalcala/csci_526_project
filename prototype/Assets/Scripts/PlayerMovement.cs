@@ -15,6 +15,19 @@ public class PlayerMovement : MonoBehaviour
     public GameOverScreen gameOverScreen;
     public bool stayStill = false;
 
+    // find the pause button
+    public GameObject button;
+
+    public void Start() {
+        button = GameObject.Find("Pause");
+    }
+
+
+    
+
+    
+    
+
     public int flag = 0;
 
     private void FixedUpdate()
@@ -49,6 +62,12 @@ public class PlayerMovement : MonoBehaviour
     public void Die(string tp)
     {
         alive = false;
+
+        // disable pause button
+        button.SetActive(false);
+        
+
+
         if (tp == "obstacle")
         {
             GameManager.inst.NewSend("false");
@@ -91,7 +110,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void Start()
-    {
-    }
+    
 }
