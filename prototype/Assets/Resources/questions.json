@@ -1,0 +1,59 @@
+{
+  "easy": 
+  [
+      {
+      "Question text": "Orange is a rich source of which vitamin? ",
+      "Option1":"Vitamin C",
+      "Option2":"Vitamin D",
+      "Option3":"Vitamin B",
+      "Option4":"Vitamin E"
+      },
+      {
+      "Question text": "Pizza Pasta originated from which country?  ",
+      "Option1":"Italy",
+      "Option2":"USA",
+      "Option3":"Canada",
+      "Option4":"German"
+      },
+      {
+      "Question text": "What is the iconic meal often found in Chicago? ",
+      "Option1":"Deep-dish pizza",
+      "Option2":"Doughnut",
+      "Option3":"Hot dog",
+      "Option4":"Kuma burger"
+      }
+    ],
+  "medium": 
+  [
+      
+      {
+      "Question text": "What is the most popular pizza topping in the USA?  ",
+      "Option1":"Pepperoni",
+      "Option2":"Cheese",
+      "Option3":"Salami",
+      "Option4":"Bacon"
+      },
+      {
+      "Question text": "Which popular fast food beverage used to contain whiskey and egg whites?  ",
+      "Option1":"milkshake",
+      "Option2":"latte",
+      "Option3":"Eggnog",
+      "Option4":"Coffee"
+      }
+      ],
+  "hard":
+  [{
+      "Question text": "What percent of cucumber is water?  ",
+      "Option1":"96%",
+      "Option2":"86%",
+      "Option3":"76%",
+      "Option4":"66%"
+      },{
+      "Question text": "What is the national alcoholic drink of the USA?  ",
+      "Option1":"Bourbon",
+      "Option2":"Vodka",
+      "Option3":"Gin",
+      "Option4":"Whiskey"
+      }]
+  
+}
