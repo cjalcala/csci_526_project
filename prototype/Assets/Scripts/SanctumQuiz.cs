@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 public class SanctumQuiz : MonoBehaviour
 {
     [SerializeField] private string URL;
-    public List<QuizQA> questionAnswers;
     public GameObject[] options;
     public int currQuestion;
 
@@ -19,18 +18,17 @@ public class SanctumQuiz : MonoBehaviour
     public Text questionText;
     public Text coin;
 
-    int totalQuestions = 0;
+    
     public int numCoins;
     public static int tempCoinvalue = 100;
 
     public Text sanctumCoins;
 
+    QuizQA quizQuestion;
+
     private void Start()
     {
-        //coin = GameObject.Find("CoinText").GetComponent<Text>();
-        //numCoins = tempCoinvalue;
-        //coin.text = "Coins : " + numCoins.ToString();
-        if(TutorialManager.tutorialActive)
+        if (TutorialManager.tutorialActive)
         {
             TutorialGameManager.tutCoinCnt-=2;
             sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
@@ -39,21 +37,17 @@ public class SanctumQuiz : MonoBehaviour
         {
             sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
         }
-        
-
-
-
         Debug.Log(TutorialManager.tutorialActive);
-        totalQuestions = questionAnswers.Count;
         BPanel.SetActive(false);
-        questionGenerator(); 
+        questionGenerator(0.7, 0.3, 0); 
     }
 
     public void retry()
     {
         ScoreTracker.coins -= 10;
-        //coin.text = numCoins.ToString();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        QuizPanel.SetActive(true);
+        BPanel.SetActive(false);
     }
 
     void gameOver()
@@ -65,7 +59,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void correct()
     {
-        questionAnswers.RemoveAt(currQuestion);
+        
         Send(currQuestion, 1, 0);
         //gameOver();
         
@@ -85,9 +79,6 @@ public class SanctumQuiz : MonoBehaviour
             ScoreTracker.increaseIngredient(Ingredient);//use map to find the ingredient string /change increaseIngredient param to index
             SceneManager.LoadScene("Game");
         }
-        //questionGenerator();
-
-
     }
 
     public void LoadTutorialComplete()
@@ -97,9 +88,6 @@ public class SanctumQuiz : MonoBehaviour
 
     public void wrong()
     {
-        //questionAnswers.RemoveAt(currQuestion);
-        
-        //questionAnswers.RemoveAt(currQuestion);
         if(TutorialManager.tutorialActive)
         {
             if(TutorialGameManager.tutCoinCnt < 10)
@@ -121,11 +109,7 @@ public class SanctumQuiz : MonoBehaviour
             else {
                 Invoke("gameOver", 2.0f);
             }
-
         }
-        
-        
-        //questionGenerator();
     }
 
     void restartTutorial()
@@ -147,31 +131,29 @@ public class SanctumQuiz : MonoBehaviour
 
     void setAnswers()
     {
-        for(int i=0; i<options.Length; i++)
+        for(int i = 0; i < options.Length;i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<Text>().text = questionAnswers[currQuestion].answers[i];
+            options[i].transform.GetChild(0).GetComponent<Text>().text = quizQuestion.answers[i];
 
-            if(questionAnswers[currQuestion].correctAnswer == i+1)
+            if (quizQuestion.correctAnswer == i)
             {
                  options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
         }
     }
 
-    void questionGenerator()
+    void questionGenerator(double easyRate, double mediumRate, double hardRate)
     {
-        if(questionAnswers.Count > 0)
+        quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+        if (quizQuestion != null)
         {
-            currQuestion = Random.Range(0, questionAnswers.Count);
-
-            questionText.text = questionAnswers[currQuestion].question;
-
+            questionText.text = quizQuestion.question;
             setAnswers();
         } 
         else
         {
-            //Debug.Log("Out of questions");
+            Debug.Log("Out of questions");
             gameOver(); 
         }
     }

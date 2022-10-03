@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
+    public static QuestionGenerator questionGenerator;
+
     public void IncrementCoinCount()
     {
         ScoreTracker.coins++;
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
-
+        questionGenerator = new QuestionGenerator();
     }
 
     // Update is called once per frame
