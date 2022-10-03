@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10;
     public Rigidbody rb;
     public float horizontalMultiplier = 0.5f;
-    public float jumpForce = 600f;
+    public float jumpForce = 3000f;
     public LayerMask groundMask;
 
     float horizontalInput;
