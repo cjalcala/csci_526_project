@@ -8,12 +8,25 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10;
     public Rigidbody rb;
     public float horizontalMultiplier = 0.5f;
-    public float jumpForce = 600f;
+    public float jumpForce = 3000f;
     public LayerMask groundMask;
 
     float horizontalInput;
     public GameOverScreen gameOverScreen;
     public bool stayStill = false;
+
+    // find the pause button
+    public GameObject button;
+
+    public void Start() {
+        button = GameObject.Find("Pause");
+    }
+
+
+    
+
+    
+    
 
     public int flag = 0;
 
@@ -49,6 +62,12 @@ public class PlayerMovement : MonoBehaviour
     public void Die(string tp)
     {
         alive = false;
+
+        // disable pause button
+        button.SetActive(false);
+        
+
+
         if (tp == "obstacle")
         {
             GameManager.inst.NewSend("false");
@@ -91,7 +110,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void Start()
-    {
-    }
+    
 }

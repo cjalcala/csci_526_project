@@ -59,7 +59,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void correct()
     {
-        
+
         Send(currQuestion, 1, 0);
         //gameOver();
         
@@ -149,6 +149,7 @@ public class SanctumQuiz : MonoBehaviour
         if (quizQuestion != null)
         {
             questionText.text = quizQuestion.question;
+
             setAnswers();
         } 
         else

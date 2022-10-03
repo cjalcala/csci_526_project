@@ -8,15 +8,18 @@ public class WinningScreen : MonoBehaviour
 {
     public GameManager gameManager;
     public Text timeText;
+    public GameObject button;
     // Start is called before the first frame update
     void Start()
     {
+        button = GameObject.Find("Pause");
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        button.SetActive(false);
 
     }
 
