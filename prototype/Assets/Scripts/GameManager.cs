@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
 
     public int tileCount = 0;
 
+    public Text insufficientPopup;
+    public float timeDisplay = 1.5f;
+
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
@@ -163,6 +166,18 @@ public class GameManager : MonoBehaviour
             ScoreTracker.timeRemain = -1;
             playerMovement.stayStill = true;
             //Invoke("Restart", 1);
+        }
+        if (ScoreTracker.insufficientCoins && timeDisplay >= 0)
+        {
+          insufficientPopup.text = "You have insufficient coins!";
+          timeDisplay -= Time.deltaTime;
+        }
+
+        if (ScoreTracker.insufficientCoins && timeDisplay < 0)
+        {
+          insufficientPopup.text = "";
+          ScoreTracker.insufficientCoins = false;
+          timeDisplay = 1.5f;
         }
     }
 
