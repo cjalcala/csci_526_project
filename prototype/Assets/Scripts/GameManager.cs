@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public DateTime timestamp;
     public int flag = 0;
 
+    public int tileCount = 0;
+
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 

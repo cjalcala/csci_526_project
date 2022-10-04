@@ -47,11 +47,11 @@ public class GroundSpawner : MonoBehaviour
     {
         for (int i = 0; i < 15; i++)
         {
-            if (i < 2 && ScoreTracker.timeRemain > 118)
+            //if (gameManager.tileCount < 2 && ScoreTracker.timeRemain > 118)
+            if (gameManager.tileCount < 1)
             {
                 SpawnTile(false, false);
             }
-
             else if (cnt < 2 && i % 8 == 0)
             {
                 SpawnTile(true, true);
@@ -60,6 +60,7 @@ public class GroundSpawner : MonoBehaviour
             {
                 SpawnTile(true, false);
             }
+            gameManager.tileCount += 1;
 
         }
     }
