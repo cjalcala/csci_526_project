@@ -1,0 +1,358 @@
+{
+  "easy": [
+    {
+      "Question text": "What are dried grapes called?",
+      "Option1": "raisins",
+      "Option2": "dates",
+      "Option3": "drapes",
+      "Option4": "prunes"
+    },
+    {
+      "Question text": "Which is the only fruit with seeds on the outer skin?",
+      "Option1": "strawberries",
+      "Option2": "black berry",
+      "Option3": "watermelon",
+      "Option4": "Dragonfruit"
+    },
+    {
+      "Question text": "Orange is a rich source of which vitamin?",
+      "Option1": "Vitamin C",
+      "Option2": "Vitamin D",
+      "Option3": "Vitamin B",
+      "Option4": "Vitamin E"
+    },
+    {
+      "Question text": "Pizza Pasta originated from which country?",
+      "Option1": "Italy",
+      "Option2": "USA",
+      "Option3": "Canada",
+      "Option4": "German"
+    },
+    {
+      "Question text": "What is the sticky substance that bees make? It is sweet.",
+      "Option1": "Honey",
+      "Option2": "Peanut butter",
+      "Option3": "Natto",
+      "Option4": "Brie"
+    },
+    {
+      "Question text": "Which fruit inspired Sir Isaac Newton to discover the law of gravity?",
+      "Option1": "Apple",
+      "Option2": "Banana",
+      "Option3": "Watermelon",
+      "Option4": "Orange"
+    },
+    {
+      "Question text": "What nationality was the person who invented the hot dog?",
+      "Option1": "German",
+      "Option2": "China",
+      "Option3": "India",
+      "Option4": "USA"
+    },
+    {
+      "Question text": "What is the iconic meal often found in Chicago?",
+      "Option1": "deep-dish pizza",
+      "Option2": "Doughnut",
+      "Option3": "Hot dog",
+      "Option4": "Kuma burger"
+    },
+    {
+      "Question text": "What is another name for garbanzo beans?",
+      "Option1": "Chickpeas",
+      "Option2": "Cannellini beans",
+      "Option3": "Kidney beans",
+      "Option4": "Pinto beans"
+    },
+    {
+      "Question text": "Where was pizza invented?",
+      "Option1": "Naples, Italy",
+      "Option2": "NYC, USA",
+      "Option3": "Berlin, Germany",
+      "Option4": "Vancouver, Canada"
+    },
+    {
+      "Question text": "What is the name of the signature burger of Carl’s Jr.?",
+      "Option1": "the famous star",
+      "Option2": "the famous singer",
+      "Option3": "the best star",
+      "Option4": "the best singer"
+    },
+    {
+      "Question text": "If you asked for ‘unagi’ in a Japanese restaurant, what would you get?",
+      "Option1": "Eel",
+      "Option2": "Salmon",
+      "Option3": "Tuna",
+      "Option4": "Scallop"
+    },
+    {
+      "Question text": "What is Japanese Sake made from?",
+      "Option1": "Rice",
+      "Option2": "grapes",
+      "Option3": "wheat",
+      "Option4": "noodles"
+    }
+  ],
+  "medium": [
+    {
+      "Question text": "What do you call a person who does not eat meat but eats fish?",
+      "Option1": "Pescatarian",
+      "Option2": "carnitarian",
+      "Option3": "vegan",
+      "Option4": "vegetarian"
+    },
+    {
+      "Question text": "What is the most frequently ordered item of food in the USA?",
+      "Option1": "fried chicken",
+      "Option2": "pizza",
+      "Option3": "steak",
+      "Option4": "salad"
+    },
+    {
+      "Question text": "What is the most popular pizza topping in the USA?",
+      "Option1": "Pepperoni",
+      "Option2": "Cheese",
+      "Option3": "Salami",
+      "Option4": "Bacon"
+    },
+    {
+      "Question text": "Which popular fast food beverage used to contain whiskey and egg whites?",
+      "Option1": "milkshake",
+      "Option2": "latte",
+      "Option3": "Eggnog",
+      "Option4": "Coffee"
+    },
+    {
+      "Question text": "Which is the oldest fast food restaurant?",
+      "Option1": "White Castle",
+      "Option2": "KFC",
+      "Option3": "Pizza Hut",
+      "Option4": "McDonald's"
+    },
+    {
+      "Question text": "What year did the first Taco Bell open?",
+      "Option1": 1962,
+      "Option2": 1950,
+      "Option3": 1972,
+      "Option4": 1968
+    },
+    {
+      "Question text": "Where would you be able to get a ‘Grand Slam’ meal?",
+      "Option1": "Denny’s",
+      "Option2": "Five Guys",
+      "Option3": "KFC",
+      "Option4": "Wendy's"
+    },
+    {
+      "Question text": "Which fast food restaurant had the slogan ‘where’s the beef?’?",
+      "Option1": "Wendy’s",
+      "Option2": "Five Guys",
+      "Option3": "KFC",
+      "Option4": "Denny's"
+    },
+    {
+      "Question text": "Where was the first Pizza Hut?",
+      "Option1": "Wichita, Kansas",
+      "Option2": "Austin, Texas",
+      "Option3": "Columbus, Ohio",
+      "Option4": "Los Angeles, CA"
+    },
+    {
+      "Question text": "If you ordered a ‘bouillabaisse’, what would you expect to eat?",
+      "Option1": "seafood",
+      "Option2": "steak",
+      "Option3": "pasta",
+      "Option4": "tofu"
+    },
+    {
+      "Question text": "Which country consumes the most coffee?",
+      "Option1": "The Netherlands",
+      "Option2": "USA",
+      "Option3": "China",
+      "Option4": "India"
+    },
+    {
+      "Question text": "Where were French fries invented?",
+      "Option1": "Belgium",
+      "Option2": "USA",
+      "Option3": "France",
+      "Option4": "Australia"
+    }
+  ],
+  "hard": [
+    {
+      "Question text": "What percent of cucumber is water?",
+      "Option1": 0.96,
+      "Option2": 0.86,
+      "Option3": 0.76,
+      "Option4": 0.66
+    },
+    {
+      "Question text": "Which state would you eat laulau in?",
+      "Option1": "Hawaii",
+      "Option2": "California",
+      "Option3": "Georgia",
+      "Option4": "Florida"
+    },
+    {
+      "Question text": "Peach pie is the national dessert of which state?",
+      "Option1": "Delaware",
+      "Option2": "California",
+      "Option3": "Georgia",
+      "Option4": "Florida"
+    },
+    {
+      "Question text": "How much does the average Thanksgiving turkey weigh?",
+      "Option1": "15lb",
+      "Option2": "20lb",
+      "Option3": "10lb",
+      "Option4": "25lb"
+    },
+    {
+      "Question text": "How many calories does the average Thanksgiving meal include?",
+      "Option1": 4500,
+      "Option2": 3500,
+      "Option3": 2500,
+      "Option4": 1500
+    },
+    {
+      "Question text": "Iowa is the what capital of the world?",
+      "Option1": "ice cream capital of the world",
+      "Option2": "pizza capital of the world",
+      "Option3": "donuts capital of the world",
+      "Option4": "cupcake capital of the world"
+    },
+    {
+      "Question text": "Which is the only food that can never go off or go bad?",
+      "Option1": "Honey",
+      "Option2": "Nuts",
+      "Option3": "Rice",
+      "Option4": "Wheat"
+    },
+    {
+      "Question text": "What is canola an abbreviation for?",
+      "Option1": "Canadian Oil",
+      "Option2": "Coconut Oil",
+      "Option3": "Walnut Oil",
+      "Option4": "Avocado Oil"
+    },
+    {
+      "Question text": "Which is the only US state that grows coffee beans?",
+      "Option1": "Hawaii",
+      "Option2": "California",
+      "Option3": "Colorado",
+      "Option4": "Washington"
+    },
+    {
+      "Question text": "What is the national alcoholic drink of the USA?",
+      "Option1": "Bourbon",
+      "Option2": "Vodka",
+      "Option3": "Gin",
+      "Option4": "Whiskey"
+    },
+    {
+      "Question text": "Where was Coca-Cola first served?",
+      "Option1": "Georgia",
+      "Option2": "California",
+      "Option3": "Ohio",
+      "Option4": "Indiana"
+    },
+    {
+      "Question text": "What the official state pie of Florida?",
+      "Option1": "Key lime pie",
+      "Option2": "Peach pie",
+      "Option3": "Apple pie",
+      "Option4": "Red bean pie"
+    },
+    {
+      "Question text": "How many cans of soda does the average American drink every year?",
+      "Option1": 600,
+      "Option2": 800,
+      "Option3": 700,
+      "Option4": 500
+    },
+    {
+      "Question text": "Which McDonald’s is the busiest McDonald’s restaurant in the world?",
+      "Option1": "The McDonald’s in Munich, Germany",
+      "Option2": "The McDonald’s in Shanghai, China",
+      "Option3": "The McDonald’s in Los Angeles, USA",
+      "Option4": "The McDonald’s in NYC, USA"
+    },
+    {
+      "Question text": "How many fast-food restaurants are there in the USA?",
+      "Option1": "over 30,000",
+      "Option2": "over 40,000",
+      "Option3": "over 50,000",
+      "Option4": "over 60,000"
+    },
+    {
+      "Question text": "What percentage of all restaurants in the USA are pizzerias?",
+      "Option1": 0.17,
+      "Option2": 0.27,
+      "Option3": 0.22,
+      "Option4": 0.3
+    },
+    {
+      "Question text": "How many different shapes of pasta are there?",
+      "Option1": "over 600",
+      "Option2": "over 700",
+      "Option3": "over 800",
+      "Option4": "over 900"
+    },
+    {
+      "Question text": "What cheese is the Netherlands famous for making?",
+      "Option1": "Gouda",
+      "Option2": "Cheddar",
+      "Option3": "Mozzarella",
+      "Option4": "Gruyere"
+    },
+    {
+      "Question text": "If you order an ‘affogato’, what would you get?",
+      "Option1": "Vanilla ice cream with a shot of espresso",
+      "Option2": "latte with chocolate syrup",
+      "Option3": "chocolate flavor donut",
+      "Option4": "cofffee flavor cupcake"
+    },
+    {
+      "Question text": "What is a bratwurst?",
+      "Option1": "German sausage",
+      "Option2": "Belgium Waffle",
+      "Option3": "Stroopwafel",
+      "Option4": "Swiss Chocolate"
+    },
+    {
+      "Question text": "What is commonly known as the King of English Cheeses?",
+      "Option1": "Stilton",
+      "Option2": "Bowland",
+      "Option3": "Derby",
+      "Option4": "Shropshire Blue"
+    },
+    {
+      "Question text": "Tiramisu is one of the most popular Italian desserts. But what does it mean?",
+      "Option1": "Pick Me Up",
+      "Option2": "Sweet",
+      "Option3": "Romantic",
+      "Option4": "Hello"
+    },
+    {
+      "Question text": "Kopi Luwak is the most expensive coffee in the world - what is it also known as?",
+      "Option1": "Cat poo coffee",
+      "Option2": "dog poo coffee",
+      "Option3": "zebra poo coffee",
+      "Option4": "elephant poo coffee"
+    },
+    {
+      "Question text": "Where was the Hawaiian pizza invented?",
+      "Option1": "Canada",
+      "Option2": "USA",
+      "Option3": "Germany",
+      "Option4": "Italy"
+    },
+    {
+      "Question text": "Which US president invented egg nog?",
+      "Option1": "George Washington",
+      "Option2": "Andrew Jackson",
+      "Option3": "John Kennedy",
+      "Option4": "Gerald Ford"
+    }
+  ]
+}
