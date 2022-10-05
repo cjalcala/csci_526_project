@@ -90,6 +90,11 @@ public class SanctumEntrance : MonoBehaviour
 
 
         }
+        if (ScoreTracker.coins == 0 || ScoreTracker.coins == 1)
+        {
+            ScoreTracker.insufficientCoins = true;
+        }
+
         else
         {
             return;
