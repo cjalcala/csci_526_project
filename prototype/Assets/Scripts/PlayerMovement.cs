@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    [SerializeField] private AudioSource jump_sound;
+    [SerializeField] private AudioSource obstacle_hit_sound;
     bool alive = true;
     public float speed = 10;
     public Rigidbody rb;
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.NewSend("false");
             //GameManager.inst.Send(tp);
             GameManager.inst.hasHitObstacle = true;
+            obstacle_hit_sound.Play();
             GameManager.inst.deathValues[0] = GameManager.inst.timestamp.ToString();
             GameManager.inst.deathValues[1] = GameManager.inst.sessionNum.ToString();
             GameManager.inst.deathValues[2] = "lost";
@@ -105,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
         // If we are, jump
         if (isGrounded)
         {
+            jump_sound.Play();
             rb.AddForce(Vector3.up * jumpForce);
         }
 

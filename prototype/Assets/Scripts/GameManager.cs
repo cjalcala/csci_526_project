@@ -9,6 +9,8 @@ using System;
 public class GameManager : MonoBehaviour
 {
 
+
+    [SerializeField] private AudioSource coin_collected_sound;
     [SerializeField] private string URL;
     [SerializeField] private string URLforLevel;
     public string deathUrl = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfuhQ1nIxbyLGl3O0aXOQ1RGkX3M_9UU1UV1WJy6daNP6AEpw/formResponse";
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void IncrementCoinCount()
     {
+        coin_collected_sound.Play();
         ScoreTracker.coins++;
         coins = ScoreTracker.coins;
         coinText.text = ": " + ScoreTracker.coins;

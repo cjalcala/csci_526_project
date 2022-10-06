@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
 {
 
     public float turnSpeed = 90f;
+    
 
     private void OnTriggerEnter (Collider other)
     {
@@ -25,6 +26,7 @@ public class Coin : MonoBehaviour
         //GameManager.inst.IncrementScore();
        
         if (gameObject.GetComponent<MeshRenderer>().material.color == new Color32(236, 195, 48, 255)) {
+            
             GameManager.inst.IncrementCoinCount();
         }
         //else if (gameObject.GetComponent<MeshRenderer>().material.color == Color.green) {
