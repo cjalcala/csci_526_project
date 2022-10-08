@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Welcome : MonoBehaviour
 {
+    public static bool immunity;
+
     public void Tutorial() {
         SceneManager.LoadScene("TutorialGame");
     }
@@ -19,5 +21,10 @@ public class Welcome : MonoBehaviour
 
     public void Executive() {
         SceneManager.LoadScene("Goals");
+    }
+
+    void Start()
+    { 
+        immunity=false;
     }
 }
