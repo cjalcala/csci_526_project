@@ -35,7 +35,7 @@ public class TutorialGroundTile : MonoBehaviour
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
 
         // Spawn the obstacle at the position
-        Instantiate(tutorialobstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
+        Instantiate(tutorialobstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
     }
 
     public void TutorialSpawnCoins()
