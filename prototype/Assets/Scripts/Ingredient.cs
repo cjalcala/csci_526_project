@@ -5,7 +5,7 @@ using static UnityEngine.ParticleSystem;
 
 public class Ingredient : MonoBehaviour
 {
-    //public string name { get; set; }
+    public string name { get; set; }
     public int requiredCount { get; set; }
     public int currentCount { get; set; }
 
