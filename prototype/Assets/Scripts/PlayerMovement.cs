@@ -19,15 +19,15 @@ public class PlayerMovement : MonoBehaviour
     // find the pause button
     public GameObject button;
 
+    public GameObject ObjectMusic;
+
+    
+
     public void Start() {
         button = GameObject.Find("Pause");
     }
 
 
-    
-
-    
-    
 
     public int flag = 0;
 
@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         if (!alive) return;
         if (!stayStill)
         {
+            
             Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
             Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
             rb.MovePosition(rb.position + forwardMove + horizontalMove);
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         horizontalInput = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -95,7 +97,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Restart()
     {
+        
         gameOverScreen.Setup();
+        ObjectMusic = GameObject.FindWithTag("GameMusic");
+        Destroy(ObjectMusic);
+        
     }
 
     void Jump()

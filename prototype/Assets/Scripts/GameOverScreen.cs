@@ -8,9 +8,6 @@ public class GameOverScreen : MonoBehaviour
     
     // Start is called before the first frame update
     
-   
-   
-    
 
     public void Setup ()
     {
@@ -32,7 +29,15 @@ public class GameOverScreen : MonoBehaviour
         ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1));
         ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1));
         ScoreTracker.ingredientsList.Add("Steak", new Ingredient("Steak", 1));
+        
         SceneManager.LoadScene("Game");
+        
+        
+        
+        
+        
+    
+        
     }
 
     public void ExitButton()

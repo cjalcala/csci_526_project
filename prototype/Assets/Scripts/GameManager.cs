@@ -9,7 +9,6 @@ using System;
 public class GameManager : MonoBehaviour
 {
 
-
     [SerializeField] private AudioSource coin_collected_sound;
     [SerializeField] private string URL;
     [SerializeField] private string URLforLevel;
@@ -40,7 +39,11 @@ public class GameManager : MonoBehaviour
     public Text insufficientPopup;
     public float timeDisplay = 1.5f;
 
+    
+
     PlayerMovement playerMovement;
+
+
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
     public void IncrementCoinCount()
@@ -88,6 +91,8 @@ public class GameManager : MonoBehaviour
         sessionid = System.DateTime.Now;
         sessionNum = DateTime.Now.Ticks;
         timestamp = System.DateTime.Now;
+        
+        
 
     }
 
@@ -99,6 +104,7 @@ public class GameManager : MonoBehaviour
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
+        
 
     }
 
@@ -183,7 +189,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Restart()
-    {
+    {   
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

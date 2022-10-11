@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Welcome : MonoBehaviour
 {
+    
     public void Tutorial() {
         SceneManager.LoadScene("TutorialGame");
     }
 
     public void Beginner() {
         SceneManager.LoadScene("Goals");
+        
     }
 
     public void Junior() {
