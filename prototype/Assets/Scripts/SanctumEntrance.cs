@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SanctumEntrance : MonoBehaviour
 {
+    
     PlayerMovement playerMovement;
     public Mesh[] mesh;
     public Material[] mat;
@@ -77,7 +78,7 @@ public class SanctumEntrance : MonoBehaviour
 
             ScoreTracker.coins -= 2;
             SceneManager.LoadScene("Sanctum");
-
+            
 
         }
         if (ScoreTracker.coins == 0 || ScoreTracker.coins == 1)

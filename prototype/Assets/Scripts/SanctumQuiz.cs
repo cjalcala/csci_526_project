@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 public class SanctumQuiz : MonoBehaviour
 {
     [SerializeField] private string URL;
+    [SerializeField] private AudioSource sanctum_entry_sound;
     public List<QuizQA> questionAnswers;
     public GameObject[] options;
     public int currQuestion;
@@ -30,6 +31,8 @@ public class SanctumQuiz : MonoBehaviour
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
         //coin.text = "Coins : " + numCoins.ToString();
+        sanctum_entry_sound.Play();
+
         if(TutorialManager.tutorialActive)
         {
             TutorialGameManager.tutCoinCnt-=2;
