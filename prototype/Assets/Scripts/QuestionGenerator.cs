@@ -116,7 +116,7 @@ public class QuestionGenerator : MonoBehaviour
     public QuestionGenerator()
     {
         var jsonTextFile = Resources.Load<TextAsset>("Questions");//Questions.json in Resources
-        questionObject = JsonConvert.DeserializeObject<Root>(jsonTextFile.text);
+        questionObject = JsonUtility.FromJson<Root>(jsonTextFile.text);
     }
 }
 
@@ -124,19 +124,18 @@ public class QuestionGenerator : MonoBehaviour
 [System.Serializable]
 public class Root
 {
-    public List<Easy> easy { get; set; }
-    public List<Medium> medium { get; set; }
-    public List<Hard> hard { get; set; }
+    public List<Easy> easy;
+    public List<Medium> medium;
+    public List<Hard> hard;
 }
 [System.Serializable]
 public class Question
 {
-    [JsonProperty("Question text")]
-    public string QuestionText { get; set; }
-    public string Option1 { get; set; }
-    public string Option2 { get; set; }
-    public string Option3 { get; set; }
-    public string Option4 { get; set; }
+    public string QuestionText;
+    public string Option1;
+    public string Option2;
+    public string Option3;
+    public string Option4;
 }
 
 [System.Serializable]
