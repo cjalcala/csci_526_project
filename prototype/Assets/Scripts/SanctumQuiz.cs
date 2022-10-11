@@ -62,7 +62,7 @@ public class SanctumQuiz : MonoBehaviour {
     }
 
     public void correct() {
-        //Send(currQuestion, 1, 0);
+       Send(quizQuestion.question, 1, 0);
         if (TutorialManager.tutorialActive) {
             Invoke("LoadTutorialComplete", 1.5f);
         }
@@ -90,7 +90,7 @@ public class SanctumQuiz : MonoBehaviour {
         }
         else {
 
-            //Send(currQuestion, 0, 1);
+            Send(quizQuestion.question, 0, 1);
 
             if (ScoreTracker.coins < 10) {
                 continueGame();
@@ -149,8 +149,8 @@ public class SanctumQuiz : MonoBehaviour {
     }
 
 
-    public void Send(int question_id, int c, int w) {
-        StartCoroutine(Post(question_id.ToString(), c.ToString(), w.ToString()));
+    public void Send(string question_id, int c, int w) {
+        StartCoroutine(Post(question_id, c.ToString(), w.ToString()));
 
     }
 

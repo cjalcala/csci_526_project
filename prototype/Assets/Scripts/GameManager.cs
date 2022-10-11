@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public string[] deathValues = new string[deathFieldsCount];
     public bool hasHitObstacle = false;
 
+    public string coinUrl = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfNOKGPFcJHBhW3aqq3rpqn-OloFrCRbjF6k28ogArTugkc1g/formResponse";
+    public string[] coinFields = { "entry.1262230275", "entry.1098493085" };
+    public static int coinFieldsCount = 2;
+
     public static GameManager inst;
     public int coins;
     public Text coinText;
@@ -166,6 +170,7 @@ public class GameManager : MonoBehaviour
                     deathValues[4] = (120 - ScoreTracker.timeRemain).ToString("0");
                     //TODO: Get the value of 120 above dynamically
                     Send("deathTracker");
+                    Send("coinTracker");
                 }
             }
         }
@@ -183,12 +188,16 @@ public class GameManager : MonoBehaviour
             {
                 ScoreTracker.timeRemain -= Time.deltaTime;
                 timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
-
             }
 
+            int forwardSeconds = 120 - Convert.ToInt32(Math.Truncate(ScoreTracker.timeRemain)); //TODO: Get 120 dynamically
 
-
-
+            if ((forwardSeconds == ScoreTracker.timeFlag) && (hasHitObstacle == false))
+            {
+                ScoreTracker.coinString = ScoreTracker.coinString + ScoreTracker.coins.ToString() + ",";
+                ScoreTracker.timeFlag++;
+                Debug.Log(ScoreTracker.coinString);
+            }
         }
         else
         {
@@ -208,6 +217,7 @@ public class GameManager : MonoBehaviour
                 deathValues[4] = 120.ToString();
                 //TODO: Get the value of 120 above dynamically
                 Send("deathTracker");
+                Send("coinTracker");
             }
 
             gameOverScreen.Setup();
@@ -363,6 +373,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (analyticsName == "coinTracker")
+        {
+            URL = coinUrl;
+            form.AddField(coinFields[0], sessionNum.ToString());
+            form.AddField(coinFields[1], ScoreTracker.coinString);
+        }
+        
         //form.AddField("entry.2014458776", sessionid);    
         //form.AddField("entry.1123890612", deathtype); 
         //form.AddField("entry.462759076", numcoins);

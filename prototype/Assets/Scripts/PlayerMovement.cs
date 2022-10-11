@@ -86,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.deathValues[4] = (120 - ScoreTracker.timeRemain).ToString("0");
             //TODO: Get the value of 120 above dynamically
             GameManager.inst.Send("deathTracker");
+            GameManager.inst.Send("coinTracker");
         }
         // else{
         //     if (flag == 1){
