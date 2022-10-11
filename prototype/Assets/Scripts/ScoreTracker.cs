@@ -10,6 +10,8 @@ public class ScoreTracker : MonoBehaviour
     public static float timeRemain, originalTime;
     public static float hammerStartTime;
     public static int hammerFlag=0;
+    public static string coinString = "";
+    public static int timeFlag = 1;
     public static void increaseIngredient(string name)
     {
         ScoreTracker.ingredientsList[name].currentCount++;
