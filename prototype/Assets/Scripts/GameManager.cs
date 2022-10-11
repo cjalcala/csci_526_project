@@ -44,6 +44,13 @@ public class GameManager : MonoBehaviour
     public float hammerOffTexttimeDisplay = 1.5f;
     public int hflag = 0;
 
+    public Boolean TimePowerUp = false;
+
+    public float TimePowerUpStart = 0;
+
+    // public Text timeOnText;
+    // public Text timeOffText;
+
     public static QuestionGenerator questionGenerator;
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
@@ -110,6 +117,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+        if (TimePowerUp && Math.Abs(ScoreTracker.timeRemain - TimePowerUpStart) >= 2.5)
+        {
+            TimePowerUp = false;
+            // timeOffText.text = "Timer Counter Slow Down FINISH";
+            timeText.color = Color.black;
+        }
+
         if (won)
         {
             ScoreTracker.timeRemain = 0;
@@ -143,8 +157,22 @@ public class GameManager : MonoBehaviour
 
         if (ScoreTracker.timeRemain > 0)
         {
-            ScoreTracker.timeRemain -= Time.deltaTime;
-            timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+            if (TimePowerUp)
+            {
+                ScoreTracker.timeRemain -= Time.deltaTime / 2;
+                timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec SLOW";
+                // timeText.color = Color.red;
+
+            }
+            else
+            {
+                ScoreTracker.timeRemain -= Time.deltaTime;
+                timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+
+            }
+
+
+
 
         }
         else
@@ -174,28 +202,29 @@ public class GameManager : MonoBehaviour
         }
         if (ScoreTracker.insufficientCoins && timeDisplay >= 0)
         {
-          insufficientPopup.text = "You have insufficient coins!";
-          timeDisplay -= Time.deltaTime;
+            insufficientPopup.text = "You have insufficient coins!";
+            timeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
+            // TimePowerUp ?  timeDisplay -= Time.deltaTime/2 : timeDisplay -= Time.deltaTime/2;
         }
 
         if (ScoreTracker.insufficientCoins && timeDisplay < 0)
         {
-          insufficientPopup.text = "";
-          ScoreTracker.insufficientCoins = false;
-          timeDisplay = 1.5f;
+            insufficientPopup.text = "";
+            ScoreTracker.insufficientCoins = false;
+            timeDisplay = 1.5f;
         }
 
-        if(Welcome.immunity)
+        if (Welcome.immunity)
         {
-            if(ScoreTracker.hammerFlag == 0)
+            if (ScoreTracker.hammerFlag == 0)
             {
                 ScoreTracker.hammerStartTime = ScoreTracker.timeRemain;
-                ScoreTracker.hammerFlag = 1; 
+                ScoreTracker.hammerFlag = 1;
                 hammerOnText.text = "Obstacle Immunity for 5 sec";
             }
             else
             {
-                if(ScoreTracker.timeRemain <= ScoreTracker.hammerStartTime-5)
+                if (ScoreTracker.timeRemain <= ScoreTracker.hammerStartTime - 5)
                 {
                     Welcome.immunity = false;
                     ScoreTracker.hammerFlag = 0;
@@ -205,29 +234,31 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(ScoreTracker.hammerFlag == 1)
+        if (ScoreTracker.hammerFlag == 1)
         {
-            if(hammerOnTexttimeDisplay<0)
+            if (hammerOnTexttimeDisplay < 0)
             {
                 hammerOnText.text = "";
                 hammerOnTexttimeDisplay = 1.5f;
             }
             else
             {
-                hammerOnTexttimeDisplay-=Time.deltaTime;
+                hammerOnTexttimeDisplay -= Time.deltaTime;
+                // hammerOnTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
             }
         }
 
-        if(hflag == 1)
+        if (hflag == 1)
         {
-            if(hammerOffTexttimeDisplay<0)
+            if (hammerOffTexttimeDisplay < 0)
             {
                 hammerOffText.text = "";
                 hammerOffTexttimeDisplay = 1f;
             }
             else
             {
-                hammerOffTexttimeDisplay-=Time.deltaTime;
+                hammerOffTexttimeDisplay -= Time.deltaTime;
+                // hammerOffTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
             }
         }
 

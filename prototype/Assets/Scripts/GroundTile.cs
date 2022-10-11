@@ -9,24 +9,25 @@ public class GroundTile : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject sanctumEntrancePrefab;
     public GameObject HammerPrefab;
+    public GameObject TimePowerUpPrefab;
 
     // Start is called before the first frame update
     private void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
-        //SpawnHammer();
+
     }
 
-     private void OnTriggerExit(Collider other) 
-     {
-         groundSpawner.SpawnTile(true, true, false);
-         Destroy(gameObject, 2);
-     }
+    private void OnTriggerExit(Collider other)
+    {
+        groundSpawner.SpawnTile(true, true, false);
+        Destroy(gameObject, 2);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SpawnObstacle()
@@ -42,7 +43,7 @@ public class GroundTile : MonoBehaviour
     public void SpawnCoins()
     {
         int coinsToSpawn = 2;
-        for(int i = 0; i < coinsToSpawn; i++)
+        for (int i = 0; i < coinsToSpawn; i++)
         {
             GameObject temp = Instantiate(coinPrefab, transform);
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
@@ -53,6 +54,15 @@ public class GroundTile : MonoBehaviour
     {
         GameObject temp = Instantiate(HammerPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnClock()
+    {
+        // for (int i = 0; i < 2; i++)
+        // {
+        GameObject temp = Instantiate(TimePowerUpPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        // }
     }
 
     public void SpawnEntrance()
@@ -74,7 +84,7 @@ public class GroundTile : MonoBehaviour
             Random.Range(collider.bounds.min.y, collider.bounds.max.y),
             Random.Range(collider.bounds.min.z, collider.bounds.max.z)
         );
-        if(point != collider.ClosestPoint(point))
+        if (point != collider.ClosestPoint(point))
         {
             point = GetRandomPointInCollider(collider);
         }
