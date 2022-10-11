@@ -15,7 +15,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public GameObject QuizPanel;
     public GameObject BPanel;
-    
+
     public Text questionText;
     public Text coin;
 
@@ -30,20 +30,20 @@ public class SanctumQuiz : MonoBehaviour
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
         //coin.text = "Coins : " + numCoins.ToString();
-        if(TutorialManager.tutorialActive)
+        if (TutorialManager.tutorialActive)
         {
-            TutorialGameManager.tutCoinCnt-=2;
+            TutorialGameManager.tutCoinCnt -= 2;
             sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
         }
         else
         {
             sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
         }
-        
+
 
         Debug.Log(TutorialManager.tutorialActive);
         BPanel.SetActive(false);
-        questionGenerator(0.7, 0.3, 0); 
+        questionGenerator(0.7, 0.3, 0);
     }
 
     public void retry()
@@ -63,16 +63,16 @@ public class SanctumQuiz : MonoBehaviour
 
     public void correct()
     {
-        Send(currQuestion, 1, 0);
+        //Send(currQuestion, 1, 0);
         //gameOver();
-        
+
         // if(ScoreTracker.uncompletedIngredients().Count > 0)
         // {
         //     List<string> keyList = ScoreTracker.uncompletedIngredients();
         //     int randValue = Random.Range(0, keyList.Count);
         //     ScoreTracker.increaseIngredient(keyList[randValue]);
         // }
-        if(TutorialManager.tutorialActive)
+        if (TutorialManager.tutorialActive)
         {
             Invoke("LoadTutorialComplete", 1.5f);
         }
@@ -92,25 +92,29 @@ public class SanctumQuiz : MonoBehaviour
     public void wrong()
     {
 
-        if(TutorialManager.tutorialActive)
+        if (TutorialManager.tutorialActive)
         {
-            if(TutorialGameManager.tutCoinCnt < 10)
+            if (TutorialGameManager.tutCoinCnt < 10)
             {
                 Invoke("restartTutorial", 2.0f);
             }
             else
             {
-                Invoke("reloadSanctum", 1.5f);
+                 Invoke("reloadSanctum", 1.5f);
+                
             }
-        }else {
+        }
+        else
+        {
 
-            Send(currQuestion, 0, 1);
+            //Send(currQuestion, 0, 1);
 
             if (ScoreTracker.coins < 10)
             {
                 continueGame();
             }
-            else {
+            else
+            {
                 Invoke("gameOver", 2.0f);
             }
 
@@ -124,34 +128,42 @@ public class SanctumQuiz : MonoBehaviour
 
     void reloadSanctum()
     {
-        TutorialGameManager.tutCoinCnt-=8;
+        TutorialGameManager.tutCoinCnt -= 8;
         SceneManager.LoadScene("Sanctum");
     }
-    
+
 
     public void continueGame()
     {
-        SceneManager.LoadScene("Game");   
+        SceneManager.LoadScene("Game");
     }
 
     void setQnA()
     {
         questionText.text = quizQuestion.question;
-        for (int i=0; i<options.Length; i++)
+        for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<Text>().text = quizQuestion.answers[i];
 
-            if(quizQuestion.correctAnswer == i)
+            if (quizQuestion.correctAnswer == i)
             {
-                 options[i].GetComponent<AnswerScript>().isCorrect = true;
+                options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
         }
     }
 
     void questionGenerator(double easyRate, double mediumRate, double hardRate)
     {
-        quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+        if (TutorialManager.tutorialActive)
+        {
+            quizQuestion = TutorialManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+        }
+        else
+        {
+            quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+        }
+
         if (quizQuestion != null)
         {
             setQnA();
@@ -164,31 +176,34 @@ public class SanctumQuiz : MonoBehaviour
     }
 
 
-    public void Send(int question_id, int c, int w){
+    public void Send(int question_id, int c, int w)
+    {
         StartCoroutine(Post(question_id.ToString(), c.ToString(), w.ToString()));
-        
+
     }
 
-    private IEnumerator Post(string question_id, string c, string w){ 
+    private IEnumerator Post(string question_id, string c, string w)
+    {
 
         WWWForm form = new WWWForm();
-        form.AddField("entry.1035881353", question_id);    
-        form.AddField("entry.1651523432", c); 
+        form.AddField("entry.1035881353", question_id);
+        form.AddField("entry.1651523432", c);
         form.AddField("entry.281241967", w);
-        
-        
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post(URL, form))    {
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
+        {
             yield return www.SendWebRequest();
-            if (www.result != UnityWebRequest.Result.Success) 
-                {            
-                    Debug.Log(www.error);        
-                }       
-            else       
-                {           
-                      Debug.Log("Form upload complete!");        
-                }    
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
 
             www.Dispose();
         }

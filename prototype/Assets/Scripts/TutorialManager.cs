@@ -14,12 +14,14 @@ public class TutorialManager : MonoBehaviour
     public float sanctumWaitTime = 2.5f;
     public float sanctumDelTime = 4.5f;
     TutorialPlayerMovement tutorialplayerMovement;
+    public static QuestionGenerator questionGenerator;
 
     // Start is called before the first frame update
     void Start()
     {
         tutorialActive = true;
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
+        questionGenerator = new QuestionGenerator();
     }
 
     // Update is called once per frame
