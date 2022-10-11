@@ -71,14 +71,14 @@
             "Option4": "Vancouver, Canada"
         },
         {
-            "QuestionText": "What is the name of the signature burger of Carl�s Jr.?",
+            "QuestionText": "What is the name of the signature burger of Carl’s Jr.?",
             "Option1": "the famous star",
             "Option2": "the famous singer",
             "Option3": "the best star",
             "Option4": "the best singer"
         },
         {
-            "QuestionText": "If you asked for �unagi� in a Japanese restaurant, what would you get?",
+            "QuestionText": "If you asked for ‘unagi’ in a Japanese restaurant, what would you get?",
             "Option1": "Eel",
             "Option2": "Salmon",
             "Option3": "Tuna",
@@ -136,15 +136,15 @@
             "Option4": 1968
         },
         {
-            "QuestionText": "Where would you be able to get a �Grand Slam� meal?",
-            "Option1": "Denny�s",
+            "QuestionText": "Where would you be able to get a ‘Grand Slam’ meal?",
+            "Option1": "Denny’s",
             "Option2": "Five Guys",
             "Option3": "KFC",
             "Option4": "Wendy's"
         },
         {
-            "QuestionText": "Which fast food restaurant had the slogan �where�s the beef?�?",
-            "Option1": "Wendy�s",
+            "QuestionText": "Which fast food restaurant had the slogan ‘where’s the beef?’?",
+            "Option1": "Wendy’s",
             "Option2": "Five Guys",
             "Option3": "KFC",
             "Option4": "Denny's"
@@ -157,7 +157,7 @@
             "Option4": "Los Angeles, CA"
         },
         {
-            "QuestionText": "If you ordered a �bouillabaisse�, what would you expect to eat?",
+            "QuestionText": "If you ordered a ‘bouillabaisse’, what would you expect to eat?",
             "Option1": "seafood",
             "Option2": "steak",
             "Option3": "pasta",
@@ -271,11 +271,11 @@
             "Option4": 500
         },
         {
-            "QuestionText": "Which McDonald�s is the busiest McDonald�s restaurant in the world?",
-            "Option1": "The McDonald�s in Munich, Germany",
-            "Option2": "The McDonald�s in Shanghai, China",
-            "Option3": "The McDonald�s in Los Angeles, USA",
-            "Option4": "The McDonald�s in NYC, USA"
+            "QuestionText": "Which McDonald’s is the busiest McDonald’s restaurant in the world?",
+            "Option1": "The McDonald’s in Munich, Germany",
+            "Option2": "The McDonald’s in Shanghai, China",
+            "Option3": "The McDonald’s in Los Angeles, USA",
+            "Option4": "The McDonald’s in NYC, USA"
         },
         {
             "QuestionText": "How many fast-food restaurants are there in the USA?",
@@ -306,7 +306,7 @@
             "Option4": "Gruyere"
         },
         {
-            "QuestionText": "If you order an �affogato�, what would you get?",
+            "QuestionText": "If you order an ‘affogato’, what would you get?",
             "Option1": "Vanilla ice cream with a shot of espresso",
             "Option2": "latte with chocolate syrup",
             "Option3": "chocolate flavor donut",
