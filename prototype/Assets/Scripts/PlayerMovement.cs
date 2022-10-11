@@ -18,15 +18,16 @@ public class PlayerMovement : MonoBehaviour
     // find the pause button
     public GameObject button;
 
-    public void Start() {
+    public void Start()
+    {
         button = GameObject.Find("Pause");
     }
 
 
-    
 
-    
-    
+
+
+
 
     public int flag = 0;
 
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         // disable pause button
         button.SetActive(false);
-        
+
 
 
         if (tp == "obstacle")
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.deathValues[4] = (120 - ScoreTracker.timeRemain).ToString("0");
             //TODO: Get the value of 120 above dynamically
             GameManager.inst.Send("deathTracker");
+            GameManager.inst.Send("coinTracker");
         }
         // else{
         //     if (flag == 1){
@@ -110,5 +112,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    
+
 }

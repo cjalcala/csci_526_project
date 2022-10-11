@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
     public string[] deathValues = new string[deathFieldsCount];
     public bool hasHitObstacle = false;
 
+    public string coinUrl = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfNOKGPFcJHBhW3aqq3rpqn-OloFrCRbjF6k28ogArTugkc1g/formResponse";
+    public string[] coinFields = { "entry.1262230275", "entry.1098493085" };
+    public static int coinFieldsCount = 2;
+    public string coinString = "";
+
     public static GameManager inst;
     public int coins;
     public Text coinText;
@@ -43,6 +48,8 @@ public class GameManager : MonoBehaviour
     public Text hammerOffText;
     public float hammerOffTexttimeDisplay = 1.5f;
     public int hflag = 0;
+
+    public int timeFlag = 1;
 
     public Boolean TimePowerUp = false;
 
@@ -167,6 +174,14 @@ public class GameManager : MonoBehaviour
             {
                 ScoreTracker.timeRemain -= Time.deltaTime;
                 timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+                int forwardSeconds = 120 - Convert.ToInt32(Math.Truncate(ScoreTracker.timeRemain));
+
+                if ((forwardSeconds == timeFlag) && (hasHitObstacle == false))
+                {
+                    coinString = coinString + ScoreTracker.coins.ToString() + ",";
+                    timeFlag++;
+                    Debug.Log(coinString);
+                }
 
             }
 
@@ -345,6 +360,13 @@ public class GameManager : MonoBehaviour
             {
                 form.AddField(deathFields[i], deathValues[i]);
             }
+        }
+
+        if (analyticsName == "coinTracker")
+        {
+            URL = coinUrl;
+            form.AddField(coinFields[0], sessionNum.ToString());
+            form.AddField(coinFields[1], coinString);
         }
 
         //form.AddField("entry.2014458776", sessionid);    
