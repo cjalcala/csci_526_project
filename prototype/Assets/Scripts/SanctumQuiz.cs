@@ -47,6 +47,7 @@ public class SanctumQuiz : MonoBehaviour {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         QuizPanel.SetActive(true);
         BPanel.SetActive(false);
+        sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
     }
 
     void gameOver() {
