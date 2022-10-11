@@ -19,12 +19,12 @@ public class SanctumQuiz : MonoBehaviour
     public Text questionText;
     public Text coin;
 
-    int totalQuestions = 0;
     public int numCoins;
     public static int tempCoinvalue = 100;
 
     public Text sanctumCoins;
 
+    public QuizQA quizQuestion;
     private void Start()
     {
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
@@ -41,19 +41,17 @@ public class SanctumQuiz : MonoBehaviour
         }
         
 
-
-
         Debug.Log(TutorialManager.tutorialActive);
-        totalQuestions = questionAnswers.Count;
         BPanel.SetActive(false);
-        questionGenerator(); 
+        questionGenerator(0.7, 0.3, 0); 
     }
 
     public void retry()
     {
         ScoreTracker.coins -= 10;
-        //coin.text = numCoins.ToString();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        QuizPanel.SetActive(true);
+        BPanel.SetActive(false);
     }
 
     void gameOver()
@@ -65,14 +63,6 @@ public class SanctumQuiz : MonoBehaviour
 
     public void correct()
     {
-
-        if (currQuestion != questionAnswers.Count-1) {
-           QuizQA last = questionAnswers[questionAnswers.Count-1];
-           questionAnswers[currQuestion] = last;
-        } 
-        questionAnswers.RemoveAt(questionAnswers.Count-1);
-        
-
         Send(currQuestion, 1, 0);
         //gameOver();
         
@@ -92,9 +82,6 @@ public class SanctumQuiz : MonoBehaviour
             ScoreTracker.increaseIngredient(Ingredient);//use map to find the ingredient string /change increaseIngredient param to index
             SceneManager.LoadScene("Game");
         }
-        //questionGenerator();
-
-
     }
 
     public void LoadTutorialComplete()
@@ -104,9 +91,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void wrong()
     {
-        //questionAnswers.RemoveAt(currQuestion);
-        
-        //questionAnswers.RemoveAt(currQuestion);
+
         if(TutorialManager.tutorialActive)
         {
             if(TutorialGameManager.tutCoinCnt < 10)
@@ -130,9 +115,6 @@ public class SanctumQuiz : MonoBehaviour
             }
 
         }
-        
-        
-        //questionGenerator();
     }
 
     void restartTutorial()
@@ -152,35 +134,32 @@ public class SanctumQuiz : MonoBehaviour
         SceneManager.LoadScene("Game");   
     }
 
-    void setAnswers()
+    void setQnA()
     {
-        for(int i=0; i<options.Length; i++)
+        questionText.text = quizQuestion.question;
+        for (int i=0; i<options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<Text>().text = questionAnswers[currQuestion].answers[i];
+            options[i].transform.GetChild(0).GetComponent<Text>().text = quizQuestion.answers[i];
 
-            if(questionAnswers[currQuestion].correctAnswer == i+1)
+            if(quizQuestion.correctAnswer == i)
             {
                  options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
         }
     }
 
-    void questionGenerator()
+    void questionGenerator(double easyRate, double mediumRate, double hardRate)
     {
-        if(questionAnswers.Count > 0)
+        quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+        if (quizQuestion != null)
         {
-            currQuestion = Random.Range(0, questionAnswers.Count);
-
-
-            questionText.text = questionAnswers[currQuestion].question;
-
-            setAnswers();
-        } 
+            setQnA();
+        }
         else
         {
-            //Debug.Log("Out of questions");
-            gameOver(); 
+            Debug.Log("Out of questions");
+            gameOver();
         }
     }
 
