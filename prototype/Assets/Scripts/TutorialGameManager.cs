@@ -11,9 +11,11 @@ public class TutorialGameManager : MonoBehaviour
     public Text tutorialCoinText;
     public static int tutCoinCnt;
     public Text timeText; 
-    public float time = 120;
+    public static float time = 120;
     TutorialPlayerMovement tutorialplayerMovement;
     public static bool isPaused = false;
+    public static bool horizontalArrows = false;
+    public static bool spaceBar = false;
     // Start is called before the first frame update
 
     private void Awake()
@@ -31,6 +33,8 @@ public class TutorialGameManager : MonoBehaviour
     {
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
         isPaused = false;
+        horizontalArrows = false;
+        spaceBar = false;
     }
 
     // Update is called once per frame
@@ -39,7 +43,7 @@ public class TutorialGameManager : MonoBehaviour
         tutCoinCnt=score;
         if (time > 0)
         {
-            if(!isPaused)
+            if((!isPaused ) && (!horizontalArrows) && (!spaceBar))
             {
                 time -= Time.deltaTime;
                 timeText.text = ": " + time.ToString("0") + " Sec";

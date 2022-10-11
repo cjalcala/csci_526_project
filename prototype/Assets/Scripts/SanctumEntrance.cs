@@ -17,11 +17,6 @@ public class SanctumEntrance : MonoBehaviour
     {
         List<int> indx= new List<int>();
         result=ScoreTracker.uncompletedIngredients();
-        foreach (var x in result)
-        {
-            Debug.Log(x );
-
-        }
         
         for(int i=0;i<result.Count;i++)
         {
@@ -44,11 +39,6 @@ public class SanctumEntrance : MonoBehaviour
 
         }
         
-         foreach (var x in indx)
-        {
-            Debug.Log(x.ToString());
-
-        }
 
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         //int idx = Random.Range(0, mesh.Length);
@@ -90,6 +80,11 @@ public class SanctumEntrance : MonoBehaviour
 
 
         }
+        if (ScoreTracker.coins == 0 || ScoreTracker.coins == 1)
+        {
+            ScoreTracker.insufficientCoins = true;
+        }
+
         else
         {
             return;

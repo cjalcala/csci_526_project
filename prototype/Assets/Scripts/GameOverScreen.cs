@@ -32,6 +32,7 @@ public class GameOverScreen : MonoBehaviour
         ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1));
         ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1));
         ScoreTracker.ingredientsList.Add("Steak", new Ingredient("Steak", 1));
+        Welcome.immunity = false;
         SceneManager.LoadScene("Game");
     }
 

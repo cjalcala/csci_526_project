@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ScoreTracker : MonoBehaviour
 {
+    public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
     public static int coins;
     public static float timeRemain, originalTime;
+    public static float hammerStartTime;
+    public static int hammerFlag=0;
     public static void increaseIngredient(string name)
     {
         ScoreTracker.ingredientsList[name].currentCount++;

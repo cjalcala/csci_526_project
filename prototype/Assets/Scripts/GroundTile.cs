@@ -8,16 +8,18 @@ public class GroundTile : MonoBehaviour
     public GameObject obstaclePrefab;
     public GameObject coinPrefab;
     public GameObject sanctumEntrancePrefab;
+    public GameObject HammerPrefab;
 
     // Start is called before the first frame update
     private void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
+        //SpawnHammer();
     }
 
      private void OnTriggerExit(Collider other) 
      {
-         groundSpawner.SpawnTile(true, true);
+         groundSpawner.SpawnTile(true, true, false);
          Destroy(gameObject, 2);
      }
 
@@ -34,7 +36,7 @@ public class GroundTile : MonoBehaviour
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
 
         // Spawn the obstacle at the position
-        Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
+        Instantiate(obstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
     }
 
     public void SpawnCoins()
@@ -45,6 +47,12 @@ public class GroundTile : MonoBehaviour
             GameObject temp = Instantiate(coinPrefab, transform);
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         }
+    }
+
+    public void SpawnHammer()
+    {
+        GameObject temp = Instantiate(HammerPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
     public void SpawnEntrance()

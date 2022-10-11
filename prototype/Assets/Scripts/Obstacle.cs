@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.name == "Player" && !Welcome.immunity)
         {
             flag++;
             if (flag == 1){
@@ -25,6 +25,10 @@ public class Obstacle : MonoBehaviour
             }
             // Kill the player
             
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

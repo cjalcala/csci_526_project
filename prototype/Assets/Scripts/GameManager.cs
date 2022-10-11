@@ -33,10 +33,20 @@ public class GameManager : MonoBehaviour
     public DateTime timestamp;
     public int flag = 0;
 
+    public int tileCount = 0;
+
+    public Text insufficientPopup;
+    public float timeDisplay = 1.5f;
+
+    public Text hammerOnText;
+    public float hammerOnTexttimeDisplay = 1.5f;
+    public Text hammerOffText;
+    public float hammerOffTexttimeDisplay = 1.5f;
+    public int hflag = 0;
+    
+
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
-
-    public static QuestionGenerator questionGenerator;
 
     public void IncrementCoinCount()
     {
@@ -93,7 +103,6 @@ public class GameManager : MonoBehaviour
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
-        questionGenerator = new QuestionGenerator();
     }
 
     // Update is called once per frame
@@ -162,6 +171,65 @@ public class GameManager : MonoBehaviour
             playerMovement.stayStill = true;
             //Invoke("Restart", 1);
         }
+        if (ScoreTracker.insufficientCoins && timeDisplay >= 0)
+        {
+          insufficientPopup.text = "You have insufficient coins!";
+          timeDisplay -= Time.deltaTime;
+        }
+
+        if (ScoreTracker.insufficientCoins && timeDisplay < 0)
+        {
+          insufficientPopup.text = "";
+          ScoreTracker.insufficientCoins = false;
+          timeDisplay = 1.5f;
+        }
+
+        if(Welcome.immunity)
+        {
+            if(ScoreTracker.hammerFlag == 0)
+            {
+                ScoreTracker.hammerStartTime = ScoreTracker.timeRemain;
+                ScoreTracker.hammerFlag = 1; 
+                hammerOnText.text = "Obstacle Immunity for 5 sec";
+            }
+            else
+            {
+                if(ScoreTracker.timeRemain <= ScoreTracker.hammerStartTime-5)
+                {
+                    Welcome.immunity = false;
+                    ScoreTracker.hammerFlag = 0;
+                    hammerOffText.text = "Obstacle Immunity Off";
+                    hflag = 1;
+                }
+            }
+        }
+
+        if(ScoreTracker.hammerFlag == 1)
+        {
+            if(hammerOnTexttimeDisplay<0)
+            {
+                hammerOnText.text = "";
+                hammerOnTexttimeDisplay = 1.5f;
+            }
+            else
+            {
+                hammerOnTexttimeDisplay-=Time.deltaTime;
+            }
+        }
+
+        if(hflag == 1)
+        {
+            if(hammerOffTexttimeDisplay<0)
+            {
+                hammerOffText.text = "";
+                hammerOffTexttimeDisplay = 1f;
+            }
+            else
+            {
+                hammerOffTexttimeDisplay-=Time.deltaTime;
+            }
+        }
+
     }
 
     void Restart()

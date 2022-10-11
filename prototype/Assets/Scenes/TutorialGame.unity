@@ -692,7 +692,6 @@ MonoBehaviour:
   score: 0
   tutorialCoinText: {fileID: 1268554495}
   timeText: {fileID: 322627306}
-  time: 120
 --- !u!4 &203360102
 Transform:
   m_ObjectHideFlags: 0
@@ -1912,7 +1911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &889325660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2120,7 +2119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1012477182
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2287,6 +2286,7 @@ MonoBehaviour:
   - {fileID: 1749163357}
   - {fileID: 1012477181}
   tutorialobstacleSpawner: {fileID: 2483905378157037388, guid: eb74e2bb46d364448822bf5842f33372, type: 3}
+  spaceWaitTime: 2.5
   coinWaitTime: 1.75
   coinDelTime: 3
   sanctumWaitTime: 1.75
@@ -3060,7 +3060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1749163358
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3294,7 +3294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1853456091
 RectTransform:
   m_ObjectHideFlags: 0
