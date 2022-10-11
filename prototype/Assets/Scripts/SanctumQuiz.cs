@@ -48,14 +48,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void retry()
     {
-        if (TutorialManager.tutorialActive)
-        {
-            TutorialGameManager.tutCoinCnt -= 0;
-        }
-        else {
-            ScoreTracker.coins -= 10;
-        }
-           
+        ScoreTracker.coins -= 10;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         QuizPanel.SetActive(true);
         BPanel.SetActive(false);
@@ -66,7 +59,7 @@ public class SanctumQuiz : MonoBehaviour
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
 
-            coin.text = "Coins : " + ScoreTracker.coins.ToString();
+        coin.text = "Coins : " + ScoreTracker.coins.ToString();
     }
 
     public void correct()
@@ -108,8 +101,8 @@ public class SanctumQuiz : MonoBehaviour
             }
             else
             {
-                 Invoke("reloadSanctum", 1.5f);
-                
+                Invoke("reloadSanctum", 1.5f);
+
             }
         }
         else
