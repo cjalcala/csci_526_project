@@ -17,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
 
     // find the pause button
     public GameObject button;
+    public GameObject ObjectMusic;
+
+    
+    [SerializeField] private AudioSource jump_sound;
+    [SerializeField] private AudioSource obstacle_hit_sound;
 
     public void Start() {
         button = GameObject.Find("Pause");
@@ -73,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.NewSend("false");
             //GameManager.inst.Send(tp);
             GameManager.inst.hasHitObstacle = true;
+            obstacle_hit_sound.Play();
             GameManager.inst.deathValues[0] = GameManager.inst.timestamp.ToString();
             GameManager.inst.deathValues[1] = GameManager.inst.sessionNum.ToString();
             GameManager.inst.deathValues[2] = "lost";
@@ -94,6 +100,8 @@ public class PlayerMovement : MonoBehaviour
     void Restart()
     {
         gameOverScreen.Setup();
+        ObjectMusic = GameObject.FindWithTag("GameMusic");
+        Destroy(ObjectMusic);
     }
 
     void Jump()
@@ -105,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         // If we are, jump
         if (isGrounded)
         {
+            jump_sound.Play();
             rb.AddForce(Vector3.up * jumpForce);
         }
 
