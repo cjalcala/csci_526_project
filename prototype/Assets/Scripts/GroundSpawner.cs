@@ -20,7 +20,7 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCoins();
-            temp.GetComponent<GroundTile>().SpawnClock();
+            // temp.GetComponent<GroundTile>().SpawnClock();
             if (SpawnEntrance() && spawnTile)
             {
                 temp.GetComponent<GroundTile>().SpawnEntrance();
