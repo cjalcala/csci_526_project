@@ -20,14 +20,16 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCoins();
+            temp.GetComponent<GroundTile>().SpawnClock();
             if (SpawnEntrance() && spawnTile)
             {
                 temp.GetComponent<GroundTile>().SpawnEntrance();
             }
         }
-        if(spawnHammer)
+        if (spawnHammer)
         {
             temp.GetComponent<GroundTile>().SpawnHammer();
+            temp.GetComponent<GroundTile>().SpawnClock();
         }
     }
 
@@ -50,7 +52,7 @@ public class GroundSpawner : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        hammerSpawnTime = Random.Range((int)ScoreTracker.timeRemain-5, (int)ScoreTracker.timeRemain);
+        hammerSpawnTime = Random.Range((int)ScoreTracker.timeRemain - 5, (int)ScoreTracker.timeRemain);
         Debug.Log(hammerSpawnTime);
         for (int i = 0; i < 15; i++)
         {
@@ -75,11 +77,11 @@ public class GroundSpawner : MonoBehaviour
     void Update()
     {
         //Debug.Log(ScoreTracker.timeRemain);
-        if(ScoreTracker.timeRemain<=hammerSpawnTime)
+        if (ScoreTracker.timeRemain <= hammerSpawnTime)
         {
             //Debug.Log("True");
             SpawnTile(true, true, true);
-            hammerSpawnTime = -1; 
+            hammerSpawnTime = -1;
         }
     }
 }
