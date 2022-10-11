@@ -17,6 +17,18 @@ public class GameManager : MonoBehaviour
     public string[] deathValues = new string[deathFieldsCount];
     public bool hasHitObstacle = false;
 
+    public string boostUrl = "https://docs.google.com/forms/u/2/d/e/1FAIpQLSetBeyHiPRKxK16NwZ-K_CnSO82ey5gwFSy7aB8ZVSsNts4ng/formResponse";
+    public string[] boostFields = {"entry.308483421", "entry.53979648", "entry.603658436" };
+    public static int boostFieldsCount = 3;
+    public string[] boostValues = new string[boostFieldsCount];
+    public bool hasHitBoost = false;
+
+    public int hammerboost = 0;
+
+
+
+    public int timeboost = 0;
+    public int hammerboost = 0;
     public static GameManager inst;
     public int coins;
     public Text coinText;
@@ -121,7 +133,7 @@ public class GameManager : MonoBehaviour
         {
             TimePowerUp = false;
             // timeOffText.text = "Timer Counter Slow Down FINISH";
-            timeText.color = Color.black;
+            timeText.color = Color.black; 
         }
 
         if (won)
@@ -347,6 +359,16 @@ public class GameManager : MonoBehaviour
                 form.AddField(deathFields[i], deathValues[i]);
             }
         }
+
+
+        if (analyticsName == "boostTracker")
+        {
+            URL = boostUrl;
+                for (int i = 0; i < boostFieldsCount; i++)
+                {
+                    form.AddField(boostFields[i], boostValues[i]);
+                }
+        }   
 
         //form.AddField("entry.2014458776", sessionid);    
         //form.AddField("entry.1123890612", deathtype); 
