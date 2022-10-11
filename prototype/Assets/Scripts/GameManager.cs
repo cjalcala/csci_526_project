@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using System;
+using System.Reflection;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Text coinText;
     public Text timeText;
     public Text goalText;
+    public Text costText;
     public GameOverScreen gameOverScreen;
     public WinningScreen winningScreen;
     public bool won;
@@ -94,6 +96,17 @@ public class GameManager : MonoBehaviour
         return goal;
     }
 
+    public string Cost()
+    {
+        string costStr = "            ";
+        foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
+        {
+            costStr += pair.Value.cost + "                ";
+        }
+
+        return costStr;
+    }
+
     private void Awake()
     {
         inst = this;
@@ -108,6 +121,7 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = ": " + ScoreTracker.coins;
         goalText.text = "Goal :" + goalProgress();
+        costText.text = Cost();
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;

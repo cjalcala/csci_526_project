@@ -4,6 +4,7 @@ public class TutorialGroundSpawner : MonoBehaviour
 {
 
     public GameObject groundTile;
+    public GameObject terrainPrefab;
     Vector3 nextSpawnPoint;
 
 
@@ -11,8 +12,10 @@ public class TutorialGroundSpawner : MonoBehaviour
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
+        GameObject leftTerrain = Instantiate(terrainPrefab, new Vector3(nextSpawnPoint.x - 15, nextSpawnPoint.y, nextSpawnPoint.z), Quaternion.identity);
+        GameObject rightTerrain = Instantiate(terrainPrefab, new Vector3(nextSpawnPoint.x + 15, nextSpawnPoint.y, nextSpawnPoint.z), Quaternion.identity);
 
-        if(SpawnObstacle)
+        if (SpawnObstacle)
         {
             temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
         }

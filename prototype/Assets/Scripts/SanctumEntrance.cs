@@ -73,15 +73,14 @@ public class SanctumEntrance : MonoBehaviour
 
         Destroy(gameObject);
 
-        if (ScoreTracker.coins >= 2)
+        if (ScoreTracker.coins >= ScoreTracker.ingredientsList[ingredientList[ingredientID]].cost)
         {
 
-            ScoreTracker.coins -= 2;
+            ScoreTracker.coins -= ScoreTracker.ingredientsList[ingredientList[ingredientID]].cost;
             SceneManager.LoadScene("Sanctum");
-            
 
         }
-        if (ScoreTracker.coins == 0 || ScoreTracker.coins == 1)
+        if (ScoreTracker.coins == 0 || ScoreTracker.coins < ScoreTracker.ingredientsList[ingredientList[ingredientID]].cost)
         {
             ScoreTracker.insufficientCoins = true;
         }
