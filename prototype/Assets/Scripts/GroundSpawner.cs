@@ -20,7 +20,7 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCoins();
-            // temp.GetComponent<GroundTile>().SpawnClock();
+
             if (SpawnEntrance() && spawnTile)
             {
                 temp.GetComponent<GroundTile>().SpawnEntrance();
@@ -29,6 +29,10 @@ public class GroundSpawner : MonoBehaviour
         if (spawnHammer)
         {
             temp.GetComponent<GroundTile>().SpawnHammer();
+            // temp.GetComponent<GroundTile>().SpawnClock();
+        }
+        if (ScoreTracker.timeRemain < 100 && Mathf.Abs(ScoreTracker.timeRemain % 30) <= 1)
+        {
             temp.GetComponent<GroundTile>().SpawnClock();
         }
     }
