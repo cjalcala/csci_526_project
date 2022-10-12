@@ -48,6 +48,7 @@ public class TutorialManager : MonoBehaviour
                     if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
                     {
                         TutorialGameManager.horizontalArrows = false;
+                        Time.timeScale = 1f;
                         tutorialplayerMovement.speed = 10;
                         tutorialplayerMovement.horizontalMultiplier = 1.25f;
                         tutorialplayerMovement.jumpForce = 600f;
@@ -56,6 +57,7 @@ public class TutorialManager : MonoBehaviour
                     else
                     {
                         TutorialGameManager.horizontalArrows = true;
+                        Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
                         tutorialplayerMovement.jumpForce = 0;
@@ -77,6 +79,7 @@ public class TutorialManager : MonoBehaviour
                     if(Input.GetKeyDown(KeyCode.Space))
                     {
                         TutorialGameManager.spaceBar = false;
+                        Time.timeScale = 1f;
                         tutorialplayerMovement.speed = 10;
                         tutorialplayerMovement.horizontalMultiplier = 1.25f;
                         tutorialplayerMovement.jumpForce = 600f;
@@ -85,6 +88,7 @@ public class TutorialManager : MonoBehaviour
                     else
                     {
                         TutorialGameManager.spaceBar = true;
+                        Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
                         tutorialplayerMovement.jumpForce = 0;   
