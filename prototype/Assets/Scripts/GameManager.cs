@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
                     deathValues[1] = GameManager.inst.sessionNum.ToString();
                     deathValues[2] = "won";
                     deathValues[3] = "";
-                    deathValues[4] = (120 - ScoreTracker.timeRemain).ToString("0");
+                    deathValues[4] = (90 - ScoreTracker.timeRemain).ToString("0");
                     //TODO: Get the value of 120 above dynamically
                     Send("deathTracker");
                     Send("coinTracker");
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
                 timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
             }
 
-            int forwardSeconds = 120 - Convert.ToInt32(Math.Truncate(ScoreTracker.timeRemain)); //TODO: Get 120 dynamically
+            int forwardSeconds = 90 - Convert.ToInt32(Math.Truncate(ScoreTracker.timeRemain)); //TODO: Get 120 dynamically
 
             if ((forwardSeconds == ScoreTracker.timeFlag) && (hasHitObstacle == false))
             {
@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
                 deathValues[1] = GameManager.inst.sessionNum.ToString();
                 deathValues[2] = "lost";
                 deathValues[3] = "time";
-                deathValues[4] = 120.ToString();
+                deathValues[4] = 90.ToString();
                 //TODO: Get the value of 120 above dynamically
                 Send("deathTracker");
                 Send("coinTracker");

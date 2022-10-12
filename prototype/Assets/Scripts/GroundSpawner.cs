@@ -34,7 +34,7 @@ public class GroundSpawner : MonoBehaviour
             temp.GetComponent<GroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
-        if (ScoreTracker.timeRemain < 100 && Mathf.Abs(ScoreTracker.timeRemain % 30) <= 1)
+        if (ScoreTracker.timeRemain < 75 && Mathf.Abs(ScoreTracker.timeRemain % 30) <= 1)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }

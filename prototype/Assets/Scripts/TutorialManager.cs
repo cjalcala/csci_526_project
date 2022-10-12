@@ -27,7 +27,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(TutorialGameManager.time < 119)
+        if(TutorialGameManager.time < 89)
         {
             for(int i=0;i<popUps.Length; i++)
             {

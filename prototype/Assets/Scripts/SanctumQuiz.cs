@@ -51,6 +51,11 @@ public class SanctumQuiz : MonoBehaviour {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         QuizPanel.SetActive(true);
         BPanel.SetActive(false);
+        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        for(int b=0; b<4; b++)
+        {
+            buttons[b].enabled = true;
+        }
         sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
     }
 
@@ -62,6 +67,13 @@ public class SanctumQuiz : MonoBehaviour {
     }
 
     public void correct() {
+
+        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        for(int b=0; b<4; b++)
+        {
+            buttons[b].enabled = false;
+        }
+        
        Send(quizQuestion.question, 1, 0);
         if (TutorialManager.tutorialActive) {
             Invoke("LoadTutorialComplete", 1.5f);
@@ -78,6 +90,12 @@ public class SanctumQuiz : MonoBehaviour {
     }
 
     public void wrong() {
+
+        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        for(int b=0; b<4; b++)
+        {
+            buttons[b].enabled = false;
+        }
 
         if (TutorialManager.tutorialActive) {
             if (TutorialGameManager.tutCoinCnt < 10) {

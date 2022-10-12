@@ -17,7 +17,7 @@ public class GoalScreen : MonoBehaviour
     {
 
         ScoreTracker.coins = 0;
-        ScoreTracker.timeRemain = 120;
+        ScoreTracker.timeRemain = 90;
         ScoreTracker.originalTime = ScoreTracker.timeRemain;
 
         ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();

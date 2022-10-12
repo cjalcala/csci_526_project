@@ -11,7 +11,7 @@ public class TutorialGameManager : MonoBehaviour
     public Text tutorialCoinText;
     public static int tutCoinCnt;
     public Text timeText; 
-    public static float time = 120;
+    public static float time = 90;
     TutorialPlayerMovement tutorialplayerMovement;
     public static bool isPaused = false;
     public static bool horizontalArrows = false;
@@ -31,6 +31,7 @@ public class TutorialGameManager : MonoBehaviour
 
     void Start()
     {
+        time = 90;
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
         isPaused = false;
         horizontalArrows = false;

@@ -30,7 +30,7 @@ public class GameOverScreen : MonoBehaviour
     private void setupFunction()
     {
         ScoreTracker.coins = 0;
-        ScoreTracker.timeRemain = 120;
+        ScoreTracker.timeRemain = 90;
         ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();
         ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1, 2));
         ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1, 2));

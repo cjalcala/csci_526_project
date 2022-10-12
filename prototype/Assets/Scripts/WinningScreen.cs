@@ -38,14 +38,14 @@ public class WinningScreen : MonoBehaviour
     public void NextLevelButton()
     {
         gameManager.won = false;
-        ScoreTracker.timeRemain = 120;
+        ScoreTracker.timeRemain = 90;
         SceneManager.LoadScene("Game");
     }
 
     public void RestartButton()
     {
         gameManager.won = false;
-        ScoreTracker.timeRemain = 120;
+        ScoreTracker.timeRemain = 90;
         SceneManager.LoadScene("Game");
     }
 
