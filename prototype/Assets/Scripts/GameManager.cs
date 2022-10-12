@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     public float TimePowerUpStart = 0;
 
+    public Image TimeSlider;
+
     // public Text timeOnText;
     // public Text timeOffText;
 
@@ -180,6 +182,7 @@ public class GameManager : MonoBehaviour
             if (TimePowerUp)
             {
                 ScoreTracker.timeRemain -= Time.deltaTime / 2;
+                TimeSlider.fillAmount = ScoreTracker.timeRemain/90;
                 timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec SLOW";
                 // timeText.color = Color.red;
 
@@ -187,6 +190,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 ScoreTracker.timeRemain -= Time.deltaTime;
+                TimeSlider.fillAmount = ScoreTracker.timeRemain/90;
                 timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
             }
 

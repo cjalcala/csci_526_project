@@ -16,6 +16,7 @@ public class TutorialGameManager : MonoBehaviour
     public static bool isPaused = false;
     public static bool horizontalArrows = false;
     public static bool spaceBar = false;
+    public Image TimeSlider;
     // Start is called before the first frame update
 
     private void Awake()
@@ -47,6 +48,7 @@ public class TutorialGameManager : MonoBehaviour
             if((!isPaused ) && (!horizontalArrows) && (!spaceBar))
             {
                 time -= Time.deltaTime;
+                TimeSlider.fillAmount = time/90;
                 timeText.text = ": " + time.ToString("0") + " Sec";
             }
         }
