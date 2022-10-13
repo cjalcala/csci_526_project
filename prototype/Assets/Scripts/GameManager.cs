@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
         questionGenerator = new QuestionGenerator();
+        Debug.Log("Game "+ScoreTracker.timeRemain);
     }
 
     // Update is called once per frame
@@ -200,7 +201,7 @@ public class GameManager : MonoBehaviour
             {
                 ScoreTracker.coinString = ScoreTracker.coinString + ScoreTracker.coins.ToString() + ",";
                 ScoreTracker.timeFlag++;
-                Debug.Log(ScoreTracker.coinString);
+                //Debug.Log(ScoreTracker.coinString);
             }
         }
         else

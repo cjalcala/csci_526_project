@@ -24,6 +24,8 @@ public class SanctumQuiz : MonoBehaviour {
 
     public Text sanctumCoins;
 
+    public Image TimeSlider;
+
     public QuizQA quizQuestion;
     private void Start() {
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
@@ -40,8 +42,8 @@ public class SanctumQuiz : MonoBehaviour {
             sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
         }
 
-
-        Debug.Log(TutorialManager.tutorialActive);
+        Debug.Log("Sanctum "+ScoreTracker.timeRemain);
+        //Debug.Log(TutorialManager.tutorialActive);
         BPanel.SetActive(false);
         questionGenerator(0.7, 0.3, 0);
     }
@@ -191,5 +193,35 @@ public class SanctumQuiz : MonoBehaviour {
             www.Dispose();
         }
 
+    }
+
+    void Update()
+    {
+        if(!TutorialManager.tutorialActive)
+        {
+            if (ScoreTracker.timeRemain > 0)
+            {
+                ScoreTracker.timeRemain -= Time.deltaTime;
+                TimeSlider.fillAmount = ScoreTracker.timeRemain/90;
+                //timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+            }
+            else
+            {
+                SceneManager.LoadScene("Game");
+            }
+        }
+        else
+        {
+            if (TutorialGameManager.time > 0)
+            {
+                TutorialGameManager.time -= Time.deltaTime;
+                TimeSlider.fillAmount = TutorialGameManager.time/90;
+                //timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+            }
+            else
+            {
+                SceneManager.LoadScene("TutorialGame");
+            }
+        }
     }
 }
