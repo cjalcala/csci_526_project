@@ -7,29 +7,23 @@ using System.IO;
 using System.Linq;
 using System.Diagnostics;
 
-public class QuestionGenerator : MonoBehaviour
-{
+public class QuestionGenerator : MonoBehaviour {
     Root questionObject;
-
+    BurgerQuestions burgerObject;
     //if run out of the question in desired level,return the non empty level in descending difficulity
-    private int findLevel(int easyCount, int mediumCount, int hardCount, int rand, double easyRate, double mediumRate, double hardRate)
-    {
+    private int findLevel(int easyCount, int mediumCount, int hardCount, int rand, double easyRate, double mediumRate, double hardRate) {
         int res = 0;
 
-        if (rand <= easyRate * 100 && easyCount > 0)
-        {
+        if (rand <= easyRate * 100 && easyCount > 0) {
             res = 0;
         }
-        else if (rand > easyRate * 100 && rand <= (mediumRate + easyRate) * 100 && mediumCount > 0)
-        {
+        else if (rand > easyRate * 100 && rand <= (mediumRate + easyRate) * 100 && mediumCount > 0) {
             res = 1;
         }
-        else if (rand > (mediumRate + easyRate) * 100 && hardCount > 0)
-        {
+        else if (rand > (mediumRate + easyRate) * 100 && hardCount > 0) {
             res = 2;
         }
-        else
-        {
+        else {
             int[] ary = new int[] { easyCount, mediumCount, hardCount };
             res = Array.LastIndexOf(ary, ary.Last(c => c != 0));
         }
@@ -38,15 +32,12 @@ public class QuestionGenerator : MonoBehaviour
 
     //PARAM: rate <= 1.0, sum of rate == 1,
     //RETURN:  QuizQA or NULL
-    public QuizQA getQuestion(double easyRate, double mediumRate, double hardRate)
-    {
-        if (easyRate > 1.0 || mediumRate > 1.0 || hardRate > 1.0)
-        {
+    public QuizQA getQuestion(double easyRate, double mediumRate, double hardRate) {
+        if (easyRate > 1.0 || mediumRate > 1.0 || hardRate > 1.0) {
             UnityEngine.Debug.Log("JSONReader: Rate > 1");
         }
 
-        if (easyRate + mediumRate + hardRate != 1)
-        {
+        if (easyRate + mediumRate + hardRate != 1) {
             UnityEngine.Debug.Log("JSONReader: Rate sum != 1");
         }
 
@@ -58,8 +49,7 @@ public class QuestionGenerator : MonoBehaviour
 
         //Question is deleted in questionObject when return
         //Level: 0 easy, 1 medium, 2 hard
-        if (level == 0)
-        {
+        if (level == 0) {
             //get easy question
             int randIndex = new System.Random().Next(easyCount);
             Easy question = questionObject.easy[randIndex];
@@ -67,16 +57,14 @@ public class QuestionGenerator : MonoBehaviour
             return questionConverter(question);
 
         }
-        else if (level == 1)
-        {
+        else if (level == 1) {
             //get medium question
             int randIndex = new System.Random().Next(mediumCount);
             Medium question = questionObject.medium[randIndex];
             questionObject.medium.RemoveAt(randIndex);
             return questionConverter(question);
         }
-        else if (level == 2)
-        {
+        else if (level == 2) {
             //get hard question
             int randIndex = new System.Random().Next(hardCount);
             Hard question = questionObject.hard[randIndex];
@@ -84,15 +72,27 @@ public class QuestionGenerator : MonoBehaviour
             return questionConverter(question);
 
         }
-        else
-        {
+        else {
             UnityEngine.Debug.Log("Run out of questions");
             return null;
         }
     }
 
-    public QuizQA questionConverter(Question q)
-    {
+    public QuizQA getIngredientQuestion(String ingredient) {
+        if (ingredient == "burger") {
+            int count = burgerObject.questions.Count;
+            int randIndex = new System.Random().Next(count);
+            Question q = burgerObject.questions[randIndex];
+            QuizQA quizQ = questionConverter(q);
+            burgerObject.questions.RemoveAt(randIndex);
+            return quizQ;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public QuizQA questionConverter(Question q) {
         string text = q.QuestionText;
         QuizQA quizQA = new QuizQA();
 
@@ -113,42 +113,45 @@ public class QuestionGenerator : MonoBehaviour
         return quizQA;
     }
 
-    public QuestionGenerator()
-    {
+    public QuestionGenerator() {
         var jsonTextFile = Resources.Load<TextAsset>("Questions");//Questions.json in Resources
         questionObject = JsonUtility.FromJson<Root>(jsonTextFile.text);
+        var burgerQuestion = Resources.Load<TextAsset>("Burger");
+        burgerObject = JsonUtility.FromJson<BurgerQuestions>(burgerQuestion.text);
     }
-}
+
+    [System.Serializable]
+    public class BurgerQuestions {
+        public  List<Question>  questions;
+    }
+
+    [System.Serializable]
+    public class Root {
+        public List<Easy> easy;
+        public List<Medium> medium;
+        public List<Hard> hard;
+    }
+    [System.Serializable]
+    public class Question {
+        public string QuestionText;
+        public string Option1;
+        public string Option2;
+        public string Option3;
+        public string Option4;
+    }
+
+    [System.Serializable]
+    public class Easy : Question {
+    }
+
+    [System.Serializable]
+    public class Medium : Question {
+    }
+
+    [System.Serializable]
+    public class Hard : Question {
+    }
 
 
-[System.Serializable]
-public class Root
-{
-    public List<Easy> easy;
-    public List<Medium> medium;
-    public List<Hard> hard;
-}
-[System.Serializable]
-public class Question
-{
-    public string QuestionText;
-    public string Option1;
-    public string Option2;
-    public string Option3;
-    public string Option4;
-}
 
-[System.Serializable]
-public class Easy : Question
-{
-}
-
-[System.Serializable]
-public class Medium : Question
-{
-}
-
-[System.Serializable]
-public class Hard : Question
-{
 }

@@ -154,9 +154,13 @@ public class SanctumQuiz : MonoBehaviour {
     void questionGenerator(double easyRate, double mediumRate, double hardRate) {
         if (TutorialManager.tutorialActive) {
             quizQuestion = TutorialManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+            var qT = TutorialManager.questionGenerator.getIngredientQuestion("burger");
+            var a = 123;
         }
         else {
             quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+            var qT = GameManager.questionGenerator.getIngredientQuestion("burger");
+            var a = 123;
         }
 
         if (quizQuestion != null) {
