@@ -10,6 +10,9 @@ using System.Diagnostics;
 public class QuestionGenerator : MonoBehaviour
 {
     Root questionObject;
+    int easyCount = 0;
+    int mediumCount = 0;
+    int hardCount = 0;
 
     //if run out of the question in desired level,return the non empty level in descending difficulity
     private int findLevel(int easyCount, int mediumCount, int hardCount, int rand, double easyRate, double mediumRate, double hardRate)
@@ -51,9 +54,7 @@ public class QuestionGenerator : MonoBehaviour
         }
 
         int rand = new System.Random().Next(101);
-        int easyCount = questionObject.easy.Count;
-        int mediumCount = questionObject.medium.Count;
-        int hardCount = questionObject.hard.Count;
+
         int level = findLevel(easyCount, mediumCount, hardCount, rand, easyRate, mediumRate, hardRate);
 
         //Question is deleted in questionObject when return
@@ -134,6 +135,10 @@ public class QuestionGenerator : MonoBehaviour
     {
         var jsonTextFile = Resources.Load<TextAsset>("Questions");//Questions.json in Resources
         questionObject = JsonUtility.FromJson<Root>(jsonTextFile.text);
+        easyCount = questionObject.easy.Count;
+        mediumCount = questionObject.medium.Count;
+        hardCount = questionObject.hard.Count;
+
     }
 }
 
