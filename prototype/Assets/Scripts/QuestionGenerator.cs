@@ -63,7 +63,12 @@ public class QuestionGenerator : MonoBehaviour
             //get easy question
             int randIndex = new System.Random().Next(easyCount);
             Easy question = questionObject.easy[randIndex];
-            questionObject.easy.RemoveAt(randIndex);
+            if (randIndex != easyCount - 1)
+            {
+                questionObject.easy[randIndex] = questionObject.easy[easyCount - 1];
+            }
+            questionObject.easy.RemoveAt(easyCount - 1);
+            easyCount--;
             return questionConverter(question);
 
         }
@@ -72,7 +77,13 @@ public class QuestionGenerator : MonoBehaviour
             //get medium question
             int randIndex = new System.Random().Next(mediumCount);
             Medium question = questionObject.medium[randIndex];
-            questionObject.medium.RemoveAt(randIndex);
+            // questionObject.medium.RemoveAt(randIndex);
+            if (randIndex != mediumCount - 1)
+            {
+                questionObject.medium[randIndex] = questionObject.medium[mediumCount - 1];
+            }
+            questionObject.medium.RemoveAt(mediumCount - 1);
+            mediumCount--;
             return questionConverter(question);
         }
         else if (level == 2)
@@ -80,7 +91,13 @@ public class QuestionGenerator : MonoBehaviour
             //get hard question
             int randIndex = new System.Random().Next(hardCount);
             Hard question = questionObject.hard[randIndex];
-            questionObject.hard.RemoveAt(randIndex);
+            // questionObject.hard.RemoveAt(randIndex);
+            if (randIndex != hardCount - 1)
+            {
+                questionObject.hard[randIndex] = questionObject.hard[hardCount - 1];
+            }
+            questionObject.hard.RemoveAt(hardCount - 1);
+            hardCount--;
             return questionConverter(question);
 
         }
