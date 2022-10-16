@@ -26,12 +26,13 @@ public class GameManager : MonoBehaviour
     public int coins;
     public Text coinText;
     public Text timeText;
-    public Text goalText;
-    public Text costText;
+    //public Text goalText;
     public GameOverScreen gameOverScreen;
     public WinningScreen winningScreen;
     public bool won;
     public Image[] ingredientIcon;
+    public Text[] goalText;
+    public Text[] costText;
     public DateTime sessionid;
     public int level = 1;
     public int level_flag = 0;
@@ -66,21 +67,21 @@ public class GameManager : MonoBehaviour
     public void IncrementCoinCount()
     {
         coin_collected_sound.Play();
-        ScoreTracker.coins++;
-        coins = ScoreTracker.coins;
-        coinText.text = ": " + ScoreTracker.coins;
+        GameTracker.coins++;
+        coins = GameTracker.coins;
+        coinText.text = ": " + GameTracker.coins;
     }
 
     public void increaseIngredient(string name)
     {
-        ScoreTracker.ingredientsList[name].currentCount++;
-        goalText.text = "Goal :" + goalProgress();
+        GameTracker.ingredientsList[name].currentCount++;
+        goalProgress();
     }
 
     public bool checkIngredientsGoal()
     {
         bool goalReached = true;
-        foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
+        foreach (KeyValuePair<string, Ingredient> pair in GameTracker.ingredientsList)
         {
             goalReached = goalReached && pair.Value.currentCount >= pair.Value.requiredCount;
         }
@@ -88,29 +89,28 @@ public class GameManager : MonoBehaviour
         return goalReached;
     }
 
-    public string goalProgress()
+    public void goalProgress()
     {
         string goal = "";
         int index = 0;
-        foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
+        foreach (KeyValuePair<string, Ingredient> pair in GameTracker.ingredientsList)
         {
-            goal += "           x" + pair.Value.currentCount + "/" + pair.Value.requiredCount;
+            goal = "x" + pair.Value.currentCount + "/" + pair.Value.requiredCount;
             ingredientIcon[index].sprite = Resources.Load<Sprite>("Sprites/" + pair.Key.ToString());
+            goalText[index].text = goal;
+            index++;
+        }
+    }
+
+    public void Cost()
+    {
+        int index = 0;
+        foreach (KeyValuePair<string, Ingredient> pair in GameTracker.ingredientsList)
+        {
+            costText[index].text = pair.Value.cost.ToString();
             index++;
         }
 
-        return goal;
-    }
-
-    public string Cost()
-    {
-        string costStr = "            ";
-        foreach (KeyValuePair<string, Ingredient> pair in ScoreTracker.ingredientsList)
-        {
-            costStr += pair.Value.cost + "                ";
-        }
-
-        return costStr;
     }
 
     private void Awake()
@@ -125,21 +125,21 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = ": " + ScoreTracker.coins;
-        goalText.text = "Goal :" + goalProgress();
-        costText.text = Cost();
+        coinText.text = ": " + GameTracker.coins;
+        goalProgress();
+        Cost();
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
         questionGenerator = new QuestionGenerator();
-        Debug.Log("Game "+ScoreTracker.timeRemain);
+        Debug.Log("Game "+GameTracker.timeRemain);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (TimePowerUp && Math.Abs(ScoreTracker.timeRemain - TimePowerUpStart) >= 2.5)
+        if (TimePowerUp && Math.Abs(GameTracker.timeRemain - TimePowerUpStart) >= 2.5)
         {
             TimePowerUp = false;
             // timeOffText.text = "Timer Counter Slow Down FINISH";
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
 
         if (won)
         {
-            ScoreTracker.timeRemain = 0;
+            GameTracker.timeRemain = 0;
             playerMovement.stayStill = true;
             level_flag++;
             if (level_flag == 1)
@@ -157,11 +157,11 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (ScoreTracker.timeRemain >= 0 && checkIngredientsGoal())
+        else if (GameTracker.timeRemain >= 0 && checkIngredientsGoal())
         {
             if (!won)
             {
-                winningScreen.Setup(ScoreTracker.originalTime - ScoreTracker.timeRemain);
+                winningScreen.Setup(GameTracker.originalTime - GameTracker.timeRemain);
                 won = true;
                 flag++;
                 if (flag == 1)
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
                     deathValues[1] = GameManager.inst.sessionNum.ToString();
                     deathValues[2] = "won";
                     deathValues[3] = "";
-                    deathValues[4] = (90 - ScoreTracker.timeRemain).ToString("0");
+                    deathValues[4] = (90 - GameTracker.timeRemain).ToString("0");
                     //TODO: Get the value of 120 above dynamically
                     Send("deathTracker");
                     Send("coinTracker");
@@ -178,30 +178,30 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (ScoreTracker.timeRemain > 0)
+        if (GameTracker.timeRemain > 0)
         {
             if (TimePowerUp)
             {
-                ScoreTracker.timeRemain -= Time.deltaTime / 2;
-                TimeSlider.fillAmount = ScoreTracker.timeRemain/90;
-                timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec SLOW";
+                GameTracker.timeRemain -= Time.deltaTime / 2;
+                TimeSlider.fillAmount = GameTracker.timeRemain/90;
+                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec SLOW";
                 // timeText.color = Color.red;
 
             }
             else
             {
-                ScoreTracker.timeRemain -= Time.deltaTime;
-                TimeSlider.fillAmount = ScoreTracker.timeRemain/90;
-                timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+                GameTracker.timeRemain -= Time.deltaTime;
+                TimeSlider.fillAmount = GameTracker.timeRemain/90;
+                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
             }
 
-            int forwardSeconds = 90 - Convert.ToInt32(Math.Truncate(ScoreTracker.timeRemain)); //TODO: Get 120 dynamically
+            int forwardSeconds = 90 - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain)); //TODO: Get 120 dynamically
 
-            if ((forwardSeconds == ScoreTracker.timeFlag) && (hasHitObstacle == false))
+            if ((forwardSeconds == GameTracker.timeFlag) && (hasHitObstacle == false))
             {
-                ScoreTracker.coinString = ScoreTracker.coinString + ScoreTracker.coins.ToString() + ",";
-                ScoreTracker.timeFlag++;
-                //Debug.Log(ScoreTracker.coinString);
+                GameTracker.coinString = GameTracker.coinString + GameTracker.coins.ToString() + ",";
+                GameTracker.timeFlag++;
+                //Debug.Log(GameTracker.coinString);
             }
         }
         else
@@ -226,45 +226,45 @@ public class GameManager : MonoBehaviour
             }
 
             gameOverScreen.Setup();
-            ScoreTracker.timeRemain = -1;
+            GameTracker.timeRemain = -1;
             playerMovement.stayStill = true;
             //Invoke("Restart", 1);
         }
-        if (ScoreTracker.insufficientCoins && timeDisplay >= 0)
+        if (GameTracker.insufficientCoins && timeDisplay >= 0)
         {
             insufficientPopup.text = "You have insufficient coins!";
             timeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
             // TimePowerUp ?  timeDisplay -= Time.deltaTime/2 : timeDisplay -= Time.deltaTime/2;
         }
 
-        if (ScoreTracker.insufficientCoins && timeDisplay < 0)
+        if (GameTracker.insufficientCoins && timeDisplay < 0)
         {
             insufficientPopup.text = "";
-            ScoreTracker.insufficientCoins = false;
+            GameTracker.insufficientCoins = false;
             timeDisplay = 1.5f;
         }
 
         if (Welcome.immunity)
         {
-            if (ScoreTracker.hammerFlag == 0)
+            if (GameTracker.hammerFlag == 0)
             {
-                ScoreTracker.hammerStartTime = ScoreTracker.timeRemain;
-                ScoreTracker.hammerFlag = 1;
+                GameTracker.hammerStartTime = GameTracker.timeRemain;
+                GameTracker.hammerFlag = 1;
                 hammerOnText.text = "Obstacle Immunity for 5 sec";
             }
             else
             {
-                if (ScoreTracker.timeRemain <= ScoreTracker.hammerStartTime - 5)
+                if (GameTracker.timeRemain <= GameTracker.hammerStartTime - 5)
                 {
                     Welcome.immunity = false;
-                    ScoreTracker.hammerFlag = 0;
+                    GameTracker.hammerFlag = 0;
                     hammerOffText.text = "Obstacle Immunity Off";
                     hflag = 1;
                 }
             }
         }
 
-        if (ScoreTracker.hammerFlag == 1)
+        if (GameTracker.hammerFlag == 1)
         {
             if (hammerOnTexttimeDisplay < 0)
             {
@@ -382,7 +382,7 @@ public class GameManager : MonoBehaviour
         {
             URL = coinUrl;
             form.AddField(coinFields[0], sessionNum.ToString());
-            form.AddField(coinFields[1], ScoreTracker.coinString);
+            form.AddField(coinFields[1], GameTracker.coinString);
         }
         
         //form.AddField("entry.2014458776", sessionid);    

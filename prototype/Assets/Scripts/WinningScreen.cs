@@ -25,28 +25,30 @@ public class WinningScreen : MonoBehaviour
 
     public void Setup(float timeScore)
     {
-        
-        ScoreTracker.coins = 0;
-        ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();
-        ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1, 2));
-        ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1, 2));
-        ScoreTracker.ingredientsList.Add("Steak", new Ingredient("Steak", 1, 2));
+        GameTracker.GameSetup();
         gameObject.SetActive(true);
-        timeText.text = "Your Score: " + ScoreTracker.timeRemain.ToString("0") + "!";
+        timeText.text = "Your Score: " + GameTracker.timeRemain.ToString("0") + "!";
     }
 
     public void NextLevelButton()
     {
         gameManager.won = false;
-        ScoreTracker.timeRemain = 90;
-        SceneManager.LoadScene("Game");
+        GameTracker.level += 1;
+        GameTracker.GameSetup();
+        if (GameTracker.level == 1)
+            SceneManager.LoadScene("Game");
+        else if (GameTracker.level == 2)
+            SceneManager.LoadScene("Level2");
     }
 
     public void RestartButton()
     {
         gameManager.won = false;
-        ScoreTracker.timeRemain = 90;
-        SceneManager.LoadScene("Game");
+        GameTracker.GameSetup();
+        if (GameTracker.level == 1)
+            SceneManager.LoadScene("Game");
+        else if (GameTracker.level == 2)
+            SceneManager.LoadScene("Level2");
     }
 
     public void ExitButton()

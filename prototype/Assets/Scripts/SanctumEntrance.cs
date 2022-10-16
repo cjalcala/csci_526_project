@@ -12,12 +12,13 @@ public class SanctumEntrance : MonoBehaviour
     public int ingredientID;
     List<string> result ;
     static System.Random random=new System.Random();
-    public string[] ingredientList = { "Broccoli", "Onion", "Steak" };//TODO: Create spresdsheet to match index to ingredient
+    public string[] ingredientList = { "Broccoli", "Onion", "Steak", "Bread", "Avocado", "Mushroom",
+    "Tomato", "Pepper"};//TODO: Create spresdsheet to match index to ingredient
     // Start is called before the first frame update
     void Start()
     {
         List<int> indx= new List<int>();
-        result=ScoreTracker.uncompletedIngredients();
+        result=GameTracker.uncompletedIngredients();
         
         for(int i=0;i<result.Count;i++)
         {
@@ -26,7 +27,6 @@ public class SanctumEntrance : MonoBehaviour
                 indx.Add(0);
 
             }
-
             if(result[i]=="Onion")
             {
                 indx.Add(1);
@@ -35,6 +35,31 @@ public class SanctumEntrance : MonoBehaviour
             if(result[i]== "Steak")
             {
                 indx.Add(2);
+
+            }
+            if (result[i] == "Bread")
+            {
+                indx.Add(3);
+
+            }
+            if (result[i] == "Avocado")
+            {
+                indx.Add(4);
+
+            }
+            if (result[i] == "Mushroom")
+            {
+                indx.Add(5);
+
+            }
+            if (result[i] == "Tomato")
+            {
+                indx.Add(6);
+
+            }
+            if (result[i] == "Pepper")
+            {
+                indx.Add(7);
 
             }
 
@@ -73,16 +98,16 @@ public class SanctumEntrance : MonoBehaviour
 
         Destroy(gameObject);
 
-        if (ScoreTracker.coins >= ScoreTracker.ingredientsList[ingredientList[ingredientID]].cost)
+        if (GameTracker.coins >= GameTracker.ingredientsList[ingredientList[ingredientID]].cost)
         {
 
-            ScoreTracker.coins -= ScoreTracker.ingredientsList[ingredientList[ingredientID]].cost;
+            GameTracker.coins -= GameTracker.ingredientsList[ingredientList[ingredientID]].cost;
             SceneManager.LoadScene("Sanctum");
 
         }
-        if (ScoreTracker.coins == 0 || ScoreTracker.coins < ScoreTracker.ingredientsList[ingredientList[ingredientID]].cost)
+        if (GameTracker.coins == 0 || GameTracker.coins < GameTracker.ingredientsList[ingredientList[ingredientID]].cost)
         {
-            ScoreTracker.insufficientCoins = true;
+            GameTracker.insufficientCoins = true;
         }
 
         else
