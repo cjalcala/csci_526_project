@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         sessionid = System.DateTime.Now;
         sessionNum = DateTime.Now.Ticks;
         timestamp = System.DateTime.Now;
-
+        ScoreTracker.sentAnalytics = false;
     }
 
     // Start is called before the first frame update
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour
 
             int forwardSeconds = 90 - Convert.ToInt32(Math.Truncate(ScoreTracker.timeRemain)); //TODO: Get 120 dynamically
 
-            if ((forwardSeconds == ScoreTracker.timeFlag) && (hasHitObstacle == false))
+            if ((forwardSeconds == ScoreTracker.timeFlag) && (ScoreTracker.sentAnalytics == false))
             {
                 ScoreTracker.coinString = ScoreTracker.coinString + ScoreTracker.coins.ToString() + ",";
                 ScoreTracker.timeFlag++;
@@ -383,6 +383,9 @@ public class GameManager : MonoBehaviour
             URL = coinUrl;
             form.AddField(coinFields[0], sessionNum.ToString());
             form.AddField(coinFields[1], ScoreTracker.coinString);
+            ScoreTracker.coinString = "";
+            ScoreTracker.sentAnalytics = true;
+            ScoreTracker.timeFlag = 1;
         }
         
         //form.AddField("entry.2014458776", sessionid);    
