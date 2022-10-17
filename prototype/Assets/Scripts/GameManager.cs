@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
         sessionNum = DateTime.Now.Ticks;
         timestamp = System.DateTime.Now;
 
+        GameTracker.sentAnalytics = false;
     }
 
     // Start is called before the first frame update
@@ -383,6 +384,9 @@ public class GameManager : MonoBehaviour
             URL = coinUrl;
             form.AddField(coinFields[0], sessionNum.ToString());
             form.AddField(coinFields[1], GameTracker.coinString);
+            GameTracker.coinString = "";
+            GameTracker.sentAnalytics = true;
+            GameTracker.timeFlag = 1;
         }
         
         //form.AddField("entry.2014458776", sessionid);    

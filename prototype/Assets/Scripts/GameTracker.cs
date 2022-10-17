@@ -13,6 +13,7 @@ public class GameTracker : MonoBehaviour
     public static int hammerFlag=0;
     public static string coinString = "";
     public static int timeFlag = 1;
+    public static bool sentAnalytics = false;
     public static int level = 1;
 
     public static void increaseIngredient(string name)

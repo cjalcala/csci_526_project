@@ -27,6 +27,7 @@ public class SanctumQuiz : MonoBehaviour {
     public Image TimeSlider;
 
     public QuizQA quizQuestion;
+    string quizIngredient;// Change to index later
     private void Start() {
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
@@ -45,6 +46,7 @@ public class SanctumQuiz : MonoBehaviour {
         Debug.Log("Sanctum "+GameTracker.timeRemain);
         //Debug.Log(TutorialManager.tutorialActive);
         BPanel.SetActive(false);
+        quizIngredient = PlayerPrefs.GetString("IngredientID");// Change to index later
         questionGenerator(0.7, 0.3, 0);
     }
 
@@ -81,8 +83,7 @@ public class SanctumQuiz : MonoBehaviour {
             Invoke("LoadTutorialComplete", 1.5f);
         }
         else {
-            string Ingredient = PlayerPrefs.GetString("IngredientID");// Change to index later
-            GameTracker.increaseIngredient(Ingredient);//use map to find the ingredient string /change increaseIngredient param to index
+            GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
             GameTracker.LoadScenes();
         }
     }
@@ -154,9 +155,11 @@ public class SanctumQuiz : MonoBehaviour {
     void questionGenerator(double easyRate, double mediumRate, double hardRate) {
         if (TutorialManager.tutorialActive) {
             quizQuestion = TutorialManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+            var qT = TutorialManager.questionGenerator.getIngredientQuestion(quizIngredient);
         }
         else {
             quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+            var qT = GameManager.questionGenerator.getIngredientQuestion(quizIngredient);
         }
 
         if (quizQuestion != null) {
