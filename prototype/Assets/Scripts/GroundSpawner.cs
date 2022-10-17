@@ -34,7 +34,7 @@ public class GroundSpawner : MonoBehaviour
             temp.GetComponent<GroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
-        if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1)
+        if (ScoreTracker.timeRemain < 75 && Mathf.Abs(ScoreTracker.timeRemain % 30) <= 1)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }
@@ -43,10 +43,10 @@ public class GroundSpawner : MonoBehaviour
     public bool SpawnEntrance()
     {
         bool spawn = false;
-        // float time = (GameTracker.originalTime - GameTracker.timeRemain) % 5;
+        // float time = (ScoreTracker.originalTime - ScoreTracker.timeRemain) % 5;
         entrance = GameObject.FindObjectOfType<SanctumEntrance>();
 
-        // if (entrance == null && (GameTracker.originalTime - GameTracker.timeRemain) > 5 && time < 5)
+        // if (entrance == null && (ScoreTracker.originalTime - ScoreTracker.timeRemain) > 5 && time < 5)
         // if (cnt < 3)
         // {
         spawn = true;
@@ -59,11 +59,11 @@ public class GroundSpawner : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        hammerSpawnTime = Random.Range((int)GameTracker.timeRemain - 5, (int)GameTracker.timeRemain);
+        hammerSpawnTime = Random.Range((int)ScoreTracker.timeRemain - 5, (int)ScoreTracker.timeRemain);
         Debug.Log(hammerSpawnTime);
         for (int i = 0; i < 15; i++)
         {
-            //if (gameManager.tileCount < 2 && GameTracker.timeRemain > 118)
+            //if (gameManager.tileCount < 2 && ScoreTracker.timeRemain > 118)
             if (gameManager.tileCount < 1)
             {
                 SpawnTile(false, false, false);
@@ -83,8 +83,8 @@ public class GroundSpawner : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(GameTracker.timeRemain);
-        if (GameTracker.timeRemain <= hammerSpawnTime)
+        //Debug.Log(ScoreTracker.timeRemain);
+        if (ScoreTracker.timeRemain <= hammerSpawnTime)
         {
             //Debug.Log("True");
             SpawnTile(true, true, true);

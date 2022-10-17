@@ -23,7 +23,7 @@ public class TimePowerUp : MonoBehaviour
         // if (other.gameObject.name == "Player")
         // {
         GameManager.inst.TimePowerUp = true;
-        GameManager.inst.TimePowerUpStart = GameTracker.timeRemain;
+        GameManager.inst.TimePowerUpStart = ScoreTracker.timeRemain;
         GameManager.inst.timeText.color = Color.red;
         // GameManager.inst.timeOnText.text = "Timer Counter Slow Down For 5 SEC";
 

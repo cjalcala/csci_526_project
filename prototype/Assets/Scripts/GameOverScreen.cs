@@ -19,7 +19,7 @@ public class GameOverScreen : MonoBehaviour
     {
         setupFunction();
         Welcome.immunity = false;
-        GameTracker.LoadScenes();
+        SceneManager.LoadScene("Game");
     }
 
     public void ExitButton()
@@ -29,6 +29,11 @@ public class GameOverScreen : MonoBehaviour
 
     private void setupFunction()
     {
-        GameTracker.GameSetup();
+        ScoreTracker.coins = 0;
+        ScoreTracker.timeRemain = 90;
+        ScoreTracker.ingredientsList = new SortedDictionary<string, Ingredient>();
+        ScoreTracker.ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1, 2));
+        ScoreTracker.ingredientsList.Add("Onion", new Ingredient("Onion", 1, 2));
+        ScoreTracker.ingredientsList.Add("Steak", new Ingredient("Steak", 1, 2));
     }
 }
