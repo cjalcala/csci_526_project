@@ -12,6 +12,7 @@ public class ScoreTracker : MonoBehaviour
     public static int hammerFlag=0;
     public static string coinString = "";
     public static int timeFlag = 1;
+    public static bool sentAnalytics = false;
     public static void increaseIngredient(string name)
     {
         ScoreTracker.ingredientsList[name].currentCount++;
