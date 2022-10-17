@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
         sessionid = System.DateTime.Now;
         sessionNum = DateTime.Now.Ticks;
         timestamp = System.DateTime.Now;
-
         GameTracker.sentAnalytics = false;
     }
 
@@ -197,8 +196,7 @@ public class GameManager : MonoBehaviour
             }
 
             int forwardSeconds = 90 - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain)); //TODO: Get 120 dynamically
-
-            if ((forwardSeconds == GameTracker.timeFlag) && (hasHitObstacle == false))
+            if ((forwardSeconds == GameTracker.timeFlag) && (GameTracker.sentAnalytics == false))
             {
                 GameTracker.coinString = GameTracker.coinString + GameTracker.coins.ToString() + ",";
                 GameTracker.timeFlag++;
