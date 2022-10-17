@@ -9,7 +9,13 @@ using System.Diagnostics;
 
 public class QuestionGenerator : MonoBehaviour {
     Root questionObject;
+
+    int easyCount = 0;
+    int mediumCount = 0;
+    int hardCount = 0;
+    
     BurgerQuestions burgerObject;
+
     //if run out of the question in desired level,return the non empty level in descending difficulity
     private int findLevel(int easyCount, int mediumCount, int hardCount, int rand, double easyRate, double mediumRate, double hardRate) {
         int res = 0;
@@ -42,9 +48,7 @@ public class QuestionGenerator : MonoBehaviour {
         }
 
         int rand = new System.Random().Next(101);
-        int easyCount = questionObject.easy.Count;
-        int mediumCount = questionObject.medium.Count;
-        int hardCount = questionObject.hard.Count;
+
         int level = findLevel(easyCount, mediumCount, hardCount, rand, easyRate, mediumRate, hardRate);
 
         //Question is deleted in questionObject when return
@@ -53,7 +57,12 @@ public class QuestionGenerator : MonoBehaviour {
             //get easy question
             int randIndex = new System.Random().Next(easyCount);
             Easy question = questionObject.easy[randIndex];
-            questionObject.easy.RemoveAt(randIndex);
+            if (randIndex != easyCount - 1)
+            {
+                questionObject.easy[randIndex] = questionObject.easy[easyCount - 1];
+            }
+            questionObject.easy.RemoveAt(easyCount - 1);
+            easyCount--;
             return questionConverter(question);
 
         }
@@ -61,14 +70,26 @@ public class QuestionGenerator : MonoBehaviour {
             //get medium question
             int randIndex = new System.Random().Next(mediumCount);
             Medium question = questionObject.medium[randIndex];
-            questionObject.medium.RemoveAt(randIndex);
+            // questionObject.medium.RemoveAt(randIndex);
+            if (randIndex != mediumCount - 1)
+            {
+                questionObject.medium[randIndex] = questionObject.medium[mediumCount - 1];
+            }
+            questionObject.medium.RemoveAt(mediumCount - 1);
+            mediumCount--;
             return questionConverter(question);
         }
         else if (level == 2) {
             //get hard question
             int randIndex = new System.Random().Next(hardCount);
             Hard question = questionObject.hard[randIndex];
-            questionObject.hard.RemoveAt(randIndex);
+            // questionObject.hard.RemoveAt(randIndex);
+            if (randIndex != hardCount - 1)
+            {
+                questionObject.hard[randIndex] = questionObject.hard[hardCount - 1];
+            }
+            questionObject.hard.RemoveAt(hardCount - 1);
+            hardCount--;
             return questionConverter(question);
 
         }
@@ -116,6 +137,11 @@ public class QuestionGenerator : MonoBehaviour {
     public QuestionGenerator() {
         var jsonTextFile = Resources.Load<TextAsset>("Questions");//Questions.json in Resources
         questionObject = JsonUtility.FromJson<Root>(jsonTextFile.text);
+
+        easyCount = questionObject.easy.Count;
+        mediumCount = questionObject.medium.Count;
+        hardCount = questionObject.hard.Count;
+
         var burgerQuestion = Resources.Load<TextAsset>("Burger");
         burgerObject = JsonUtility.FromJson<BurgerQuestions>(burgerQuestion.text);
     }
@@ -130,6 +156,7 @@ public class QuestionGenerator : MonoBehaviour {
         public List<Easy> easy;
         public List<Medium> medium;
         public List<Hard> hard;
+
     }
     [System.Serializable]
     public class Question {
