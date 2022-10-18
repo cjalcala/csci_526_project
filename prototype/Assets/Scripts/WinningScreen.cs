@@ -25,9 +25,10 @@ public class WinningScreen : MonoBehaviour
 
     public void Setup(float timeScore)
     {
+        timeText.text = "Your Score: " + GameTracker.timeRemain.ToString("0") + "!";
         GameTracker.GameSetup();
         gameObject.SetActive(true);
-        timeText.text = "Your Score: " + GameTracker.timeRemain.ToString("0") + "!";
+        
     }
 
     public void NextLevelButton()
