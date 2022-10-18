@@ -1029,7 +1029,7 @@ MonoBehaviour:
   speed: 10
   rb: {fileID: 377708882}
   horizontalMultiplier: 2
-  jumpForce: 600
+  jumpForce: 640
   groundMask:
     serializedVersion: 2
     m_Bits: 64
