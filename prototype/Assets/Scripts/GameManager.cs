@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     // public Text timeOnText;
     // public Text timeOffText;
 
-    public static QuestionGenerator questionGenerator;
+    //public static QuestionGenerator questionGenerator;
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
-        questionGenerator = new QuestionGenerator();
+        //questionGenerator = new QuestionGenerator();
         Debug.Log("Game "+GameTracker.timeRemain);
     }
 

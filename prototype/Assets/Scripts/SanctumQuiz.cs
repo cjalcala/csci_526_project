@@ -158,8 +158,8 @@ public class SanctumQuiz : MonoBehaviour {
             var qT = TutorialManager.questionGenerator.getIngredientQuestion(quizIngredient);
         }
         else {
-            quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
-            var qT = GameManager.questionGenerator.getIngredientQuestion(quizIngredient);
+            quizQuestion = GameTracker.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
+            var qT = GameTracker.questionGenerator.getIngredientQuestion(quizIngredient);
         }
 
         if (quizQuestion != null) {
