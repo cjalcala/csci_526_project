@@ -18,10 +18,11 @@ public class PauseMenu : MonoBehaviour
     GameIsPaused = true;
     Obj = GameObject.FindGameObjectWithTag("GameMusic");
     //Obj.SetActive(false);
-    if (AudioListener.pause == false){ //music was playing
-        audio_flag = 1;
-    }
-    AudioListener.pause = true;
+    // if (AudioListener.pause == false){ //music was playing
+    //     audio_flag = 1;
+    // }
+    
+    // AudioListener.pause = true;
    }
 
    public void Resume() {
@@ -30,11 +31,11 @@ public class PauseMenu : MonoBehaviour
     GameIsPaused = false;
     //Obj = GameObject.FindGameObjectsWithTag('GameMusic');
     //Obj.SetActive(true);
-    if (audio_flag == 1){
-        AudioListener.pause = false;
-    }else{
-        AudioListener.pause = true;
-    }
+    // if (audio_flag == 1){
+    //     AudioListener.pause = false;
+    // }else{
+    //     AudioListener.pause = true;
+    // }
    }
 
    public void Restart() {
@@ -44,11 +45,11 @@ public class PauseMenu : MonoBehaviour
     Welcome.immunity = false;
     GameTracker.LoadScenes();
     Obj.SetActive(true);
-    if (audio_flag == 1){
-        AudioListener.pause = false;
-    }else{
-        AudioListener.pause = true;
-    }
+    // if (audio_flag == 1){
+    //     AudioListener.pause = false;
+    // }else{
+    //     AudioListener.pause = true;
+    // }
 
    }
 
@@ -57,11 +58,11 @@ public class PauseMenu : MonoBehaviour
     Time.timeScale = 1f;
     GameIsPaused = true;
     SceneManager.LoadScene("WelcomeScreen");
-    if (audio_flag == 1){
-        AudioListener.pause = false;
-    }else{
-        AudioListener.pause = true;
-    }
+    // if (audio_flag == 1){
+    //     AudioListener.pause = false;
+    // }else{
+    //     AudioListener.pause = true;
+    // }
    }
 
 }
