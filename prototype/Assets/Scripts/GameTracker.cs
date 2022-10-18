@@ -15,6 +15,7 @@ public class GameTracker : MonoBehaviour
     public static int timeFlag = 1;
     public static bool sentAnalytics = false;
     public static int level = 1;
+    public static QuestionGenerator questionGenerator;
 
     public static void increaseIngredient(string name)
     {
@@ -61,6 +62,7 @@ public class GameTracker : MonoBehaviour
 
         coins = 0;
         originalTime = GameTracker.timeRemain;
+        questionGenerator = new QuestionGenerator();
     }
 
     public static void LoadScenes()
