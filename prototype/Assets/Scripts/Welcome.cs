@@ -14,6 +14,7 @@ public class Welcome : MonoBehaviour
     }
 
     public void Beginner() {
+        GameTracker.level = 1;
         GameTracker.GameSetup();
         SceneManager.LoadScene("Goals");
     }
