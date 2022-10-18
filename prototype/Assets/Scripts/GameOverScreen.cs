@@ -20,6 +20,11 @@ public class GameOverScreen : MonoBehaviour
         setupFunction();
         Welcome.immunity = false;
         GameTracker.LoadScenes();
+        if (AudioListener.pause == true){
+            AudioListener.pause = true;
+        }else{
+            AudioListener.pause = false;
+        }
     }
 
     public void ExitButton()
