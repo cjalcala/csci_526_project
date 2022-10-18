@@ -115,15 +115,30 @@ MonoBehaviour:
   - {fileID: 4300000, guid: 8f3f2404a883f5949a22eb1182951c9e, type: 3}
   - {fileID: 4300000, guid: e59c418d989aca7499feb8d40c6977b1, type: 3}
   - {fileID: 4300000, guid: 9e7adcb4180bd9f43a80542600df73c2, type: 3}
+  - {fileID: 4300002, guid: 96099f261a388b844bdd80c870a8c001, type: 3}
+  - {fileID: 4300000, guid: a77e30de2eb4e0249ae881ea7e042b0a, type: 3}
+  - {fileID: 4300000, guid: 8f3f2404a883f5949a22eb1182951c9e, type: 3}
+  - {fileID: 4300000, guid: 3c8726c7ba21fc64fbc2a8a1dd83be57, type: 3}
+  - {fileID: 4300000, guid: 3785f4afe9dacc34e97d97c54833fd90, type: 3}
   mat:
   - {fileID: 2100000, guid: 57baea97f0f6b964bab40d15485b6588, type: 2}
   - {fileID: 2100000, guid: fc39a0ecc0ce56145a5580c197d049d2, type: 2}
   - {fileID: 2100000, guid: b7906238964c6084584e67c6f53eb7c8, type: 2}
+  - {fileID: 2100000, guid: bbb9ce60ee2d20146bf7e349dd5f42fa, type: 2}
+  - {fileID: 2100000, guid: ee1211eb63dacc34fa92868ff8091c3a, type: 2}
+  - {fileID: 2100000, guid: fc6492bdeb3d0cc408a484c15495f4d4, type: 2}
+  - {fileID: 2100000, guid: 0a9767032ebd0c74290eaab3e2a4ec0a, type: 2}
+  - {fileID: 2100000, guid: 145a6deb644e87d439d6550036c0bd92, type: 2}
   ingredientID: 0
   ingredientList:
   - Broccoli
   - Onion
   - Steak
+  - Bread
+  - Avocado
+  - Mushroom
+  - Tomato
+  - Pepper
 --- !u!54 &671462192713864136
 Rigidbody:
   m_ObjectHideFlags: 0

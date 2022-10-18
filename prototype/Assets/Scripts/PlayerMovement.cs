@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.deathValues[1] = GameManager.inst.sessionNum.ToString();
             GameManager.inst.deathValues[2] = "lost";
             GameManager.inst.deathValues[3] = tp;
-            GameManager.inst.deathValues[4] = (90 - ScoreTracker.timeRemain).ToString("0");
+            GameManager.inst.deathValues[4] = (90 - GameTracker.timeRemain).ToString("0");
             //TODO: Get the value of 120 above dynamically
             GameManager.inst.Send("deathTracker");
             GameManager.inst.Send("coinTracker");

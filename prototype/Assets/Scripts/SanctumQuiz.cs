@@ -40,10 +40,10 @@ public class SanctumQuiz : MonoBehaviour {
             sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
         }
         else {
-            sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
+            sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
         }
 
-        Debug.Log("Sanctum "+ScoreTracker.timeRemain);
+        Debug.Log("Sanctum "+GameTracker.timeRemain);
         //Debug.Log(TutorialManager.tutorialActive);
         BPanel.SetActive(false);
         quizIngredient = PlayerPrefs.GetString("IngredientID");// Change to index later
@@ -51,7 +51,7 @@ public class SanctumQuiz : MonoBehaviour {
     }
 
     public void retry() {
-        ScoreTracker.coins -= 10;
+        GameTracker.coins -= 10;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         QuizPanel.SetActive(true);
         BPanel.SetActive(false);
@@ -60,14 +60,14 @@ public class SanctumQuiz : MonoBehaviour {
         {
             buttons[b].enabled = true;
         }
-        sanctumCoins.text = "Coins : " + ScoreTracker.coins.ToString();
+        sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
     }
 
     void gameOver() {
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
 
-        coin.text = "Coins : " + ScoreTracker.coins.ToString();
+        coin.text = "Coins : " + GameTracker.coins.ToString();
     }
 
     public void correct() {
@@ -82,9 +82,9 @@ public class SanctumQuiz : MonoBehaviour {
         if (TutorialManager.tutorialActive) {
             Invoke("LoadTutorialComplete", 1.5f);
         }
-        else {  
-            ScoreTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
-            SceneManager.LoadScene("Game");
+        else {
+            GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
+            GameTracker.LoadScenes();
         }
     }
 
@@ -113,7 +113,7 @@ public class SanctumQuiz : MonoBehaviour {
 
             Send(quizQuestion.question, 0, 1);
 
-            if (ScoreTracker.coins < 10) {
+            if (GameTracker.coins < 10) {
                 continueGame();
             }
             else {
@@ -137,7 +137,7 @@ public class SanctumQuiz : MonoBehaviour {
 
 
     public void continueGame() {
-        SceneManager.LoadScene("Game");
+        GameTracker.LoadScenes();
     }
 
     void setQnA() {
@@ -156,12 +156,10 @@ public class SanctumQuiz : MonoBehaviour {
         if (TutorialManager.tutorialActive) {
             quizQuestion = TutorialManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
             var qT = TutorialManager.questionGenerator.getIngredientQuestion(quizIngredient);
-            
         }
         else {
             quizQuestion = GameManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
             var qT = GameManager.questionGenerator.getIngredientQuestion(quizIngredient);
-            
         }
 
         if (quizQuestion != null) {
@@ -204,15 +202,15 @@ public class SanctumQuiz : MonoBehaviour {
     {
         if(!TutorialManager.tutorialActive)
         {
-            if (ScoreTracker.timeRemain > 0)
+            if (GameTracker.timeRemain > 0)
             {
-                ScoreTracker.timeRemain -= Time.deltaTime;
-                TimeSlider.fillAmount = ScoreTracker.timeRemain/90;
-                //timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+                GameTracker.timeRemain -= Time.deltaTime;
+                TimeSlider.fillAmount = GameTracker.timeRemain/90;
+                //timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
             }
             else
             {
-                SceneManager.LoadScene("Game");
+                GameTracker.LoadScenes();
             }
         }
         else
@@ -221,7 +219,7 @@ public class SanctumQuiz : MonoBehaviour {
             {
                 TutorialGameManager.time -= Time.deltaTime;
                 TimeSlider.fillAmount = TutorialGameManager.time/90;
-                //timeText.text = ": " + ScoreTracker.timeRemain.ToString("0") + " Sec";
+                //timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
             }
             else
             {
