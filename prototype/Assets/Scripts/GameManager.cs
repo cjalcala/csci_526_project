@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
             if (TimePowerUp)
             {
                 GameTracker.timeRemain -= Time.deltaTime / 2;
-                TimeSlider.fillAmount = GameTracker.timeRemain/90;
+                TimeSlider.fillAmount = GameTracker.timeRemain/GameTracker.originalTime;
                 timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec SLOW";
                 // timeText.color = Color.red;
 
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 GameTracker.timeRemain -= Time.deltaTime;
-                TimeSlider.fillAmount = GameTracker.timeRemain/90;
+                TimeSlider.fillAmount = GameTracker.timeRemain/GameTracker.originalTime;
                 timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
             }
 

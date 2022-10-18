@@ -50,7 +50,7 @@ public class GameTracker : MonoBehaviour
         }
         else if (level == 2)
         {
-            timeRemain = 90;
+            timeRemain = 110;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("Bread", new Ingredient("Bread", 1, 2));
