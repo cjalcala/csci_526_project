@@ -170,8 +170,7 @@ public class GameManager : MonoBehaviour
                     deathValues[1] = GameManager.inst.sessionNum.ToString();
                     deathValues[2] = "won";
                     deathValues[3] = "";
-                    deathValues[4] = (90 - GameTracker.timeRemain).ToString("0");
-                    //TODO: Get the value of 120 above dynamically
+                    deathValues[4] = (GameTracker.originalTime - GameTracker.timeRemain).ToString("0");
                     Send("deathTracker");
                     Send("coinTracker");
                 }
@@ -195,7 +194,7 @@ public class GameManager : MonoBehaviour
                 timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
             }
 
-            int forwardSeconds = 90 - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain)); //TODO: Get 120 dynamically
+            int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
             if ((forwardSeconds == GameTracker.timeFlag) && (GameTracker.sentAnalytics == false))
             {
                 GameTracker.coinString = GameTracker.coinString + GameTracker.coins.ToString() + ",";
@@ -218,8 +217,7 @@ public class GameManager : MonoBehaviour
                 deathValues[1] = GameManager.inst.sessionNum.ToString();
                 deathValues[2] = "lost";
                 deathValues[3] = "time";
-                deathValues[4] = 90.ToString();
-                //TODO: Get the value of 120 above dynamically
+                deathValues[4] = GameTracker.originalTime.ToString("0");
                 Send("deathTracker");
                 Send("coinTracker");
             }
@@ -386,14 +384,6 @@ public class GameManager : MonoBehaviour
             GameTracker.sentAnalytics = true;
             GameTracker.timeFlag = 1;
         }
-        
-        //form.AddField("entry.2014458776", sessionid);    
-        //form.AddField("entry.1123890612", deathtype); 
-        //form.AddField("entry.462759076", numcoins);
-        //form.AddField("entry.1893677595", sessionid);
-        //form.AddField("entry.811987276", deathtype);
-
-
 
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {

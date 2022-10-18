@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-
+using System;
 
 public class SanctumQuiz : MonoBehaviour {
     [SerializeField] private string URL;
@@ -207,6 +207,15 @@ public class SanctumQuiz : MonoBehaviour {
                 GameTracker.timeRemain -= Time.deltaTime;
                 TimeSlider.fillAmount = GameTracker.timeRemain/90;
                 //timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
+
+                int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
+
+                if ((forwardSeconds == GameTracker.timeFlag) && (GameTracker.sentAnalytics == false))
+                {
+                    GameTracker.coinString = GameTracker.coinString + GameTracker.coins.ToString() + ",";
+                    GameTracker.timeFlag++;
+                    //Debug.Log(GameTracker.coinString);
+                }
             }
             else
             {
