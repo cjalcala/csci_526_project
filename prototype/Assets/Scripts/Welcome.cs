@@ -20,14 +20,14 @@ public class Welcome : MonoBehaviour
     }
 
     public void Junior() {
-        GameTracker.level += 1;
+        GameTracker.level = 2;
         GameTracker.GameSetup();
         SceneManager.LoadScene("Goals");
     }
 
     public void Executive() {
         GameTracker.GameSetup();
-        SceneManager.LoadScene("Goals");
+        SceneManager.LoadScene("WelcomeScreen");
     }
 
     void Start()
