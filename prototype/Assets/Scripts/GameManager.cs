@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string URL;
     [SerializeField] private string URLforLevel;
     public string deathUrl = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfuhQ1nIxbyLGl3O0aXOQ1RGkX3M_9UU1UV1WJy6daNP6AEpw/formResponse";
-    public string[] deathFields = { "entry.2014458776", "entry.1123890612", "entry.462759076", "entry.1893677595", "entry.811987276" };
-    public static int deathFieldsCount = 5;
-    public string[] deathValues = new string[deathFieldsCount];
+    public string[] deathFields = new string[6] { "entry.2014458776", "entry.1123890612", "entry.462759076", "entry.1893677595", "entry.811987276", "entry.586016039" };
+    public static int deathFieldsCount = 6;
+    public string[] deathValues = new string[6];
     public bool hasHitObstacle = false;
 
     public string coinUrl = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfNOKGPFcJHBhW3aqq3rpqn-OloFrCRbjF6k28ogArTugkc1g/formResponse";
@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
                     deathValues[2] = "won";
                     deathValues[3] = "";
                     deathValues[4] = (GameTracker.originalTime - GameTracker.timeRemain).ToString("0");
+                    deathValues[5] = GameTracker.level.ToString();
                     Send("deathTracker");
                     Send("coinTracker");
                 }
@@ -218,6 +219,7 @@ public class GameManager : MonoBehaviour
                 deathValues[2] = "lost";
                 deathValues[3] = "time";
                 deathValues[4] = GameTracker.originalTime.ToString("0");
+                deathValues[5] = GameTracker.level.ToString();
                 Send("deathTracker");
                 Send("coinTracker");
             }
@@ -371,6 +373,9 @@ public class GameManager : MonoBehaviour
             URL = deathUrl;
             for (int i = 0; i < deathFieldsCount; i++)
             {
+                Debug.Log("In DeathTracker " + i.ToString() + " " + deathFieldsCount.ToString());
+                Debug.Log(deathFields[i]);
+                Debug.Log(deathValues[i]);
                 form.AddField(deathFields[i], deathValues[i]);
             }
         }

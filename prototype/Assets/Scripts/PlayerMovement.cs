@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.deathValues[2] = "lost";
             GameManager.inst.deathValues[3] = tp;
             GameManager.inst.deathValues[4] = (GameTracker.originalTime - GameTracker.timeRemain).ToString("0");
+            //GameManager.inst.deathValues[5] = GameTracker.level.ToString();
             GameManager.inst.Send("deathTracker");
             GameManager.inst.Send("coinTracker");
         }
