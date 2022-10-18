@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public Text[] goalText;
     public Text[] costText;
     public DateTime sessionid;
-    public int level = 1;
+    //public int level = 1;
     public int level_flag = 0;
     public long sessionNum;
     public DateTime timestamp;
@@ -298,7 +298,7 @@ public class GameManager : MonoBehaviour
 
     public void NewSend(String level_complete)
     {
-        StartCoroutine(Post(level.ToString(), level_complete.ToString()));
+        StartCoroutine(Post(GameTracker.level.ToString(), level_complete.ToString()));
 
     }
 
