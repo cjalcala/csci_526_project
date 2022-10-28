@@ -35,6 +35,7 @@ public class WinningScreen : MonoBehaviour
     {
         gameManager.won = false;
         GameTracker.level += 1;
+        GameTracker.health=5;
         GameTracker.GameSetup();
         if (GameTracker.level == 1)
             SceneManager.LoadScene("Game");
@@ -46,6 +47,7 @@ public class WinningScreen : MonoBehaviour
     {
         gameManager.won = false;
         GameTracker.GameSetup();
+        GameTracker.health=5;
         if (GameTracker.level == 1)
             SceneManager.LoadScene("Game");
         else if (GameTracker.level == 2)

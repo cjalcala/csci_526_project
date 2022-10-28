@@ -33,5 +33,6 @@ public class Welcome : MonoBehaviour
     void Start()
     { 
         immunity=false;
+        GameTracker.health=5;
     }
 }

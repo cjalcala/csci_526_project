@@ -19,6 +19,7 @@ public class GameOverScreen : MonoBehaviour
     {
         setupFunction();
         Welcome.immunity = false;
+        GameTracker.health=5;
         GameTracker.LoadScenes();
         if (AudioListener.pause == true){
             AudioListener.pause = true;

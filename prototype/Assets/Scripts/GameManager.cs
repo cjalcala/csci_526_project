@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     public float TimePowerUpStart = 0;
 
     public Image TimeSlider;
+    public Image[] hearts;
 
     // public Text timeOnText;
     // public Text timeOffText;
@@ -287,6 +288,16 @@ public class GameManager : MonoBehaviour
                 hammerOffTexttimeDisplay -= Time.deltaTime;
                 // hammerOffTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
             }
+        }
+
+
+        if(GameTracker.health<5)
+        {
+            for(int h=GameTracker.health;h<=4;h++)
+            {
+                hearts[h].enabled=false;
+            }
+            
         }
 
     }

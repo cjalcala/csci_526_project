@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
    public void Restart() {
     Time.timeScale = 1f;
     GameIsPaused = false;
+    GameTracker.health=5;
     GameTracker.GameSetup();
     Welcome.immunity = false;
     GameTracker.LoadScenes();

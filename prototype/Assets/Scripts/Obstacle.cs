@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public int flag =0;
+    bool hit = false;
 
 
     PlayerMovement playerMovement;
@@ -17,18 +18,40 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player" && !Welcome.immunity)
+        if(collision.gameObject.name == "Player" && !Welcome.immunity && !hit)
         {
-            flag++;
-            if (flag == 1){
-                playerMovement.Die("obstacle");
+            Debug.Log(GameTracker.health);
+            hit=true;
+            if(GameTracker.health!=0)
+            {
+                GameTracker.health--;
             }
+            else
+            {
+                flag++;
+                if (flag == 1)
+                {
+                    playerMovement.Die("obstacle");
+                }
+            }
+            
             // Kill the player
             
         }
         else
         {
-            Destroy(gameObject);
+            if(!hit)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.name == "Player" && !Welcome.immunity && hit)
+        {
+            hit=false;
         }
     }
 

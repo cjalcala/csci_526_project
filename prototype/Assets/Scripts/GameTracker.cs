@@ -16,6 +16,7 @@ public class GameTracker : MonoBehaviour
     public static bool sentAnalytics = false;
     public static int level = 1;
     public static QuestionGenerator questionGenerator;
+    public static int health=5;
 
     public static void increaseIngredient(string name)
     {
