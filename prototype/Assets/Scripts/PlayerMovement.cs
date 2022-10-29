@@ -28,10 +28,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    
 
-    
-    
+
+
+
 
     public int flag = 0;
 
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if (!alive) return;
         if (!stayStill)
         {
+            rb.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f), transform.position.y, transform.position.z);
             Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
             Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
             rb.MovePosition(rb.position + forwardMove + horizontalMove);
@@ -61,7 +62,6 @@ public class PlayerMovement : MonoBehaviour
             flag++;
             Die("fall");
         }
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f), transform.position.y, transform.position.z);
     }
 
     public void Die(string tp)
