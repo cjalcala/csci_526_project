@@ -27,6 +27,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(TutorialGameManager.time < 89)
         {
             for(int i=0;i<popUps.Length; i++)
@@ -49,9 +50,9 @@ public class TutorialManager : MonoBehaviour
                     {
                         TutorialGameManager.horizontalArrows = false;
                         Time.timeScale = 1f;
-                        tutorialplayerMovement.speed = 10;
-                        tutorialplayerMovement.horizontalMultiplier = 1.25f;
-                        tutorialplayerMovement.jumpForce = 600f;
+                        tutorialplayerMovement.speed = 8;
+                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
+                        tutorialplayerMovement.jumpForce = 750f;
                         popUpIndex = 4;
                     }
                     else
@@ -80,9 +81,9 @@ public class TutorialManager : MonoBehaviour
                     {
                         TutorialGameManager.spaceBar = false;
                         Time.timeScale = 1f;
-                        tutorialplayerMovement.speed = 10;
-                        tutorialplayerMovement.horizontalMultiplier = 1.25f;
-                        tutorialplayerMovement.jumpForce = 600f;
+                        tutorialplayerMovement.speed = 8;
+                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
+                        tutorialplayerMovement.jumpForce = 750f;
                         popUpIndex=5;
                     }
                     else
