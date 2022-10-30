@@ -132,6 +132,10 @@ public class SanctumQuiz : MonoBehaviour {
         //SceneManager.LoadScene("Sanctum");
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
+        if(TutorialManager.tutorialActive)
+        {
+            coin.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+        }
         Button[] buttons = BPanel.GetComponentsInChildren<Button>();
         buttons[1].gameObject.SetActive(false);
     }
@@ -158,15 +162,18 @@ public class SanctumQuiz : MonoBehaviour {
             quizQuestion = TutorialManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
             var qT = TutorialManager.questionGenerator.getIngredientQuestion(quizIngredient);
         }
-        else {
+        else
+        {
             quizQuestion = GameTracker.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
             var qT = GameTracker.questionGenerator.getIngredientQuestion(quizIngredient);
         }
 
-        if (quizQuestion != null) {
+        if (quizQuestion != null) 
+        {
             setQnA();
         }
-        else {
+        else 
+        {
             Debug.Log("Out of questions");
             gameOver();
         }

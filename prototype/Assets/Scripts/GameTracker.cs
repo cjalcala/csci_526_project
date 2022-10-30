@@ -8,7 +8,7 @@ public class GameTracker : MonoBehaviour
     public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
     public static int coins;
-    public static float timeRemain, originalTime;
+    public static float timeRemain, originalTime, tutorialOriginalTime;
     public static float hammerStartTime;
     public static int hammerFlag=0;
     public static string coinString = "";
@@ -62,6 +62,7 @@ public class GameTracker : MonoBehaviour
 
         coins = 0;
         originalTime = GameTracker.timeRemain;
+        //tutorialOriginalTime = TutorialGameManager.time;
         questionGenerator = new QuestionGenerator();
     }
 
