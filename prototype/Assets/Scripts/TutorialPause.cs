@@ -15,7 +15,14 @@ public class TutorialPause : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {  
+        if (Input.GetKeyDown(KeyCode.P)) {
+            if(TutorialGameManager.isPaused) {
+                resumeTutorial();
+            } else {
+                tutorialpauseButton();
+            }
+        }
         
     }
 
@@ -34,9 +41,9 @@ public class TutorialPause : MonoBehaviour
         PausePanel.SetActive(false);   
         TutorialGameManager.isPaused = false;
         Time.timeScale = 1f;
-        tutorialplayerMovement.speed = 10;
-        tutorialplayerMovement.horizontalMultiplier = 1.25f;
-        tutorialplayerMovement.jumpForce = 600f;
+        tutorialplayerMovement.speed = 8;
+        tutorialplayerMovement.horizontalMultiplier = 0.8f;
+        tutorialplayerMovement.jumpForce = 750f;
     }
 
     public void restartTutorial()

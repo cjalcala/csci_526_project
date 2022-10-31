@@ -3099,10 +3099,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ecb79a5aa934f1891f6db3ab496278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   rb: {fileID: 1283654510}
-  horizontalMultiplier: 1.25
-  jumpForce: 640
+  horizontalMultiplier: 0.8
+  jumpForce: 750
   groundMask:
     serializedVersion: 2
     m_Bits: 64

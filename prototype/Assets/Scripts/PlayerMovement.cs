@@ -5,10 +5,10 @@ public class PlayerMovement : MonoBehaviour
 {
 
     bool alive = true;
-    public float speed = 10;
+    public float speed = 8;
     public Rigidbody rb;
-    public float horizontalMultiplier = 0.5f;
-    public float jumpForce = 3000f;
+    public float horizontalMultiplier = 0.8f;
+    public float jumpForce = 750f;
     public LayerMask groundMask;
 
     float horizontalInput;
