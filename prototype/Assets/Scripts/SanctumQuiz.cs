@@ -29,6 +29,9 @@ public class SanctumQuiz : MonoBehaviour {
 
     public QuizQA quizQuestion;
     string quizIngredient;// Change to index later
+
+    public GameObject LoseScreen;
+
     private void Start() {
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
@@ -103,7 +106,8 @@ public class SanctumQuiz : MonoBehaviour {
 
         if (TutorialManager.tutorialActive) {
             if (TutorialGameManager.tutCoinCnt < 10) {
-                Invoke("restartTutorial", 2.0f);
+                //Invoke("restartTutorial", 2.0f);
+                LoseScreen.SetActive(true);
             }
             else {
                 Invoke("reloadSanctum", 1.5f);
@@ -123,7 +127,7 @@ public class SanctumQuiz : MonoBehaviour {
         }
     }
 
-    void restartTutorial() {
+    public void restartTutorial() {
         SceneManager.LoadScene("TutorialGame");
     }
 
@@ -243,5 +247,12 @@ public class SanctumQuiz : MonoBehaviour {
                 SceneManager.LoadScene("TutorialGame");
             }
         }
+    }
+
+
+    public void exitTutorial()
+    {   
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("WelcomeScreen");
     }
 }
