@@ -3101,10 +3101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   rb: {fileID: 1283654510}
-
   horizontalMultiplier: 0.8
   jumpForce: 750
-
   groundMask:
     serializedVersion: 2
     m_Bits: 64
