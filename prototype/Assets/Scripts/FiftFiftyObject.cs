@@ -16,7 +16,7 @@ public class FiftFiftyObject : MonoBehaviour
         }
         // add to tracker
         GameManager.inst.IncrementFifityFiftyCount();
-
+        GameTracker.getFiftyFiftyPowerUp = true;
         Destroy(gameObject);
     }
     // Start is called before the first frame update
