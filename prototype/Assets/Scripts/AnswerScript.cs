@@ -8,9 +8,11 @@ public class AnswerScript : MonoBehaviour
     public bool isCorrect = false;
     public SanctumQuiz sanctumQuiz;
 
+    public int correctIdx;
+
     public void Answer()
     {
-        if(isCorrect)
+        if (isCorrect)
         {
             GetComponent<Button>().image.color = Color.green;
             isCorrect = false;
@@ -20,6 +22,10 @@ public class AnswerScript : MonoBehaviour
         else
         {
             GetComponent<Button>().image.color = Color.red;
+            if (GameTracker.coins < 10)
+            {
+                sanctumQuiz.options[correctIdx].GetComponent<Button>().image.color = Color.green;
+            }
             //Debug.Log("Incorrect Answer");
             sanctumQuiz.wrong();
         }
