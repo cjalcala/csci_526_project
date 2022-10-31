@@ -161,6 +161,7 @@ MonoBehaviour:
   sanctumEntrancePrefab: {fileID: 3590685985430180073, guid: 9e506d499dac29541b73a60fe35616c7, type: 3}
   HammerPrefab: {fileID: 7016171195678512037, guid: 7edc688fc88624897ae647174630d1c6, type: 3}
   TimePowerUpPrefab: {fileID: 100002, guid: 595cf544943e29a4d9a7b813e4218a3c, type: 3}
+  fiftyFiftyPowerUpPrefab: {fileID: 1486258053443316, guid: c74c937178e00074dbe63cd6f73a9764, type: 3}
 --- !u!1 &7421840275398925066
 GameObject:
   m_ObjectHideFlags: 0

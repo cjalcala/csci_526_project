@@ -17,7 +17,7 @@ public class GameTracker : MonoBehaviour
     public static int level = 1;
     public static QuestionGenerator questionGenerator;
     public static int health=5;
-
+    public static int fiftyFiftyCount = 0;
     public static void increaseIngredient(string name)
     {
         GameTracker.ingredientsList[name].currentCount++;
@@ -73,5 +73,6 @@ public class GameTracker : MonoBehaviour
         else if (level == 2)
             SceneManager.LoadScene("Level2");
     }
-        
+
+    
 }

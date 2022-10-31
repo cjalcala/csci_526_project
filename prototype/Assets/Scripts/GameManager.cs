@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public int coins;
     public Text coinText;
     public Text timeText;
+    public Text fiftyFiftyText;
     //public Text goalText;
     public GameOverScreen gameOverScreen;
     public WinningScreen winningScreen;
@@ -71,6 +72,18 @@ public class GameManager : MonoBehaviour
         GameTracker.coins++;
         coins = GameTracker.coins;
         coinText.text = ": " + GameTracker.coins;
+    }
+    public void IncrementFifityFiftyCount() {
+        //coin_collected_sound.Play();
+        GameTracker.fiftyFiftyCount++;
+
+        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+    }
+    public void decrementFifityFiftyCount() {
+        //coin_collected_sound.Play();
+        GameTracker.fiftyFiftyCount--;
+
+        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
     }
 
     public void increaseIngredient(string name)

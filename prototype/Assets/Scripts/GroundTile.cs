@@ -10,6 +10,7 @@ public class GroundTile : MonoBehaviour
     public GameObject sanctumEntrancePrefab;
     public GameObject HammerPrefab;
     public GameObject TimePowerUpPrefab;
+    public GameObject fiftyFiftyPowerUpPrefab;
 
     // Start is called before the first frame update
     private void Start()
@@ -48,6 +49,11 @@ public class GroundTile : MonoBehaviour
             GameObject temp = Instantiate(coinPrefab, transform);
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         }
+    }
+    public void SpawnFiftyFifty()
+     {    
+     GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
+     temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());   
     }
 
     public void SpawnHammer()
