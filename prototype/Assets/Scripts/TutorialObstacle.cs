@@ -15,11 +15,14 @@ public class TutorialObstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player")
+        if(collision.gameObject.name == "Player" && !Welcome.immunity)
         {
  
             tutorialplayerMovement.Die();
 
+        }
+        else {
+            Destroy(gameObject);
         }
     }
 

@@ -30,8 +30,12 @@ public class SanctumQuiz : MonoBehaviour
 
     public QuizQA quizQuestion;
     string quizIngredient;// Change to index later
-    private void Start()
-    {
+
+
+    public GameObject LoseScreen;
+
+    private void Start() {
+
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
         //coin.text = "Coins : " + numCoins.ToString();
@@ -111,11 +115,12 @@ public class SanctumQuiz : MonoBehaviour
             buttons[b].enabled = false;
         }
 
-        if (TutorialManager.tutorialActive)
-        {
-            if (TutorialGameManager.tutCoinCnt < 10)
-            {
-                Invoke("restartTutorial", 2.0f);
+
+        if (TutorialManager.tutorialActive) {
+            if (TutorialGameManager.tutCoinCnt < 10) {
+                //Invoke("restartTutorial", 2.0f);
+                LoseScreen.SetActive(true);
+
             }
             else
             {
@@ -139,8 +144,9 @@ public class SanctumQuiz : MonoBehaviour
         }
     }
 
-    void restartTutorial()
-    {
+
+    public void restartTutorial() {
+
         SceneManager.LoadScene("TutorialGame");
     }
 
@@ -150,6 +156,10 @@ public class SanctumQuiz : MonoBehaviour
         //SceneManager.LoadScene("Sanctum");
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
+        if(TutorialManager.tutorialActive)
+        {
+            coin.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+        }
         Button[] buttons = BPanel.GetComponentsInChildren<Button>();
         buttons[1].gameObject.SetActive(false);
     }
@@ -189,11 +199,13 @@ public class SanctumQuiz : MonoBehaviour
             var qT = GameTracker.questionGenerator.getIngredientQuestion(quizIngredient);
         }
 
-        if (quizQuestion != null)
+
+        if (quizQuestion != null) 
         {
             setQnA();
         }
-        else
+        else 
+
         {
             Debug.Log("Out of questions");
             gameOver();
@@ -269,5 +281,12 @@ public class SanctumQuiz : MonoBehaviour
                 SceneManager.LoadScene("TutorialGame");
             }
         }
+    }
+
+
+    public void exitTutorial()
+    {   
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("WelcomeScreen");
     }
 }
