@@ -11,7 +11,14 @@ public class PauseMenu : MonoBehaviour
    public static bool GameIsPaused = false;
    public GameObject Obj;
    public static int audio_flag = 0;
+   public static PauseMenu pm;
 
+
+    private void Awake() {
+        pm = this;
+    }
+   
+   
    public void Pause() {
     PauseMenuPanel.SetActive(true);
     Time.timeScale = 0f;

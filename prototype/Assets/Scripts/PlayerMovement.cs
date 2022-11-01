@@ -5,10 +5,10 @@ public class PlayerMovement : MonoBehaviour
 {
 
     bool alive = true;
-    public float speed = 10;
+    public float speed = 8;
     public Rigidbody rb;
-    public float horizontalMultiplier = 0.5f;
-    public float jumpForce = 3000f;
+    public float horizontalMultiplier = 0.8f;
+    public float jumpForce = 750f;
     public LayerMask groundMask;
 
     float horizontalInput;
@@ -28,10 +28,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    
 
-    
-    
+
+
+
 
     public int flag = 0;
 
@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if (!alive) return;
         if (!stayStill)
         {
+            rb.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f), transform.position.y, transform.position.z);
             Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
             Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
             rb.MovePosition(rb.position + forwardMove + horizontalMove);
@@ -61,7 +62,6 @@ public class PlayerMovement : MonoBehaviour
             flag++;
             Die("fall");
         }
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f), transform.position.y, transform.position.z);
     }
 
     public void Die(string tp)

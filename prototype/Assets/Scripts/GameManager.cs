@@ -149,6 +149,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            if (Input.GetKeyDown(KeyCode.P)) {
+                if (PauseMenu.GameIsPaused) {
+                    PauseMenu.pm.Resume();
+                } else {
+                    PauseMenu.pm.Pause();
+                }
+            }
+        }
 
         if (TimePowerUp && Math.Abs(GameTracker.timeRemain - TimePowerUpStart) >= 2.5)
         {
