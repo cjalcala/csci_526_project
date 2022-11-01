@@ -11,7 +11,7 @@ public class FiftFiftyBtn : MonoBehaviour
     public void fiftyFifty() {
         eliminateWrongAnswers(2);
         btn.gameObject.SetActive(false);
-        
+        GameTracker.fiftyFiftyCount--;
     }
 
     public void eliminateWrongAnswers(int countToEliminate) {
