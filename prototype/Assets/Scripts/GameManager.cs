@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public Text hammerOffText;
     public float hammerOffTexttimeDisplay = 1.5f;
     public int hflag = 0;
+    
     public Text fiftyFiftyPopUpText;
     public float fiftyFiftyTexttimeDisplay = 1.5f;
 
@@ -135,6 +136,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         coinText.text = ": " + GameTracker.coins;
+        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         goalProgress();
         Cost();
         won = false;
