@@ -10,6 +10,7 @@ public class GameTracker : MonoBehaviour
     public static int coins;
     public static float timeRemain, originalTime, tutorialOriginalTime;
     public static float hammerStartTime;
+   
     public static int hammerFlag=0;
     public static string coinString = "";
     public static int timeFlag = 1;

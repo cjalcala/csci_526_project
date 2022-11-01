@@ -58,6 +58,10 @@ public class GameManager : MonoBehaviour
     public Image TimeSlider;
     public Image[] hearts;
 
+    public Text collectedIngredient; 
+    public float collectedIngredienttimeDisplay = 1.5f;
+
+
     // public Text timeOnText;
     // public Text timeOffText;
 
@@ -270,6 +274,45 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        // if (SanctumQuiz.collected==true)
+        // {
+        //     Debug.Log("Collected");
+        //     Debug.Log(SanctumQuiz.collected);
+
+        
+
+
+
+        //     collectedIngredient.text = "You have sucessfully collected ingredient"; //VEdika
+        //     collectedIngredienttimeDisplay = 1.5f;
+            
+        //     SanctumQuiz.collected=false;
+
+
+        // }
+
+
+
+         if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay >= 0)
+        {
+            
+
+            collectedIngredient.color = Color.black;
+            collectedIngredient.text = "You have sucessfully collected " + SanctumQuiz.quizIngredient;
+            collectedIngredienttimeDisplay -= (Time.deltaTime/2);
+           // SanctumQuiz.collected = false;
+            // TimePowerUp ?  timeDisplay -= Time.deltaTime/2 : timeDisplay -= Time.deltaTime/2;
+        }
+
+        if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay < 0)
+        {
+            collectedIngredient.text ="";
+            SanctumQuiz.collected = false;
+            collectedIngredienttimeDisplay = 1.5f;
+        }
+
+
+
 
         if (GameTracker.hammerFlag == 1)
         {

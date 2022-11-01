@@ -29,7 +29,9 @@ public class SanctumQuiz : MonoBehaviour
     public Text timeText;
 
     public QuizQA quizQuestion;
-    string quizIngredient;// Change to index later
+    public static string quizIngredient;// Change to index later
+    public static bool collected = false;
+
 
 
     public GameObject LoseScreen;
@@ -97,7 +99,9 @@ public class SanctumQuiz : MonoBehaviour
         else
         {
             GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
+            collected=true;
             GameTracker.LoadScenes();
+           
         }
     }
 
