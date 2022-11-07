@@ -8,6 +8,13 @@ public class GameTracker : MonoBehaviour
     public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
     public static int coins;
+
+    // ingredient along the path
+    public static int cucumber;
+    public static int lemon;
+    public static int yogurt;
+
+
     public static float timeRemain, originalTime, tutorialOriginalTime;
     public static float hammerStartTime;
     public static int hammerFlag=0;

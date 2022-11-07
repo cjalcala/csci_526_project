@@ -7,6 +7,7 @@ public class GroundSpawner : MonoBehaviour
     public GameObject groundTile;
     public GameObject terrainPrefab;
     public SanctumEntrance entrance;
+    
     Vector3 nextSpawnPoint;
     public int hammerSpawnTime;
     int cnt = 0;
@@ -22,11 +23,25 @@ public class GroundSpawner : MonoBehaviour
         if (spawnItems)
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
-            temp.GetComponent<GroundTile>().SpawnCoins();
+            // temp.GetComponent<GroundTile>().SpawnCoins();
+
+
             int rand = Random.Range(0,50);
             if (rand == 1) {
                 temp.GetComponent<GroundTile>().SpawnFiftyFifty();
             }
+            // randomly generate ingredients along the path
+            int rand_ingredient = Random.Range(0, 10);
+            if (rand_ingredient == 1) {
+                temp.GetComponent<GroundTile>().SpawnCucumber();
+            }
+            if (rand_ingredient == 2) {
+                temp.GetComponent<GroundTile>().SpawnLemon();
+            }
+            if (rand_ingredient == 3) {
+                temp.GetComponent<GroundTile>().SpawnYogurt();
+            }
+
             
             if (SpawnEntrance() && spawnTile)
             {
@@ -38,11 +53,14 @@ public class GroundSpawner : MonoBehaviour
             temp.GetComponent<GroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
+
         if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }
     }
+
+    
 
     public bool SpawnEntrance()
     {

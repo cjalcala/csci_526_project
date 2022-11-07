@@ -26,6 +26,14 @@ public class GameManager : MonoBehaviour
     public int coins;
     public Text coinText;
     public Text timeText;
+    // ingredients along the path
+    public int cucumber;
+    public Text cucumberText;
+    public int lemon;
+    public Text lemonText;
+    public int yogurt;
+    public Text yogurtText;
+
     public Text fiftyFiftyText;
     //public Text goalText;
     public GameOverScreen gameOverScreen;
@@ -76,6 +84,28 @@ public class GameManager : MonoBehaviour
         coins = GameTracker.coins;
         coinText.text = ": " + GameTracker.coins;
     }
+    // Increment Ingredient along the path
+    public void IncrementCucumberCount() 
+    {
+        GameTracker.cucumber++;
+        cucumber = GameTracker.cucumber;
+        cucumberText.text = ": " + GameTracker.cucumber;
+    }
+
+    public void IncrementLemonCount() 
+    {
+        GameTracker.lemon++;
+        lemon = GameTracker.lemon;
+        lemonText.text = ": " + GameTracker.lemon;
+    }
+    public void IncrementYogurtCount()
+    {
+        GameTracker.yogurt++;
+        yogurt = GameTracker.yogurt;
+        yogurtText.text = ": " + GameTracker.yogurt;
+    }
+
+    
     public void IncrementFifityFiftyCount() {
         //coin_collected_sound.Play();
         GameTracker.fiftyFiftyCount++;

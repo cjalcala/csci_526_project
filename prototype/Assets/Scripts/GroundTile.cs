@@ -12,10 +12,15 @@ public class GroundTile : MonoBehaviour
     public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
 
+    public GameObject CucumberPrefab;
+    public GameObject LemonPrefab;
+    public GameObject YogurtPrefab;
+
     // Start is called before the first frame update
     private void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
+        
 
     }
 
@@ -41,15 +46,35 @@ public class GroundTile : MonoBehaviour
         Instantiate(obstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
     }
 
-    public void SpawnCoins()
+    // public void SpawnCoins()
+    // {
+    //     int coinsToSpawn = 2;
+    //     for (int i = 0; i < coinsToSpawn; i++)
+    //     {
+    //         GameObject temp = Instantiate(coinPrefab, transform);
+    //         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    //     }
+    // }
+
+    // spwan ingredients along the path
+    public void SpawnCucumber()
     {
-        int coinsToSpawn = 2;
-        for (int i = 0; i < coinsToSpawn; i++)
-        {
-            GameObject temp = Instantiate(coinPrefab, transform);
-            temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
-        }
+        GameObject temp = Instantiate(CucumberPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+
     }
+    public void SpawnLemon() 
+    {
+        GameObject temp = Instantiate(LemonPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+    public void SpawnYogurt() 
+    {
+        GameObject temp = Instantiate(YogurtPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+
     public void SpawnFiftyFifty()
      {    
      GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
