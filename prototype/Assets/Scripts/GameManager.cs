@@ -82,6 +82,11 @@ public class GameManager : MonoBehaviour
 
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
     }
+    public void IncrementHintCount() {
+        //coin_collected_sound.Play();
+        GameTracker.hintCount++;
+
+    }
     public void increaseIngredient(string name)
     {
         GameTracker.ingredientsList[name].currentCount++;

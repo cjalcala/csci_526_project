@@ -11,7 +11,7 @@ public class GroundTile : MonoBehaviour
     public GameObject HammerPrefab;
     public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
-
+    public GameObject hintPrefab;
     // Start is called before the first frame update
     private void Start()
     {
@@ -81,6 +81,10 @@ public class GroundTile : MonoBehaviour
         }
         Instantiate(sanctumEntrancePrefab, position, Quaternion.identity, transform);
         //temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+    public void SpawnHints() {
+        GameObject temp = Instantiate(hintPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
     Vector3 GetRandomPointInCollider(Collider collider)

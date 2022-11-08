@@ -23,11 +23,16 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             temp.GetComponent<GroundTile>().SpawnCoins();
+            temp.GetComponent<GroundTile>().SpawnHints();
             int rand = Random.Range(0,50);
             if (rand == 1) {
                 temp.GetComponent<GroundTile>().SpawnFiftyFifty();
             }
-            
+            rand = Random.Range(0, 50);
+            if (rand == 1) {
+                //temp.GetComponent<GroundTile>().SpawnHints();
+            }
+
             if (SpawnEntrance() && spawnTile)
             {
                 temp.GetComponent<GroundTile>().SpawnEntrance();

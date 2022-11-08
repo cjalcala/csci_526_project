@@ -21,6 +21,9 @@ public class GameTracker : MonoBehaviour
     public static int fiftyFiftyPopUpFlag = 0;
     public static int fiftyFiftyCount = 0;
     public static float fiftyFiftyPopUpStartTime;
+    public static bool getHintPowerUp = false;
+    public static int hintCount = 0;
+    public static float hintPopUpStartTime;
     public static void increaseIngredient(string name)
     {
         GameTracker.ingredientsList[name].currentCount++;
