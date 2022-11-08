@@ -100,7 +100,7 @@ public class SanctumQuiz : MonoBehaviour
         }
         else
         {
-            GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
+            //GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
             GameTracker.LoadScenes();
         }
     }

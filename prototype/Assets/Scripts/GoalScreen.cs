@@ -11,7 +11,10 @@ public class GoalScreen : MonoBehaviour
     public Sprite[] spritesList;
     public Image[] ingredientIcon;
     public Image[] coinIcon;
-    
+    public Text recipe;
+    public Text goalAmt;
+    public Text recipeEarning;
+    public Image recipeIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -23,22 +26,32 @@ public class GoalScreen : MonoBehaviour
         
         foreach (KeyValuePair<string, Ingredient> pair in GameTracker.ingredientsList)
         {
-            ingredientText[index].text = "x" + pair.Value.requiredCount;
+            //ingredientText[index].text = "x" + pair.Value.requiredCount;
             costText[index].text = pair.Value.cost.ToString();
             ingredientIcon[index].sprite = Resources.Load<Sprite>("Sprites/" + pair.Key.ToString());
 
-            ingredientText[index].gameObject.SetActive(true);
+            //ingredientText[index].gameObject.SetActive(true);
             costText[index].gameObject.SetActive(true);
             ingredientIcon[index].gameObject.SetActive(true);
             coinIcon[index].gameObject.SetActive(true);
             index++;
         }
+
+        recipe.text = GameTracker.recipe.name;
+        goalAmt.text = GameTracker.goalAmt.ToString();
+        recipeEarning.text = GameTracker.recipe.earning.ToString();
+        recipeIcon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.recipe.name);
+
+        recipe.gameObject.SetActive(true);
+        goalAmt.gameObject.SetActive(true);
+        recipeEarning.gameObject.SetActive(true);
+        recipeIcon.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Setup(float timeScore)
