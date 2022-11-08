@@ -77,10 +77,10 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
-    public void changeCoinAmount(int num)
+    public void IncrementCoinCount()
     {
         coin_collected_sound.Play();
-        GameTracker.coins += num;
+        GameTracker.coins++;
         coins = GameTracker.coins;
         coinText.text = ": " + GameTracker.coins;
     }
@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
         GameTracker.cucumber++;
         cucumber = GameTracker.cucumber;
         cucumberText.text = ": " + GameTracker.cucumber;
-        changeCoinAmount(-2);
     }
 
     public void IncrementLemonCount() 
@@ -98,22 +97,15 @@ public class GameManager : MonoBehaviour
         GameTracker.lemon++;
         lemon = GameTracker.lemon;
         lemonText.text = ": " + GameTracker.lemon;
-        changeCoinAmount(-2);
     }
     public void IncrementYogurtCount()
     {
         GameTracker.yogurt++;
         yogurt = GameTracker.yogurt;
         yogurtText.text = ": " + GameTracker.yogurt;
-        changeCoinAmount(-2);
     }
 
-    public bool CheckIngredientSet()
-    {
-        bool fullSet = true;
-        return GameTracker.cucumber >= 1 && GameTracker.lemon >= 1 && GameTracker.yogurt >= 1;
-    }
-
+    
     public void IncrementFifityFiftyCount() {
         //coin_collected_sound.Play();
         GameTracker.fiftyFiftyCount++;
@@ -175,12 +167,8 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
-        //goalProgress();
-        //Cost();
-        cucumberText.text = ": " + GameTracker.cucumber;
-        lemonText.text = ": " + GameTracker.lemon;
-        yogurtText.text = ": " + GameTracker.yogurt;
-
+        goalProgress();
+        Cost();
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;

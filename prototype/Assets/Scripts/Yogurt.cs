@@ -15,11 +15,8 @@ public class Yogurt : MonoBehaviour
         {
             return;
         }
-        if (GameTracker.coins >= 2)
-        {
-            GameManager.inst.IncrementYogurtCount();
-            Destroy(gameObject);
-        }
+        GameManager.inst.IncrementYogurtCount();
+        Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start()

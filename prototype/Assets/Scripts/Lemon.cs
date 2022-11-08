@@ -15,11 +15,8 @@ public class Lemon : MonoBehaviour
         {
             return;
         }
-        if (GameTracker.coins >= 2)
-        {
-            GameManager.inst.IncrementLemonCount();
-            Destroy(gameObject);
-        }
+        GameManager.inst.IncrementLemonCount();
+        Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start()
