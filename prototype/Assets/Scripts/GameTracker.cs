@@ -8,6 +8,8 @@ public class GameTracker : MonoBehaviour
     public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
     public static int coins = 10;
+    public static Recipe recipe;
+    public static int goalAmt;
 
     // ingredient along the path
     public static int cucumber;
@@ -57,6 +59,10 @@ public class GameTracker : MonoBehaviour
             ingredientsList.Add("cucumber", new Ingredient("Cucumber", 1, 2));
             ingredientsList.Add("lemon", new Ingredient("Lemon", 1, 2));
             ingredientsList.Add("yogurt", new Ingredient("Yogurt", 1, 2));
+            recipe = new Recipe("Tzatziki Sauce", 15);
+
+            goalAmt = 15;
+
         }
         else if (level == 2)
         {
@@ -68,6 +74,9 @@ public class GameTracker : MonoBehaviour
             ingredientsList.Add("Mushroom", new Ingredient("Mushroom", 1, 2));
             ingredientsList.Add("Tomato", new Ingredient("Tomato", 1, 2));
             ingredientsList.Add("Pepper", new Ingredient("Pepper", 1, 2));
+            recipe = new Recipe("Tomato Basil Soup", 30);
+
+            goalAmt = 30;
         }
 
         coins = 10;
