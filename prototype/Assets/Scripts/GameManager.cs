@@ -177,6 +177,10 @@ public class GameManager : MonoBehaviour
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         //goalProgress();
         //Cost();
+        cucumberText.text = ": " + GameTracker.cucumber;
+        lemonText.text = ": " + GameTracker.lemon;
+        yogurtText.text = ": " + GameTracker.yogurt;
+
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;

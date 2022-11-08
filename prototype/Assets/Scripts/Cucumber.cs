@@ -15,8 +15,11 @@ public class Cucumber : MonoBehaviour
         {
             return;
         }
-        GameManager.inst.IncrementCucumberCount();
-        Destroy(gameObject);
+        if (GameTracker.coins >= 2)
+        {
+            GameManager.inst.IncrementCucumberCount();
+            Destroy(gameObject);
+        }
     }
     
     // Start is called before the first frame update
