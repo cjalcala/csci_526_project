@@ -17,12 +17,15 @@ public class GameTracker : MonoBehaviour
     public static int level = 1;
     public static QuestionGenerator questionGenerator;
     public static int health=5;
+
     public static bool getFiftyFiftyPowerUp = false;
     public static int fiftyFiftyPopUpFlag = 0;
     public static int fiftyFiftyCount = 0;
     public static float fiftyFiftyPopUpStartTime;
+
     public static bool getHintPowerUp = false;
     public static int hintCount = 0;
+    public static int hintPopUpFlag = 0;
     public static float hintPopUpStartTime;
     public static void increaseIngredient(string name)
     {
