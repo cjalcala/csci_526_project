@@ -12,6 +12,7 @@ public class GroundSpawner : MonoBehaviour
     public int hammerSpawnTime;
     int cnt = 0;
 
+    private GameObject[] stations;
 
     public void SpawnTile(bool spawnItems, bool spawnTile, bool spawnHammer)
     {
@@ -24,7 +25,6 @@ public class GroundSpawner : MonoBehaviour
         {
             temp.GetComponent<GroundTile>().SpawnObstacle();
             // temp.GetComponent<GroundTile>().SpawnCoins();
-
 
             int rand = Random.Range(0,50);
             if (rand == 1) {
@@ -41,41 +41,25 @@ public class GroundSpawner : MonoBehaviour
             if (rand_ingredient == 3) {
                 temp.GetComponent<GroundTile>().SpawnYogurt();
             }
-
-            
-            if (SpawnEntrance() && spawnTile)
+            if (gameManager.CheckIngredientSet())
             {
-                temp.GetComponent<GroundTile>().SpawnEntrance();
+                stations = GameObject.FindGameObjectsWithTag("CookingStation");
+                if (stations.Length < 1)
+                {
+                    temp.GetComponent<GroundTile>().SpawnStation();
+                }
             }
         }
-        if (spawnHammer)
+        if (spawnHammer && GameTracker.level != 1)
         {
             temp.GetComponent<GroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
 
-        if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1)
+        if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1 && GameTracker.level != 1)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }
-    }
-
-    
-
-    public bool SpawnEntrance()
-    {
-        bool spawn = false;
-        // float time = (GameTracker.originalTime - GameTracker.timeRemain) % 5;
-        entrance = GameObject.FindObjectOfType<SanctumEntrance>();
-
-        // if (entrance == null && (GameTracker.originalTime - GameTracker.timeRemain) > 5 && time < 5)
-        // if (cnt < 3)
-        // {
-        spawn = true;
-        cnt++;
-        // }
-
-        return spawn;
     }
 
     // Start is called before the first frame update
@@ -83,9 +67,8 @@ public class GroundSpawner : MonoBehaviour
     {
         hammerSpawnTime = Random.Range((int)GameTracker.timeRemain - 5, (int)GameTracker.timeRemain);
         Debug.Log(hammerSpawnTime);
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 10; i++)
         {
-            //if (gameManager.tileCount < 2 && GameTracker.timeRemain > 118)
             if (gameManager.tileCount < 1)
             {
                 SpawnTile(false, false, false);
@@ -99,7 +82,6 @@ public class GroundSpawner : MonoBehaviour
                 SpawnTile(true, false, false);
             }
             gameManager.tileCount += 1;
-
         }
     }
 
