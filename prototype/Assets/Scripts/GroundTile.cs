@@ -16,12 +16,12 @@ public class GroundTile : MonoBehaviour
     public GameObject LemonPrefab;
     public GameObject YogurtPrefab;
 
+    public GameObject CookingStationPrefab;
+
     // Start is called before the first frame update
     private void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
-        
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -74,6 +74,11 @@ public class GroundTile : MonoBehaviour
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
+    public void SpawnStation()
+    {
+        GameObject temp = Instantiate(CookingStationPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
 
     public void SpawnFiftyFifty()
      {    
