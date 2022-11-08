@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public int coins;
     public Text coinText;
     public Text timeText;
+    public Text fiftyFiftyText;
     //public Text goalText;
     public GameOverScreen gameOverScreen;
     public WinningScreen winningScreen;
@@ -50,6 +51,9 @@ public class GameManager : MonoBehaviour
     public Text hammerOffText;
     public float hammerOffTexttimeDisplay = 1.5f;
     public int hflag = 0;
+    
+    public Text fiftyFiftyPopUpText;
+    public float fiftyFiftyTexttimeDisplay = 1.5f;
 
     public Text notCollectedIngredient; 
     public float notCollectedIngredienttimeDisplay = 1.5f;
@@ -75,7 +79,12 @@ public class GameManager : MonoBehaviour
         coins = GameTracker.coins;
         coinText.text = ": " + GameTracker.coins;
     }
+    public void IncrementFifityFiftyCount() {
+        //coin_collected_sound.Play();
+        GameTracker.fiftyFiftyCount++;
 
+        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+    }
     public void increaseIngredient(string name)
     {
         GameTracker.ingredientsList[name].currentCount++;
@@ -130,6 +139,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         coinText.text = ": " + GameTracker.coins;
+        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         goalProgress();
         Cost();
         won = false;
@@ -275,7 +285,7 @@ public class GameManager : MonoBehaviour
             {
                 GameTracker.hammerStartTime = GameTracker.timeRemain;
                 GameTracker.hammerFlag = 1;
-                hammerOnText.text = "Obstacle Immunity for 5 sec";
+                fiftyFiftyPopUpText.text = "Obstacle Immunity for 5 sec";
             }
             else
             {
@@ -304,6 +314,25 @@ public class GameManager : MonoBehaviour
                 // hammerOnTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
             }
         }
+        //50-50 pop up text
+        if (GameTracker.getFiftyFiftyPowerUp) 
+        {
+            GameTracker.fiftyFiftyPopUpStartTime = GameTracker.timeRemain;
+            GameTracker.fiftyFiftyPopUpFlag = 1;
+            fiftyFiftyPopUpText.text = "Use this power up in sanctum to eliminate 2 wrong answers";
+            GameTracker.getFiftyFiftyPowerUp = false;
+        }   
+        if (GameTracker.fiftyFiftyPopUpFlag == 1) {
+            if (fiftyFiftyTexttimeDisplay < 0) {
+                fiftyFiftyPopUpText.text = "";
+                    fiftyFiftyTexttimeDisplay = 1.5f;
+                }
+                else {
+                    fiftyFiftyTexttimeDisplay -= Time.deltaTime;
+                    // hammerOnTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
+                }
+            }
+        
 
         if (hflag == 1)
         {

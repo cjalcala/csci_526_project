@@ -59,6 +59,7 @@ public class SanctumQuiz : MonoBehaviour
         BPanel.SetActive(false);
         quizIngredient = PlayerPrefs.GetString("IngredientID");// Change to index later
         questionGenerator(0.7, 0.3, 0);
+        //fiftyFifty();
     }
 
     public void retry()
@@ -193,6 +194,27 @@ public class SanctumQuiz : MonoBehaviour
             }
         }
     }
+    /*void fiftyFifty() {
+        eliminateWrongAnswers(2);
+    }
+
+    void eliminateWrongAnswers(int countToEliminate) {
+        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        if (countToEliminate >= buttons.Length - 1) {
+            Debug.Log("Eliminating too many answers,only correct or 0 answer left");
+        }
+        int correctAns = quizQuestion.correctAnswer;
+        int index = 0;
+        while (index < countToEliminate) {
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(5);
+            if (num != correctAns) {
+                index++;
+                buttons[num].enabled = false;
+                buttons[num].image.color = Color.red;
+            }
+        }
+    }*/
 
     void questionGenerator(double easyRate, double mediumRate, double hardRate)
     {
