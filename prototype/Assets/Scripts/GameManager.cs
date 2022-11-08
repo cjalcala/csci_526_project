@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     public Text fiftyFiftyPopUpText;
     public float fiftyFiftyTexttimeDisplay = 1.5f;
 
+    public Text notCollectedIngredient; 
+    public float notCollectedIngredienttimeDisplay = 1.5f;
+    
     public Boolean TimePowerUp = false;
 
     public float TimePowerUpStart = 0;
@@ -261,6 +264,21 @@ public class GameManager : MonoBehaviour
             timeDisplay = 1.5f;
         }
 
+        if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay >= 0)
+                {
+                    notCollectedIngredient.color = Color.red;
+                    notCollectedIngredient.text = "You failed to collect " + SanctumQuiz.quizIngredient;
+                    notCollectedIngredienttimeDisplay -= (Time.deltaTime/2);
+    
+                }
+
+                if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay < 0)
+                {
+                    notCollectedIngredient.text ="";
+                    SanctumQuiz.notCollected = false;
+                    notCollectedIngredienttimeDisplay = 1.5f;
+                }
+
         if (Welcome.immunity)
         {
             if (GameTracker.hammerFlag == 0)
@@ -280,6 +298,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        
 
         if (GameTracker.hammerFlag == 1)
         {

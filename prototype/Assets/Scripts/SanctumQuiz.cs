@@ -29,7 +29,10 @@ public class SanctumQuiz : MonoBehaviour
     public Text timeText;
 
     public QuizQA quizQuestion;
-    string quizIngredient;// Change to index later
+    public static string  quizIngredient;// Change to index later
+
+    public static bool notCollected = false;  
+
 
 
     public GameObject LoseScreen;
@@ -120,12 +123,16 @@ public class SanctumQuiz : MonoBehaviour
         if (TutorialManager.tutorialActive) {
             if (TutorialGameManager.tutCoinCnt < 10) {
                 //Invoke("restartTutorial", 2.0f);
+                notCollected = true;
                 LoseScreen.SetActive(true);
+                
 
             }
             else
             {
+                notCollected = false;
                 Invoke("reloadSanctum", 1.5f);
+                
 
             }
         }
@@ -136,6 +143,7 @@ public class SanctumQuiz : MonoBehaviour
 
             if (GameTracker.coins < 10)
             {
+                notCollected = true;
                 continueGame();
             }
             else
