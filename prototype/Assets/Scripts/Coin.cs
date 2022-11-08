@@ -27,6 +27,7 @@ public class Coin : MonoBehaviour
         if (gameObject.GetComponent<MeshRenderer>().material.color == new Color32(236, 195, 48, 255))
         {
             GameManager.inst.changeCoinAmount(1);
+            //GameManager.inst.IncrementCoinCount();
         }
         //else if (gameObject.GetComponent<MeshRenderer>().material.color == Color.green) {
         //    GameManager.inst.IncrementGreenScore();
