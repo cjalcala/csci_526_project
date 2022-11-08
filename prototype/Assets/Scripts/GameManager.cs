@@ -26,6 +26,14 @@ public class GameManager : MonoBehaviour
     public int coins;
     public Text coinText;
     public Text timeText;
+    // ingredients along the path
+    public int cucumber;
+    public Text cucumberText;
+    public int lemon;
+    public Text lemonText;
+    public int yogurt;
+    public Text yogurtText;
+
     public Text fiftyFiftyText;
     //public Text goalText;
     public GameOverScreen gameOverScreen;
@@ -55,9 +63,6 @@ public class GameManager : MonoBehaviour
     public Text fiftyFiftyPopUpText;
     public float fiftyFiftyTexttimeDisplay = 1.5f;
 
-    public Text notCollectedIngredient; 
-    public float notCollectedIngredienttimeDisplay = 1.5f;
-    
     public Boolean TimePowerUp = false;
 
     public float TimePowerUpStart = 0;
@@ -72,13 +77,43 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
-    public void IncrementCoinCount()
+    public void changeCoinAmount(int num)
     {
         coin_collected_sound.Play();
-        GameTracker.coins++;
+        GameTracker.coins += num;
         coins = GameTracker.coins;
         coinText.text = ": " + GameTracker.coins;
     }
+    // Increment Ingredient along the path
+    public void IncrementCucumberCount() 
+    {
+        GameTracker.cucumber++;
+        cucumber = GameTracker.cucumber;
+        cucumberText.text = ": " + GameTracker.cucumber;
+        changeCoinAmount(-2);
+    }
+
+    public void IncrementLemonCount() 
+    {
+        GameTracker.lemon++;
+        lemon = GameTracker.lemon;
+        lemonText.text = ": " + GameTracker.lemon;
+        changeCoinAmount(-2);
+    }
+    public void IncrementYogurtCount()
+    {
+        GameTracker.yogurt++;
+        yogurt = GameTracker.yogurt;
+        yogurtText.text = ": " + GameTracker.yogurt;
+        changeCoinAmount(-2);
+    }
+
+    public bool CheckIngredientSet()
+    {
+        bool fullSet = true;
+        return GameTracker.cucumber >= 1 && GameTracker.lemon >= 1 && GameTracker.yogurt >= 1;
+    }
+
     public void IncrementFifityFiftyCount() {
         //coin_collected_sound.Play();
         GameTracker.fiftyFiftyCount++;
@@ -140,8 +175,8 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
-        goalProgress();
-        Cost();
+        //goalProgress();
+        //Cost();
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
@@ -264,21 +299,6 @@ public class GameManager : MonoBehaviour
             timeDisplay = 1.5f;
         }
 
-        if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay >= 0)
-                {
-                    notCollectedIngredient.color = Color.red;
-                    notCollectedIngredient.text = "You failed to collect " + SanctumQuiz.quizIngredient;
-                    notCollectedIngredienttimeDisplay -= (Time.deltaTime/2);
-    
-                }
-
-                if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay < 0)
-                {
-                    notCollectedIngredient.text ="";
-                    SanctumQuiz.notCollected = false;
-                    notCollectedIngredienttimeDisplay = 1.5f;
-                }
-
         if (Welcome.immunity)
         {
             if (GameTracker.hammerFlag == 0)
@@ -298,8 +318,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        
 
         if (GameTracker.hammerFlag == 1)
         {
