@@ -27,7 +27,7 @@ public class GroundSpawner : MonoBehaviour
             if (rand == 1) {
                 temp.GetComponent<GroundTile>().SpawnFiftyFifty();
             }
-            rand = Random.Range(0, 50);
+            rand = Random.Range(0, 20);
             if (rand == 1) {
                 temp.GetComponent<GroundTile>().SpawnHints();
             }
