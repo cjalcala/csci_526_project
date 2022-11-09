@@ -320,7 +320,7 @@ public class GameManager : MonoBehaviour
         if (GameTracker.getHintPowerUp) {
             GameTracker.hintPopUpStartTime = GameTracker.timeRemain;
             GameTracker.hintPopUpFlag = 1;
-            fiftyFiftyPopUpText.text = "Use this power up in sanctum to get hints";
+            fiftyFiftyPopUpText.text = "Use this power up in cook stations to get hints";
             GameTracker.getHintPowerUp = false;
         }
         if (GameTracker.hintPopUpFlag == 1) {
