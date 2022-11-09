@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     public Text lemonText;
     public int yogurt;
     public Text yogurtText;
+    public Text rewardText;
+    public Text sauceText; // richa
+   
 
     public Text fiftyFiftyText;
     //public Text goalText;
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     public Text notCollectedIngredient; 
     public float notCollectedIngredienttimeDisplay = 1.5f;
+    //public float collectedIngredienttimeDisplay = 1.5f;
     
     public Boolean TimePowerUp = false;
 
@@ -80,7 +84,7 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
-    public void changeCoinAmount(int num)
+    public  void changeCoinAmount(int num)
     {
         coin_collected_sound.Play();
         GameTracker.coins += num;
@@ -183,6 +187,7 @@ public class GameManager : MonoBehaviour
         cucumberText.text = ": " + GameTracker.cucumber;
         lemonText.text = ": " + GameTracker.lemon;
         yogurtText.text = ": " + GameTracker.yogurt;
+        sauceText.text =  ": " + SanctumQuiz.sauce;
 
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
@@ -305,6 +310,27 @@ public class GameManager : MonoBehaviour
             GameTracker.insufficientCoins = false;
             timeDisplay = 1.5f;
         }
+
+     /*   if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay >= 0)
+            {
+                
+
+                collectedIngredient.color = Color.black;
+                collectedIngredient.text = "You have sucessfully collected " + SanctumQuiz.quizIngredient;
+                collectedIngredienttimeDisplay -= (Time.deltaTime/2);
+            // SanctumQuiz.collected = false;
+                // TimePowerUp ?  timeDisplay -= Time.deltaTime/2 : timeDisplay -= Time.deltaTime/2;
+            }
+
+        if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay < 0)
+            {
+                collectedIngredient.text ="";
+                SanctumQuiz.collected = false;
+                collectedIngredienttimeDisplay = 1.5f;
+            }
+*/
+
+
 
         if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay >= 0)
                 {

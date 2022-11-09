@@ -32,6 +32,10 @@ public class SanctumQuiz : MonoBehaviour
     public static string  quizIngredient;// Change to index later
 
     public static bool notCollected = false;  
+    public static int sauce = 0;  // Richa
+
+    public Text bagText; 
+    public float bagTime = 1.5f;
 
 
 
@@ -48,10 +52,12 @@ public class SanctumQuiz : MonoBehaviour
         {
             TutorialGameManager.tutCoinCnt -= 2;
             sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+            //bagText.text = "Sorry, You have no hints!";
+           // GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
         else
         {
-            sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+          //  GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
 
         Debug.Log("Sanctum " + GameTracker.timeRemain);
@@ -81,7 +87,7 @@ public class SanctumQuiz : MonoBehaviour
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
 
-        coin.text = "Coins : " + GameTracker.coins.ToString();
+        coin.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
     }
 
     public void correct()
@@ -97,10 +103,13 @@ public class SanctumQuiz : MonoBehaviour
         if (TutorialManager.tutorialActive)
         {
             Invoke("LoadTutorialComplete", 1.5f);
+            
         }
         else
         {
             //GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
+            sauce += 1;
+          
             GameTracker.LoadScenes();
         }
     }
