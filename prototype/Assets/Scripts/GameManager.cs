@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public int yogurt;
     public Text yogurtText;
     public Text rewardText;
-    public Text sauceText; // richa
+    public Text dishText; 
    
 
     public Text fiftyFiftyText;
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public Image TimeSlider;
     public Image[] hearts;
+    public static int recipeCounter = 0;
 
     // public Text timeOnText;
     // public Text timeOffText;
@@ -187,7 +188,7 @@ public class GameManager : MonoBehaviour
         cucumberText.text = ": " + GameTracker.cucumber;
         lemonText.text = ": " + GameTracker.lemon;
         yogurtText.text = ": " + GameTracker.yogurt;
-        sauceText.text =  ": " + SanctumQuiz.sauce;
+        dishText.text =  ": " + SanctumQuiz.dish;
 
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
@@ -335,7 +336,7 @@ public class GameManager : MonoBehaviour
         if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay >= 0)
                 {
                     notCollectedIngredient.color = Color.red;
-                    notCollectedIngredient.text = "You failed to collect " + SanctumQuiz.quizIngredient;
+                    notCollectedIngredient.text = "No Reward Collected!";
                     notCollectedIngredienttimeDisplay -= (Time.deltaTime/2);
     
                 }
@@ -430,7 +431,7 @@ public class GameManager : MonoBehaviour
 
     void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NewSend(String level_complete)

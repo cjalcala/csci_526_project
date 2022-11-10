@@ -1652,7 +1652,7 @@ GameObject:
   - component: {fileID: 491217002}
   - component: {fileID: 491217001}
   m_Layer: 5
-  m_Name: sauceText
+  m_Name: dishText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1675,7 +1675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 220, y: 900}
+  m_AnchoredPosition: {x: 220, y: 800}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491217001
@@ -3589,7 +3589,7 @@ GameObject:
   - component: {fileID: 1030103686}
   - component: {fileID: 1030103685}
   m_Layer: 5
-  m_Name: sauce
+  m_Name: dish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3612,7 +3612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 120, y: 900}
+  m_AnchoredPosition: {x: 120, y: 800}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030103685
@@ -6602,7 +6602,7 @@ MonoBehaviour:
   yogurt: 0
   yogurtText: {fileID: 1383404804}
   rewardText: {fileID: 0}
-  sauceText: {fileID: 491217001}
+  dishText: {fileID: 491217001}
   fiftyFiftyText: {fileID: 1818707970}
   gameOverScreen: {fileID: 1005963669}
   winningScreen: {fileID: 254214823}

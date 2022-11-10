@@ -32,7 +32,7 @@ public class SanctumQuiz : MonoBehaviour
     public static string  quizIngredient;// Change to index later
 
     public static bool notCollected = false;  
-    public static int sauce = 0;  // Richa
+    public static int dish = 0; 
 
     public Text bagText; 
     public float bagTime = 1.5f;
@@ -57,6 +57,7 @@ public class SanctumQuiz : MonoBehaviour
         }
         else
         {
+          sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
           //  GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
 
@@ -87,7 +88,8 @@ public class SanctumQuiz : MonoBehaviour
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
 
-        coin.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+        coin.text = "Coins : " + GameTracker.coins.ToString();
+
     }
 
     public void correct()
@@ -108,8 +110,20 @@ public class SanctumQuiz : MonoBehaviour
         else
         {
             //GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
-            sauce += 1;
-          
+            //dish += 1;
+
+            if (GameTracker.cucumber >= 1 && GameTracker.lemon >= 1 && GameTracker.yogurt >= 1)
+            {
+                dish = dish + Math.Min(GameTracker.cucumber, Math.Min(GameTracker.lemon, GameTracker.yogurt));
+            }
+            int minCount = Math.Min(GameTracker.cucumber, Math.Min(GameTracker.lemon, GameTracker.yogurt));
+
+            GameTracker.coins += (15 *  Math.Min(GameTracker.cucumber, Math.Min(GameTracker.lemon, GameTracker.yogurt)));
+            
+            GameTracker.cucumber = Math.Max(0, GameTracker.cucumber - minCount); 
+            GameTracker.lemon = Math.Max(0, GameTracker.lemon - minCount);
+            GameTracker.yogurt = Math.Max(0, GameTracker.yogurt - minCount);
+
             GameTracker.LoadScenes();
         }
     }
