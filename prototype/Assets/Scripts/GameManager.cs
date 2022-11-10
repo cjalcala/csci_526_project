@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     
     public Text fiftyFiftyPopUpText;
     public float fiftyFiftyTexttimeDisplay = 1.5f;
+    public float hintTexttimeDisplay = 1.5f;
 
     public Text notCollectedIngredient; 
     public float notCollectedIngredienttimeDisplay = 1.5f;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         coins = GameTracker.coins;
         coinText.text = ": " + GameTracker.coins;
     }
+
     // Increment Ingredient along the path
     public void IncrementCucumberCount() 
     {
@@ -117,12 +119,16 @@ public class GameManager : MonoBehaviour
         return GameTracker.cucumber >= 1 && GameTracker.lemon >= 1 && GameTracker.yogurt >= 1;
     }
 
-    public void IncrementFifityFiftyCount() {
-        //coin_collected_sound.Play();
-        GameTracker.fiftyFiftyCount++;
 
+    public void IncrementFifityFiftyCount() {
+        GameTracker.fiftyFiftyCount++;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
     }
+
+    public void IncrementHintCount() {
+        GameTracker.hintCount++;
+    }
+
     public void increaseIngredient(string name)
     {
         GameTracker.ingredientsList[name].currentCount++;
@@ -368,13 +374,28 @@ public class GameManager : MonoBehaviour
             if (fiftyFiftyTexttimeDisplay < 0) {
                 fiftyFiftyPopUpText.text = "";
                     fiftyFiftyTexttimeDisplay = 1.5f;
-                }
-                else {
-                    fiftyFiftyTexttimeDisplay -= Time.deltaTime;
-                    // hammerOnTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
-                }
             }
-        
+            else {
+                fiftyFiftyTexttimeDisplay -= Time.deltaTime;
+            }
+        }
+        //hint pop up text
+        if (GameTracker.getHintPowerUp) {
+            GameTracker.hintPopUpStartTime = GameTracker.timeRemain;
+            GameTracker.hintPopUpFlag = 1;
+            fiftyFiftyPopUpText.text = "Use this power up in cook stations to get hints";
+            GameTracker.getHintPowerUp = false;
+        }
+        if (GameTracker.hintPopUpFlag == 1) {
+            if (hintTexttimeDisplay < 0) {
+                fiftyFiftyPopUpText.text = "";
+                hintTexttimeDisplay = 1.5f;
+            }
+            else {
+                hintTexttimeDisplay -= Time.deltaTime;
+            }
+        }
+
 
         if (hflag == 1)
         {

@@ -30,6 +30,12 @@ public class GroundSpawner : MonoBehaviour
             if (rand == 1) {
                 temp.GetComponent<GroundTile>().SpawnFiftyFifty();
             }
+
+            rand = Random.Range(0, 20);
+            if (rand == 1) {
+                temp.GetComponent<GroundTile>().SpawnHints();
+            }
+
             // randomly generate ingredients along the path
             int rand_ingredient = Random.Range(0, 10);
             if (rand_ingredient == 1) {
@@ -42,6 +48,7 @@ public class GroundSpawner : MonoBehaviour
                 temp.GetComponent<GroundTile>().SpawnYogurt();
             }
             if (gameManager.CheckIngredientSet())
+
             {
                 stations = GameObject.FindGameObjectsWithTag("CookingStation");
                 if (stations.Length < 1)
