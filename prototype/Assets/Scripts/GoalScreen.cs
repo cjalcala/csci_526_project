@@ -15,6 +15,7 @@ public class GoalScreen : MonoBehaviour
     public Text goalAmt;
     public Text recipeEarning;
     public Image recipeIcon;
+   // public static Image coinSanctumImg;
 
     // Start is called before the first frame update
     void Start()

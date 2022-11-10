@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     public Text lemonText;
     public int yogurt;
     public Text yogurtText;
+    public Text rewardText;
+    public Text dishText; 
+   
 
     public Text fiftyFiftyText;
     //public Text goalText;
@@ -66,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public Text notCollectedIngredient; 
     public float notCollectedIngredienttimeDisplay = 1.5f;
+    //public float collectedIngredienttimeDisplay = 1.5f;
     
     public Boolean TimePowerUp = false;
 
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     public Image TimeSlider;
     public Image[] hearts;
+    public static int recipeCounter = 0;
 
     // public Text timeOnText;
     // public Text timeOffText;
@@ -81,7 +86,7 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
-    public void changeCoinAmount(int num)
+    public  void changeCoinAmount(int num)
     {
         coin_collected_sound.Play();
         GameTracker.coins += num;
@@ -189,6 +194,7 @@ public class GameManager : MonoBehaviour
         cucumberText.text = ": " + GameTracker.cucumber;
         lemonText.text = ": " + GameTracker.lemon;
         yogurtText.text = ": " + GameTracker.yogurt;
+        dishText.text =  ": " + SanctumQuiz.dish;
 
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
@@ -312,10 +318,31 @@ public class GameManager : MonoBehaviour
             timeDisplay = 1.5f;
         }
 
+     /*   if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay >= 0)
+            {
+                
+
+                collectedIngredient.color = Color.black;
+                collectedIngredient.text = "You have sucessfully collected " + SanctumQuiz.quizIngredient;
+                collectedIngredienttimeDisplay -= (Time.deltaTime/2);
+            // SanctumQuiz.collected = false;
+                // TimePowerUp ?  timeDisplay -= Time.deltaTime/2 : timeDisplay -= Time.deltaTime/2;
+            }
+
+        if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay < 0)
+            {
+                collectedIngredient.text ="";
+                SanctumQuiz.collected = false;
+                collectedIngredienttimeDisplay = 1.5f;
+            }
+*/
+
+
+
         if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay >= 0)
                 {
                     notCollectedIngredient.color = Color.red;
-                    notCollectedIngredient.text = "You failed to collect " + SanctumQuiz.quizIngredient;
+                    notCollectedIngredient.text = "No Reward Collected!";
                     notCollectedIngredienttimeDisplay -= (Time.deltaTime/2);
     
                 }
@@ -425,7 +452,7 @@ public class GameManager : MonoBehaviour
 
     void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NewSend(String level_complete)
