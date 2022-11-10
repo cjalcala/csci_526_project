@@ -7,7 +7,15 @@ public class GameTracker : MonoBehaviour
 {
     public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
-    public static int coins;
+    public static int coins = 10;
+    public static Recipe recipe;
+    public static int goalAmt;
+
+    // ingredient along the path
+    public static int cucumber;
+    public static int lemon;
+    public static int yogurt;
+
     public static float timeRemain, originalTime, tutorialOriginalTime;
     public static float hammerStartTime;
     public static int hammerFlag=0;
@@ -54,9 +62,13 @@ public class GameTracker : MonoBehaviour
             timeRemain = 90;
             
             ingredientsList = new SortedDictionary<string, Ingredient>();
-            ingredientsList.Add("Broccoli", new Ingredient("Broccoli", 1, 2));
-            ingredientsList.Add("Onion", new Ingredient("Onion", 1, 2));
-            ingredientsList.Add("Steak", new Ingredient("Steak", 1, 2));
+            ingredientsList.Add("cucumber", new Ingredient("Cucumber", 1, 2));
+            ingredientsList.Add("lemon", new Ingredient("Lemon", 1, 2));
+            ingredientsList.Add("yogurt", new Ingredient("Yogurt", 1, 2));
+            recipe = new Recipe("Tzatziki Sauce", 15);
+
+            goalAmt = 15;
+
         }
         else if (level == 2)
         {
@@ -68,9 +80,12 @@ public class GameTracker : MonoBehaviour
             ingredientsList.Add("Mushroom", new Ingredient("Mushroom", 1, 2));
             ingredientsList.Add("Tomato", new Ingredient("Tomato", 1, 2));
             ingredientsList.Add("Pepper", new Ingredient("Pepper", 1, 2));
+            recipe = new Recipe("Tomato Basil Soup", 30);
+
+            goalAmt = 30;
         }
 
-        coins = 0;
+        coins = 10;
         originalTime = GameTracker.timeRemain;
         //tutorialOriginalTime = TutorialGameManager.time;
         questionGenerator = new QuestionGenerator();
