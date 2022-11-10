@@ -26,8 +26,9 @@ public class Welcome : MonoBehaviour
     }
 
     public void Executive() {
+        GameTracker.level = 3;
         GameTracker.GameSetup();
-        SceneManager.LoadScene("WelcomeScreen");
+        SceneManager.LoadScene("Goals");
     }
 
     void Start()
