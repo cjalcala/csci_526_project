@@ -36,8 +36,6 @@ public class GroundSpawner : MonoBehaviour
                 temp.GetComponent<GroundTile>().SpawnHints();
             }
 
-            if (SpawnEntrance() && spawnTile)
-
             // randomly generate ingredients along the path
             int rand_ingredient = Random.Range(0, 10);
             if (rand_ingredient == 1) {
