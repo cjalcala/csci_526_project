@@ -6369,6 +6369,14 @@ MonoBehaviour:
   coins: 0
   coinText: {fileID: 1692726949}
   timeText: {fileID: 2040328708}
+  cucumber: 0
+  cucumberText: {fileID: 0}
+  lemon: 0
+  lemonText: {fileID: 0}
+  yogurt: 0
+  yogurtText: {fileID: 0}
+  rewardText: {fileID: 0}
+  dishText: {fileID: 0}
   fiftyFiftyText: {fileID: 1201642506}
   gameOverScreen: {fileID: 1005963669}
   winningScreen: {fileID: 254214823}
@@ -6404,6 +6412,9 @@ MonoBehaviour:
   hflag: 0
   fiftyFiftyPopUpText: {fileID: 1967069956}
   fiftyFiftyTexttimeDisplay: 1.5
+  hintTexttimeDisplay: 1.5
+  notCollectedIngredient: {fileID: 0}
+  notCollectedIngredienttimeDisplay: 1.5
   TimePowerUp: 0
   TimePowerUpStart: 0
   TimeSlider: {fileID: 1842531528}
