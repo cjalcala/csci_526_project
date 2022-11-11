@@ -27,14 +27,33 @@ public class GameManager : MonoBehaviour
     public Text coinText;
     public Text timeText;
     // ingredients along the path
-    public int cucumber;
-    public Text cucumberText;
-    public int lemon;
-    public Text lemonText;
-    public int yogurt;
-    public Text yogurtText;
+    // // cucumber
+    // public int cucumber;
+    // public Text cucumberText;
+    // // lemon
+    // public int lemon;
+    // public Text lemonText;
+    // // yogurt
+    // public int yogurt;
+    // public Text yogurtText;
+    // // tomato
+    // public int tomato;
+    // public Text tomatoText;
+    public int ingredient1;
+    public Text ingredient1Text;
+    public Image ingredient1Icon;
+    public int ingredient2;
+    public Text ingredient2Text;
+    public Image ingredient2Icon;
+    public int ingredient3;
+    public Text ingredient3Text;
+    public Image ingredient3Icon;
+    
+    // reward & dish
     public Text rewardText;
     public Text dishText; 
+
+
    
 
     public Text fiftyFiftyText;
@@ -95,33 +114,63 @@ public class GameManager : MonoBehaviour
     }
 
     // Increment Ingredient along the path
-    public void IncrementCucumberCount() 
+    // public void IncrementCucumberCount() 
+    // {
+    //     GameTracker.cucumber++;
+    //     cucumber = GameTracker.cucumber;
+    //     cucumberText.text = ": " + GameTracker.cucumber;
+    //     changeCoinAmount(-2);
+    // }
+    public void IncrementIngredient1Count()
     {
-        GameTracker.cucumber++;
-        cucumber = GameTracker.cucumber;
-        cucumberText.text = ": " + GameTracker.cucumber;
+        GameTracker.ingred1++;
+        ingredient1 = GameTracker.ingred1;
+        ingredient1Text.text = ": " + GameTracker.ingred1;
+        changeCoinAmount(-2);
+    }
+    public void IncrementIngredient2Count()
+    {
+        GameTracker.ingred2++;
+        ingredient2 = GameTracker.ingred2;
+        ingredient2Text.text = ": " + GameTracker.ingred2;
+        changeCoinAmount(-2);
+    }
+    public void IncrementIngredient3Count()
+    {
+        GameTracker.ingred3++;
+        ingredient3 = GameTracker.ingred3;
+        ingredient3Text.text = ": " + GameTracker.ingred3;
         changeCoinAmount(-2);
     }
 
-    public void IncrementLemonCount() 
-    {
-        GameTracker.lemon++;
-        lemon = GameTracker.lemon;
-        lemonText.text = ": " + GameTracker.lemon;
-        changeCoinAmount(-2);
-    }
-    public void IncrementYogurtCount()
-    {
-        GameTracker.yogurt++;
-        yogurt = GameTracker.yogurt;
-        yogurtText.text = ": " + GameTracker.yogurt;
-        changeCoinAmount(-2);
-    }
+    // public void IncrementLemonCount() 
+    // {
+    //     GameTracker.lemon++;
+    //     lemon = GameTracker.lemon;
+    //     lemonText.text = ": " + GameTracker.lemon;
+    //     changeCoinAmount(-2);
+    // }
+    
+    // public void IncrementYogurtCount()
+    // {
+    //     GameTracker.yogurt++;
+    //     yogurt = GameTracker.yogurt;
+    //     yogurtText.text = ": " + GameTracker.yogurt;
+    //     changeCoinAmount(-2);
+    // }
+
+    // public void IncrementTomatoCount()
+    // {
+    //     GameTracker.tomato++;
+    //     tomato = GameTracker.tomato;
+    //     tomatoText.text = ": " + GameTracker.tomato;
+    //     changeCoinAmount(-2);                    
+    // }
 
     public bool CheckIngredientSet()
     {
         bool fullSet = true;
-        return GameTracker.cucumber >= 1 && GameTracker.lemon >= 1 && GameTracker.yogurt >= 1;
+        return GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1;
     }
 
 
@@ -187,14 +236,34 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = ": " + GameTracker.coins;
-        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        // coinText.text = ": " + GameTracker.coins;
+        // fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        // dishText.text =  ": " + SanctumQuiz.dish;
+        
+        // cucumberText.text = ": " + GameTracker.cucumber;
+        // lemonText.text = ": " + GameTracker.lemon;
+        // yogurtText.text = ": " + GameTracker.yogurt;
+            
+        // }
+        // if (GameTracker.level == 2)
+        // {
+        //      tomatoText.text = ": " + GameTracker.tomato;
+
+        // }
+
         //goalProgress();
         //Cost();
-        cucumberText.text = ": " + GameTracker.cucumber;
-        lemonText.text = ": " + GameTracker.lemon;
-        yogurtText.text = ": " + GameTracker.yogurt;
-        dishText.text =  ": " + SanctumQuiz.dish;
+
+        ingredient1Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[0]);
+        ingredient2Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[1]);
+        ingredient3Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[2]);
+        
+        ingredient1Icon.gameObject.SetActive(true);
+        ingredient2Icon.gameObject.SetActive(true);
+        ingredient3Icon.gameObject.SetActive(true);
+
+
+       
 
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();

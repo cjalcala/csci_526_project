@@ -17,6 +17,8 @@ public class GroundTile : MonoBehaviour
     public GameObject LemonPrefab;
     public GameObject YogurtPrefab;
 
+    public GameObject TomatoPrefab;
+
     public GameObject CookingStationPrefab;
 
     // Start is called before the first frame update
@@ -72,6 +74,11 @@ public class GroundTile : MonoBehaviour
     public void SpawnYogurt() 
     {
         GameObject temp = Instantiate(YogurtPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+    public void SpawnTomato() 
+    {
+        GameObject temp = Instantiate(TomatoPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 

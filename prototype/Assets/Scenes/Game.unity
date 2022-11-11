@@ -3108,7 +3108,7 @@ GameObject:
   - component: {fileID: 889811674}
   - component: {fileID: 889811673}
   m_Layer: 5
-  m_Name: Lemon Text
+  m_Name: Ingredient2 Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4014,7 +4014,7 @@ GameObject:
   - component: {fileID: 1118408142}
   - component: {fileID: 1118408141}
   m_Layer: 5
-  m_Name: Cucumber Text
+  m_Name: Ingredient1 Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4525,7 +4525,7 @@ GameObject:
   - component: {fileID: 1257473844}
   - component: {fileID: 1257473843}
   m_Layer: 5
-  m_Name: Lemon
+  m_Name: Ingredient2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4903,7 +4903,7 @@ GameObject:
   - component: {fileID: 1356963919}
   - component: {fileID: 1356963918}
   m_Layer: 5
-  m_Name: Cucumber
+  m_Name: Ingredient1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4976,7 +4976,7 @@ GameObject:
   - component: {fileID: 1383404805}
   - component: {fileID: 1383404804}
   m_Layer: 5
-  m_Name: Yogurt Text
+  m_Name: Ingredient3 Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6595,12 +6595,15 @@ MonoBehaviour:
   coins: 0
   coinText: {fileID: 1692726949}
   timeText: {fileID: 2040328708}
-  cucumber: 0
-  cucumberText: {fileID: 1118408141}
-  lemon: 0
-  lemonText: {fileID: 889811673}
-  yogurt: 0
-  yogurtText: {fileID: 1383404804}
+  ingredient1: 0
+  ingredient1Text: {fileID: 1118408141}
+  ingredient1Icon: {fileID: 1476809035}
+  ingredient2: 0
+  ingredient2Text: {fileID: 889811673}
+  ingredient2Icon: {fileID: 173361045}
+  ingredient3: 0
+  ingredient3Text: {fileID: 1383404804}
+  ingredient3Icon: {fileID: 2116146825}
   rewardText: {fileID: 0}
   dishText: {fileID: 491217001}
   fiftyFiftyText: {fileID: 1818707970}
@@ -6632,6 +6635,7 @@ MonoBehaviour:
   hflag: 0
   fiftyFiftyPopUpText: {fileID: 1345181266}
   fiftyFiftyTexttimeDisplay: 1.5
+  hintTexttimeDisplay: 1.5
   notCollectedIngredient: {fileID: 3287643}
   notCollectedIngredienttimeDisplay: 1.5
   TimePowerUp: 0
@@ -7082,7 +7086,7 @@ GameObject:
   - component: {fileID: 2013092475}
   - component: {fileID: 2013092474}
   m_Layer: 5
-  m_Name: Yogurt
+  m_Name: Ingredient3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
