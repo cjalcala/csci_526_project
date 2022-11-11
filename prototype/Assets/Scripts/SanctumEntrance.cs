@@ -101,7 +101,7 @@ public class SanctumEntrance : MonoBehaviour
         if (GameTracker.coins >= GameTracker.ingredientsList[ingredientList[ingredientID]].cost)
         {
 
-            GameTracker.coins -= GameTracker.ingredientsList[ingredientList[ingredientID]].cost;
+            //GameTracker.coins -= GameTracker.ingredientsList[ingredientList[ingredientID]].cost;
             SceneManager.LoadScene("Sanctum");
 
         }

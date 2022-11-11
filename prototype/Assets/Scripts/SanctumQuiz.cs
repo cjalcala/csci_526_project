@@ -110,7 +110,7 @@ public class SanctumQuiz : MonoBehaviour
         else
         {
 
-            GameTracker.coins+=15;
+            
             //GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
             //dish += 1;
 

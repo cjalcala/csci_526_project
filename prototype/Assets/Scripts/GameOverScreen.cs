@@ -17,11 +17,21 @@ public class GameOverScreen : MonoBehaviour
 
     public void RestartButton()
     {
+
+        
+        
+
         setupFunction();
         Welcome.immunity = false;
         GameTracker.health=5;
+        
+        
+
         GameTracker.LoadScenes();
         if (AudioListener.pause == true){
+
+            
+        
             AudioListener.pause = true;
         }else{
             AudioListener.pause = false;

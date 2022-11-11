@@ -27,12 +27,12 @@ public class GameManager : MonoBehaviour
     public Text coinText;
     public Text timeText;
     // ingredients along the path
-    public int cucumber;
-    public Text cucumberText;
-    public int lemon;
-    public Text lemonText;
-    public int yogurt;
-    public Text yogurtText;
+    public int cucumber=0;
+    public  Text cucumberText;
+    public int lemon=0;
+    public  Text lemonText;
+    public int yogurt=0;
+    public  Text yogurtText;
     public Text rewardText;
     public Text dishText; 
    
@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         changeCoinAmount(-2);
     }
 
+   
     public bool CheckIngredientSet()
     {
         bool fullSet = true;
@@ -451,8 +452,29 @@ public class GameManager : MonoBehaviour
     }
 
     void Restart()
+
+    
     {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+        GameTracker.yogurt=0;
+        yogurt = GameTracker.yogurt;
+        yogurtText.text = ": " + GameTracker.yogurt;
+
+        GameTracker.cucumber=0;
+        cucumber = GameTracker.cucumber;
+        cucumberText.text = ": " + GameTracker.cucumber;
+
+        GameTracker.lemon=0;
+        lemon = GameTracker.lemon;
+        lemonText.text = ": " + GameTracker.lemon;
+        
+         
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+        
     }
 
     public void NewSend(String level_complete)

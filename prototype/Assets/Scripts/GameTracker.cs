@@ -12,9 +12,9 @@ public class GameTracker : MonoBehaviour
     public static int goalAmt;
 
     // ingredient along the path
-    public static int cucumber;
-    public static int lemon;
-    public static int yogurt;
+    public static int cucumber=0;
+    public static int lemon=0;
+    public static int yogurt=0;
 
     public static float timeRemain, originalTime, tutorialOriginalTime;
     public static float hammerStartTime;
@@ -60,12 +60,18 @@ public class GameTracker : MonoBehaviour
         if (level == 1)
         {
             timeRemain = 90;
-            
+            cucumber=0;
+            lemon=0;
+            yogurt=0;
+            SanctumQuiz.dish=0;
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("cucumber", new Ingredient("Cucumber", 1, 2));
             ingredientsList.Add("lemon", new Ingredient("Lemon", 1, 2));
             ingredientsList.Add("yogurt", new Ingredient("Yogurt", 1, 2));
             recipe = new Recipe("Tzatziki Sauce", 15);
+            
+           
+
 
             goalAmt = 15;
 
