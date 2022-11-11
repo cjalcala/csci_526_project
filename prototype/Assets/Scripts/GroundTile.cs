@@ -13,11 +13,14 @@ public class GroundTile : MonoBehaviour
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
 
+    // level1
     public GameObject CucumberPrefab;
     public GameObject LemonPrefab;
     public GameObject YogurtPrefab;
-
+    // level2
+    public GameObject BasilPrefab;
     public GameObject TomatoPrefab;
+    public GameObject OnionPrefab;
 
     public GameObject CookingStationPrefab;
 
@@ -76,9 +79,21 @@ public class GroundTile : MonoBehaviour
         GameObject temp = Instantiate(YogurtPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
+    public void SpawnBasil() 
+    {
+        GameObject temp = Instantiate(BasilPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
     public void SpawnTomato() 
     {
         GameObject temp = Instantiate(TomatoPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnOnion() 
+    {
+        GameObject temp = Instantiate(OnionPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 

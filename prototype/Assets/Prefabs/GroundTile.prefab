@@ -166,7 +166,9 @@ MonoBehaviour:
   CucumberPrefab: {fileID: 2969169649563222603, guid: fb960963e61654ff69c59c52cabcc9ad, type: 3}
   LemonPrefab: {fileID: 1875135352267227172, guid: cdd36b04b8c23449698fc5f70238f932, type: 3}
   YogurtPrefab: {fileID: 4207534057865115143, guid: 0f7709e5863874cd1b56c79e9f334718, type: 3}
+  BasilPrefab: {fileID: 2337895938103411295, guid: 73974915c4b6443d19c83e7ae4798422, type: 3}
   TomatoPrefab: {fileID: 5361174829601841554, guid: 3c9d060e01104428b842e0bd70758549, type: 3}
+  OnionPrefab: {fileID: 7806849474239777987, guid: 7bce4e80e5aaf46279aa675c7a02ebaf, type: 3}
   CookingStationPrefab: {fileID: 7835282938579396881, guid: 5e20406812ca6b14db3db89bbd926f65, type: 3}
 --- !u!1 &7421840275398925066
 GameObject:

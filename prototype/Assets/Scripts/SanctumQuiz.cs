@@ -110,22 +110,23 @@ public class SanctumQuiz : MonoBehaviour
         else
         {
 
-            GameTracker.coins+=15;
+            // GameTracker.coins+=15;
             //GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
             //dish += 1;
 
             if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
             {
                 dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
-            }
-            int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
 
-            GameTracker.coins += (15 *  Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
+                GameTracker.coins += (15 *  Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
             
-            GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount); 
-            GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - minCount);
-            GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - minCount);
+                GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount); 
+                GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - minCount);
+                GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - minCount);
 
+            }
+            
             GameTracker.LoadScenes();
         }
     }

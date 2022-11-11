@@ -42,9 +42,9 @@ public class GroundSpawner : MonoBehaviour
                 if (GameTracker.level == 1) {
                     temp.GetComponent<GroundTile>().SpawnCucumber();
                 }
-                // if (GameTracker.level == 2) {
-                //     temp.GetComponent<GroundTile>().SpawnBasil();
-                // }
+                if (GameTracker.level == 2) {
+                    temp.GetComponent<GroundTile>().SpawnBasil();
+                }
                 // if (GameTracker.level == 3) {
                 //     temp.GetComponent<GroundTile>().SpawnMushroom();
                 // }
@@ -67,9 +67,9 @@ public class GroundSpawner : MonoBehaviour
                 if (GameTracker.level == 1) {
                     temp.GetComponent<GroundTile>().SpawnYogurt();
                 }
-                // if (GameTracker.level == 2) {
-                //     temp.GetComponent<GroundTile>().SpawnOnion();
-                // }
+                if (GameTracker.level == 2) {
+                    temp.GetComponent<GroundTile>().SpawnOnion();
+                }
                 // if (GameTracker.level == 3) {
                 //     temp.GetComponent<GroundTile>().SpawnSteak();
                 // }

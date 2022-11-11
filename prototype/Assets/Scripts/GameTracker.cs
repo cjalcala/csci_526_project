@@ -90,7 +90,7 @@ public class GameTracker : MonoBehaviour
             ingredientsList.Add("Basil", new Ingredient("Basil", 1, 2));
             ingredientsList.Add("Onion", new Ingredient("Onion", 1, 2));
             recipe = new Recipe("Tomato Basil Soup", 20);
-            ingredientNames = new string[]{"Tomato", "Basil", "Onion"};
+            ingredientNames = new string[]{"Basil", "Tomato", "Onion"};
 
             goalAmt = 40;
         }

@@ -236,13 +236,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // coinText.text = ": " + GameTracker.coins;
-        // fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
-        // dishText.text =  ": " + SanctumQuiz.dish;
+        coinText.text = ": " + GameTracker.coins;
+        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        dishText.text =  ": " + SanctumQuiz.dish;
         
-        // cucumberText.text = ": " + GameTracker.cucumber;
-        // lemonText.text = ": " + GameTracker.lemon;
-        // yogurtText.text = ": " + GameTracker.yogurt;
+        ingredient1Text.text = ": " + GameTracker.ingred1;
+        ingredient2Text.text = ": " + GameTracker.ingred2;
+        ingredient3Text.text = ": " + GameTracker.ingred3;
             
         // }
         // if (GameTracker.level == 2)
