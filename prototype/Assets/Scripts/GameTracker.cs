@@ -75,14 +75,24 @@ public class GameTracker : MonoBehaviour
             timeRemain = 110;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
-            ingredientsList.Add("Bread", new Ingredient("Bread", 1, 2));
-            ingredientsList.Add("Avocado", new Ingredient("Avocado", 1, 2));
-            ingredientsList.Add("Mushroom", new Ingredient("Mushroom", 1, 2));
             ingredientsList.Add("Tomato", new Ingredient("Tomato", 1, 2));
-            ingredientsList.Add("Pepper", new Ingredient("Pepper", 1, 2));
-            recipe = new Recipe("Tomato Basil Soup", 30);
+            ingredientsList.Add("Basil", new Ingredient("Basil", 1, 2));
+            ingredientsList.Add("Onion", new Ingredient("Onion", 1, 2));
+            recipe = new Recipe("Tomato Basil Soup", 20);
 
-            goalAmt = 30;
+            goalAmt = 40;
+        }
+        else if (level == 3)
+        {
+            timeRemain = 110;
+
+            ingredientsList = new SortedDictionary<string, Ingredient>();
+            ingredientsList.Add("Steak", new Ingredient("Steak", 1, 2));
+            ingredientsList.Add("Pepper", new Ingredient("Pepper", 1, 2));
+            ingredientsList.Add("Mushroom", new Ingredient("Mushroom", 1, 2));
+            recipe = new Recipe("Grilled Kabob", 20);
+
+            goalAmt = 60;
         }
 
         coins = 10;
