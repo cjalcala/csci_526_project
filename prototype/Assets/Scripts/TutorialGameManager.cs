@@ -29,6 +29,8 @@ public class TutorialGameManager : MonoBehaviour
     public Image TimeSlider;
     public int hflag = 0;
     public Boolean TimePowerUp = false;
+    public Image[] hearts;
+    public static int health;
     // Start is called before the first frame update
 
     private void Awake()
@@ -50,6 +52,7 @@ public class TutorialGameManager : MonoBehaviour
         horizontalArrows = false;
         spaceBar = false;
         Time.timeScale = 1f;
+        health = 5;
     }
 
     // Update is called once per frame
@@ -150,6 +153,15 @@ public class TutorialGameManager : MonoBehaviour
             {
                 hammerOffTexttimeDisplay -= Time.deltaTime;
                 // hammerOffTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
+            }
+        }
+
+
+        if(health<5)
+        {
+            for(int h=health;h<=4;h++)
+            {
+                hearts[h].enabled=false;
             }
         }
     }
