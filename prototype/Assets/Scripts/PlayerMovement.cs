@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (tp == "obstacle")
         {
-            GameManager.inst.NewSend("false");
+            //GameManager.inst.NewSend("false");
             //GameManager.inst.Send(tp);
             GameManager.inst.hasHitObstacle = true;
             obstacle_hit_sound.Play();
@@ -84,8 +84,8 @@ public class PlayerMovement : MonoBehaviour
             GameManager.inst.deathValues[2] = "lost";
             GameManager.inst.deathValues[3] = tp;
             GameManager.inst.deathValues[4] = (GameTracker.originalTime - GameTracker.timeRemain).ToString("0");
-            GameManager.inst.Send("deathTracker");
-            GameManager.inst.Send("coinTracker");
+            // GameManager.inst.Send("deathTracker");
+            // GameManager.inst.Send("coinTracker");
         }
         // else{
         //     if (flag == 1){
