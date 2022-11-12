@@ -101,7 +101,7 @@ public class SanctumQuiz : MonoBehaviour
             buttons[b].enabled = false;
         }
 
-        Send(quizQuestion.question, 1, 0);
+        // Send(quizQuestion.question, 1, 0);
         if (TutorialManager.tutorialActive)
         {
             Invoke("LoadTutorialComplete", 1.5f);
@@ -110,22 +110,23 @@ public class SanctumQuiz : MonoBehaviour
         else
         {
 
-            GameTracker.coins+=15;
+            // GameTracker.coins+=15;
             //GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
             //dish += 1;
 
-            if (GameTracker.cucumber >= 1 && GameTracker.lemon >= 1 && GameTracker.yogurt >= 1)
+            if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
             {
-                dish = dish + Math.Min(GameTracker.cucumber, Math.Min(GameTracker.lemon, GameTracker.yogurt));
-            }
-            int minCount = Math.Min(GameTracker.cucumber, Math.Min(GameTracker.lemon, GameTracker.yogurt));
+                dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
 
-            GameTracker.coins += (15 *  Math.Min(GameTracker.cucumber, Math.Min(GameTracker.lemon, GameTracker.yogurt)));
+                GameTracker.coins += (GameTracker.recipe.earning *  Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
             
-            GameTracker.cucumber = Math.Max(0, GameTracker.cucumber - minCount); 
-            GameTracker.lemon = Math.Max(0, GameTracker.lemon - minCount);
-            GameTracker.yogurt = Math.Max(0, GameTracker.yogurt - minCount);
+                GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount); 
+                GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - minCount);
+                GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - minCount);
 
+            }
+            
             GameTracker.LoadScenes();
         }
     }
@@ -164,7 +165,7 @@ public class SanctumQuiz : MonoBehaviour
         else
         {
 
-            Send(quizQuestion.question, 0, 1);
+           // Send(quizQuestion.question, 0, 1);
 
             if (GameTracker.coins < 10)
             {

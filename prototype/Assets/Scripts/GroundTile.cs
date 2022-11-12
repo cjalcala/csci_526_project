@@ -13,9 +13,18 @@ public class GroundTile : MonoBehaviour
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
 
+    // level1
     public GameObject CucumberPrefab;
     public GameObject LemonPrefab;
     public GameObject YogurtPrefab;
+    // level2
+    public GameObject BasilPrefab;
+    public GameObject TomatoPrefab;
+    public GameObject OnionPrefab;
+    // level3
+    public GameObject MushroomPrefab;
+    public GameObject PepperPrefab;
+    public GameObject SteakPrefab;
 
     public GameObject CookingStationPrefab;
 
@@ -72,6 +81,38 @@ public class GroundTile : MonoBehaviour
     public void SpawnYogurt() 
     {
         GameObject temp = Instantiate(YogurtPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+    public void SpawnBasil() 
+    {
+        GameObject temp = Instantiate(BasilPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnTomato() 
+    {
+        GameObject temp = Instantiate(TomatoPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnOnion() 
+    {
+        GameObject temp = Instantiate(OnionPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+    public void SpawnMushroom()
+    {
+        GameObject temp = Instantiate(MushroomPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+    public void SpawnPepper()
+    {
+        GameObject temp = Instantiate(PepperPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+    public void SpawnSteak()
+    {
+        GameObject temp = Instantiate(SteakPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
