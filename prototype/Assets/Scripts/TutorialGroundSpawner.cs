@@ -54,7 +54,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
             if(i < 4)
             {
-                SpawnTutorialTile(false, false, false, false, false);
+                SpawnTutorialTile(false, false, false, false, false);//SpawnTutorialTile(bool SpawnObstacle, bool SpawnCoins, bool SpawnEntrance, bool SpawnHammer, bool SpawnClock) 
             }
             else if(i>=4 && i<=7)
             {

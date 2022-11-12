@@ -61,7 +61,7 @@ public class TutorialManager : MonoBehaviour
             {
                 if(popUpIndex==0)
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))//left right
                     {
                         TutorialGameManager.horizontalArrows = false;
                         Time.timeScale = 1f;
@@ -69,7 +69,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;
-                        popUpIndex = 6;
+                        popUpIndex = getInsCompletedIndex(0);
 
                     }
                     else
@@ -81,7 +81,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.jumpForce = 0;
                     }
                 }
-                else if(popUpIndex==6)
+                else if(popUpIndex== getInsCompletedIndex(0))
                 {
                     if(spaceWaitTime>0)
                     {
@@ -94,7 +94,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex==1)
                 {
-                    if(Input.GetKeyDown(KeyCode.Space))
+                    if(Input.GetKeyDown(KeyCode.Space))//jump
                     {
                         TutorialGameManager.spaceBar = false;
                         Time.timeScale = 1f;
@@ -102,7 +102,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;
-                        popUpIndex=7;
+                        popUpIndex= getInsCompletedIndex(1);
 
                     }
                     else
@@ -114,7 +114,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.jumpForce = 0;   
                     }
                 }
-                else if(popUpIndex==7)
+                else if(popUpIndex== getInsCompletedIndex(1))
                 {
                     if(coinWaitTime>0)
                     {
@@ -133,11 +133,11 @@ public class TutorialManager : MonoBehaviour
                     }
                     else
                     {
-                        popUpIndex=8;
+                        popUpIndex= getInsCompletedIndex(2);
 
                     }   
                 }
-                else if(popUpIndex==8)
+                else if(popUpIndex== getInsCompletedIndex(2))
                 {
                     if(hammerWaitTime>0)
                     {
@@ -150,7 +150,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex==3)
                 {
-                    if(!Input.GetKeyDown(KeyCode.Return))
+                    if(!Input.GetKeyDown(KeyCode.Return))//hammer
                     {
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
@@ -164,11 +164,11 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;  
-                        popUpIndex=9;
+                        popUpIndex= getInsCompletedIndex(3);
  
                     }
                 }
-                else if(popUpIndex==9)
+                else if(popUpIndex== getInsCompletedIndex(3))
                 {
                     if(clockWaitTime>0)
                     {
@@ -181,7 +181,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex==4)
                 {
-                    if(!Input.GetKeyDown(KeyCode.Return))
+                    if(!Input.GetKeyDown(KeyCode.Return))//clock
                     {
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
@@ -195,10 +195,10 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;   
-                        popUpIndex = 10;
+                        popUpIndex = getInsCompletedIndex(4);
                     }
                 }
-                else if(popUpIndex==10)
+                else if(popUpIndex== getInsCompletedIndex(4))
                 {
                     if(sanctumWaitTime>0)
                     {
@@ -217,12 +217,15 @@ public class TutorialManager : MonoBehaviour
                     }
                     else
                     {
-                        popUpIndex = 11;
+                        popUpIndex = getInsCompletedIndex(5);
 
                     }   
                 }
 
             }
         }
+    }
+    public int getInsCompletedIndex(int index) {
+        return popUps.Length + index;
     }
 }

@@ -9,6 +9,9 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialsanctumEntrancePrefab;
     public GameObject HammerPrefab;
     public GameObject TimePowerUpPrefab;
+    public GameObject fiftyFiftyPowerUpPrefab;
+    public GameObject hintPrefab;
+    public GameObject cookingStationPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -92,4 +95,18 @@ public class TutorialGroundTile : MonoBehaviour
         // }
     }
 
+    public void SpawnStation() {
+        GameObject temp = Instantiate(cookingStationPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnFiftyFifty() {
+        GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnHints() {
+        GameObject temp = Instantiate(hintPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
 }
