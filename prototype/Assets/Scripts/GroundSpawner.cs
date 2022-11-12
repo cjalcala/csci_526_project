@@ -37,8 +37,7 @@ public class GroundSpawner : MonoBehaviour
             }
 
             rand = Random.Range(0, 5);
-            //if (rand == 1 && GameTracker.level!=1) {
-            if (rand == 1) {
+            if (rand == 1 && GameTracker.level!=1) {
                 temp.GetComponent<GroundTile>().SpawnMouse();
             }
 
