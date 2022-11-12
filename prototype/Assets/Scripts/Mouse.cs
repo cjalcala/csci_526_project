@@ -5,6 +5,10 @@ using UnityEngine;
 public class Mouse : MonoBehaviour
 {
 
+    public float speed = 5;
+    float horizontalDir = 1;
+    public Rigidbody rb;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Obstacle>() != null)
@@ -18,10 +22,15 @@ public class Mouse : MonoBehaviour
         {
             return;
         }
-        
+
         Destroy(gameObject);
     }
 
+    private void FixedUpdate()
+    {
+        Vector3 horizontalMove = transform.right * horizontalDir * speed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + horizontalMove);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +41,13 @@ public class Mouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(horizontalDir==1 && rb.position.x>=4.5f)
+        {
+            horizontalDir=-1;
+        }
+        else if(horizontalDir==-1 && rb.position.x<=-4.5f)
+        {
+            horizontalDir=1;
+        }
     }
 }

@@ -25,7 +25,6 @@ public class GroundTile : MonoBehaviour
     private void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
-        SpawnMouse();
     }
 
     private void OnTriggerExit(Collider other)
