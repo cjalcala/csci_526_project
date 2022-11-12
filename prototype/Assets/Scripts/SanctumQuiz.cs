@@ -101,7 +101,7 @@ public class SanctumQuiz : MonoBehaviour
             buttons[b].enabled = false;
         }
 
-        Send(quizQuestion.question, 1, 0);
+        // Send(quizQuestion.question, 1, 0);
         if (TutorialManager.tutorialActive)
         {
             Invoke("LoadTutorialComplete", 1.5f);
@@ -165,7 +165,7 @@ public class SanctumQuiz : MonoBehaviour
         else
         {
 
-            Send(quizQuestion.question, 0, 1);
+           // Send(quizQuestion.question, 0, 1);
 
             if (GameTracker.coins < 10)
             {

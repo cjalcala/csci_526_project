@@ -183,11 +183,11 @@ public class GameManager : MonoBehaviour
         GameTracker.hintCount++;
     }
 
-    public void increaseIngredient(string name)
-    {
-        GameTracker.ingredientsList[name].currentCount++;
-        goalProgress();
-    }
+    // public void increaseIngredient(string name)
+    // {
+    //     GameTracker.ingredientsList[name].currentCount++;
+    //     goalProgress();
+    // }
 
     public bool checkIngredientsGoal()
     {
@@ -199,19 +199,25 @@ public class GameManager : MonoBehaviour
 
         return goalReached;
     }
-
-    public void goalProgress()
+    public bool checkCoinsGoal()
     {
-        string goal = "";
-        int index = 0;
-        foreach (KeyValuePair<string, Ingredient> pair in GameTracker.ingredientsList)
-        {
-            goal = "x" + pair.Value.currentCount + "/" + pair.Value.requiredCount;
-            ingredientIcon[index].sprite = Resources.Load<Sprite>("Sprites/" + pair.Key.ToString());
-            goalText[index].text = goal;
-            index++;
-        }
+        bool goalReached = true;
+        goalReached = goalReached && (GameTracker.coins >= GameTracker.goalAmt);
+        return goalReached;
     }
+
+    // public void goalProgress()
+    // {
+    //     string goal = "";
+    //     int index = 0;
+    //     foreach (KeyValuePair<string, Ingredient> pair in GameTracker.ingredientsList)
+    //     {
+    //         goal = "x" + pair.Value.currentCount + "/" + pair.Value.requiredCount;
+    //         ingredientIcon[index].sprite = Resources.Load<Sprite>("Sprites/" + pair.Key.ToString());
+    //         goalText[index].text = goal;
+    //         index++;
+    //     }
+    // }
 
     public void Cost()
     {
@@ -299,11 +305,11 @@ public class GameManager : MonoBehaviour
             level_flag++;
             if (level_flag == 1)
             {
-                NewSend("true");
+                // NewSend("true");
             }
 
         }
-        else if (GameTracker.timeRemain >= 0 && checkIngredientsGoal())
+        else if (GameTracker.timeRemain >= 0 && checkCoinsGoal())
         {
             if (!won)
             {
@@ -317,8 +323,8 @@ public class GameManager : MonoBehaviour
                     deathValues[2] = "won";
                     deathValues[3] = "";
                     deathValues[4] = (GameTracker.originalTime - GameTracker.timeRemain).ToString("0");
-                    Send("deathTracker");
-                    Send("coinTracker");
+                    // Send("deathTracker");
+                    // Send("coinTracker");
                 }
             }
         }
@@ -353,7 +359,7 @@ public class GameManager : MonoBehaviour
             level_flag++;
             if (level_flag == 1)
             {
-                NewSend("false");
+                // NewSend("false");
             }
 
             flag++;
@@ -364,8 +370,8 @@ public class GameManager : MonoBehaviour
                 deathValues[2] = "lost";
                 deathValues[3] = "time";
                 deathValues[4] = GameTracker.originalTime.ToString("0");
-                Send("deathTracker");
-                Send("coinTracker");
+                // Send("deathTracker");
+                // Send("coinTracker");
             }
 
             gameOverScreen.Setup();
