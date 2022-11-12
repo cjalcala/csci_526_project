@@ -45,9 +45,9 @@ public class GroundSpawner : MonoBehaviour
                 if (GameTracker.level == 2) {
                     temp.GetComponent<GroundTile>().SpawnBasil();
                 }
-                // if (GameTracker.level == 3) {
-                //     temp.GetComponent<GroundTile>().SpawnMushroom();
-                // }
+                if (GameTracker.level == 3) {
+                    temp.GetComponent<GroundTile>().SpawnMushroom();
+                }
                 
             }
             if (rand_ingredient == 2) {
@@ -57,9 +57,9 @@ public class GroundSpawner : MonoBehaviour
                 if (GameTracker.level == 2) {
                     temp.GetComponent<GroundTile>().SpawnTomato();
                 }
-                // if (GameTracker.level == 3) {
-                //     temp.GetComponent<GroundTile>().SpawnPepper();
-                // } 
+                if (GameTracker.level == 3) {
+                    temp.GetComponent<GroundTile>().SpawnPepper();
+                } 
 
                 
             }
@@ -70,9 +70,9 @@ public class GroundSpawner : MonoBehaviour
                 if (GameTracker.level == 2) {
                     temp.GetComponent<GroundTile>().SpawnOnion();
                 }
-                // if (GameTracker.level == 3) {
-                //     temp.GetComponent<GroundTile>().SpawnSteak();
-                // }
+                if (GameTracker.level == 3) {
+                    temp.GetComponent<GroundTile>().SpawnSteak();
+                }
                 
             }
 

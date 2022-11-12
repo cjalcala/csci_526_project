@@ -103,6 +103,7 @@ public class GameTracker : MonoBehaviour
             ingredientsList.Add("Pepper", new Ingredient("Pepper", 1, 2));
             ingredientsList.Add("Mushroom", new Ingredient("Mushroom", 1, 2));
             recipe = new Recipe("Grilled Kabob", 20);
+            ingredientNames = new string[]{"Mushroom", "Pepper", "Steak"};
 
             goalAmt = 60;
         }
@@ -119,6 +120,8 @@ public class GameTracker : MonoBehaviour
             SceneManager.LoadScene("Game");
         else if (level == 2)
             SceneManager.LoadScene("Level2");
+            else if (level == 3)
+            SceneManager.LoadScene("Level3");
     }
 
     

@@ -119,7 +119,7 @@ public class SanctumQuiz : MonoBehaviour
                 dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
                 int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
 
-                GameTracker.coins += (15 *  Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
+                GameTracker.coins += (GameTracker.recipe.earning *  Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
             
                 GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount); 
                 GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - minCount);
