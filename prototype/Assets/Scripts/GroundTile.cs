@@ -28,6 +28,8 @@ public class GroundTile : MonoBehaviour
 
     public GameObject CookingStationPrefab;
 
+    public GameObject mousePrefab;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -157,6 +159,13 @@ public class GroundTile : MonoBehaviour
     public void SpawnHints() {
         GameObject temp = Instantiate(hintPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnMouse() {
+        GameObject temp = Instantiate(mousePrefab, transform);
+        Vector3 p = GetRandomPointInCollider(GetComponent<Collider>());
+        p.y=0.1f;
+        temp.transform.position = p;
     }
 
     Vector3 GetRandomPointInCollider(Collider collider)

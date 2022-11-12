@@ -173,6 +173,7 @@ MonoBehaviour:
   PepperPrefab: {fileID: 4603852242773812245, guid: 413aa6577f21144eeb8dbd0a91b1b2c5, type: 3}
   SteakPrefab: {fileID: 3305831611645858870, guid: 137174f9317c442198d535e74ee68261, type: 3}
   CookingStationPrefab: {fileID: 7835282938579396881, guid: 5e20406812ca6b14db3db89bbd926f65, type: 3}
+  mousePrefab: {fileID: 7558889018751214817, guid: 8b7805587465f4cf0a2412e0b5c56ac4, type: 3}
 --- !u!1 &7421840275398925066
 GameObject:
   m_ObjectHideFlags: 0
