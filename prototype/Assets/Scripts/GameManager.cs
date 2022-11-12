@@ -331,12 +331,12 @@ public class GameManager : MonoBehaviour
 
         if (GameTracker.timeRemain > 0)
         {
-            cucumber = GameTracker.cucumber;
-            cucumberText.text = ": " + GameTracker.cucumber;
-            lemon = GameTracker.lemon;
-            lemonText.text = ": " + GameTracker.lemon;
-            yogurt = GameTracker.yogurt;
-            yogurtText.text = ": " + GameTracker.yogurt;
+            // cucumber = GameTracker.cucumber;
+            // cucumberText.text = ": " + GameTracker.cucumber;
+            // lemon = GameTracker.lemon;
+            // lemonText.text = ": " + GameTracker.lemon;
+            // yogurt = GameTracker.yogurt;
+            // yogurtText.text = ": " + GameTracker.yogurt;
             if (TimePowerUp)
             {
                 GameTracker.timeRemain -= Time.deltaTime / 2;
