@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 964696537916140167}
   - component: {fileID: 964696537916140164}
   - component: {fileID: 964696537916140165}
-  - component: {fileID: -7509347375387266897}
   - component: {fileID: 2485099847983477590}
+  - component: {fileID: 2869005467742568399}
   m_Layer: 0
-  m_Name: TutorialSanctumEntrance
+  m_Name: TutorialIngredent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,18 +99,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7509347375387266897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964696537916140162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a60e87b51e3a408289f77f0dd8ba0a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &2485099847983477590
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +115,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2869005467742568399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964696537916140162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca94257fa1971c14e812667ac3bae26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

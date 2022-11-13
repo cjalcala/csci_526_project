@@ -9,7 +9,7 @@ public class TutorialGroundSpawner : MonoBehaviour
     public int hammerSpawnTime;
 
 
-    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnCoins, bool SpawnEntrance, bool SpawnHammer, bool SpawnClock) 
+    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnIngredent, bool SpawnHammer, bool SpawnClock,bool SpawnFifty, bool SpawnHint,bool SpawnStation) 
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
@@ -20,15 +20,9 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
             temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
         }
-
-        if(SpawnCoins)
+        if(SpawnIngredent)
         {
-            temp.GetComponent<TutorialGroundTile>().TutorialSpawnCoins();
-        }
-
-        if(SpawnEntrance)
-        {
-            temp.GetComponent<TutorialGroundTile>().TutorialSpawnEntrance();
+            temp.GetComponent<TutorialGroundTile>().TutorialSpawnIngredent();
         }
         if (SpawnHammer)
         {
@@ -43,6 +37,16 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
         }
+        if (SpawnFifty) {
+            temp.GetComponent<TutorialGroundTile>().SpawnFiftyFifty();
+        }
+        if (SpawnHint) {
+            temp.GetComponent<TutorialGroundTile>().SpawnHints();
+        }
+        if (SpawnStation) {
+            temp.GetComponent<TutorialGroundTile>().SpawnStation();
+        }
+
     }
 
 
@@ -52,45 +56,43 @@ public class TutorialGroundSpawner : MonoBehaviour
         hammerSpawnTime = Random.Range((int)TutorialGameManager.time - 5, (int)TutorialGameManager.time);
         for (int i = 0; i < 26; i++)
         {
-            if(i < 4)
-            {
-                SpawnTutorialTile(false, false, false, false, false);//SpawnTutorialTile(bool SpawnObstacle, bool SpawnCoins, bool SpawnEntrance, bool SpawnHammer, bool SpawnClock) 
+
+            if (i < 4) {//leftright jump hammer clock 50-50 hint onion cookingstation
+                // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint, SpawnStation
+                SpawnTutorialTile(false, false, false, false, false, false, false);
             }
-            else if(i>=4 && i<=7)
-            {
-                SpawnTutorialTile(true, false, false, false, false);
+            else if (i >= 4 && i <= 11) {
+                SpawnTutorialTile(true, false, false, false, false, false, false);//SpawnObstacle
             }
-            else if(i>7 && i<11)
-            {
-                SpawnTutorialTile(true, true, false, false, false);
+            else if (i >= 11 && i <= 12) {
+                SpawnTutorialTile(true, false, true, false, false, false, false);//SpawnObstacle, SpawnHammer
             }
-            else if(i>=11 && i<=12)
-            {
-                SpawnTutorialTile(true, true, false, true, false);
+            else if (i > 12 && i < 14) {
+                SpawnTutorialTile(true, false, false, true, false, false, false);//SpawnObstacle, SpawnClock
             }
-            else if(i>12 && i<14)
-            {
-                SpawnTutorialTile(true, true, false, false, false);
+            else if (i >= 14 && i < 19) {
+                SpawnTutorialTile(true, false, false, false, true, false, false);//SpawnObstacle, SpawnFifty
             }
-            else if(i>=14 && i<19)
-            {
-                SpawnTutorialTile(true, true, false, false, true);
+            else if (i >= 19 && i < 23) {
+                SpawnTutorialTile(true, false, false, true, true, true, false);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
             }
-            else
-            {
-                SpawnTutorialTile(true, true, true, false, false);
+            else {
+                SpawnTutorialTile(true, true, false, false, false, false, false);//SpawnObstacle,  SpawnIngredent
             }
         }
     }
 
-    // void Update()
-    // {
-    //     //Debug.Log(GameTracker.timeRemain);
-    //     if (TutorialGameManager.time <= hammerSpawnTime)
-    //     {
-    //         //Debug.Log("True");
-    //         SpawnTutorialTile(true, true, true, false, false);
-    //         hammerSpawnTime = -1;
-    //     }
-    // }
+     void Update()
+     {
+        //Debug.Log(GameTracker.timeRemain);
+        //     if (TutorialGameManager.time <= hammerSpawnTime)
+        //     {
+        //         //Debug.Log("True");
+        //         SpawnTutorialTile(true, true, true, false, false);
+        //         hammerSpawnTime = -1;
+        //     }
+        if (TutorialManager.getIngredent) {
+            SpawnTutorialTile(false, false, false, false, false, false, true);
+        }
+    }
 }

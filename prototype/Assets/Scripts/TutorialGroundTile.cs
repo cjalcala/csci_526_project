@@ -6,7 +6,7 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialobstaclePrefab;
     TutorialGroundSpawner tutorialgroundSpawner;
     public GameObject tutorialcoinPrefab;
-    public GameObject tutorialsanctumEntrancePrefab;
+    public GameObject tutorialIngredentPrefab;
     public GameObject HammerPrefab;
     public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
@@ -23,7 +23,7 @@ public class TutorialGroundTile : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        tutorialgroundSpawner.SpawnTutorialTile(true, true, true, false, false); 
+        tutorialgroundSpawner.SpawnTutorialTile(true, true, false, false,false,false, false); 
         Destroy(gameObject, 2);
     }
 
@@ -53,7 +53,7 @@ public class TutorialGroundTile : MonoBehaviour
         }
     }
 
-    public void TutorialSpawnEntrance()
+    public void TutorialSpawnIngredent()
     {
         Collider collider = GetComponent<Collider>();
         Vector3 position = new Vector3(Random.Range(collider.bounds.min.x, collider.bounds.max.x), 1, Random.Range(collider.bounds.min.z, collider.bounds.max.z));
@@ -61,7 +61,7 @@ public class TutorialGroundTile : MonoBehaviour
         {
             position = GetRandomPointInCollider(collider);
         }
-        Instantiate(tutorialsanctumEntrancePrefab, position, Quaternion.identity, transform);
+        Instantiate(tutorialIngredentPrefab, position, Quaternion.identity, transform);
         //temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 

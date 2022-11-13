@@ -17,14 +17,14 @@ public class TutorialManager : MonoBehaviour
     public float hammerDelTime = 3f;
     public float clockWaitTime = 7f;
     public float clockDelTime = 5f;
-    public float sanctumWaitTime = 5.5f;
-    public float sanctumDelTime = 4.5f;
+    public float cookStationWaitTime = 5.5f;
+    public float cookStationDelTime = 4.5f;
     public static int hammerCount = 0;
     public static int clockCount = 0;
     public static float tutorialOriginalTime;
     TutorialPlayerMovement tutorialplayerMovement;
     public static QuestionGenerator questionGenerator;
-
+    public static bool getIngredent = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +56,7 @@ public class TutorialManager : MonoBehaviour
                     popUps[i].SetActive(false);
                 }
             }
-
+            //leftright jump hammer clock 50-50 hint onion cookingstation
             if(!TutorialGameManager.isPaused)
             {
                 if(popUpIndex==0)
@@ -125,7 +125,7 @@ public class TutorialManager : MonoBehaviour
                         popUpIndex=2;
                     }
                 }
-                else if(popUpIndex==2)
+                else if(popUpIndex==2)//pick up cost
                 {
                     if(coinDelTime>0)
                     {
@@ -150,22 +150,22 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex==3)
                 {
-                    if(!Input.GetKeyDown(KeyCode.Return))//hammer
-                    {
-                        Time.timeScale = 0f;
-                        tutorialplayerMovement.speed = 0;
-                        tutorialplayerMovement.horizontalMultiplier = 0;
-                        tutorialplayerMovement.jumpForce = 0;
-                    }
-                    else 
+                    if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))//hammer
                     {
                         //hammerDelTime-=Time.deltaTime;
                         Time.timeScale = 1f;
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
-                        tutorialplayerMovement.jumpForce = 750f;  
-                        popUpIndex= getInsCompletedIndex(3);
- 
+                        tutorialplayerMovement.jumpForce = 750f;
+                        popUpIndex = getInsCompletedIndex(3);
+                    }
+                    else 
+                    {
+                        Time.timeScale = 0f;
+                        tutorialplayerMovement.speed = 0;
+                        tutorialplayerMovement.horizontalMultiplier = 0;
+                        tutorialplayerMovement.jumpForce = 0;
+
                     }
                 }
                 else if(popUpIndex== getInsCompletedIndex(3))
@@ -181,39 +181,40 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex==4)
                 {
-                    if(!Input.GetKeyDown(KeyCode.Return))//clock
+                    if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))//clock
+                    {
+
+                        //clockDelTime-=Time.deltaTime;
+                        Time.timeScale = 1f;
+                        tutorialplayerMovement.speed = 8;
+                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
+                        tutorialplayerMovement.jumpForce = 750f;
+                        popUpIndex = getInsCompletedIndex(4);
+                    }
+                    else 
                     {
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
                         tutorialplayerMovement.jumpForce = 0;
                     }
-                    else 
-                    {
-                        //clockDelTime-=Time.deltaTime;
-                        Time.timeScale = 1f;
-                        tutorialplayerMovement.speed = 8;
-                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
-                        tutorialplayerMovement.jumpForce = 750f;   
-                        popUpIndex = getInsCompletedIndex(4);
-                    }
                 }
                 else if(popUpIndex== getInsCompletedIndex(4))
                 {
-                    if(sanctumWaitTime>0)
+                    if(cookStationWaitTime>0)
                     {
-                        sanctumWaitTime-=Time.deltaTime;
+                        cookStationWaitTime -= Time.deltaTime;
                     }
                     else
                     {
                         popUpIndex=5;
                     }
                 }
-                else if(popUpIndex==5)
+                else if(popUpIndex==5 && getIngredent)//get onion and display "“Enter Cooking Station to create a dish and get money."
                 {
-                    if(sanctumDelTime>0)
+                    if(cookStationDelTime > 0)
                     {
-                        sanctumDelTime-=Time.deltaTime;
+                        cookStationDelTime -= Time.deltaTime;
                     }
                     else
                     {
@@ -224,6 +225,8 @@ public class TutorialManager : MonoBehaviour
 
             }
         }
+
+
     }
     public int getInsCompletedIndex(int index) {
         return popUps.Length + index;

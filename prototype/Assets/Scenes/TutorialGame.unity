@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44671863, g: 0.496575, b: 0.5750147, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3099,7 +3099,7 @@ MonoBehaviour:
   popUps:
   - {fileID: 1853456090}
   - {fileID: 889325659}
-  - {fileID: 1749163357}
+  - {fileID: 1012477181}
   - {fileID: 1518504684}
   - {fileID: 916834389}
   - {fileID: 1012477181}
@@ -3111,8 +3111,8 @@ MonoBehaviour:
   hammerDelTime: 4
   clockWaitTime: 2
   clockDelTime: 4
-  sanctumWaitTime: 1.75
-  sanctumDelTime: 3
+  cookStationWaitTime: 5.5
+  cookStationDelTime: 4.5
 --- !u!4 &1147776336
 Transform:
   m_ObjectHideFlags: 0
