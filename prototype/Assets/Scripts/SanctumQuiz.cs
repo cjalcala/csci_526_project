@@ -29,8 +29,7 @@ public class SanctumQuiz : MonoBehaviour
     public Text timeText;
 
     public QuizQA quizQuestion;
-    public static string quizIngredient;// Change to index later
-
+    public static String hint;
     public static bool notCollected = false;
     public static int dish = 0;
 
@@ -64,9 +63,7 @@ public class SanctumQuiz : MonoBehaviour
         Debug.Log("Sanctum " + GameTracker.timeRemain);
         //Debug.Log(TutorialManager.tutorialActive);
         BPanel.SetActive(false);
-        quizIngredient = PlayerPrefs.GetString("IngredientID");// Change to index later
-        questionGenerator(0.7, 0.3, 0);
-        //fiftyFifty();
+        questionGenerator();
     }
 
     public void retry()
@@ -222,40 +219,20 @@ public class SanctumQuiz : MonoBehaviour
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
         }
-    }
-    /*void fiftyFifty() {
-        eliminateWrongAnswers(2);
+        hint = quizQuestion.hint;
     }
 
-    void eliminateWrongAnswers(int countToEliminate) {
-        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
-        if (countToEliminate >= buttons.Length - 1) {
-            Debug.Log("Eliminating too many answers,only correct or 0 answer left");
-        }
-        int correctAns = quizQuestion.correctAnswer;
-        int index = 0;
-        while (index < countToEliminate) {
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(5);
-            if (num != correctAns) {
-                index++;
-                buttons[num].enabled = false;
-                buttons[num].image.color = Color.red;
-            }
-        }
-    }*/
-
-    void questionGenerator(double easyRate, double mediumRate, double hardRate)
+    void questionGenerator()
     {
         if (TutorialManager.tutorialActive)
         {
-            quizQuestion = TutorialManager.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
-            var qT = TutorialManager.questionGenerator.getIngredientQuestion(quizIngredient);
+            quizQuestion = TutorialManager.questionGenerator.getQuestion(1);
+            
         }
         else
         {
-            quizQuestion = GameTracker.questionGenerator.getQuestion(easyRate, mediumRate, hardRate);
-            var qT = GameTracker.questionGenerator.getIngredientQuestion(quizIngredient);
+            quizQuestion = GameTracker.questionGenerator.getQuestion(GameTracker.level);
+            
         }
 
 

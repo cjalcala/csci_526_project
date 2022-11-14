@@ -9,15 +9,13 @@ using System.Diagnostics;
 
 public class QuestionGenerator : MonoBehaviour {
     Root questionObject;
-
-    int easyCount = 0;
-    int mediumCount = 0;
-    int hardCount = 0;
-    
-    BurgerQuestions burgerObject;
+    int lvl1Count;
+    int lvl2Count;
+    int lvl3Count;
+    //BurgerQuestions burgerObject;
 
     //if run out of the question in desired level,return the non empty level in descending difficulity
-    private int findLevel(int easyCount, int mediumCount, int hardCount, int rand, double easyRate, double mediumRate, double hardRate) {
+    /*private int findLevel(int easyCount, int mediumCount, int hardCount, int rand, double easyRate, double mediumRate, double hardRate) {
         int res = 0;
 
         if (rand <= easyRate * 100 && easyCount > 0) {
@@ -57,8 +55,7 @@ public class QuestionGenerator : MonoBehaviour {
             //get easy question
             int randIndex = new System.Random().Next(easyCount);
             Easy question = questionObject.easy[randIndex];
-            if (randIndex != easyCount - 1)
-            {
+            if (randIndex != easyCount - 1) {
                 questionObject.easy[randIndex] = questionObject.easy[easyCount - 1];
             }
             questionObject.easy.RemoveAt(easyCount - 1);
@@ -71,8 +68,7 @@ public class QuestionGenerator : MonoBehaviour {
             int randIndex = new System.Random().Next(mediumCount);
             Medium question = questionObject.medium[randIndex];
             // questionObject.medium.RemoveAt(randIndex);
-            if (randIndex != mediumCount - 1)
-            {
+            if (randIndex != mediumCount - 1) {
                 questionObject.medium[randIndex] = questionObject.medium[mediumCount - 1];
             }
             questionObject.medium.RemoveAt(mediumCount - 1);
@@ -84,8 +80,7 @@ public class QuestionGenerator : MonoBehaviour {
             int randIndex = new System.Random().Next(hardCount);
             Hard question = questionObject.hard[randIndex];
             // questionObject.hard.RemoveAt(randIndex);
-            if (randIndex != hardCount - 1)
-            {
+            if (randIndex != hardCount - 1) {
                 questionObject.hard[randIndex] = questionObject.hard[hardCount - 1];
             }
             questionObject.hard.RemoveAt(hardCount - 1);
@@ -111,6 +106,50 @@ public class QuestionGenerator : MonoBehaviour {
         else {
             return null;
         }
+    }*/
+
+    public QuizQA getQuestion(int level) {
+        if (level == 1) {
+            //get easy question
+            int randIndex = new System.Random().Next(lvl1Count);
+            Level1 question = questionObject.Level1[randIndex];
+            if (randIndex != lvl1Count - 1) {
+                questionObject.Level1[randIndex] = questionObject.Level1[lvl1Count - 1];
+            }
+            questionObject.Level1.RemoveAt(lvl1Count - 1);
+            lvl1Count--;
+            return questionConverter(question);
+
+        }
+        else if (level == 2) {
+            //get medium question
+            int randIndex = new System.Random().Next(lvl2Count);
+            Level2 question = questionObject.Level2[randIndex];
+            // questionObject.medium.RemoveAt(randIndex);
+            if (randIndex != lvl2Count - 1) {
+                questionObject.Level2[randIndex] = questionObject.Level2[lvl2Count - 1];
+            }
+            questionObject.Level2.RemoveAt(lvl2Count - 1);
+            lvl2Count--;
+            return questionConverter(question);
+        }
+        else if (level == 3) {
+            //get hard question
+            int randIndex = new System.Random().Next(lvl3Count);
+            Level3 question = questionObject.Level3[randIndex];
+            // questionObject.hard.RemoveAt(randIndex);
+            if (randIndex != lvl3Count - 1) {
+                questionObject.Level3[randIndex] = questionObject.Level3[lvl3Count - 1];
+            }
+            questionObject.Level3.RemoveAt(lvl3Count - 1);
+            lvl3Count--;
+            return questionConverter(question);
+
+        }
+        else {
+            UnityEngine.Debug.Log("Run out of questions");
+            return null;
+        }
     }
 
     public QuizQA questionConverter(Question q) {
@@ -130,32 +169,29 @@ public class QuestionGenerator : MonoBehaviour {
         quizQA.question = q.QuestionText;
         quizQA.answers = options;
         quizQA.correctAnswer = indexArray[0];
-
+        quizQA.hint = q.Hint;
         return quizQA;
     }
 
     public QuestionGenerator() {
-        var jsonTextFile = Resources.Load<TextAsset>("Questions");//Questions.json in Resources
+        var jsonTextFile = Resources.Load<TextAsset>("QuestionsWithHints");//Questions.json in Resources
         questionObject = JsonUtility.FromJson<Root>(jsonTextFile.text);
+        lvl1Count = questionObject.Level1.Count;
+        lvl2Count = questionObject.Level2.Count;
+        lvl3Count = questionObject.Level3.Count;
 
-        easyCount = questionObject.easy.Count;
-        mediumCount = questionObject.medium.Count;
-        hardCount = questionObject.hard.Count;
-
-        var burgerQuestion = Resources.Load<TextAsset>("Burger");
-        burgerObject = JsonUtility.FromJson<BurgerQuestions>(burgerQuestion.text);
     }
 
-    [System.Serializable]
+    /*[System.Serializable]
     public class BurgerQuestions {
-        public  List<Question>  questions;
-    }
+        public List<Question> questions;
+    }*/
 
     [System.Serializable]
     public class Root {
-        public List<Easy> easy;
-        public List<Medium> medium;
-        public List<Hard> hard;
+        public List<Level1> Level1;
+        public List<Level2> Level2;
+        public List<Level3> Level3;
 
     }
     [System.Serializable]
@@ -165,20 +201,23 @@ public class QuestionGenerator : MonoBehaviour {
         public string Option2;
         public string Option3;
         public string Option4;
+        public string Hint;
     }
 
     [System.Serializable]
-    public class Easy : Question {
+    public class Level1 : Question {
     }
 
     [System.Serializable]
-    public class Medium : Question {
+    public class Level2 : Question {
     }
 
     [System.Serializable]
-    public class Hard : Question {
+    public class Level3 : Question {
     }
 
+
+    
 
 
 }

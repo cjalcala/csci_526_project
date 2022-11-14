@@ -63,7 +63,7 @@ public class TutorialGroundSpawner : MonoBehaviour
                 SpawnTutorialTile(false, false, false, false, false, false);
             }
             else if (i >= 4 && i <= 11) {
-                SpawnTutorialTile(true, false, false, false, false, false);//SpawnObstacle
+                SpawnTutorialTile(true, true, false, false, false, false);//SpawnObstacle
             }
             else if (i >= 11 && i <= 12) {
                 SpawnTutorialTile(true, true, true, false, false, false);//SpawnObstacle, SpawnHammer
@@ -78,7 +78,7 @@ public class TutorialGroundSpawner : MonoBehaviour
                 SpawnTutorialTile(true, true, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
             }
             else {
-                SpawnTutorialTile(true, true, false, false, false, false);//SpawnObstacle,  SpawnIngredent
+                SpawnTutorialTile(true, true, false, true, false, false);//SpawnObstacle,  SpawnIngredent
             }
         }
     }
