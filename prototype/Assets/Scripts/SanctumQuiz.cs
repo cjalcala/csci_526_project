@@ -51,7 +51,6 @@ public class SanctumQuiz : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            TutorialGameManager.tutCoinCnt -= 2;
             sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
             //bagText.text = "Sorry, You have no hints!";
             // GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
