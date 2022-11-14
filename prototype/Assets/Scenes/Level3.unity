@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1829,8 +1829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1742117618}
-  groundTile: {fileID: 7421840273734386047, guid: 048e38992e30545f2b185ca83416dad9, type: 3}
-  terrainPrefab: {fileID: 1032551483747090, guid: 30e0c80107d6ca6498d735d6689d48ff, type: 3}
+  groundTile: {fileID: 7421840273734386047, guid: 6be4fecfbfde41245ad06f223d023ff2, type: 3}
+  terrainPrefab: {fileID: 1256858306203008, guid: 93acc49b5a9f4e84b89aa62e0282a2a3, type: 3}
   entrance: {fileID: 0}
   hammerSpawnTime: 0
 --- !u!4 &506095417
@@ -4493,7 +4493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1154355445
 RectTransform:
   m_ObjectHideFlags: 0
