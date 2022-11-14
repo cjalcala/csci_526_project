@@ -7,6 +7,8 @@ public class TutorialGroundTile : MonoBehaviour
     TutorialGroundSpawner tutorialgroundSpawner;
     // public GameObject tutorialcoinPrefab;
     public GameObject tutorialsanctumEntrancePrefab;
+    public GameObject HammerPrefab;
+    public GameObject TimePowerUpPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class TutorialGroundTile : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        tutorialgroundSpawner.SpawnTutorialTile(true, true, true); 
+        tutorialgroundSpawner.SpawnTutorialTile(true, true, true, false, false); 
         Destroy(gameObject, 2);
     }
 
@@ -73,6 +75,21 @@ public class TutorialGroundTile : MonoBehaviour
         }
         point.y = 1;
         return point;
+    }
+
+    public void SpawnHammer()
+    {
+        GameObject temp = Instantiate(HammerPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnClock()
+    {
+        // for (int i = 0; i < 2; i++)
+        // {
+        GameObject temp = Instantiate(TimePowerUpPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        // }
     }
 
 }

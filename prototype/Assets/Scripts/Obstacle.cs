@@ -22,7 +22,7 @@ public class Obstacle : MonoBehaviour
         {
             Debug.Log(GameTracker.health);
             hit=true;
-            if(GameTracker.health!=0)
+            if(GameTracker.health!=1)
             {
                 GameTracker.health--;
             }

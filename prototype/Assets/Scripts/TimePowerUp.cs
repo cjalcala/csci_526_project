@@ -22,13 +22,21 @@ public class TimePowerUp : MonoBehaviour
         // Check that the object we collided with is the player
         // if (other.gameObject.name == "Player")
         // {
-        GameManager.inst.TimePowerUp = true;
-        GameManager.inst.TimePowerUpStart = GameTracker.timeRemain;
-        GameManager.inst.timeText.color = Color.yellow;
         // GameManager.inst.timeOnText.text = "Timer Counter Slow Down For 5 SEC";
 
         // }
-
+        if(TutorialManager.tutorialActive)
+        {
+            TutorialGameManager.inst.TimePowerUp = true;
+            TutorialGameManager.inst.TimePowerUpStart = TutorialGameManager.time;
+            TutorialGameManager.inst.timeText.color = Color.yellow;
+        }
+        else
+        {
+            GameManager.inst.TimePowerUp = true;
+            GameManager.inst.TimePowerUpStart = GameTracker.timeRemain;
+            GameManager.inst.timeText.color = Color.yellow;
+        }
 
         Destroy(gameObject);
 

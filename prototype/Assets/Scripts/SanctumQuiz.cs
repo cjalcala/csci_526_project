@@ -29,9 +29,21 @@ public class SanctumQuiz : MonoBehaviour
     public Text timeText;
 
     public QuizQA quizQuestion;
-    string quizIngredient;// Change to index later
+    public static string quizIngredient;// Change to index later
+
+    public static bool notCollected = false;
+    public static int dish = 0;
+
+    public Text bagText;
+    public float bagTime = 1.5f;
+
+
+
+    public GameObject LoseScreen;
+
     private void Start()
     {
+
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
         //coin.text = "Coins : " + numCoins.ToString();
@@ -39,9 +51,8 @@ public class SanctumQuiz : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            // TutorialGameManager.tutCoinCnt -= 2;
+            TutorialGameManager.tutCoinCnt -= 2;
             sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
-
             //bagText.text = "Sorry, You have no hints!";
             // GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
@@ -56,6 +67,7 @@ public class SanctumQuiz : MonoBehaviour
         BPanel.SetActive(false);
         quizIngredient = PlayerPrefs.GetString("IngredientID");// Change to index later
         questionGenerator(0.7, 0.3, 0);
+        //fiftyFifty();
     }
 
     public void retry()
@@ -78,6 +90,7 @@ public class SanctumQuiz : MonoBehaviour
         BPanel.SetActive(true);
 
         coin.text = "Coins : " + GameTracker.coins.ToString();
+
     }
 
     public void correct()
@@ -97,7 +110,24 @@ public class SanctumQuiz : MonoBehaviour
         }
         else
         {
-            GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
+
+            // GameTracker.coins+=15;
+            //GameTracker.increaseIngredient(quizIngredient);//use map to find the ingredient string /change increaseIngredient param to index
+            //dish += 1;
+
+            if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
+            {
+                dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+
+                GameTracker.coins += (GameTracker.recipe.earning * Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
+
+                GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount);
+                GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - minCount);
+                GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - minCount);
+
+            }
+
             GameTracker.LoadScenes();
         }
     }
@@ -116,25 +146,33 @@ public class SanctumQuiz : MonoBehaviour
             buttons[b].enabled = false;
         }
 
+
         if (TutorialManager.tutorialActive)
         {
             if (TutorialGameManager.tutCoinCnt < 10)
             {
-                Invoke("restartTutorial", 2.0f);
+                //Invoke("restartTutorial", 2.0f);
+                notCollected = true;
+                LoseScreen.SetActive(true);
+
+
             }
             else
             {
+                notCollected = false;
                 Invoke("reloadSanctum", 1.5f);
+
 
             }
         }
         else
         {
 
-            Send(quizQuestion.question, 0, 1);
+            // Send(quizQuestion.question, 0, 1);
 
             if (GameTracker.coins < 10)
             {
+                notCollected = true;
                 continueGame();
             }
             else
@@ -144,17 +182,23 @@ public class SanctumQuiz : MonoBehaviour
         }
     }
 
-    void restartTutorial()
+
+    public void restartTutorial()
     {
+
         SceneManager.LoadScene("TutorialGame");
     }
 
     void reloadSanctum()
     {
-        // TutorialGameManager.tutCoinCnt -= 8;
+        TutorialGameManager.tutCoinCnt -= 8;
         //SceneManager.LoadScene("Sanctum");
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
+        if (TutorialManager.tutorialActive)
+        {
+            coin.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+        }
         Button[] buttons = BPanel.GetComponentsInChildren<Button>();
         buttons[1].gameObject.SetActive(false);
     }
@@ -172,6 +216,7 @@ public class SanctumQuiz : MonoBehaviour
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<Text>().text = quizQuestion.answers[i];
+            options[i].GetComponent<AnswerScript>().correctIdx = quizQuestion.correctAnswer;
 
             if (quizQuestion.correctAnswer == i)
             {
@@ -179,6 +224,27 @@ public class SanctumQuiz : MonoBehaviour
             }
         }
     }
+    /*void fiftyFifty() {
+        eliminateWrongAnswers(2);
+    }
+
+    void eliminateWrongAnswers(int countToEliminate) {
+        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        if (countToEliminate >= buttons.Length - 1) {
+            Debug.Log("Eliminating too many answers,only correct or 0 answer left");
+        }
+        int correctAns = quizQuestion.correctAnswer;
+        int index = 0;
+        while (index < countToEliminate) {
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(5);
+            if (num != correctAns) {
+                index++;
+                buttons[num].enabled = false;
+                buttons[num].image.color = Color.red;
+            }
+        }
+    }*/
 
     void questionGenerator(double easyRate, double mediumRate, double hardRate)
     {
@@ -273,5 +339,12 @@ public class SanctumQuiz : MonoBehaviour
                 SceneManager.LoadScene("TutorialGame");
             }
         }
+    }
+
+
+    public void exitTutorial()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("WelcomeScreen");
     }
 }

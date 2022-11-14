@@ -3,12 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class TutorialPlayerMovement : MonoBehaviour
 {
-    public float speed = 10;
+    public float speed = 8;
     bool alive = true;
     public Rigidbody rb;
     float horizontalInput;
-    public float horizontalMultiplier = 1.25f;
-    public float jumpForce = 600f;
+    public float horizontalMultiplier = 0.8f;
+    public float jumpForce = 750f;
     public LayerMask groundMask;
     public GameObject LosePanel;
 
@@ -26,13 +26,13 @@ public class TutorialPlayerMovement : MonoBehaviour
             Die();
         }
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f), transform.position.y, transform.position.z);
 
     }
 
     private void FixedUpdate() 
     {
         if(!alive) return;
+        rb.position = new Vector3(Mathf.Clamp(transform.position.x, -4.5f, 4.5f), transform.position.y, transform.position.z);
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
