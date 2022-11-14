@@ -9,6 +9,7 @@ using System.Reflection;
 
 public class GameManager : MonoBehaviour
 {
+    public float sanctum_immunity_time = 1f;
     [SerializeField] private AudioSource coin_collected_sound;
     [SerializeField] private string URL;
     [SerializeField] private string URLforLevel;
@@ -452,6 +453,17 @@ public class GameManager : MonoBehaviour
                     hammerOffText.text = "Obstacle Immunity Off";
                     hflag = 1;
                 }
+            }
+        }
+
+        // Providing 1 second unity after exiting from sanctum
+        if (GameTracker.sanctumImmunity){
+            if (sanctum_immunity_time > 0){
+                sanctum_immunity_time -= Time.deltaTime;
+            }
+            else{
+                GameTracker.sanctumImmunity = false;
+                sanctum_immunity_time = 1f;
             }
         }
 
