@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameTracker : MonoBehaviour
 {
+    public static bool sanctumImmunity = false;
     public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
     public static int coins = 10;
