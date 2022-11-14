@@ -6,6 +6,7 @@ public class GroundTile : MonoBehaviour
 
     GroundSpawner groundSpawner;
     public GameObject obstaclePrefab;
+    public GameObject obstacle2Prefab;
     public GameObject coinPrefab;
     public GameObject sanctumEntrancePrefab;
     public GameObject HammerPrefab;
@@ -55,7 +56,16 @@ public class GroundTile : MonoBehaviour
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
 
         // Spawn the obstacle at the position
-        Instantiate(obstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        int obstacleChoice = Random.Range(0, 2);
+        if (obstacleChoice < 1)
+        {
+            Instantiate(obstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        }
+        else
+        {
+            Instantiate(obstacle2Prefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        }
+        
     }
 
     // public void SpawnCoins()
