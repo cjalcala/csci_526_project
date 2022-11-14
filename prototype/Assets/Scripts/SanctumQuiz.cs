@@ -207,6 +207,7 @@ public class SanctumQuiz : MonoBehaviour
 
     void setQnA()
     {
+        hint = quizQuestion.hint;
         questionText.text = quizQuestion.question;
         for (int i = 0; i < options.Length; i++)
         {
@@ -219,7 +220,7 @@ public class SanctumQuiz : MonoBehaviour
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
         }
-        hint = quizQuestion.hint;
+        
     }
 
     void questionGenerator()

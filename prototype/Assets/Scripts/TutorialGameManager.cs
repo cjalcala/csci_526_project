@@ -50,6 +50,7 @@ public class TutorialGameManager : MonoBehaviour
         spaceBar = false;
         Time.timeScale = 1f;
         health = 5;
+        TutorialGameManager.ingredientNum = 0;
     }
 
     // Update is called once per frame

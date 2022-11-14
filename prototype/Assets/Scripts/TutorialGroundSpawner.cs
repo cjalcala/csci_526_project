@@ -7,7 +7,7 @@ public class TutorialGroundSpawner : MonoBehaviour
     public GameObject terrainPrefab;
     Vector3 nextSpawnPoint;
     public int hammerSpawnTime;
-
+    public static int i = 0;
 
     public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnIngredent, bool SpawnHammer, bool SpawnClock,bool SpawnFifty, bool SpawnHint) 
     {
@@ -55,7 +55,7 @@ public class TutorialGroundSpawner : MonoBehaviour
     void Start()
     {
         hammerSpawnTime = Random.Range((int)TutorialGameManager.time - 5, (int)TutorialGameManager.time);
-        for (int i = 0; i < 26; i++)
+        for ( i = 0; i < 10; i++)
         {
 
             if (i < 4) {//leftright jump hammer clock 50-50 hint onion cookingstation
@@ -63,23 +63,9 @@ public class TutorialGroundSpawner : MonoBehaviour
                 SpawnTutorialTile(false, false, false, false, false, false);
             }
             else if (i >= 4 && i <= 8) {
-                SpawnTutorialTile(true, false, false, false, false, false);//SpawnObstacle
+                SpawnTutorialTile(true, false, false, false, false, false);//SpawnObstacle 
             }
-            else if (i >= 9 && i <= 12) {
-                SpawnTutorialTile(true, true, true, false, false, false);//SpawnObstacle, SpawnHammer
-            }
-            else if (i > 12 && i < 14) {
-                SpawnTutorialTile(true, true, false, true, false, false);//SpawnObstacle, SpawnClock
-            }
-            else if (i >= 14 && i < 19) {
-                SpawnTutorialTile(true, true, false, false, true, false);//SpawnObstacle, SpawnFifty
-            }
-            else if (i >= 19 && i < 23) {
-                SpawnTutorialTile(true, true, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
-            }
-            else {
-                SpawnTutorialTile(true, true, false, true, false, false);//SpawnObstacle,  SpawnIngredent
-            }
+            
         }
     }
 
@@ -92,5 +78,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         //         SpawnTutorialTile(true, true, true, false, false);
         //         hammerSpawnTime = -1;
         //     }
+
+
       }
 }

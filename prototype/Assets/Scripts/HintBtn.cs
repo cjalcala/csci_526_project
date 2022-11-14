@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class HintBtn : MonoBehaviour
 {
-    public Text questionText; 
+    public Text hintText; 
     public Button btn;
     public void giveHint() {
         btn.gameObject.SetActive(false);
-        questionText.text = questionText.text + "\nHint: " + SanctumQuiz.hint;
+        hintText.text = "<color=red>Hint: "+ SanctumQuiz.hint + "</color>";
         GameTracker.hintCount--;
     }
 
