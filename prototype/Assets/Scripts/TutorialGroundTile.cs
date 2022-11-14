@@ -23,7 +23,7 @@ public class TutorialGroundTile : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        tutorialgroundSpawner.SpawnTutorialTile(true, true, false, false,false,false, false); 
+        tutorialgroundSpawner.SpawnTutorialTile(true, true, false, false,false,false); 
         Destroy(gameObject, 2);
     }
 

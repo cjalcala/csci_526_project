@@ -9,7 +9,7 @@ public class TutorialGroundSpawner : MonoBehaviour
     public int hammerSpawnTime;
 
 
-    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnIngredent, bool SpawnHammer, bool SpawnClock,bool SpawnFifty, bool SpawnHint,bool SpawnStation) 
+    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnIngredent, bool SpawnHammer, bool SpawnClock,bool SpawnFifty, bool SpawnHint) 
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
@@ -43,8 +43,9 @@ public class TutorialGroundSpawner : MonoBehaviour
         if (SpawnHint) {
             temp.GetComponent<TutorialGroundTile>().SpawnHints();
         }
-        if (SpawnStation) {
+        if (TutorialManager.getIngredent) {
             temp.GetComponent<TutorialGroundTile>().SpawnStation();
+
         }
 
     }
@@ -58,26 +59,26 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
 
             if (i < 4) {//leftright jump hammer clock 50-50 hint onion cookingstation
-                // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint, SpawnStation
-                SpawnTutorialTile(false, false, false, false, false, false, false);
+                // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
+                SpawnTutorialTile(false, false, false, false, false, false);
             }
             else if (i >= 4 && i <= 11) {
-                SpawnTutorialTile(true, false, false, false, false, false, false);//SpawnObstacle
+                SpawnTutorialTile(true, false, false, false, false, false);//SpawnObstacle
             }
             else if (i >= 11 && i <= 12) {
-                SpawnTutorialTile(true, false, true, false, false, false, false);//SpawnObstacle, SpawnHammer
+                SpawnTutorialTile(true, true, true, false, false, false);//SpawnObstacle, SpawnHammer
             }
             else if (i > 12 && i < 14) {
-                SpawnTutorialTile(true, false, false, true, false, false, false);//SpawnObstacle, SpawnClock
+                SpawnTutorialTile(true, true, false, true, false, false);//SpawnObstacle, SpawnClock
             }
             else if (i >= 14 && i < 19) {
-                SpawnTutorialTile(true, false, false, false, true, false, false);//SpawnObstacle, SpawnFifty
+                SpawnTutorialTile(true, true, false, false, true, false);//SpawnObstacle, SpawnFifty
             }
             else if (i >= 19 && i < 23) {
-                SpawnTutorialTile(true, false, false, true, true, true, false);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
+                SpawnTutorialTile(true, true, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
             }
             else {
-                SpawnTutorialTile(true, true, false, false, false, false, false);//SpawnObstacle,  SpawnIngredent
+                SpawnTutorialTile(true, true, false, false, false, false);//SpawnObstacle,  SpawnIngredent
             }
         }
     }
@@ -91,8 +92,5 @@ public class TutorialGroundSpawner : MonoBehaviour
         //         SpawnTutorialTile(true, true, true, false, false);
         //         hammerSpawnTime = -1;
         //     }
-        if (TutorialManager.getIngredent) {
-            SpawnTutorialTile(false, false, false, false, false, false, true);
-        }
-    }
+      }
 }

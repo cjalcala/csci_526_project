@@ -8,6 +8,7 @@ public class FiftFiftyBtn : MonoBehaviour
     public SanctumQuiz sanctumQuiz;
     public GameObject QuizPanel;
     public Button btn;
+    public Button[] buttons;
     public void fiftyFifty() {
         eliminateWrongAnswers(2);
         btn.gameObject.SetActive(false);
@@ -15,7 +16,7 @@ public class FiftFiftyBtn : MonoBehaviour
     }
 
     public void eliminateWrongAnswers(int countToEliminate) {
-        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        
         if (countToEliminate >= buttons.Length - 1) {
             Debug.Log("Eliminating too many answers,only correct or 0 answer left");
         }

@@ -3312,6 +3312,11 @@ MonoBehaviour:
   sanctumQuiz: {fileID: 160460122}
   QuizPanel: {fileID: 216458364}
   btn: {fileID: 1503276127}
+  buttons:
+  - {fileID: 1802375462}
+  - {fileID: 1468595170}
+  - {fileID: 1839655446}
+  - {fileID: 1213398362}
 --- !u!114 &1503276127
 MonoBehaviour:
   m_ObjectHideFlags: 0

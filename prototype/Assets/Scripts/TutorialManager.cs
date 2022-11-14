@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour//control all pop-up texts in the tutorial game
 {
     public static int hammerFlag = 0;
     public static float hammerStartTime;
@@ -19,6 +19,9 @@ public class TutorialManager : MonoBehaviour
     public float clockDelTime = 5f;
     public float cookStationWaitTime = 5.5f;
     public float cookStationDelTime = 4.5f;
+    public float fiftyFiftyWaitTime = 5.5f;
+    public float fifityFiftyDisplayTime = 5.5f;
+    public float hintDisplayTime = 5.5f;
     public static int hammerCount = 0;
     public static int clockCount = 0;
     public static float tutorialOriginalTime;
@@ -32,6 +35,7 @@ public class TutorialManager : MonoBehaviour
         tutorialActive = true;
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
         questionGenerator = new QuestionGenerator();
+        getIngredent = false;
     }
 
     // public static void GameSetup()
@@ -179,9 +183,9 @@ public class TutorialManager : MonoBehaviour
                         popUpIndex = 4;
                     }
                 }
-                else if (popUpIndex == 4)
+                else if (popUpIndex == 4)//clock
                 {
-                    if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))//clock
+                    if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
                     {
 
                         //clockDelTime-=Time.deltaTime;
@@ -201,26 +205,38 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex== getInsCompletedIndex(4))
                 {
-                    if(cookStationWaitTime>0)
+                    if(fiftyFiftyWaitTime > 0)
                     {
-                        cookStationWaitTime -= Time.deltaTime;
+                        fiftyFiftyWaitTime -= Time.deltaTime;
                     }
                     else
                     {
                         popUpIndex = 5;
                     }
                 }
-                else if(popUpIndex==5 && getIngredent)//get onion and display "�Enter Cooking Station to create a dish and get money."
+                else if(popUpIndex==5)//50-50
                 {
-                    if(cookStationDelTime > 0)
-                    {
-                        cookStationDelTime -= Time.deltaTime;
+                    if (fifityFiftyDisplayTime > 0) {
+                        fifityFiftyDisplayTime -= Time.deltaTime;
                     }
-                    else
-                    {
-                        popUpIndex = getInsCompletedIndex(5);
+                    else {
+                        popUpIndex = 6;
+                    }
+                }
 
+                else if (popUpIndex == 6)//hint
+                {
+                    if (hintDisplayTime > 0) {
+                        hintDisplayTime -= Time.deltaTime;
                     }
+                    else {
+                        popUpIndex = 7;
+                    }
+                }
+
+                else if (popUpIndex == 7 &&getIngredent)//cooking station
+               {
+                    popUpIndex = 7;
                 }
 
             }
