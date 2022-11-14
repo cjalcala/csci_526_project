@@ -36,17 +36,52 @@ public class GroundSpawner : MonoBehaviour
                 temp.GetComponent<GroundTile>().SpawnHints();
             }
 
+            rand = Random.Range(0, 5);
+            if (rand == 1 && GameTracker.level!=1) {
+                temp.GetComponent<GroundTile>().SpawnMouse();
+            }
+
             // randomly generate ingredients along the path
-            int rand_ingredient = Random.Range(0, 10);
+            int rand_ingredient = Random.Range(0, 5);
             if (rand_ingredient == 1) {
-                temp.GetComponent<GroundTile>().SpawnCucumber();
+                if (GameTracker.level == 1) {
+                    temp.GetComponent<GroundTile>().SpawnCucumber();
+                }
+                if (GameTracker.level == 2) {
+                    temp.GetComponent<GroundTile>().SpawnBasil();
+                }
+                if (GameTracker.level == 3) {
+                    temp.GetComponent<GroundTile>().SpawnMushroom();
+                }
+                
             }
             if (rand_ingredient == 2) {
-                temp.GetComponent<GroundTile>().SpawnLemon();
+                if (GameTracker.level == 1) {
+                    temp.GetComponent<GroundTile>().SpawnLemon();
+                } 
+                if (GameTracker.level == 2) {
+                    temp.GetComponent<GroundTile>().SpawnTomato();
+                }
+                if (GameTracker.level == 3) {
+                    temp.GetComponent<GroundTile>().SpawnPepper();
+                } 
+
+                
             }
             if (rand_ingredient == 3) {
-                temp.GetComponent<GroundTile>().SpawnYogurt();
+                if (GameTracker.level == 1) {
+                    temp.GetComponent<GroundTile>().SpawnYogurt();
+                }
+                if (GameTracker.level == 2) {
+                    temp.GetComponent<GroundTile>().SpawnOnion();
+                }
+                if (GameTracker.level == 3) {
+                    temp.GetComponent<GroundTile>().SpawnSteak();
+                }
+                
             }
+
+            
             if (gameManager.CheckIngredientSet())
 
             {

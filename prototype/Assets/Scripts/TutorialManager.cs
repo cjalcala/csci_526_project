@@ -42,12 +42,12 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(TutorialGameManager.time < 89)
+
+        if (TutorialGameManager.time < 89)
         {
-            for(int i=0;i<popUps.Length; i++)
+            for (int i = 0; i < popUps.Length; i++)
             {
-                if(i == popUpIndex)
+                if (i == popUpIndex)
                 {
                     popUps[i].SetActive(true);
                 }
@@ -59,7 +59,7 @@ public class TutorialManager : MonoBehaviour
             //leftright jump hammer clock 50-50 hint onion cookingstation
             if(!TutorialGameManager.isPaused)
             {
-                if(popUpIndex==0)
+                if (popUpIndex == 0)
                 {
                     if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))//left right
                     {
@@ -83,16 +83,16 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex== getInsCompletedIndex(0))
                 {
-                    if(spaceWaitTime>0)
+                    if (spaceWaitTime > 0)
                     {
-                        spaceWaitTime-=Time.deltaTime;
+                        spaceWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=1;
+                        popUpIndex = 1;
                     }
                 }
-                else if(popUpIndex==1)
+                else if (popUpIndex == 1)
                 {
                     if(Input.GetKeyDown(KeyCode.Space))//jump
                     {
@@ -111,44 +111,44 @@ public class TutorialManager : MonoBehaviour
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
-                        tutorialplayerMovement.jumpForce = 0;   
+                        tutorialplayerMovement.jumpForce = 0;
                     }
                 }
                 else if(popUpIndex== getInsCompletedIndex(1))
                 {
-                    if(coinWaitTime>0)
+                    if (coinWaitTime > 0)
                     {
-                        coinWaitTime-=Time.deltaTime;
+                        coinWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=2;
+                        popUpIndex = 2;
                     }
                 }
                 else if(popUpIndex==2)//pick up cost
                 {
-                    if(coinDelTime>0)
+                    if (TutorialGameManager.ingredientNum >= 1)
                     {
-                        coinDelTime-=Time.deltaTime;
+                        popUpIndex = 3;
                     }
                     else
                     {
                         popUpIndex= getInsCompletedIndex(2);
 
-                    }   
+                    }
                 }
                 else if(popUpIndex== getInsCompletedIndex(2))
                 {
-                    if(hammerWaitTime>0)
+                    if (hammerWaitTime > 0)
                     {
-                        hammerWaitTime-=Time.deltaTime;
+                        hammerWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=3;
+                        popUpIndex = 3;
                     }
                 }
-                else if(popUpIndex==3)
+                else if (popUpIndex == 3)
                 {
                     if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))//hammer
                     {
@@ -170,16 +170,16 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if(popUpIndex== getInsCompletedIndex(3))
                 {
-                    if(clockWaitTime>0)
+                    if (clockWaitTime > 0)
                     {
-                        clockWaitTime-=Time.deltaTime;
+                        clockWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=4;
+                        popUpIndex = 4;
                     }
                 }
-                else if(popUpIndex==4)
+                else if (popUpIndex == 4)
                 {
                     if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))//clock
                     {
@@ -207,10 +207,10 @@ public class TutorialManager : MonoBehaviour
                     }
                     else
                     {
-                        popUpIndex=5;
+                        popUpIndex = 5;
                     }
                 }
-                else if(popUpIndex==5 && getIngredent)//get onion and display "“Enter Cooking Station to create a dish and get money."
+                else if(popUpIndex==5 && getIngredent)//get onion and display "ï¿½Enter Cooking Station to create a dish and get money."
                 {
                     if(cookStationDelTime > 0)
                     {
@@ -220,7 +220,7 @@ public class TutorialManager : MonoBehaviour
                     {
                         popUpIndex = getInsCompletedIndex(5);
 
-                    }   
+                    }
                 }
 
             }

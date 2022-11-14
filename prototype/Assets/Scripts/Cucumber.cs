@@ -17,7 +17,7 @@ public class Cucumber : MonoBehaviour
         }
         if (GameTracker.coins >= 2)
         {
-            GameManager.inst.IncrementCucumberCount();
+            GameManager.inst.IncrementIngredient1Count();
             Destroy(gameObject);
         }
     }

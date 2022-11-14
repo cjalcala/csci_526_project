@@ -29,7 +29,7 @@ public class TutorialGroundSpawner : MonoBehaviour
             temp.GetComponent<TutorialGroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
-        if(SpawnClock)
+        if (SpawnClock)
         {
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
         }

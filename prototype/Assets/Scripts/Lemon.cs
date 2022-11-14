@@ -17,7 +17,7 @@ public class Lemon : MonoBehaviour
         }
         if (GameTracker.coins >= 2)
         {
-            GameManager.inst.IncrementLemonCount();
+            GameManager.inst.IncrementIngredient2Count();
             Destroy(gameObject);
         }
     }

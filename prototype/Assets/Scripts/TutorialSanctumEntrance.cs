@@ -8,30 +8,31 @@ public class TutorialSanctumEntrance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if(other.gameObject.GetComponent<TutorialObstacle>()!=null)
+        if (TutorialGameManager.tutCoinCnt < 2) return;
+        if (other.gameObject.GetComponent<TutorialObstacle>() != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        if(other.gameObject.name != "Player")
+        if (other.gameObject.name != "Player")
         {
             return;
         }
-
+        TutorialGameManager.tutCoinCnt -= 2;
+        TutorialGameManager.ingredientNum++;
         Destroy(gameObject);
 
-        SceneManager.LoadScene("Sanctum");
+        // SceneManager.LoadScene("Sanctum");
     }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
