@@ -5,7 +5,7 @@ public class TutorialGroundTile : MonoBehaviour
 
     public GameObject tutorialobstaclePrefab;
     TutorialGroundSpawner tutorialgroundSpawner;
-    public GameObject tutorialcoinPrefab;
+    // public GameObject tutorialcoinPrefab;
     public GameObject tutorialsanctumEntrancePrefab;
 
     // Start is called before the first frame update
@@ -38,15 +38,15 @@ public class TutorialGroundTile : MonoBehaviour
         Instantiate(tutorialobstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
     }
 
-    public void TutorialSpawnCoins()
-    {
-        int coinsToSpawn = 2;
-        for(int i = 0; i < coinsToSpawn; i++)
-        {
-            GameObject temp = Instantiate(tutorialcoinPrefab, transform);
-            temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
-        }
-    }
+    // public void TutorialSpawnCoins()
+    // {
+    //     int coinsToSpawn = 2;
+    //     for(int i = 0; i < coinsToSpawn; i++)
+    //     {
+    //         GameObject temp = Instantiate(tutorialcoinPrefab, transform);
+    //         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    //     }
+    // }
 
     public void TutorialSpawnEntrance()
     {

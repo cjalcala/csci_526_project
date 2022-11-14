@@ -6,25 +6,27 @@ using UnityEngine.SceneManagement;
 public class TutorialSanctumEntrance : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Start()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if(other.gameObject.GetComponent<TutorialObstacle>()!=null)
+        if (TutorialGameManager.tutCoinCnt < 0) return;
+        if (other.gameObject.GetComponent<TutorialObstacle>() != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        if(other.gameObject.name != "Player")
+        if (other.gameObject.name != "Player")
         {
             return;
         }
-
+        TutorialGameManager.tutCoinCnt -= 2;
         Destroy(gameObject);
 
         SceneManager.LoadScene("Sanctum");
@@ -32,6 +34,6 @@ public class TutorialSanctumEntrance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

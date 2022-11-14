@@ -126,7 +126,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = ": " + GameTracker.coins;
+        // if (TutorialManager.tutorialActive) {
+        //      coinText.text = ": " + TutorialManager.coinNum;
+        // } else{
+coinText.text = ": " + GameTracker.coins;
+// coinText.text = ": 100000" ;
+        // }
+        
         goalProgress();
         Cost();
         won = false;

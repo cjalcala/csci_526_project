@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class TutorialGameManager : MonoBehaviour
 {
 
-    public int score;
     public static TutorialGameManager inst;
-    public Text tutorialCoinText;
-    public static int tutCoinCnt;
-    public Text timeText; 
+    public static int tutCoinCnt = 10;
+    public Text timeText;
     public static float time = 90;
+    public static int ingredientNum = 0;
     TutorialPlayerMovement tutorialplayerMovement;
     public static bool isPaused = false;
     public static bool horizontalArrows = false;
@@ -24,14 +23,9 @@ public class TutorialGameManager : MonoBehaviour
         inst = this;
     }
 
-    public void IncrementScore()
-    {
-        score++;
-        tutorialCoinText.text="        : "+score;
-    }
-
     void Start()
     {
+        tutCoinCnt = 10;
         time = 90;
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
         isPaused = false;
@@ -42,13 +36,13 @@ public class TutorialGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tutCoinCnt=score;
+        // tutCoinCnt=score;
         if (time > 0)
         {
-            if((!isPaused ) && (!horizontalArrows) && (!spaceBar))
+            if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
             {
                 time -= Time.deltaTime;
-                TimeSlider.fillAmount = time/90;
+                // TimeSlider.fillAmount = time/90;
                 timeText.text = ": " + time.ToString("0") + " Sec";
             }
         }
@@ -56,5 +50,15 @@ public class TutorialGameManager : MonoBehaviour
         {
             tutorialplayerMovement.Die();
         }
+    }
+
+    public int getcoin()
+    {
+        return tutCoinCnt;
+    }
+
+    public void updateCoin(int val)
+    {
+        tutCoinCnt -= val;
     }
 }
