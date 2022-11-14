@@ -30,19 +30,20 @@ public class SanctumQuiz : MonoBehaviour
     public Text timeText;
 
     public QuizQA quizQuestion;
-    public static string  quizIngredient;// Change to index later
+    public static string quizIngredient;// Change to index later
 
-    public static bool notCollected = false;  
-    public static int dish = 0; 
+    public static bool notCollected = false;
+    public static int dish = 0;
 
-    public Text bagText; 
+    public Text bagText;
     public float bagTime = 1.5f;
 
 
 
     public GameObject LoseScreen;
 
-    private void Start() {
+    private void Start()
+    {
 
         PlayerMovement = GameObject.FindObjectOfType<PlayerMovement>();
 
@@ -53,15 +54,14 @@ public class SanctumQuiz : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            TutorialGameManager.tutCoinCnt -= 2;
             sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
             //bagText.text = "Sorry, You have no hints!";
-           // GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
+            // GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
         else
         {
-          sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
-          //  GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
+            sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+            //  GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
 
         Debug.Log("Sanctum " + GameTracker.timeRemain);
@@ -108,7 +108,7 @@ public class SanctumQuiz : MonoBehaviour
         if (TutorialManager.tutorialActive)
         {
             Invoke("LoadTutorialComplete", 1.5f);
-            
+
         }
         else
         {
@@ -122,14 +122,13 @@ public class SanctumQuiz : MonoBehaviour
                 dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
                 int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
 
-                GameTracker.coins += (GameTracker.recipe.earning *  Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
-            
-                GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount); 
+                GameTracker.coins += (GameTracker.recipe.earning * Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
+
+                GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount);
                 GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - minCount);
                 GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - minCount);
 
             }
-            
             // GameTracker.LoadScenes();
             GameTracker.sanctumImmunity = true;
             PlayerMovement.speed = 8;
@@ -154,26 +153,28 @@ public class SanctumQuiz : MonoBehaviour
         }
 
 
-        if (TutorialManager.tutorialActive) {
-            if (TutorialGameManager.tutCoinCnt < 10) {
+        if (TutorialManager.tutorialActive)
+        {
+            if (TutorialGameManager.tutCoinCnt < 10)
+            {
                 //Invoke("restartTutorial", 2.0f);
                 notCollected = true;
                 LoseScreen.SetActive(true);
-                
+
 
             }
             else
             {
                 notCollected = false;
                 Invoke("reloadSanctum", 1.5f);
-                
+
 
             }
         }
         else
         {
 
-           // Send(quizQuestion.question, 0, 1);
+            // Send(quizQuestion.question, 0, 1);
 
             if (GameTracker.coins < 10)
             {
@@ -188,7 +189,8 @@ public class SanctumQuiz : MonoBehaviour
     }
 
 
-    public void restartTutorial() {
+    public void restartTutorial()
+    {
 
         SceneManager.LoadScene("TutorialGame");
     }
@@ -199,7 +201,7 @@ public class SanctumQuiz : MonoBehaviour
         //SceneManager.LoadScene("Sanctum");
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
-        if(TutorialManager.tutorialActive)
+        if (TutorialManager.tutorialActive)
         {
             coin.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
         }
@@ -270,11 +272,11 @@ public class SanctumQuiz : MonoBehaviour
         }
 
 
-        if (quizQuestion != null) 
+        if (quizQuestion != null)
         {
             setQnA();
         }
-        else 
+        else
 
         {
             Debug.Log("Out of questions");
@@ -360,7 +362,7 @@ public class SanctumQuiz : MonoBehaviour
 
 
     public void exitTutorial()
-    {   
+    {
         Time.timeScale = 1f;
         SceneManager.LoadScene("WelcomeScreen");
     }

@@ -42,12 +42,12 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(TutorialGameManager.time < 89)
+
+        if (TutorialGameManager.time < 89)
         {
-            for(int i=0;i<popUps.Length; i++)
+            for (int i = 0; i < popUps.Length; i++)
             {
-                if(i == popUpIndex)
+                if (i == popUpIndex)
                 {
                     popUps[i].SetActive(true);
                 }
@@ -57,11 +57,11 @@ public class TutorialManager : MonoBehaviour
                 }
             }
 
-            if(!TutorialGameManager.isPaused)
+            if (!TutorialGameManager.isPaused)
             {
-                if(popUpIndex==0)
+                if (popUpIndex == 0)
                 {
-                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+                    if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
                     {
                         TutorialGameManager.horizontalArrows = false;
                         Time.timeScale = 1f;
@@ -81,20 +81,20 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.jumpForce = 0;
                     }
                 }
-                else if(popUpIndex==6)
+                else if (popUpIndex == 6)
                 {
-                    if(spaceWaitTime>0)
+                    if (spaceWaitTime > 0)
                     {
-                        spaceWaitTime-=Time.deltaTime;
+                        spaceWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=1;
+                        popUpIndex = 1;
                     }
                 }
-                else if(popUpIndex==1)
+                else if (popUpIndex == 1)
                 {
-                    if(Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
                         TutorialGameManager.spaceBar = false;
                         Time.timeScale = 1f;
@@ -102,7 +102,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;
-                        popUpIndex=7;
+                        popUpIndex = 7;
 
                     }
                     else
@@ -111,115 +111,115 @@ public class TutorialManager : MonoBehaviour
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
-                        tutorialplayerMovement.jumpForce = 0;   
+                        tutorialplayerMovement.jumpForce = 0;
                     }
                 }
-                else if(popUpIndex==7)
+                else if (popUpIndex == 7)
                 {
-                    if(coinWaitTime>0)
+                    if (coinWaitTime > 0)
                     {
-                        coinWaitTime-=Time.deltaTime;
+                        coinWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=2;
+                        popUpIndex = 2;
                     }
                 }
-                else if(popUpIndex==2)
+                else if (popUpIndex == 2)
                 {
-                    if(coinDelTime>0)
+                    if (TutorialGameManager.ingredientNum >= 1)
                     {
-                        coinDelTime-=Time.deltaTime;
+                        popUpIndex = 3;
                     }
                     else
                     {
-                        popUpIndex=8;
+                        popUpIndex = 2;
 
-                    }   
+                    }
                 }
-                else if(popUpIndex==8)
+                else if (popUpIndex == 8)
                 {
-                    if(hammerWaitTime>0)
+                    if (hammerWaitTime > 0)
                     {
-                        hammerWaitTime-=Time.deltaTime;
+                        hammerWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=3;
+                        popUpIndex = 3;
                     }
                 }
-                else if(popUpIndex==3)
+                else if (popUpIndex == 3)
                 {
-                    if(!Input.GetKeyDown(KeyCode.Return))
+                    if (!Input.GetKeyDown(KeyCode.Return))
                     {
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
                         tutorialplayerMovement.jumpForce = 0;
                     }
-                    else 
+                    else
                     {
                         //hammerDelTime-=Time.deltaTime;
                         Time.timeScale = 1f;
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
-                        tutorialplayerMovement.jumpForce = 750f;  
-                        popUpIndex=9;
- 
+                        tutorialplayerMovement.jumpForce = 750f;
+                        popUpIndex = 9;
+
                     }
                 }
-                else if(popUpIndex==9)
+                else if (popUpIndex == 9)
                 {
-                    if(clockWaitTime>0)
+                    if (clockWaitTime > 0)
                     {
-                        clockWaitTime-=Time.deltaTime;
+                        clockWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=4;
+                        popUpIndex = 4;
                     }
                 }
-                else if(popUpIndex==4)
+                else if (popUpIndex == 4)
                 {
-                    if(!Input.GetKeyDown(KeyCode.Return))
+                    if (!Input.GetKeyDown(KeyCode.Return))
                     {
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
                         tutorialplayerMovement.jumpForce = 0;
                     }
-                    else 
+                    else
                     {
                         //clockDelTime-=Time.deltaTime;
                         Time.timeScale = 1f;
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
-                        tutorialplayerMovement.jumpForce = 750f;   
+                        tutorialplayerMovement.jumpForce = 750f;
                         popUpIndex = 10;
                     }
                 }
-                else if(popUpIndex==10)
+                else if (popUpIndex == 10)
                 {
-                    if(sanctumWaitTime>0)
+                    if (sanctumWaitTime > 0)
                     {
-                        sanctumWaitTime-=Time.deltaTime;
+                        sanctumWaitTime -= Time.deltaTime;
                     }
                     else
                     {
-                        popUpIndex=5;
+                        popUpIndex = 5;
                     }
                 }
-                else if(popUpIndex==5)
+                else if (popUpIndex == 5)
                 {
-                    if(sanctumDelTime>0)
+                    if (sanctumDelTime > 0)
                     {
-                        sanctumDelTime-=Time.deltaTime;
+                        sanctumDelTime -= Time.deltaTime;
                     }
                     else
                     {
                         popUpIndex = 11;
 
-                    }   
+                    }
                 }
 
             }

@@ -10,18 +10,19 @@ using System.Reflection;
 public class TutorialGameManager : MonoBehaviour
 {
 
-    
+
     public float TimePowerUpStart = 0;
     public Text hammerOnText;
     public float hammerOnTexttimeDisplay = 1.5f;
     public Text hammerOffText;
     public float hammerOffTexttimeDisplay = 1.5f;
-    public int score;
     public static TutorialGameManager inst;
     public Text tutorialCoinText;
-    public static int tutCoinCnt;
-    public Text timeText; 
+    public static int tutCoinCnt = 10;
+    public Text timeText;
     public static float time = 90;
+
+    public static int ingredientNum = 0;
     TutorialPlayerMovement tutorialplayerMovement;
     public static bool isPaused = false;
     public static bool horizontalArrows = false;
@@ -38,15 +39,11 @@ public class TutorialGameManager : MonoBehaviour
         inst = this;
     }
 
-    public void IncrementScore()
-    {
-        score++;
-        tutorialCoinText.text="        : "+score;
-    }
 
     void Start()
     {
         time = 90;
+        tutCoinCnt = 10;
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
         isPaused = false;
         horizontalArrows = false;
@@ -58,7 +55,6 @@ public class TutorialGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tutCoinCnt=score;
 
         if (TimePowerUp && Math.Abs(TutorialGameManager.time - TimePowerUpStart) >= 2.5)
         {
@@ -72,7 +68,7 @@ public class TutorialGameManager : MonoBehaviour
             if (TimePowerUp)
             {
                 time -= Time.deltaTime / 2;
-                TimeSlider.fillAmount = time/90;
+                TimeSlider.fillAmount = time / 90;
                 timeText.text = ": " + time.ToString("0") + " Sec SLOW";
                 // timeText.color = Color.red;
 
@@ -80,7 +76,7 @@ public class TutorialGameManager : MonoBehaviour
             else
             {
                 time -= Time.deltaTime;
-                TimeSlider.fillAmount = time/90;
+                TimeSlider.fillAmount = time / 90;
                 timeText.text = ": " + time.ToString("0") + " Sec";
             }
 
@@ -95,10 +91,10 @@ public class TutorialGameManager : MonoBehaviour
 
         if (time > 0)
         {
-            if((!isPaused ) && (!horizontalArrows) && (!spaceBar))
+            if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
             {
                 time -= Time.deltaTime;
-                TimeSlider.fillAmount = time/90;
+                TimeSlider.fillAmount = time / 90;
                 timeText.text = ": " + time.ToString("0") + " Sec";
             }
         }
@@ -118,7 +114,7 @@ public class TutorialGameManager : MonoBehaviour
             }
             else
             {
-                if (time <=TutorialManager.hammerStartTime - 5)
+                if (time <= TutorialManager.hammerStartTime - 5)
                 {
                     Welcome.immunity = false;
                     TutorialManager.hammerFlag = 0;
@@ -157,11 +153,11 @@ public class TutorialGameManager : MonoBehaviour
         }
 
 
-        if(health<5)
+        if (health < 5)
         {
-            for(int h=health;h<=4;h++)
+            for (int h = health; h <= 4; h++)
             {
-                hearts[h].enabled=false;
+                hearts[h].enabled = false;
             }
         }
     }
