@@ -9,7 +9,7 @@ public class TutorialGroundSpawner : MonoBehaviour
     public int hammerSpawnTime;
 
 
-    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnCoins, bool SpawnEntrance, bool SpawnHammer, bool SpawnClock) 
+    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnCoins, bool SpawnEntrance, bool SpawnHammer, bool SpawnClock)
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
@@ -21,12 +21,7 @@ public class TutorialGroundSpawner : MonoBehaviour
             temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
         }
 
-        if(SpawnCoins)
-        {
-            temp.GetComponent<TutorialGroundTile>().TutorialSpawnCoins();
-        }
-
-        if(SpawnEntrance)
+        if (SpawnEntrance)
         {
             temp.GetComponent<TutorialGroundTile>().TutorialSpawnEntrance();
         }
@@ -35,7 +30,7 @@ public class TutorialGroundSpawner : MonoBehaviour
             temp.GetComponent<TutorialGroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
-        if(SpawnClock)
+        if (SpawnClock)
         {
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
         }
@@ -52,29 +47,29 @@ public class TutorialGroundSpawner : MonoBehaviour
         hammerSpawnTime = Random.Range((int)TutorialGameManager.time - 5, (int)TutorialGameManager.time);
         for (int i = 0; i < 26; i++)
         {
-            if(i < 4)
+            if (i < 4)
             {
                 SpawnTutorialTile(false, false, false, false, false);
             }
-            else if(i>=4 && i<=7)
+            else if (i >= 4 && i <= 7)
             {
                 SpawnTutorialTile(true, false, false, false, false);
             }
-            else if(i>7 && i<11)
+            else if (i > 7 && i < 11)
             {
-                SpawnTutorialTile(true, true, false, false, false);
+                SpawnTutorialTile(true, true, true, false, false);
             }
-            else if(i>=11 && i<=12)
+            else if (i >= 11 && i <= 12)
             {
-                SpawnTutorialTile(true, true, false, true, false);
+                SpawnTutorialTile(true, true, true, true, false);
             }
-            else if(i>12 && i<14)
+            else if (i > 12 && i < 14)
             {
-                SpawnTutorialTile(true, true, false, false, false);
+                SpawnTutorialTile(true, true, true, false, false);
             }
-            else if(i>=14 && i<19)
+            else if (i >= 14 && i < 19)
             {
-                SpawnTutorialTile(true, true, false, false, true);
+                SpawnTutorialTile(true, true, true, false, true);
             }
             else
             {
