@@ -8,6 +8,7 @@ using System;
 
 public class SanctumQuiz : MonoBehaviour
 {
+    PlayerMovement PlayerMovement;
     [SerializeField] private string URL;
     [SerializeField] private AudioSource sanctum_entry_sound;
     public List<QuizQA> questionAnswers;
@@ -42,6 +43,8 @@ public class SanctumQuiz : MonoBehaviour
     public GameObject LoseScreen;
 
     private void Start() {
+
+        PlayerMovement = GameObject.FindObjectOfType<PlayerMovement>();
 
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
@@ -127,7 +130,12 @@ public class SanctumQuiz : MonoBehaviour
 
             }
             
-            GameTracker.LoadScenes();
+            // GameTracker.LoadScenes();
+            GameTracker.sanctumImmunity = true;
+            PlayerMovement.speed = 8;
+            PlayerMovement.horizontalMultiplier = 0.8f;
+            PlayerMovement.jumpForce = 750f;
+            SceneManager.UnloadScene("Sanctum");
         }
     }
 
@@ -202,7 +210,13 @@ public class SanctumQuiz : MonoBehaviour
 
     public void continueGame()
     {
-        GameTracker.LoadScenes();
+        // GameTracker.LoadScenes();
+        GameTracker.sanctumImmunity = true;
+        PlayerMovement.speed = 8;
+        PlayerMovement.horizontalMultiplier = 0.8f;
+        PlayerMovement.jumpForce = 750f;
+        SceneManager.UnloadScene("Sanctum");
+        
     }
 
     void setQnA()
@@ -321,7 +335,12 @@ public class SanctumQuiz : MonoBehaviour
             }
             else
             {
-                GameTracker.LoadScenes();
+                // GameTracker.LoadScenes();
+                GameTracker.sanctumImmunity = true;
+                PlayerMovement.speed = 8;
+                PlayerMovement.horizontalMultiplier = 0.8f;
+                PlayerMovement.jumpForce = 750f;
+                SceneManager.UnloadScene("Sanctum");
             }
         }
         else

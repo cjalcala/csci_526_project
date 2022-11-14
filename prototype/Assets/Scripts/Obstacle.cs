@@ -18,7 +18,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player" && !Welcome.immunity && !hit)
+        if(collision.gameObject.name == "Player" && !Welcome.immunity && !hit && !GameTracker.sanctumImmunity)
         {
             Debug.Log(GameTracker.health);
             hit=true;
