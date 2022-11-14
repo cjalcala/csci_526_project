@@ -49,10 +49,12 @@ public class WinningScreen : MonoBehaviour
         GameTracker.ingred3 = 0;
         SanctumQuiz.dish = 0;
         GameTracker.GameSetup();
-        if (GameTracker.level == 1)
-            SceneManager.LoadScene("Game");
-        else if (GameTracker.level == 2)
+        if (GameTracker.level == 2)
             SceneManager.LoadScene("Level2");
+        else if (GameTracker.level == 3)
+            SceneManager.LoadScene("Level3");
+        else if (GameTracker.level == 4)
+            SceneManager.LoadScene("WelcomeScreen");
     }
 
     public void RestartButton()

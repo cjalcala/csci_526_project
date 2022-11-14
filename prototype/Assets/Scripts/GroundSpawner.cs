@@ -98,7 +98,7 @@ public class GroundSpawner : MonoBehaviour
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
 
-        if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1 && GameTracker.level != 1)
+        if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1 && GameTracker.level == 3)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }
