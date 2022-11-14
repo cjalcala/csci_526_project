@@ -16,6 +16,7 @@ public class TutorialIngredent : MonoBehaviour
             if (GameTracker.coins >= 2) {
             TutorialManager.getIngredent = true;
             TutorialGameManager.ingredientNum+=1;
+                TutorialGameManager.tutCoinCnt -= 2;
             Destroy(gameObject);
            }
         }

@@ -62,10 +62,10 @@ public class TutorialGroundSpawner : MonoBehaviour
                 // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
                 SpawnTutorialTile(false, false, false, false, false, false);
             }
-            else if (i >= 4 && i <= 11) {
-                SpawnTutorialTile(true, true, false, false, false, false);//SpawnObstacle
+            else if (i >= 4 && i <= 8) {
+                SpawnTutorialTile(true, false, false, false, false, false);//SpawnObstacle
             }
-            else if (i >= 11 && i <= 12) {
+            else if (i >= 9 && i <= 12) {
                 SpawnTutorialTile(true, true, true, false, false, false);//SpawnObstacle, SpawnHammer
             }
             else if (i > 12 && i < 14) {
