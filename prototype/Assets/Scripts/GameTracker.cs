@@ -8,7 +8,7 @@ public class GameTracker : MonoBehaviour
     public static bool sanctumImmunity = false;
     public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
-    public static int coins = 10;
+    public static int coins;
     public static Recipe recipe;
     public static int goalAmt;
 
@@ -70,6 +70,7 @@ public class GameTracker : MonoBehaviour
         if (level == 1)
         {
             timeRemain = 90;
+            coins = 10;
             
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("cucumber", new Ingredient("Cucumber", 1, 2));
@@ -86,6 +87,7 @@ public class GameTracker : MonoBehaviour
         else if (level == 2)
         {
             timeRemain = 120;
+            coins=15;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("Tomato", new Ingredient("Tomato", 1, 2));
@@ -98,6 +100,7 @@ public class GameTracker : MonoBehaviour
         }
         else if (level == 3)
         {
+            coins=20;
             timeRemain = 180;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
@@ -110,7 +113,7 @@ public class GameTracker : MonoBehaviour
             goalAmt = 60;
         }
 
-        coins = 10;
+        coins = GameTracker.coins;
         originalTime = GameTracker.timeRemain;
         //tutorialOriginalTime = TutorialGameManager.time;
         questionGenerator = new QuestionGenerator();
