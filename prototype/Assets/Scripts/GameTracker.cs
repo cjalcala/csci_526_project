@@ -8,7 +8,7 @@ public class GameTracker : MonoBehaviour
     public static bool sanctumImmunity = false;
     public static bool insufficientCoins = false;
     public static SortedDictionary<string, Ingredient> ingredientsList;
-    public static int coins = 10;
+    public static int coins;
     public static Recipe recipe;
     public static int goalAmt;
 
@@ -69,6 +69,7 @@ public class GameTracker : MonoBehaviour
         if (level == 1)
         {
             timeRemain = 90;
+            coins = 10;
             
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("cucumber", new Ingredient("Cucumber", 1, 2));
