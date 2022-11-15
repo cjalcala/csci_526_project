@@ -6,9 +6,12 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialobstaclePrefab;
     TutorialGroundSpawner tutorialgroundSpawner;
     public GameObject tutorialcoinPrefab;
-    public GameObject tutorialsanctumEntrancePrefab;
+    public GameObject tutorialIngredentPrefab;
     public GameObject HammerPrefab;
     public GameObject TimePowerUpPrefab;
+    public GameObject fiftyFiftyPowerUpPrefab;
+    public GameObject hintPrefab;
+    public GameObject cookingStationPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +23,22 @@ public class TutorialGroundTile : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        tutorialgroundSpawner.SpawnTutorialTile(true, true, true, false, false); 
+        //tutorialgroundSpawner.SpawnTutorialTile(true, true, false, false,false,false); 
+        int i = TutorialGroundSpawner.i;
+        // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
+
+        if (i > 10 && i < 17) {
+            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false);//SpawnObstacle, SpawnFifty
+        }
+        else if (i >= 17 && i < 20) {
+            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
+        }
+        else {
+            tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex <= 7 && TutorialManager.popUpIndex >= 4, false, false, true, true);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
+        }
+
+
+        TutorialGroundSpawner.i++;
         Destroy(gameObject, 2);
     }
 
@@ -50,7 +68,7 @@ public class TutorialGroundTile : MonoBehaviour
         }
     }
 
-    public void TutorialSpawnEntrance()
+    public void TutorialSpawnIngredent()
     {
         Collider collider = GetComponent<Collider>();
         Vector3 position = new Vector3(Random.Range(collider.bounds.min.x, collider.bounds.max.x), 1, Random.Range(collider.bounds.min.z, collider.bounds.max.z));
@@ -58,7 +76,7 @@ public class TutorialGroundTile : MonoBehaviour
         {
             position = GetRandomPointInCollider(collider);
         }
-        Instantiate(tutorialsanctumEntrancePrefab, position, Quaternion.identity, transform);
+        Instantiate(tutorialIngredentPrefab, position, Quaternion.identity, transform);
         //temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
@@ -92,4 +110,18 @@ public class TutorialGroundTile : MonoBehaviour
         // }
     }
 
+    public void SpawnStation() {
+        GameObject temp = Instantiate(cookingStationPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnFiftyFifty() {
+        GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
+
+    public void SpawnHints() {
+        GameObject temp = Instantiate(hintPrefab, transform);
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+    }
 }

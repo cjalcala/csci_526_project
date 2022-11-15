@@ -15,8 +15,11 @@ public class FiftFiftyObject : MonoBehaviour
             return;
         }
         // add to tracker
-        GameManager.inst.IncrementFifityFiftyCount();
-        GameTracker.getFiftyFiftyPowerUp = true;
+         if (!TutorialManager.tutorialActive) {
+            GameManager.inst.IncrementFifityFiftyCount();
+            GameTracker.getFiftyFiftyPowerUp = true;
+        }
+
         Destroy(gameObject);
     }
     // Start is called before the first frame update

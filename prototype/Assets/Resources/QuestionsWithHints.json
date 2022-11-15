@@ -58,7 +58,7 @@
         },
         {
             "QuestionText": "What is the iconic meal often found in Chicago?",
-            "Option1": "deep-dish pizza",
+            "Option1": "Deep-dish pizza",
             "Option2": "Doughnut",
             "Option3": "Hot dog",
             "Option4": "Kuma burger",
@@ -81,7 +81,7 @@
             "Hint": "The country borders Mediterranean sea"
         },
         {
-            "QuestionText": "What is the name of the signature burger of Carl�s Jr.?",
+            "QuestionText": "What is the name of the signature burger of Carl’s Jr.?",
             "Option1": "The Famous Star",
             "Option2": "The Famous Singer",
             "Option3": "The Best Dancer",
@@ -89,7 +89,7 @@
             "Hint": "Look at their logo"
         },
         {
-            "QuestionText": "If you asked for �unagi� in a Japanese restaurant, what would you get?",
+            "QuestionText": "If you asked for ‘unagi’ in a Japanese restaurant, what would you get?",
             "Option1": "Eel",
             "Option2": "Salmon",
             "Option3": "Tuna",
@@ -163,7 +163,7 @@
             "Hint": "\"This fruit\" a day keeps the doctor away"
         },
         {
-            "QuestionText": "Which fast food restaurant had the slogan \"Where�s the beef?\"?",
+            "QuestionText": "Which fast food restaurant had the slogan \"Where’s the beef?\"?",
             "Option1": "Wendy's",
             "Option2": "Five Guys",
             "Option3": "KFC",
@@ -179,7 +179,7 @@
             "Hint": "This food item is vegan"
         },
         {
-            "QuestionText": "If you ordered a �bouillabaisse�, what would you expect to eat?",
+            "QuestionText": "If you ordered a ‘bouillabaisse’, what would you expect to eat?",
             "Option1": "Seafood",
             "Option2": "Steak",
             "Option3": "Pasta",
@@ -349,7 +349,7 @@
             "Hint": "A sweet, creamy, yellow cow's milk cheese"
         },
         {
-            "QuestionText": "If you order an �affogato�, what would you get?",
+            "QuestionText": "If you order an ‘affogato’, what would you get?",
             "Option1": "Vanilla ice cream with a shot of espresso",
             "Option2": "Latte with chocolate syrup",
             "Option3": "Chocolate flavored donut",

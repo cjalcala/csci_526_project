@@ -96,9 +96,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialobstaclePrefab: {fileID: 2483905378157037388, guid: eb74e2bb46d364448822bf5842f33372, type: 3}
   tutorialcoinPrefab: {fileID: 2675459047600711637, guid: f274dbbe66c764a6ea6d9d957dc91445, type: 3}
-  tutorialsanctumEntrancePrefab: {fileID: 964696537916140162, guid: 611c46fa63fb34dd2a988d28e1330bac, type: 3}
+  tutorialIngredentPrefab: {fileID: 964696537916140162, guid: 611c46fa63fb34dd2a988d28e1330bac, type: 3}
   HammerPrefab: {fileID: 7016171195678512037, guid: 7edc688fc88624897ae647174630d1c6, type: 3}
   TimePowerUpPrefab: {fileID: 100002, guid: 595cf544943e29a4d9a7b813e4218a3c, type: 3}
+  fiftyFiftyPowerUpPrefab: {fileID: 1486258053443316, guid: c74c937178e00074dbe63cd6f73a9764, type: 3}
+  hintPrefab: {fileID: 1685343955664076, guid: c69b28a4184984a4b92e458412658dc9, type: 3}
+  cookingStationPrefab: {fileID: 7835282938579396881, guid: 5e20406812ca6b14db3db89bbd926f65, type: 3}
 --- !u!1 &1823149369848973537
 GameObject:
   m_ObjectHideFlags: 0

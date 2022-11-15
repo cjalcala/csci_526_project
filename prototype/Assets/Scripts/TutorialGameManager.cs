@@ -22,8 +22,8 @@ public class TutorialGameManager : MonoBehaviour
     public Text timeText;
     public static float time = 90;
 
-    public static int ingredientNum = 0;
-    TutorialPlayerMovement tutorialplayerMovement;
+    public static int ingredientNum = 0; 
+     TutorialPlayerMovement tutorialplayerMovement;
     public static bool isPaused = false;
     public static bool horizontalArrows = false;
     public static bool spaceBar = false;
@@ -32,6 +32,7 @@ public class TutorialGameManager : MonoBehaviour
     public Boolean TimePowerUp = false;
     public Image[] hearts;
     public static int health;
+    public static int hintCount;
     // Start is called before the first frame update
 
     private void Awake()
@@ -50,6 +51,8 @@ public class TutorialGameManager : MonoBehaviour
         spaceBar = false;
         Time.timeScale = 1f;
         health = 5;
+        ingredientNum = 0;
+        hintCount = 0;
     }
 
     // Update is called once per frame

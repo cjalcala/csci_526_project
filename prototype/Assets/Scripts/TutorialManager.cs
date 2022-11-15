@@ -2,29 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour//control all pop-up texts in the tutorial game
 {
     public static int hammerFlag = 0;
     public static float hammerStartTime;
     public static bool tutorialActive = false;
     public GameObject[] popUps;
-    private int popUpIndex;
+    public static int popUpIndex;
     public GameObject tutorialobstacleSpawner;
     public float spaceWaitTime = 4f;
     public float coinWaitTime = 4.5f;
     public float coinDelTime = 5f;
     public float hammerWaitTime = 3f;
     public float hammerDelTime = 3f;
-    public float clockWaitTime = 7f;
+    public float clockWaitTime = 5f;
     public float clockDelTime = 5f;
-    public float sanctumWaitTime = 5.5f;
-    public float sanctumDelTime = 4.5f;
+    public float cookStationWaitTime = 5.5f;
+    public float cookStationDelTime = 4.5f;
+    public float fiftyFiftyWaitTime = 5.5f;
+    public float fifityFiftyDisplayTime = 5f;
+    public float hintDisplayTime = 5f;
+    public float getIngredentDisplayTime = 5.5f;
+    
     public static int hammerCount = 0;
     public static int clockCount = 0;
     public static float tutorialOriginalTime;
     TutorialPlayerMovement tutorialplayerMovement;
     public static QuestionGenerator questionGenerator;
-
+    public static bool getIngredent = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +37,8 @@ public class TutorialManager : MonoBehaviour
         tutorialActive = true;
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
         questionGenerator = new QuestionGenerator();
+        getIngredent = false;
+        popUpIndex = 0;
     }
 
     // public static void GameSetup()
@@ -56,12 +63,12 @@ public class TutorialManager : MonoBehaviour
                     popUps[i].SetActive(false);
                 }
             }
-
-            if (!TutorialGameManager.isPaused)
+            //leftright jump hammer clock 50-50 hint onion cookingstation
+            if(!TutorialGameManager.isPaused)
             {
                 if (popUpIndex == 0)
                 {
-                    if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+                    if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))//left right
                     {
                         TutorialGameManager.horizontalArrows = false;
                         Time.timeScale = 1f;
@@ -69,7 +76,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;
-                        popUpIndex = 6;
+                        popUpIndex = getInsCompletedIndex(0);
 
                     }
                     else
@@ -81,7 +88,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.jumpForce = 0;
                     }
                 }
-                else if (popUpIndex == 6)
+                else if(popUpIndex== getInsCompletedIndex(0))
                 {
                     if (spaceWaitTime > 0)
                     {
@@ -94,7 +101,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 else if (popUpIndex == 1)
                 {
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if(Input.GetKeyDown(KeyCode.Space))//jump
                     {
                         TutorialGameManager.spaceBar = false;
                         Time.timeScale = 1f;
@@ -102,7 +109,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;
-                        popUpIndex = 7;
+                        popUpIndex= getInsCompletedIndex(1);
 
                     }
                     else
@@ -114,61 +121,37 @@ public class TutorialManager : MonoBehaviour
                         tutorialplayerMovement.jumpForce = 0;
                     }
                 }
-                else if (popUpIndex == 7)
+                else if(popUpIndex== getInsCompletedIndex(1))
                 {
-                    if (coinWaitTime > 0)
-                    {
-                        coinWaitTime -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        popUpIndex = 2;
-                    }
-                }
-                else if (popUpIndex == 2)
-                {
-                    if (TutorialGameManager.ingredientNum >= 1)
-                    {
-                        popUpIndex = 3;
-                    }
-                    else
-                    {
-                        popUpIndex = 2;
-
-                    }
-                }
-                else if (popUpIndex == 8)
-                {
-                    if (hammerWaitTime > 0)
-                    {
+                    if (hammerWaitTime > 0) {
                         hammerWaitTime -= Time.deltaTime;
                     }
-                    else
-                    {
-                        popUpIndex = 3;
+                    else {
+                        popUpIndex = 2;
                     }
                 }
-                else if (popUpIndex == 3)
+
+                else if (popUpIndex == 2)
                 {
-                    if (!Input.GetKeyDown(KeyCode.Return))
-                    {
-                        Time.timeScale = 0f;
-                        tutorialplayerMovement.speed = 0;
-                        tutorialplayerMovement.horizontalMultiplier = 0;
-                        tutorialplayerMovement.jumpForce = 0;
-                    }
-                    else
+                    if(Input.GetKeyDown(KeyCode.Return))//hammer
                     {
                         //hammerDelTime-=Time.deltaTime;
                         Time.timeScale = 1f;
                         tutorialplayerMovement.speed = 8;
                         tutorialplayerMovement.horizontalMultiplier = 0.8f;
                         tutorialplayerMovement.jumpForce = 750f;
-                        popUpIndex = 9;
+                        popUpIndex = getInsCompletedIndex(2);
+                    }
+                    else 
+                    {
+                        Time.timeScale = 0f;
+                        tutorialplayerMovement.speed = 0;
+                        tutorialplayerMovement.horizontalMultiplier = 0;
+                        tutorialplayerMovement.jumpForce = 0;
 
                     }
                 }
-                else if (popUpIndex == 9)
+                else if(popUpIndex== getInsCompletedIndex(2))
                 {
                     if (clockWaitTime > 0)
                     {
@@ -176,53 +159,79 @@ public class TutorialManager : MonoBehaviour
                     }
                     else
                     {
-                        popUpIndex = 4;
+                        popUpIndex = 3;
                     }
                 }
-                else if (popUpIndex == 4)
+                else if (popUpIndex == 3)//clock
                 {
-                    if (!Input.GetKeyDown(KeyCode.Return))
+                    if(Input.GetKeyDown(KeyCode.Return))
+                    {
+
+                        //clockDelTime-=Time.deltaTime;
+                        Time.timeScale = 1f;
+                        tutorialplayerMovement.speed = 8;
+                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
+                        tutorialplayerMovement.jumpForce = 750f;
+                        popUpIndex = getInsCompletedIndex(3);
+                    }
+                    else 
                     {
                         Time.timeScale = 0f;
                         tutorialplayerMovement.speed = 0;
                         tutorialplayerMovement.horizontalMultiplier = 0;
                         tutorialplayerMovement.jumpForce = 0;
                     }
+                }
+                else if(popUpIndex== getInsCompletedIndex(3))
+                {
+                    if(fiftyFiftyWaitTime > 0)
+                    {
+                        fiftyFiftyWaitTime -= Time.deltaTime;
+                    }
                     else
                     {
-                        //clockDelTime-=Time.deltaTime;
-                        Time.timeScale = 1f;
-                        tutorialplayerMovement.speed = 8;
-                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
-                        tutorialplayerMovement.jumpForce = 750f;
-                        popUpIndex = 10;
+                        popUpIndex = 4;
                     }
                 }
-                else if (popUpIndex == 10)
+                else if(popUpIndex==4)//50-50
                 {
-                    if (sanctumWaitTime > 0)
-                    {
-                        sanctumWaitTime -= Time.deltaTime;
+                    if (fifityFiftyDisplayTime > 0) {
+                        fifityFiftyDisplayTime -= Time.deltaTime;
                     }
-                    else
-                    {
+                    else {
                         popUpIndex = 5;
                     }
                 }
-                else if (popUpIndex == 5)
-                {
-                    if (sanctumDelTime > 0)
-                    {
-                        sanctumDelTime -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        popUpIndex = 11;
 
+                else if (popUpIndex == 5)//hint
+                {
+                    if (hintDisplayTime > 0) {
+                        hintDisplayTime -= Time.deltaTime;
+                    }
+                    else {
+                        popUpIndex = 6;
                     }
                 }
 
+                else if (popUpIndex == 6 )//get ingredient
+               {
+                    if (hintDisplayTime > 0) {
+                        getIngredentDisplayTime -= Time.deltaTime;
+                    }
+                    else {
+                        if (getIngredent) {
+                            popUpIndex = 7;
+                        }                   
+                    }
+                }
+
+
             }
         }
+
+
+    }
+    public int getInsCompletedIndex(int index) {
+        return popUps.Length + index;
     }
 }

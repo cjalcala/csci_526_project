@@ -13,8 +13,14 @@ public class HintObject : MonoBehaviour {
             return;
         }
         // add to tracker
-        GameManager.inst.IncrementHintCount();
-        GameTracker.getHintPowerUp = true;
+        if (!TutorialManager.tutorialActive) {
+            GameManager.inst.IncrementHintCount();
+            GameTracker.getHintPowerUp = true;
+        }
+        else {
+            TutorialGameManager.hintCount += 1;
+        }
+
         Destroy(gameObject);
     }
     // Start is called before the first frame update
