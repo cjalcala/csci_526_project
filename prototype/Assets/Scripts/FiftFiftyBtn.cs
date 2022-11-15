@@ -41,9 +41,17 @@ public class FiftFiftyBtn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameTracker.fiftyFiftyCount == 0) {
-            btn.gameObject.SetActive(false);
+        if (!TutorialManager.tutorialActive) {
+            if (GameTracker.fiftyFiftyCount < 1) {
+                btn.gameObject.SetActive(false);
+            }
         }
+        else {
+            if (TutorialGameManager.fiftyFiftyCount < 1) {
+                btn.gameObject.SetActive(false);
+            }
+        }
+        
     }
 
     // Update is called once per frame
