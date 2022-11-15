@@ -85,6 +85,7 @@ public class GameTracker : MonoBehaviour
         else if (level == 2)
         {
             timeRemain = 120;
+            coins=15;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("Tomato", new Ingredient("Tomato", 1, 2));
@@ -97,6 +98,7 @@ public class GameTracker : MonoBehaviour
         }
         else if (level == 3)
         {
+            coins=20;
             timeRemain = 180;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
@@ -109,7 +111,7 @@ public class GameTracker : MonoBehaviour
             goalAmt = 60;
         }
 
-        coins = 10;
+        coins = GameTracker.coins;
         originalTime = GameTracker.timeRemain;
         //tutorialOriginalTime = TutorialGameManager.time;
         questionGenerator = new QuestionGenerator();
