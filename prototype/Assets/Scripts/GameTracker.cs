@@ -21,6 +21,7 @@ public class GameTracker : MonoBehaviour
     public static int ingred1;
     public static int ingred2;
     public static int ingred3;
+    public static int dish;
 
     public static string[] ingredientNames; 
     
