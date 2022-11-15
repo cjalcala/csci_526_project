@@ -34,7 +34,7 @@ public class TutorialGroundTile : MonoBehaviour
             tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
         }
         else {
-            tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex == 4, false, false, false, false);//SpawnObstacle,  SpawnIngredent 
+            tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex >= 4, false, false, false, false);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
         }
 
 

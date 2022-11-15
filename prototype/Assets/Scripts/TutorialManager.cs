@@ -132,7 +132,7 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
 
                 else if (popUpIndex == 2)
                 {
-                    if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))//hammer
+                    if(Input.GetKeyDown(KeyCode.Return))//hammer
                     {
                         //hammerDelTime-=Time.deltaTime;
                         Time.timeScale = 1f;
@@ -163,7 +163,7 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                 }
                 else if (popUpIndex == 3)//clock
                 {
-                    if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                    if(Input.GetKeyDown(KeyCode.Return))
                     {
 
                         //clockDelTime-=Time.deltaTime;
@@ -220,8 +220,7 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                     else {
                         if (getIngredent) {
                             popUpIndex = 7;
-                        }
-                       
+                        }                   
                     }
                 }
 
