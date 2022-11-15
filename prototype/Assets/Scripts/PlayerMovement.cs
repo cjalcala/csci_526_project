@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Restart()
     {
-        gameOverScreen.Setup();
+        gameOverScreen.Setup("You lost all your lives");
         ObjectMusic = GameObject.FindWithTag("GameMusic");
         Destroy(ObjectMusic);
     }
