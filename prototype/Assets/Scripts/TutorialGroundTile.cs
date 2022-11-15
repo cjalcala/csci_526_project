@@ -26,21 +26,17 @@ public class TutorialGroundTile : MonoBehaviour
         //tutorialgroundSpawner.SpawnTutorialTile(true, true, false, false,false,false); 
         int i = TutorialGroundSpawner.i;
         // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
-        if (i >= 9 && i <= 12) {
-            tutorialgroundSpawner.SpawnTutorialTile(true, false, true, false, false, false);//SpawnObstacle, SpawnHammer
-        }
-        else if (i > 12 && i < 14) {
-            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, false, false);//SpawnObstacle, SpawnClock
-        }
-        else if (i >= 14 && i < 19) {
+
+        if (i > 10 && i < 17) {
             tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false);//SpawnObstacle, SpawnFifty
         }
-        else if (i >= 19 && i < 23) {
+        else if (i >= 17 && i < 20) {
             tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
         }
         else {
-            tutorialgroundSpawner.SpawnTutorialTile(true, true, false, true, false, false);//SpawnObstacle,  SpawnIngredent
+            tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex == 4, false, false, false, false);//SpawnObstacle,  SpawnIngredent 
         }
+
 
         TutorialGroundSpawner.i++;
         Destroy(gameObject, 2);

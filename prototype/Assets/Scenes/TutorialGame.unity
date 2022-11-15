@@ -3509,11 +3509,11 @@ MonoBehaviour:
   popUps:
   - {fileID: 1853456090}
   - {fileID: 889325659}
-  - {fileID: 1143607461}
   - {fileID: 1518504684}
   - {fileID: 916834389}
   - {fileID: 1749163357}
   - {fileID: 1012477181}
+  - {fileID: 1143607461}
   - {fileID: 643255062}
   tutorialobstacleSpawner: {fileID: 2483905378157037388, guid: eb74e2bb46d364448822bf5842f33372, type: 3}
   spaceWaitTime: 2.5
