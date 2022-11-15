@@ -38,13 +38,13 @@ public class TutorialGroundSpawner : MonoBehaviour
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
         }
         if (SpawnFifty) {
-            int rand = Random.Range(0, 10);
+            int rand = Random.Range(0, 3);
             if (rand == 1) {
                 temp.GetComponent<TutorialGroundTile>().SpawnFiftyFifty();
             }
         }
         if (SpawnHint) {
-            int rand = Random.Range(0, 10);
+            int rand = Random.Range(0, 3);
             if (rand == 1) {
                 temp.GetComponent<TutorialGroundTile>().SpawnHints();
             }
