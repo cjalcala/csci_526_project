@@ -381,7 +381,7 @@ public class GameManager : MonoBehaviour
                 // Send("coinTracker");
             }
 
-            gameOverScreen.Setup();
+            gameOverScreen.Setup("You ran out of time");
             GameTracker.timeRemain = -1;
             playerMovement.stayStill = true;
             //Invoke("Restart", 1);
@@ -539,6 +539,11 @@ public class GameManager : MonoBehaviour
                 hearts[h].enabled=false;
             }
             
+        }
+
+        if(GameTracker.coins == 0 && (Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)) == 0))
+        {
+            gameOverScreen.Setup("You do not have enough balance of coins");
         }
 
     }
