@@ -19,6 +19,9 @@ public class FiftFiftyObject : MonoBehaviour
             GameManager.inst.IncrementFifityFiftyCount();
             GameTracker.getFiftyFiftyPowerUp = true;
         }
+        else {
+            TutorialGameManager.fiftyFiftyCount += 1;
+        }
 
         Destroy(gameObject);
     }
