@@ -32,6 +32,7 @@ public class TutorialGameManager : MonoBehaviour
     public Boolean TimePowerUp = false;
     public Image[] hearts;
     public static int health;
+    public static int hintCount;
     // Start is called before the first frame update
 
     private void Awake()
@@ -50,7 +51,8 @@ public class TutorialGameManager : MonoBehaviour
         spaceBar = false;
         Time.timeScale = 1f;
         health = 5;
-        TutorialGameManager.ingredientNum = 0;
+        ingredientNum = 0;
+        hintCount = 0;
     }
 
     // Update is called once per frame

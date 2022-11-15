@@ -16,7 +16,17 @@ public class HintBtn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!TutorialManager.tutorialActive) {
+            if (GameTracker.hintCount < 1) {
+                btn.gameObject.SetActive(false);
+            }
+        }
+        else {
+            if (TutorialGameManager.hintCount < 1) {
+                btn.gameObject.SetActive(false);
+            }
+        }
+
     }
 
     // Update is called once per frame

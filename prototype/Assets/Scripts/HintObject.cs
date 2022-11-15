@@ -17,6 +17,9 @@ public class HintObject : MonoBehaviour {
             GameManager.inst.IncrementHintCount();
             GameTracker.getHintPowerUp = true;
         }
+        else {
+            TutorialGameManager.hintCount += 1;
+        }
 
         Destroy(gameObject);
     }

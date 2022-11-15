@@ -38,6 +38,7 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
         tutorialplayerMovement = GameObject.FindObjectOfType<TutorialPlayerMovement>();
         questionGenerator = new QuestionGenerator();
         getIngredent = false;
+        popUpIndex = 0;
     }
 
     // public static void GameSetup()
