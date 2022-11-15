@@ -32,7 +32,7 @@ public class WinningScreen : MonoBehaviour
     {
         timeText.text = "Your Score: " + GameTracker.timeRemain.ToString("0") + "!";
         coinText.text = GameTracker.coins.ToString();
-        dishText.text = SanctumQuiz.dish.ToString();
+        dishText.text = GameTracker.dish.ToString(); // SanctumQuiz.dish.ToString();
         dishImage.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.recipe.name);
         GameTracker.GameSetup();
         gameObject.SetActive(true);
@@ -47,7 +47,8 @@ public class WinningScreen : MonoBehaviour
         GameTracker.ingred1 = 0;
         GameTracker.ingred2 = 0;
         GameTracker.ingred3 = 0;
-        SanctumQuiz.dish = 0;
+        //SanctumQuiz.dish = 0;
+        GameTracker.dish = 0;
         GameTracker.GameSetup();
         //if (GameTracker.level == 2)
         //    SceneManager.LoadScene("Level2");
@@ -66,7 +67,8 @@ public class WinningScreen : MonoBehaviour
         GameTracker.ingred1 = 0;
         GameTracker.ingred2 = 0;
         GameTracker.ingred3 = 0;
-        SanctumQuiz.dish = 0;
+        //SanctumQuiz.dish = 0;
+        GameTracker.dish = 0;
         if (GameTracker.level == 1)
             SceneManager.LoadScene("Game");
         else if (GameTracker.level == 2)

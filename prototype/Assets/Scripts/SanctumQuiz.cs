@@ -32,7 +32,7 @@ public class SanctumQuiz : MonoBehaviour
     public QuizQA quizQuestion;
     public static String hint;
     public static bool notCollected = false;
-    public static int dish = 0;
+    //public static int dish = 0;
 
     public Text bagText;
     public float bagTime = 1.5f;
@@ -116,7 +116,9 @@ public class SanctumQuiz : MonoBehaviour
 
             if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
             {
-                dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                //dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                GameTracker.dish = GameTracker.dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+
                 int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
 
                 GameTracker.coins += (GameTracker.recipe.earning * Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));

@@ -245,7 +245,7 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
-        dishText.text =  ": " + SanctumQuiz.dish;
+        dishText.text = ": " + GameTracker.dish; //SanctumQuiz.dish;
         
         ingredient1Text.text = ": " + GameTracker.ingred1;
         ingredient2Text.text = ": " + GameTracker.ingred2;
@@ -282,6 +282,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dishText.text = ": " + GameTracker.dish;
+
         if (Input.GetKeyDown(KeyCode.P)) {
             if (Input.GetKeyDown(KeyCode.P)) {
                 if (PauseMenu.GameIsPaused) {

@@ -27,7 +27,8 @@ public class GameOverScreen : MonoBehaviour
         GameTracker.ingred1 = 0;
         GameTracker.ingred2 = 0;
         GameTracker.ingred3 = 0;
-        SanctumQuiz.dish = 0;
+        //SanctumQuiz.dish = 0;
+        GameTracker.dish = 0;
         GameTracker.LoadScenes();
         if (AudioListener.pause == true){
             AudioListener.pause = true;

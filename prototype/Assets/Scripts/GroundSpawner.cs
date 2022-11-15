@@ -42,7 +42,7 @@ public class GroundSpawner : MonoBehaviour
             }
 
             // randomly generate ingredients along the path
-            int rand_ingredient = Random.Range(0, 5);
+            int rand_ingredient = Random.Range(1, 4);
             if (rand_ingredient == 1) {
                 if (GameTracker.level == 1) {
                     temp.GetComponent<GroundTile>().SpawnCucumber();
