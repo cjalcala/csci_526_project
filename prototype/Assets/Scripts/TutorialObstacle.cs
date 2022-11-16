@@ -49,9 +49,14 @@ public class TutorialObstacle : MonoBehaviour
             hit=false;
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.GetComponent<Obstacle>() != null) {
+            Destroy(gameObject);
+            return;
+        }
+    }
+        // Update is called once per frame
+        void Update()
     {
         
     }

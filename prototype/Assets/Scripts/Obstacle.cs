@@ -54,6 +54,12 @@ public class Obstacle : MonoBehaviour
             hit=false;
         }
     }
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.GetComponent<Obstacle>() != null) {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     // Update is called once per frame
     void Update()
