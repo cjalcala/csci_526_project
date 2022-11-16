@@ -80,9 +80,15 @@ public class TutorialGameManager : MonoBehaviour
             }
             else
             {
-                time -= Time.deltaTime;
-                TimeSlider.fillAmount = time / 90;
-                timeText.text = ": " + time.ToString("0") + " Sec";
+                if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
+                {
+                    time -= Time.deltaTime;
+                    TimeSlider.fillAmount = time / 90;
+                    timeText.text = ": " + time.ToString("0") + " Sec";
+                }
+                // time -= Time.deltaTime;
+                // TimeSlider.fillAmount = time / 90;
+                // timeText.text = ": " + time.ToString("0") + " Sec";
             }
 
             // int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
@@ -93,16 +99,15 @@ public class TutorialGameManager : MonoBehaviour
             //     //Debug.Log(GameTracker.coinString);
             // }
         }
-
-        if (time > 0)
-        {
-            if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
-            {
-                time -= Time.deltaTime;
-                TimeSlider.fillAmount = time / 90;
-                timeText.text = ": " + time.ToString("0") + " Sec";
-            }
-        }
+        // if (time > 0)
+        // {
+        //     if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
+        //     {
+        //         time -= Time.deltaTime;
+        //         TimeSlider.fillAmount = time / 90;
+        //         timeText.text = ": " + time.ToString("0") + " Sec";
+        //     }
+        // }
         else
         {
             tutorialplayerMovement.Die();
