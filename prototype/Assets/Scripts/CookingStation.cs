@@ -19,10 +19,20 @@ public class CookingStation : MonoBehaviour
         {
             return;
         }
-        PlayerMovement.speed = 0;
-        PlayerMovement.horizontalMultiplier = 0;
-        PlayerMovement.jumpForce = 0;
-        SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
+
+        if (TutorialManager.tutorialActive)
+        {
+            SceneManager.LoadScene("Sanctum");
+
+        }
+        else
+        {
+            PlayerMovement.speed = 0;
+            PlayerMovement.horizontalMultiplier = 0;
+            PlayerMovement.jumpForce = 0;
+            SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
+        }
+        
         Destroy(gameObject);
     }
 
