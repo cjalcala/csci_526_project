@@ -71,7 +71,7 @@ public class SanctumQuiz : MonoBehaviour
 
     public void retry()
     {
-        GameTracker.coins -= 10;
+        GameTracker.coins -= 2;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         QuizPanel.SetActive(true);
         BPanel.SetActive(false);
@@ -154,7 +154,7 @@ public class SanctumQuiz : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            if (TutorialGameManager.tutCoinCnt < 10)
+            if (TutorialGameManager.tutCoinCnt < 2)
             {
                 //Invoke("restartTutorial", 2.0f);
                 notCollected = true;
@@ -167,7 +167,6 @@ public class SanctumQuiz : MonoBehaviour
                 notCollected = false;
                 Invoke("reloadSanctum", 1.5f);
 
-
             }
         }
         else
@@ -175,7 +174,7 @@ public class SanctumQuiz : MonoBehaviour
 
             // Send(quizQuestion.question, 0, 1);
 
-            if (GameTracker.coins < 10)
+            if (GameTracker.coins < 2)
             {
                 notCollected = true;
                 continueGame();
@@ -196,7 +195,7 @@ public class SanctumQuiz : MonoBehaviour
 
     void reloadSanctum()
     {
-        TutorialGameManager.tutCoinCnt -= 8;
+        TutorialGameManager.tutCoinCnt -= 2;
         //SceneManager.LoadScene("Sanctum");
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
