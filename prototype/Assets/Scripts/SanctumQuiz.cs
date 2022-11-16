@@ -8,6 +8,7 @@ using System;
 
 public class SanctumQuiz : MonoBehaviour
 {
+    PlayerMovement PlayerMovement;
     [SerializeField] private string URL;
     [SerializeField] private AudioSource sanctum_entry_sound;
     public List<QuizQA> questionAnswers;
@@ -31,7 +32,7 @@ public class SanctumQuiz : MonoBehaviour
     public QuizQA quizQuestion;
     public static String hint;
     public static bool notCollected = false;
-    public static int dish = 0;
+    //public static int dish = 0;
 
     public Text bagText;
     public float bagTime = 1.5f;
@@ -42,6 +43,8 @@ public class SanctumQuiz : MonoBehaviour
 
     private void Start()
     {
+
+        PlayerMovement = GameObject.FindObjectOfType<PlayerMovement>();
 
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
@@ -113,7 +116,9 @@ public class SanctumQuiz : MonoBehaviour
 
             if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
             {
-                dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                //dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                GameTracker.dish = GameTracker.dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+
                 int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
 
                 GameTracker.coins += (GameTracker.recipe.earning * Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
@@ -123,8 +128,12 @@ public class SanctumQuiz : MonoBehaviour
                 GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - minCount);
 
             }
-
-            GameTracker.LoadScenes();
+            // GameTracker.LoadScenes();
+            GameTracker.sanctumImmunity = true;
+            PlayerMovement.speed = 8;
+            PlayerMovement.horizontalMultiplier = 0.8f;
+            PlayerMovement.jumpForce = 750f;
+            SceneManager.UnloadScene("Sanctum");
         }
     }
 
@@ -202,7 +211,13 @@ public class SanctumQuiz : MonoBehaviour
 
     public void continueGame()
     {
-        GameTracker.LoadScenes();
+        // GameTracker.LoadScenes();
+        GameTracker.sanctumImmunity = true;
+        PlayerMovement.speed = 8;
+        PlayerMovement.horizontalMultiplier = 0.8f;
+        PlayerMovement.jumpForce = 750f;
+        SceneManager.UnloadScene("Sanctum");
+        
     }
 
     void setQnA()
@@ -302,7 +317,12 @@ public class SanctumQuiz : MonoBehaviour
             }
             else
             {
-                GameTracker.LoadScenes();
+                // GameTracker.LoadScenes();
+                GameTracker.sanctumImmunity = true;
+                PlayerMovement.speed = 8;
+                PlayerMovement.horizontalMultiplier = 0.8f;
+                PlayerMovement.jumpForce = 750f;
+                SceneManager.UnloadScene("Sanctum");
             }
         }
         else

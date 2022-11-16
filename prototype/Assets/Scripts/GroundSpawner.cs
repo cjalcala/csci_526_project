@@ -42,7 +42,7 @@ public class GroundSpawner : MonoBehaviour
             }
 
             // randomly generate ingredients along the path
-            int rand_ingredient = Random.Range(0, 5);
+            int rand_ingredient = Random.Range(1, 4);
             if (rand_ingredient == 1) {
                 if (GameTracker.level == 1) {
                     temp.GetComponent<GroundTile>().SpawnCucumber();
@@ -98,7 +98,7 @@ public class GroundSpawner : MonoBehaviour
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
 
-        if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1 && GameTracker.level != 1)
+        if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1 && GameTracker.level == 3)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }

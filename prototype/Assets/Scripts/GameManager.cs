@@ -9,6 +9,7 @@ using System.Reflection;
 
 public class GameManager : MonoBehaviour
 {
+    public float sanctum_immunity_time = 1f;
     [SerializeField] private AudioSource coin_collected_sound;
     [SerializeField] private string URL;
     [SerializeField] private string URLforLevel;
@@ -244,7 +245,7 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
-        dishText.text =  ": " + SanctumQuiz.dish;
+        dishText.text = ": " + GameTracker.dish; //SanctumQuiz.dish;
         
         ingredient1Text.text = ": " + GameTracker.ingred1;
         ingredient2Text.text = ": " + GameTracker.ingred2;
@@ -281,6 +282,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dishText.text = ": " + GameTracker.dish;
+
         if (Input.GetKeyDown(KeyCode.P)) {
             if (Input.GetKeyDown(KeyCode.P)) {
                 if (PauseMenu.GameIsPaused) {
@@ -380,7 +383,7 @@ public class GameManager : MonoBehaviour
                 // Send("coinTracker");
             }
 
-            gameOverScreen.Setup();
+            gameOverScreen.Setup("You ran out of time");
             GameTracker.timeRemain = -1;
             playerMovement.stayStill = true;
             //Invoke("Restart", 1);
@@ -452,6 +455,17 @@ public class GameManager : MonoBehaviour
                     hammerOffText.text = "Obstacle Immunity Off";
                     hflag = 1;
                 }
+            }
+        }
+
+        // Providing 1 second unity after exiting from sanctum
+        if (GameTracker.sanctumImmunity){
+            if (sanctum_immunity_time > 0){
+                sanctum_immunity_time -= Time.deltaTime;
+            }
+            else{
+                GameTracker.sanctumImmunity = false;
+                sanctum_immunity_time = 1f;
             }
         }
 
@@ -527,6 +541,11 @@ public class GameManager : MonoBehaviour
                 hearts[h].enabled=false;
             }
             
+        }
+
+        if(GameTracker.coins == 0 && (Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)) == 0))
+        {
+            gameOverScreen.Setup("You do not have enough balance of coins");
         }
 
     }
