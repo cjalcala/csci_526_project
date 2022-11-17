@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager inst;
     public int coins;
-    public Text coinText;
+    // public Text coinText;
     public Text timeText;
     // ingredients along the path
     // // cucumber
@@ -49,13 +49,15 @@ public class GameManager : MonoBehaviour
     public int ingredient3;
     public Text ingredient3Text;
     public Image ingredient3Icon;
-    
+
     // reward & dish
     public Text rewardText;
-    public Text dishText; 
+    public Text dishText;
 
 
-   
+
+
+
 
     public Text fiftyFiftyText;
     //public Text goalText;
@@ -82,15 +84,15 @@ public class GameManager : MonoBehaviour
     public Text hammerOffText;
     public float hammerOffTexttimeDisplay = 1.5f;
     public int hflag = 0;
-    
+
     public Text fiftyFiftyPopUpText;
     public float fiftyFiftyTexttimeDisplay = 1.5f;
     public float hintTexttimeDisplay = 1.5f;
 
-    public Text notCollectedIngredient; 
+    public Text notCollectedIngredient;
     public float notCollectedIngredienttimeDisplay = 1.5f;
     //public float collectedIngredienttimeDisplay = 1.5f;
-    
+
     public Boolean TimePowerUp = false;
 
     public float TimePowerUpStart = 0;
@@ -106,12 +108,12 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
-    public  void changeCoinAmount(int num)
+    public void changeCoinAmount(int num)
     {
         coin_collected_sound.Play();
         GameTracker.coins += num;
         coins = GameTracker.coins;
-        coinText.text = ": " + GameTracker.coins;
+        // coinText.text = ": " + GameTracker.coins;
     }
 
     // Increment Ingredient along the path
@@ -151,7 +153,7 @@ public class GameManager : MonoBehaviour
     //     lemonText.text = ": " + GameTracker.lemon;
     //     changeCoinAmount(-2);
     // }
-    
+
     // public void IncrementYogurtCount()
     // {
     //     GameTracker.yogurt++;
@@ -175,12 +177,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void IncrementFifityFiftyCount() {
+    public void IncrementFifityFiftyCount()
+    {
         GameTracker.fiftyFiftyCount++;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
     }
 
-    public void IncrementHintCount() {
+    public void IncrementHintCount()
+    {
         GameTracker.hintCount++;
     }
 
@@ -243,14 +247,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = ": " + GameTracker.coins;
+        // coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         dishText.text = ": " + GameTracker.dish; //SanctumQuiz.dish;
-        
+
         ingredient1Text.text = ": " + GameTracker.ingred1;
         ingredient2Text.text = ": " + GameTracker.ingred2;
         ingredient3Text.text = ": " + GameTracker.ingred3;
-            
+
         // }
         // if (GameTracker.level == 2)
         // {
@@ -264,19 +268,19 @@ public class GameManager : MonoBehaviour
         ingredient1Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[0]);
         ingredient2Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[1]);
         ingredient3Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[2]);
-        
+
         ingredient1Icon.gameObject.SetActive(true);
         ingredient2Icon.gameObject.SetActive(true);
         ingredient3Icon.gameObject.SetActive(true);
 
 
-       
+
 
         won = false;
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
         //questionGenerator = new QuestionGenerator();
-        Debug.Log("Game "+GameTracker.timeRemain);
+        Debug.Log("Game " + GameTracker.timeRemain);
     }
 
     // Update is called once per frame
@@ -284,11 +288,16 @@ public class GameManager : MonoBehaviour
     {
         dishText.text = ": " + GameTracker.dish;
 
-        if (Input.GetKeyDown(KeyCode.P)) {
-            if (Input.GetKeyDown(KeyCode.P)) {
-                if (PauseMenu.GameIsPaused) {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if (PauseMenu.GameIsPaused)
+                {
                     PauseMenu.pm.Resume();
-                } else {
+                }
+                else
+                {
                     PauseMenu.pm.Pause();
                 }
             }
@@ -343,7 +352,7 @@ public class GameManager : MonoBehaviour
             if (TimePowerUp)
             {
                 GameTracker.timeRemain -= Time.deltaTime / 2;
-                TimeSlider.fillAmount = GameTracker.timeRemain/GameTracker.originalTime;
+                TimeSlider.fillAmount = GameTracker.timeRemain / GameTracker.originalTime;
                 timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec SLOW";
                 // timeText.color = Color.red;
 
@@ -351,7 +360,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 GameTracker.timeRemain -= Time.deltaTime;
-                TimeSlider.fillAmount = GameTracker.timeRemain/GameTracker.originalTime;
+                TimeSlider.fillAmount = GameTracker.timeRemain / GameTracker.originalTime;
                 timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
             }
 
@@ -402,41 +411,41 @@ public class GameManager : MonoBehaviour
             timeDisplay = 1.5f;
         }
 
-     /*   if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay >= 0)
-            {
-                
-
-                collectedIngredient.color = Color.black;
-                collectedIngredient.text = "You have sucessfully collected " + SanctumQuiz.quizIngredient;
-                collectedIngredienttimeDisplay -= (Time.deltaTime/2);
-            // SanctumQuiz.collected = false;
-                // TimePowerUp ?  timeDisplay -= Time.deltaTime/2 : timeDisplay -= Time.deltaTime/2;
-            }
-
-        if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay < 0)
-            {
-                collectedIngredient.text ="";
-                SanctumQuiz.collected = false;
-                collectedIngredienttimeDisplay = 1.5f;
-            }
-*/
+        /*   if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay >= 0)
+               {
 
 
+                   collectedIngredient.color = Color.black;
+                   collectedIngredient.text = "You have sucessfully collected " + SanctumQuiz.quizIngredient;
+                   collectedIngredienttimeDisplay -= (Time.deltaTime/2);
+               // SanctumQuiz.collected = false;
+                   // TimePowerUp ?  timeDisplay -= Time.deltaTime/2 : timeDisplay -= Time.deltaTime/2;
+               }
 
-        if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay >= 0)
-                {
-                    notCollectedIngredient.color = Color.red;
-                    notCollectedIngredient.text = "No Reward Collected!";
-                    notCollectedIngredienttimeDisplay -= (Time.deltaTime/2);
-    
-                }
+           if (SanctumQuiz.collected==true && collectedIngredienttimeDisplay < 0)
+               {
+                   collectedIngredient.text ="";
+                   SanctumQuiz.collected = false;
+                   collectedIngredienttimeDisplay = 1.5f;
+               }
+   */
 
-                if (SanctumQuiz.notCollected==true && notCollectedIngredienttimeDisplay < 0)
-                {
-                    notCollectedIngredient.text ="";
-                    SanctumQuiz.notCollected = false;
-                    notCollectedIngredienttimeDisplay = 1.5f;
-                }
+
+
+        if (SanctumQuiz.notCollected == true && notCollectedIngredienttimeDisplay >= 0)
+        {
+            notCollectedIngredient.color = Color.red;
+            notCollectedIngredient.text = "No Reward Collected!";
+            notCollectedIngredienttimeDisplay -= (Time.deltaTime / 2);
+
+        }
+
+        if (SanctumQuiz.notCollected == true && notCollectedIngredienttimeDisplay < 0)
+        {
+            notCollectedIngredient.text = "";
+            SanctumQuiz.notCollected = false;
+            notCollectedIngredienttimeDisplay = 1.5f;
+        }
 
         if (Welcome.immunity)
         {
@@ -459,17 +468,20 @@ public class GameManager : MonoBehaviour
         }
 
         // Providing 1 second unity after exiting from sanctum
-        if (GameTracker.sanctumImmunity){
-            if (sanctum_immunity_time > 0){
+        if (GameTracker.sanctumImmunity)
+        {
+            if (sanctum_immunity_time > 0)
+            {
                 sanctum_immunity_time -= Time.deltaTime;
             }
-            else{
+            else
+            {
                 GameTracker.sanctumImmunity = false;
                 sanctum_immunity_time = 1f;
             }
         }
 
-        
+
 
         if (GameTracker.hammerFlag == 1)
         {
@@ -485,35 +497,42 @@ public class GameManager : MonoBehaviour
             }
         }
         //50-50 pop up text
-        if (GameTracker.getFiftyFiftyPowerUp) 
+        if (GameTracker.getFiftyFiftyPowerUp)
         {
             GameTracker.fiftyFiftyPopUpStartTime = GameTracker.timeRemain;
             GameTracker.fiftyFiftyPopUpFlag = 1;
             fiftyFiftyPopUpText.text = "Use this power up in sanctum to eliminate 2 wrong answers";
             GameTracker.getFiftyFiftyPowerUp = false;
-        }   
-        if (GameTracker.fiftyFiftyPopUpFlag == 1) {
-            if (fiftyFiftyTexttimeDisplay < 0) {
+        }
+        if (GameTracker.fiftyFiftyPopUpFlag == 1)
+        {
+            if (fiftyFiftyTexttimeDisplay < 0)
+            {
                 fiftyFiftyPopUpText.text = "";
-                    fiftyFiftyTexttimeDisplay = 1.5f;
+                fiftyFiftyTexttimeDisplay = 1.5f;
             }
-            else {
+            else
+            {
                 fiftyFiftyTexttimeDisplay -= Time.deltaTime;
             }
         }
         //hint pop up text
-        if (GameTracker.getHintPowerUp) {
+        if (GameTracker.getHintPowerUp)
+        {
             GameTracker.hintPopUpStartTime = GameTracker.timeRemain;
             GameTracker.hintPopUpFlag = 1;
             fiftyFiftyPopUpText.text = "Use this power up in cook stations to get hints";
             GameTracker.getHintPowerUp = false;
         }
-        if (GameTracker.hintPopUpFlag == 1) {
-            if (hintTexttimeDisplay < 0) {
+        if (GameTracker.hintPopUpFlag == 1)
+        {
+            if (hintTexttimeDisplay < 0)
+            {
                 fiftyFiftyPopUpText.text = "";
                 hintTexttimeDisplay = 1.5f;
             }
-            else {
+            else
+            {
                 hintTexttimeDisplay -= Time.deltaTime;
             }
         }
@@ -534,16 +553,16 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if(GameTracker.health<5)
+        if (GameTracker.health < 5)
         {
-            for(int h=GameTracker.health;h<=4;h++)
+            for (int h = GameTracker.health; h <= 4; h++)
             {
-                hearts[h].enabled=false;
+                hearts[h].enabled = false;
             }
-            
+
         }
 
-        if(GameTracker.coins == 0 && (Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)) == 0))
+        if (GameTracker.coins == 0 && (Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)) == 0))
         {
             gameOverScreen.Setup("You do not have enough balance of coins");
         }
@@ -552,7 +571,7 @@ public class GameManager : MonoBehaviour
 
     void Restart()
     {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NewSend(String level_complete)

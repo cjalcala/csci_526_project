@@ -69,19 +69,19 @@ public class SanctumQuiz : MonoBehaviour
         questionGenerator();
     }
 
-    public void retry()
-    {
-        GameTracker.coins -= 10;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        QuizPanel.SetActive(true);
-        BPanel.SetActive(false);
-        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
-        for (int b = 0; b < 4; b++)
-        {
-            buttons[b].enabled = true;
-        }
-        sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
-    }
+    // public void retry()
+    // {
+    //     GameTracker.coins -= 10;
+    //     //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //     QuizPanel.SetActive(true);
+    //     BPanel.SetActive(false);
+    //     Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+    //     for (int b = 0; b < 4; b++)
+    //     {
+    //         buttons[b].enabled = true;
+    //     }
+    //     sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+    // }
 
     void gameOver()
     {
@@ -95,12 +95,12 @@ public class SanctumQuiz : MonoBehaviour
     public void correct()
     {
 
-        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
-        for (int b = 0; b < 4; b++)
-        {
-            buttons[b].enabled = false;
-        }
-
+        // Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        // for (int b = 0; b < 4; b++)
+        // {
+        //     buttons[b].enabled = false;
+        // }
+        setButtons(quizQuestion.correctAnswer);
         // Send(quizQuestion.question, 1, 0);
         if (TutorialManager.tutorialActive)
         {
@@ -133,6 +133,8 @@ public class SanctumQuiz : MonoBehaviour
             PlayerMovement.speed = 8;
             PlayerMovement.horizontalMultiplier = 0.8f;
             PlayerMovement.jumpForce = 750f;
+            int i = 0;
+            while (i++ < 10000) ;
             SceneManager.UnloadScene("Sanctum");
         }
     }
@@ -142,14 +144,21 @@ public class SanctumQuiz : MonoBehaviour
         SceneManager.LoadScene("TutorialComplete");
     }
 
-    public void wrong()
+    public void setButtons(int idx)
     {
-
         Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        buttons[quizQuestion.correctAnswer].image.color = Color.green;
+        if (idx != quizQuestion.correctAnswer) buttons[idx].image.color = Color.red;
         for (int b = 0; b < 4; b++)
         {
             buttons[b].enabled = false;
         }
+    }
+
+    public void wrong(int idx)
+    {
+        setButtons(idx);
+
 
 
         if (TutorialManager.tutorialActive)
@@ -172,18 +181,21 @@ public class SanctumQuiz : MonoBehaviour
         }
         else
         {
+            Debug.Log("****wrong Answer****");
 
             // Send(quizQuestion.question, 0, 1);
 
-            if (GameTracker.coins < 10)
-            {
-                notCollected = true;
-                continueGame();
-            }
-            else
-            {
-                Invoke("gameOver", 2.0f);
-            }
+            // if (GameTracker.coins < 10)
+            // {
+            notCollected = true;
+            int i = 0;
+            while (i++ < 10000) ;
+            continueGame();
+            // }
+            // else
+            // {
+            //     Invoke("gameOver", 2.0f);
+            // }
         }
     }
 
@@ -217,7 +229,7 @@ public class SanctumQuiz : MonoBehaviour
         PlayerMovement.horizontalMultiplier = 0.8f;
         PlayerMovement.jumpForce = 750f;
         SceneManager.UnloadScene("Sanctum");
-        
+
     }
 
     void setQnA()
@@ -227,6 +239,7 @@ public class SanctumQuiz : MonoBehaviour
         for (int i = 0; i < options.Length; i++)
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
+            options[i].GetComponent<AnswerScript>().idx = i;
             options[i].transform.GetChild(0).GetComponent<Text>().text = quizQuestion.answers[i];
             options[i].GetComponent<AnswerScript>().correctIdx = quizQuestion.correctAnswer;
 
@@ -235,7 +248,7 @@ public class SanctumQuiz : MonoBehaviour
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
         }
-        
+
     }
 
     void questionGenerator()
@@ -243,12 +256,12 @@ public class SanctumQuiz : MonoBehaviour
         if (TutorialManager.tutorialActive)
         {
             quizQuestion = TutorialManager.questionGenerator.getQuestion(1);
-            
+
         }
         else
         {
             quizQuestion = GameTracker.questionGenerator.getQuestion(GameTracker.level);
-            
+
         }
 
 

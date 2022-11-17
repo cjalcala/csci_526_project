@@ -9,6 +9,7 @@ public class AnswerScript : MonoBehaviour
     public SanctumQuiz sanctumQuiz;
 
     public int correctIdx;
+    public int idx;
 
     public void Answer()
     {
@@ -16,7 +17,7 @@ public class AnswerScript : MonoBehaviour
         {
             GetComponent<Button>().image.color = Color.green;
             isCorrect = false;
-            //Debug.Log("Correct Answer");
+            Debug.Log("****Correct Answer****");
             sanctumQuiz.correct();
         }
         else
@@ -26,8 +27,8 @@ public class AnswerScript : MonoBehaviour
             {
                 sanctumQuiz.options[correctIdx].GetComponent<Button>().image.color = Color.green;
             }
-            //Debug.Log("Incorrect Answer");
-            sanctumQuiz.wrong();
+            Debug.Log("****Incorrect Answer****");
+            sanctumQuiz.wrong(idx);
         }
     }
 
