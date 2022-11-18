@@ -53,13 +53,13 @@ public class SanctumQuiz : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+            sanctumCoins.text = ": " + TutorialGameManager.tutCoinCnt.ToString();
             //bagText.text = "Sorry, You have no hints!";
             // GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
         else
         {
-            sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+            sanctumCoins.text = ": " + GameTracker.coins.ToString();
             //  GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
 
@@ -80,7 +80,7 @@ public class SanctumQuiz : MonoBehaviour
         {
             buttons[b].enabled = true;
         }
-        sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+        sanctumCoins.text = ": " + GameTracker.coins.ToString();
     }
 
     void gameOver()
