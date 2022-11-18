@@ -11,7 +11,7 @@ public class Mouse : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Obstacle>() != null)
+        if (GameManager.inst.isOccupied(other))
         {
             Destroy(gameObject);
             return;

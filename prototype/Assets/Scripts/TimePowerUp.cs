@@ -8,14 +8,11 @@ public class TimePowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Obstacle>() != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+
 
         if (other.gameObject.name != "Player")
         {
+            Destroy(gameObject);
             return;
         }
 

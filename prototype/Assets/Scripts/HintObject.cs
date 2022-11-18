@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class HintObject : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.GetComponent<Obstacle>() != null) {
-            Destroy(gameObject);
-            return;
-        }
+
         // Check that the object we collided with is the player
         if (other.gameObject.name != "Player") {
+            Destroy(gameObject);
             return;
         }
         // add to tracker

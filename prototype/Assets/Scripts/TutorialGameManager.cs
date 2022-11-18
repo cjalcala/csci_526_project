@@ -35,7 +35,26 @@ public class TutorialGameManager : MonoBehaviour
     public static int fiftyFiftyCount;
     public static int hintCount;
     // Start is called before the first frame update
+    public bool isOccupied(Collider other) {
 
+        return other.gameObject.GetComponent<Obstacle>() != null
+            || other.gameObject.GetComponent<Hammer>() != null
+            || other.gameObject.GetComponent<Clock>() != null
+            || other.gameObject.GetComponent<HintObject>() != null
+            || other.gameObject.GetComponent<FiftFiftyObject>() != null
+            || other.gameObject.GetComponent<Basil>() != null
+            || other.gameObject.GetComponent<CookingStation>() != null
+            || other.gameObject.GetComponent<Cucumber>() != null
+            || other.gameObject.GetComponent<Hammer>() != null
+            || other.gameObject.GetComponent<Lemon>() != null
+            || other.gameObject.GetComponent<Mouse>() != null
+            || other.gameObject.GetComponent<Mushroom>() != null
+            || other.gameObject.GetComponent<Onion>() != null
+            || other.gameObject.GetComponent<Pepper>() != null
+            || other.gameObject.GetComponent<Steak>() != null
+            || other.gameObject.GetComponent<Tomato>() != null
+            || other.gameObject.GetComponent<Yogurt>() != null;
+    }
     private void Awake()
     {
         inst = this;

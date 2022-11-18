@@ -50,8 +50,8 @@ public class TutorialObstacle : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.GetComponent<Obstacle>() != null) {
-            Destroy(gameObject);
+        if (other.gameObject.name != "Player") {
+            //Destroy(gameObject);
             return;
         }
     }

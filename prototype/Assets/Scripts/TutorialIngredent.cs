@@ -6,11 +6,14 @@ public class TutorialIngredent : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
         {
-            if (other.gameObject.GetComponent<Obstacle>() != null) {
+            if (other.gameObject.GetComponent<TutorialObstacle>() != null) {
                 Destroy(gameObject);
                 return;
+
             }
-            if (other.gameObject.name != "Player") {
+
+                if (other.gameObject.name != "Player") {
+               // Destroy(gameObject);
                 return;
             }
             if (TutorialGameManager.tutCoinCnt >= 2) {

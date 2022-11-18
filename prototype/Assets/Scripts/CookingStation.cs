@@ -9,14 +9,8 @@ public class CookingStation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Obstacle>() != null)
-        {
+        if (other.gameObject.name != "Player") {
             Destroy(gameObject);
-            return;
-        }
-
-        if (other.gameObject.name != "Player")
-        {
             return;
         }
 
