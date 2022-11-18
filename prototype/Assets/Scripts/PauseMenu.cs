@@ -49,6 +49,7 @@ public class PauseMenu : MonoBehaviour
     Time.timeScale = 1f;
     GameIsPaused = false;
     GameTracker.health=5;
+    GameTracker.fiftyFiftyCount = 0;
     GameTracker.ingred1 = 0;
     GameTracker.ingred2 = 0;
     GameTracker.ingred3 = 0;
@@ -74,6 +75,7 @@ public class PauseMenu : MonoBehaviour
    public void ExitButton() {
     Time.timeScale = 1f;
     GameIsPaused = true;
+    GameTracker.fiftyFiftyCount = 0;
     GameTracker.ingred1 = 0;
     GameTracker.ingred2 = 0;
     GameTracker.ingred3 = 0;
