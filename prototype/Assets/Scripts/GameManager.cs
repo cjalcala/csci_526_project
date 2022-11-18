@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public static int coinFieldsCount = 2;
 
     public static GameManager inst;
-    public int coins;
+    public static int coins;
     public Text coinText;
     public Text timeText;
     // ingredients along the path
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
-    public  void changeCoinAmount(int num)
+    public void changeCoinAmount(int num)
     {
         coin_collected_sound.Play();
         GameTracker.coins += num;

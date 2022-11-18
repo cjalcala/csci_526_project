@@ -22,6 +22,7 @@ public class AnswerScript : MonoBehaviour
         else
         {
             GetComponent<Button>().image.color = Color.red;
+            GetComponent<Button>().enabled = false;
             if (TutorialManager.tutorialActive)
             {
                 if (TutorialGameManager.tutCoinCnt < 2)

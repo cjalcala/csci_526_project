@@ -9,6 +9,7 @@ using System;
 public class SanctumQuiz : MonoBehaviour
 {
     PlayerMovement PlayerMovement;
+    GameManager gameManager;
     [SerializeField] private string URL;
     [SerializeField] private AudioSource sanctum_entry_sound;
     public List<QuizQA> questionAnswers;
@@ -37,6 +38,7 @@ public class SanctumQuiz : MonoBehaviour
     public Text bagText;
     public float bagTime = 1.5f;
 
+    //public Text coinText;
 
 
     public GameObject LoseScreen;
@@ -45,6 +47,7 @@ public class SanctumQuiz : MonoBehaviour
     {
 
         PlayerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
 
         //coin = GameObject.Find("CoinText").GetComponent<Text>();
         //numCoins = tempCoinvalue;
@@ -71,7 +74,8 @@ public class SanctumQuiz : MonoBehaviour
 
     public void retry()
     {
-        GameTracker.coins -= 2;
+        // TutorialGameManager.tutCoinCnt -= 2;
+        // GameTracker.coins -= 2;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         QuizPanel.SetActive(true);
         BPanel.SetActive(false);
@@ -80,7 +84,37 @@ public class SanctumQuiz : MonoBehaviour
         {
             buttons[b].enabled = true;
         }
-        sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+
+        if(TutorialManager.tutorialActive)
+        {
+            TutorialGameManager.tutCoinCnt -= 2;
+
+            if(TutorialGameManager.tutCoinCnt >= 0)
+            {
+                sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+            }
+            else
+            {
+                TutorialGameManager.tutCoinCnt = 0;
+                sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+            }
+            
+        }
+        else
+        {
+            // GameTracker.coins -= 2;
+            gameManager.changeCoinAmount(-2);
+            if(GameTracker.coins >= 0)
+            {
+                sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+            }
+            else
+            {
+                GameTracker.coins = 0;
+                sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+            }
+        }
+
     }
 
     void gameOver()
@@ -195,7 +229,7 @@ public class SanctumQuiz : MonoBehaviour
 
     void reloadSanctum()
     {
-        TutorialGameManager.tutCoinCnt -= 2;
+        //TutorialGameManager.tutCoinCnt -= 2;
         //SceneManager.LoadScene("Sanctum");
         QuizPanel.SetActive(false);
         BPanel.SetActive(true);
