@@ -304,7 +304,7 @@ public class SanctumQuiz : MonoBehaviour
             {
                 GameTracker.timeRemain -= Time.deltaTime;
                 TimeSlider.fillAmount = GameTracker.timeRemain / GameTracker.originalTime;
-                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
+                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + "";
 
                 int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
 
@@ -331,7 +331,7 @@ public class SanctumQuiz : MonoBehaviour
             {
                 TutorialGameManager.time -= Time.deltaTime;
                 TimeSlider.fillAmount = TutorialGameManager.time / 90;
-                timeText.text = ": " + TutorialGameManager.time.ToString("0") + " Sec";
+                timeText.text = ": " + TutorialGameManager.time.ToString("0") + "";
             }
             else
             {

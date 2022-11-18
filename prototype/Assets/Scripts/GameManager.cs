@@ -344,7 +344,7 @@ public class GameManager : MonoBehaviour
             {
                 GameTracker.timeRemain -= Time.deltaTime / 2;
                 TimeSlider.fillAmount = GameTracker.timeRemain/GameTracker.originalTime;
-                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec SLOW";
+                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + "";
                 // timeText.color = Color.red;
 
             }
@@ -352,7 +352,7 @@ public class GameManager : MonoBehaviour
             {
                 GameTracker.timeRemain -= Time.deltaTime;
                 TimeSlider.fillAmount = GameTracker.timeRemain/GameTracker.originalTime;
-                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
+                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + "";
             }
 
             int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
@@ -444,7 +444,7 @@ public class GameManager : MonoBehaviour
             {
                 GameTracker.hammerStartTime = GameTracker.timeRemain;
                 GameTracker.hammerFlag = 1;
-                fiftyFiftyPopUpText.text = "Obstacle Immunity for 5 sec";
+                fiftyFiftyPopUpText.text = "Obstacle immunity for 5 sec";
             }
             else
             {
@@ -452,7 +452,7 @@ public class GameManager : MonoBehaviour
                 {
                     Welcome.immunity = false;
                     GameTracker.hammerFlag = 0;
-                    hammerOffText.text = "Obstacle Immunity Off";
+                    hammerOffText.text = "Obstacle immunity off";
                     hflag = 1;
                 }
             }
@@ -489,7 +489,7 @@ public class GameManager : MonoBehaviour
         {
             GameTracker.fiftyFiftyPopUpStartTime = GameTracker.timeRemain;
             GameTracker.fiftyFiftyPopUpFlag = 1;
-            fiftyFiftyPopUpText.text = "Use this power up in sanctum to eliminate 2 wrong answers";
+            fiftyFiftyPopUpText.text = "You can eliminate 2 wrong answers!";
             GameTracker.getFiftyFiftyPowerUp = false;
         }   
         if (GameTracker.fiftyFiftyPopUpFlag == 1) {
@@ -505,7 +505,7 @@ public class GameManager : MonoBehaviour
         if (GameTracker.getHintPowerUp) {
             GameTracker.hintPopUpStartTime = GameTracker.timeRemain;
             GameTracker.hintPopUpFlag = 1;
-            fiftyFiftyPopUpText.text = "Use this power up in cook stations to get hints";
+            fiftyFiftyPopUpText.text = "You got a hint!";
             GameTracker.getHintPowerUp = false;
         }
         if (GameTracker.hintPopUpFlag == 1) {
