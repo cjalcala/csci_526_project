@@ -23,18 +23,18 @@ public class GameTracker : MonoBehaviour
     public static int ingred3;
     public static int dish;
 
-    public static string[] ingredientNames; 
-    
+    public static string[] ingredientNames;
+
 
     public static float timeRemain, originalTime, tutorialOriginalTime;
     public static float hammerStartTime;
-    public static int hammerFlag=0;
+    public static int hammerFlag = 0;
     public static string coinString = "";
     public static int timeFlag = 1;
     public static bool sentAnalytics = false;
     public static int level = 1;
     public static QuestionGenerator questionGenerator;
-    public static int health=5;
+    public static int health = 5;
 
     public static bool getFiftyFiftyPowerUp = false;
     public static int fiftyFiftyPopUpFlag = 0;
@@ -71,14 +71,14 @@ public class GameTracker : MonoBehaviour
         {
             timeRemain = 90;
             coins = 10;
-            
+
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("cucumber", new Ingredient("Cucumber", 1, 2));
             ingredientsList.Add("lemon", new Ingredient("Lemon", 1, 2));
             ingredientsList.Add("yogurt", new Ingredient("Yogurt", 1, 2));
             recipe = new Recipe("Tzatziki Sauce", 15);
 
-            ingredientNames = new string[]{"cucumber", "lemon", "yogurt"};
+            ingredientNames = new string[] { "cucumber", "lemon", "yogurt" };
 
 
             goalAmt = 15;
@@ -87,20 +87,20 @@ public class GameTracker : MonoBehaviour
         else if (level == 2)
         {
             timeRemain = 120;
-            coins=15;
+            coins = 15;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
             ingredientsList.Add("Tomato", new Ingredient("Tomato", 1, 2));
             ingredientsList.Add("Basil", new Ingredient("Basil", 1, 2));
             ingredientsList.Add("Onion", new Ingredient("Onion", 1, 2));
             recipe = new Recipe("Tomato Basil Soup", 20);
-            ingredientNames = new string[]{"Basil", "Tomato", "Onion"};
+            ingredientNames = new string[] { "Basil", "Tomato", "Onion" };
 
             goalAmt = 40;
         }
         else if (level == 3)
         {
-            coins=20;
+            coins = 20;
             timeRemain = 180;
 
             ingredientsList = new SortedDictionary<string, Ingredient>();
@@ -108,12 +108,12 @@ public class GameTracker : MonoBehaviour
             ingredientsList.Add("Pepper", new Ingredient("Pepper", 1, 2));
             ingredientsList.Add("Mushroom", new Ingredient("Mushroom", 1, 2));
             recipe = new Recipe("Grilled Kabob", 20);
-            ingredientNames = new string[]{"Mushroom", "Pepper", "Steak"};
+            ingredientNames = new string[] { "Mushroom", "Pepper", "Steak" };
 
             goalAmt = 60;
         }
 
-        coins = GameTracker.coins;
+        // coins = GameTracker.coins;
         originalTime = GameTracker.timeRemain;
         //tutorialOriginalTime = TutorialGameManager.time;
         questionGenerator = new QuestionGenerator();
@@ -125,9 +125,9 @@ public class GameTracker : MonoBehaviour
             SceneManager.LoadScene("Game");
         else if (level == 2)
             SceneManager.LoadScene("Level2");
-            else if (level == 3)
+        else if (level == 3)
             SceneManager.LoadScene("Level3");
     }
 
-    
+
 }
