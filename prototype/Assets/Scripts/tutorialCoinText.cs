@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class tutorialCoinText : MonoBehaviour
 {
     // Start is called before the first frame update
-    string heading = "x ";
-    string ending = "/15";
+    string heading = ": ";
+    string ending = "";
     public Text text;
     void Start()
     {
-        text.text = "x 10/15";
+        text.text = ": 10";
     }
 
     // Update is called once per frame
