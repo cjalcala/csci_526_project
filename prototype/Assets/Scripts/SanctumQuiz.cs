@@ -53,13 +53,13 @@ public class SanctumQuiz : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            sanctumCoins.text = "Coins : " + TutorialGameManager.tutCoinCnt.ToString();
+            sanctumCoins.text = ": " + TutorialGameManager.tutCoinCnt.ToString();
             //bagText.text = "Sorry, You have no hints!";
             // GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
         else
         {
-            sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+            sanctumCoins.text = ": " + GameTracker.coins.ToString();
             //  GoalScreen.coinSanctumImg.sprite = Resources.Load<Sprite>("Sprites/" + coin.name);
         }
 
@@ -80,7 +80,7 @@ public class SanctumQuiz : MonoBehaviour
         {
             buttons[b].enabled = true;
         }
-        sanctumCoins.text = "Coins : " + GameTracker.coins.ToString();
+        sanctumCoins.text = ": " + GameTracker.coins.ToString();
     }
 
     void gameOver()
@@ -304,7 +304,7 @@ public class SanctumQuiz : MonoBehaviour
             {
                 GameTracker.timeRemain -= Time.deltaTime;
                 TimeSlider.fillAmount = GameTracker.timeRemain / GameTracker.originalTime;
-                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + " Sec";
+                timeText.text = ": " + GameTracker.timeRemain.ToString("0") + "";
 
                 int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
 
@@ -331,7 +331,7 @@ public class SanctumQuiz : MonoBehaviour
             {
                 TutorialGameManager.time -= Time.deltaTime;
                 TimeSlider.fillAmount = TutorialGameManager.time / 90;
-                timeText.text = ": " + TutorialGameManager.time.ToString("0") + " Sec";
+                timeText.text = ": " + TutorialGameManager.time.ToString("0") + "";
             }
             else
             {

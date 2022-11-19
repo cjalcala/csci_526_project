@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class tutorialOnionText : MonoBehaviour
 {
     // Start is called before the first frame update
-    string heading = "x ";
-    string ending = "/1";
+    string heading = ": ";
+    string ending = "";
     public Text text;
     void Start()
     {
-        text.text = "x 0/1";
+        text.text = ": 0";
     }
 
     // Update is called once per frame
