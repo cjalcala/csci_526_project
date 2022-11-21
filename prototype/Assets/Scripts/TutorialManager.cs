@@ -195,15 +195,53 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                 }
                 else if(popUpIndex==4)//50-50
                 {
-                    if (fifityFiftyDisplayTime > 0) {
+                    if (Input.GetKeyDown(KeyCode.Return)) //50-50
+                    {
+                        Time.timeScale = 1f;
+                        tutorialplayerMovement.speed = 8;
+                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
+                        tutorialplayerMovement.jumpForce = 750f;
+                        popUpIndex = getInsCompletedIndex(4);
+                    }
+                    else
+                    {
+                        Time.timeScale = 0f;
+                        tutorialplayerMovement.speed = 0;
+                        tutorialplayerMovement.horizontalMultiplier = 0;
+                        tutorialplayerMovement.jumpForce = 0;
+
+                    }
+                }
+                else if (popUpIndex == getInsCompletedIndex(4))
+                {
+                    if (fifityFiftyDisplayTime > 0)
+                    {
                         fifityFiftyDisplayTime -= Time.deltaTime;
                     }
-                    else {
+                    else
+                    {
                         popUpIndex = 5;
                     }
                 }
-
                 else if (popUpIndex == 5)//hint
+                {
+                    if (Input.GetKeyDown(KeyCode.Return))
+                    {
+                        Time.timeScale = 1f;
+                        tutorialplayerMovement.speed = 8;
+                        tutorialplayerMovement.horizontalMultiplier = 0.8f;
+                        tutorialplayerMovement.jumpForce = 750f;
+                        popUpIndex = getInsCompletedIndex(5);
+                    }
+                    else
+                    {
+                        Time.timeScale = 0f;
+                        tutorialplayerMovement.speed = 0;
+                        tutorialplayerMovement.horizontalMultiplier = 0;
+                        tutorialplayerMovement.jumpForce = 0;
+                    }
+                }
+                else if (popUpIndex == getInsCompletedIndex(5))//hint
                 {
                     if (hintDisplayTime > 0) {
                         hintDisplayTime -= Time.deltaTime;
@@ -212,9 +250,8 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                         popUpIndex = 6;
                     }
                 }
-
                 else if (popUpIndex == 6 )//get ingredient
-               {
+                {
                     if (hintDisplayTime > 0) {
                         getIngredentDisplayTime -= Time.deltaTime;
                     }
