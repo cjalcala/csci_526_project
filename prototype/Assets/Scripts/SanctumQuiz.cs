@@ -302,7 +302,7 @@ public class SanctumQuiz : MonoBehaviour
         {
             if (GameTracker.timeRemain > 0)
             {
-                GameTracker.timeRemain -= Time.deltaTime;
+                //GameTracker.timeRemain -= Time.deltaTime;
                 TimeSlider.fillAmount = GameTracker.timeRemain / GameTracker.originalTime;
                 timeText.text = ": " + GameTracker.timeRemain.ToString("0") + "";
 
