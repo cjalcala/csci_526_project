@@ -69,6 +69,8 @@ public class WinningScreen : MonoBehaviour
         GameTracker.ingred1 = 0;
         GameTracker.ingred2 = 0;
         GameTracker.ingred3 = 0;
+        GameTracker.hintCount = 0;
+        GameTracker.fiftyFiftyCount = 0;
         //SanctumQuiz.dish = 0;
         GameTracker.dish = 0;
         if (GameTracker.level == 1)
@@ -81,6 +83,8 @@ public class WinningScreen : MonoBehaviour
 
     public void ExitButton()
     {
+        GameTracker.hintCount = 0;
+        GameTracker.fiftyFiftyCount = 0;
         SceneManager.LoadScene("WelcomeScreen");
     }
 }
