@@ -26,15 +26,49 @@ public class GroundSpawner : MonoBehaviour
             temp.GetComponent<GroundTile>().SpawnObstacle();
             // temp.GetComponent<GroundTile>().SpawnCoins();
 
-            int rand = Random.Range(0,50);
-            if (rand == 1) {
-                temp.GetComponent<GroundTile>().SpawnFiftyFifty();
+            // int rand = Random.Range(0,50);
+            // if (rand == 1) {
+            //     temp.GetComponent<GroundTile>().SpawnFiftyFifty();
+            // }
+
+            // rand = Random.Range(0, 20);
+            // if (rand == 1) {
+            //     temp.GetComponent<GroundTile>().SpawnHints();
+            // }
+
+            int rand;
+            if(GameTracker.fiftyFiftyCount>=1)
+            {
+                rand = Random.Range(0,50);
+                if (rand == 1) {
+                    temp.GetComponent<GroundTile>().SpawnFiftyFifty();
+                }
             }
 
-            rand = Random.Range(0, 20);
-            if (rand == 1) {
-                temp.GetComponent<GroundTile>().SpawnHints();
+            else
+            {
+                rand = Random.Range(0,10);
+                if (rand == 1) {
+                    temp.GetComponent<GroundTile>().SpawnFiftyFifty();
+                }
             }
+
+            if(GameTracker.hintCount>=1)
+            {
+                rand = Random.Range(0,50);
+                if (rand == 1) {
+                    temp.GetComponent<GroundTile>().SpawnHints();
+                }
+            }
+
+            else
+            {
+                rand = Random.Range(0,10);
+                if (rand == 1) {
+                    temp.GetComponent<GroundTile>().SpawnHints();
+                }
+            }
+            
 
             rand = Random.Range(0, 5);
             if (rand == 1 && GameTracker.level!=1) {
