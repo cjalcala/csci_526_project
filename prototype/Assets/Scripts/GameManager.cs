@@ -327,6 +327,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameTracker.dish != prevDishCount) {
             prevDishCount = GameTracker.dish;
+            dishText.text = ": " + GameTracker.dish;
             StartCoroutine(FadeTextToFullAlpha(1f, dishText));
         }
 
