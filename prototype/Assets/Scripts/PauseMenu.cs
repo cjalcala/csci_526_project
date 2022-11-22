@@ -50,6 +50,7 @@ public class PauseMenu : MonoBehaviour
     GameIsPaused = false;
     GameTracker.health=5;
     GameTracker.fiftyFiftyCount = 0;
+    GameTracker.hintCount = 0;
     GameTracker.ingred1 = 0;
     GameTracker.ingred2 = 0;
     GameTracker.ingred3 = 0;
@@ -76,6 +77,7 @@ public class PauseMenu : MonoBehaviour
     Time.timeScale = 1f;
     GameIsPaused = true;
     GameTracker.fiftyFiftyCount = 0;
+    GameTracker.hintCount = 0;
     GameTracker.ingred1 = 0;
     GameTracker.ingred2 = 0;
     GameTracker.ingred3 = 0;

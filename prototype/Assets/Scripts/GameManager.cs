@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public static int coinFieldsCount = 2;
 
     public static GameManager inst;
-    public int coins;
+    public static int coins;
     public Text coinText;
     public Text timeText;
     // ingredients along the path
@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
    
 
     public Text fiftyFiftyText;
+    public Text hintText;
     //public Text goalText;
     public GameOverScreen gameOverScreen;
     public WinningScreen winningScreen;
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
 
-    public  void changeCoinAmount(int num)
+    public void changeCoinAmount(int num)
     {
         coin_collected_sound.Play();
         GameTracker.coins += num;
@@ -182,6 +183,7 @@ public class GameManager : MonoBehaviour
 
     public void IncrementHintCount() {
         GameTracker.hintCount++;
+        hintText.text = ": " + GameTracker.hintCount;
     }
 
     // public void increaseIngredient(string name)
@@ -266,6 +268,7 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        hintText.text = ": " + GameTracker.hintCount;
         dishText.text = ": " + GameTracker.dish; //SanctumQuiz.dish;
         
         ingredient1Text.text = ": " + GameTracker.ingred1;
