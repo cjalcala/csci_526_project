@@ -20,7 +20,7 @@ public class TutorialIngredent : MonoBehaviour
                 TutorialManager.getIngredent = true;
                 TutorialGameManager.ingredientNum+=1;
                 TutorialGameManager.tutCoinCnt -= 2;
-                Destroy(gameObject);
+            Destroy(gameObject);
            }
         }
 

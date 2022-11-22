@@ -53,9 +53,9 @@ public class GameManager : MonoBehaviour
     // reward & dish
     public Text rewardText;
     public Text dishText; 
-    public int prevDish;
 
 
+   
 
     public Text fiftyFiftyText;
     //public Text goalText;
@@ -105,13 +105,13 @@ public class GameManager : MonoBehaviour
     //public static QuestionGenerator questionGenerator;
     PlayerMovement playerMovement;
     //public SortedDictionary<string, Ingredient> ingredientsList;
+
     public  void changeCoinAmount(int num)
     {
         coin_collected_sound.Play();
         GameTracker.coins += num;
         coins = GameTracker.coins;
         coinText.text = ": " + GameTracker.coins;
-        //StartCoroutine(FadeTextToFullAlpha(1f, coinText));
     }
 
     // Increment Ingredient along the path
@@ -127,7 +127,6 @@ public class GameManager : MonoBehaviour
         GameTracker.ingred1++;
         ingredient1 = GameTracker.ingred1;
         ingredient1Text.text = ": " + GameTracker.ingred1;
-        StartCoroutine(FadeTextToFullAlpha(1f, ingredient1Text));
         changeCoinAmount(-2);
     }
     public void IncrementIngredient2Count()
@@ -135,7 +134,6 @@ public class GameManager : MonoBehaviour
         GameTracker.ingred2++;
         ingredient2 = GameTracker.ingred2;
         ingredient2Text.text = ": " + GameTracker.ingred2;
-        StartCoroutine(FadeTextToFullAlpha(1f, ingredient2Text));
         changeCoinAmount(-2);
     }
     public void IncrementIngredient3Count()
@@ -143,7 +141,6 @@ public class GameManager : MonoBehaviour
         GameTracker.ingred3++;
         ingredient3 = GameTracker.ingred3;
         ingredient3Text.text = ": " + GameTracker.ingred3;
-        StartCoroutine(FadeTextToFullAlpha(1f, ingredient3Text));
         changeCoinAmount(-2);
     }
 
@@ -255,23 +252,6 @@ public class GameManager : MonoBehaviour
             || other.gameObject.GetComponent<Yogurt>() != null;
     }
 
-    public IEnumerator FadeTextToFullAlpha(float t, Text i) {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
-        while (i.color.a < 1.0f) {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
-            yield return null;
-        }
-    }
-
-    public IEnumerator FadeTextToZeroAlpha(float t, Text i) {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
-        while (i.color.a > 0.0f) {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
-            yield return null;
-        }
-    }
-
-
     private void Awake()
     {
         inst = this;
@@ -324,10 +304,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         dishText.text = ": " + GameTracker.dish;
-        if (GameTracker.dish != prevDish) {
-            prevDish = GameTracker.dish;
-            StartCoroutine(FadeTextToFullAlpha(1f, dishText));
-        }
+
         if (Input.GetKeyDown(KeyCode.P)) {
             if (Input.GetKeyDown(KeyCode.P)) {
                 if (PauseMenu.GameIsPaused) {
