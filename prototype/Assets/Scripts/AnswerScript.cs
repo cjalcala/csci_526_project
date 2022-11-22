@@ -22,9 +22,20 @@ public class AnswerScript : MonoBehaviour
         else
         {
             GetComponent<Button>().image.color = Color.red;
-            if (GameTracker.coins < 10)
+            GetComponent<Button>().enabled = false;
+            if (TutorialManager.tutorialActive)
             {
-                sanctumQuiz.options[correctIdx].GetComponent<Button>().image.color = Color.green;
+                if (TutorialGameManager.tutCoinCnt < 2)
+                {
+                    sanctumQuiz.options[correctIdx].GetComponent<Button>().image.color = Color.green;
+                }
+            }
+            else
+            {
+                if (GameTracker.coins < 2)
+                {
+                    sanctumQuiz.options[correctIdx].GetComponent<Button>().image.color = Color.green;
+                }
             }
             //Debug.Log("Incorrect Answer");
             sanctumQuiz.wrong();

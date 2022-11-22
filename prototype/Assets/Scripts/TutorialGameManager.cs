@@ -74,15 +74,21 @@ public class TutorialGameManager : MonoBehaviour
             {
                 time -= Time.deltaTime / 2;
                 TimeSlider.fillAmount = time / 90;
-                timeText.text = ": " + time.ToString("0") + " SLOW";
+                timeText.text = ": " + time.ToString("0") + "";
                 // timeText.color = Color.red;
 
             }
             else
             {
-                time -= Time.deltaTime;
-                TimeSlider.fillAmount = time / 90;
-                timeText.text = ": " + time.ToString("0") + "";
+                if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
+                {
+                    time -= Time.deltaTime;
+                    TimeSlider.fillAmount = time / 90;
+                    timeText.text = ": " + time.ToString("0") + "";
+                }
+                // time -= Time.deltaTime;
+                // TimeSlider.fillAmount = time / 90;
+                // timeText.text = ": " + time.ToString("0") + "";
             }
 
             // int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
@@ -93,16 +99,15 @@ public class TutorialGameManager : MonoBehaviour
             //     //Debug.Log(GameTracker.coinString);
             // }
         }
-
-        if (time > 0)
-        {
-            if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
-            {
-                time -= Time.deltaTime;
-                TimeSlider.fillAmount = time / 90;
-                timeText.text = ": " + time.ToString("0") + "";
-            }
-        }
+        // if (time > 0)
+        // {
+        //     if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
+        //     {
+        //         time -= Time.deltaTime;
+        //         TimeSlider.fillAmount = time / 90;
+        //         timeText.text = ": " + time.ToString("0") + "";
+        //     }
+        // }
         else
         {
             tutorialplayerMovement.Die();
