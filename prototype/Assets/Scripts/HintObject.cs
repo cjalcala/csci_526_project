@@ -14,7 +14,7 @@ public class HintObject : MonoBehaviour {
         }
         // add to tracker
         if (!TutorialManager.tutorialActive) {
-            f(GameTracker.hintCount<1)
+            if(GameTracker.hintCount<1)
             {
                 GameManager.inst.IncrementHintCount();
                 GameTracker.getHintPowerUp = true;
