@@ -10,6 +10,7 @@ public class HintObject : MonoBehaviour {
         }
         // Check that the object we collided with is the player
         if (other.gameObject.name != "Player") {
+            Destroy(gameObject);
             return;
         }
         // add to tracker
