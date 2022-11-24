@@ -6,12 +6,16 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialobstaclePrefab;
     TutorialGroundSpawner tutorialgroundSpawner;
     public GameObject tutorialcoinPrefab;
+
+    public GameObject tutorialArrowPrefab;
     public GameObject tutorialIngredentPrefab;
     public GameObject HammerPrefab;
     public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
     public GameObject cookingStationPrefab;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,21 +25,30 @@ public class TutorialGroundTile : MonoBehaviour
         //TutorialSpawnCoins();
     }
 
-    private void OnTriggerExit(Collider other) 
+    private void OnTriggerExit(Collider other)
     {
         //tutorialgroundSpawner.SpawnTutorialTile(true, true, false, false,false,false); 
         int i = TutorialGroundSpawner.i;
         // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
 
-        if (i > 10 && i < 17) {
-            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false);//SpawnObstacle, SpawnFifty
+        if (i > 10 && i < 17)
+        {
+            // tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false);//SpawnObstacle, SpawnFifty
+            tutorialgroundSpawner.SpawnTutorialTile(1);
         }
-        else if (i >= 17 && i < 20) {
-            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
+        else if (i >= 17 && i < 20)
+        {
+            // tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
+            tutorialgroundSpawner.SpawnTutorialTile(1);
         }
-        else {
-            tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex <= 7 && TutorialManager.popUpIndex >= 4, false, false, true, true);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
+        else
+        {
+            // tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex <= 7 && TutorialManager.popUpIndex >= 4, false, false, true, true);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
+            tutorialgroundSpawner.SpawnTutorialTile(1);
         }
+        int state = TutorialManager.popUpIndex;
+
+        tutorialgroundSpawner.SpawnTutorialTile(state);
 
 
         TutorialGroundSpawner.i++;
@@ -45,30 +58,40 @@ public class TutorialGroundTile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-     public void TutorialSpawnObstacle()
+    public Vector3 TutorialSpawnObstacle()
     {
         // Choose random point to spawn the obstacles
-        int obstacleSpawnIndex = Random.Range(2, 5);
+        // int obstacleSpawnIndex = Random.Range(2, 5);
+        int obstacleSpawnIndex = 2;
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
 
         // Spawn the obstacle at the position
         Instantiate(tutorialobstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        return spawnPoint.position;
     }
 
-    public void TutorialSpawnCoins()
+    // public void TutorialSpawnObstacle()
+    // {
+
+    //     GameObject temp = Instantiate(tutorialArrowPrefab, transform);
+
+    //     temp.transform.position = new Vector3(pos.x, pos.y * 5, pos.z);
+
+    // }
+
+    public void TutorialSpawnArrow(Vector3 pos, float multiple)
     {
-        int coinsToSpawn = 2;
-        for(int i = 0; i < coinsToSpawn; i++)
-        {
-            GameObject temp = Instantiate(tutorialcoinPrefab, transform);
-            temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
-        }
+
+        GameObject temp = Instantiate(tutorialArrowPrefab, transform);
+
+        temp.transform.position = new Vector3(pos.x, pos.y * multiple, pos.z);
+
     }
 
-    public void TutorialSpawnIngredent()
+    public Vector3 TutorialSpawnIngredent()
     {
         Collider collider = GetComponent<Collider>();
         Vector3 position = new Vector3(Random.Range(collider.bounds.min.x, collider.bounds.max.x), 1, Random.Range(collider.bounds.min.z, collider.bounds.max.z));
@@ -77,6 +100,7 @@ public class TutorialGroundTile : MonoBehaviour
             position = GetRandomPointInCollider(collider);
         }
         Instantiate(tutorialIngredentPrefab, position, Quaternion.identity, transform);
+        return position;
         //temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
@@ -87,7 +111,7 @@ public class TutorialGroundTile : MonoBehaviour
             Random.Range(collider.bounds.min.y, collider.bounds.max.y),
             Random.Range(collider.bounds.min.z, collider.bounds.max.z)
         );
-        if(point != collider.ClosestPoint(point))
+        if (point != collider.ClosestPoint(point))
         {
             point = GetRandomPointInCollider(collider);
         }
@@ -95,33 +119,31 @@ public class TutorialGroundTile : MonoBehaviour
         return point;
     }
 
-    public void SpawnHammer()
+    public Vector3 SpawnHammer()
     {
         GameObject temp = Instantiate(HammerPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        return temp.transform.position;
     }
 
-    public void SpawnClock()
+    public Vector3 SpawnStation()
     {
-        // for (int i = 0; i < 2; i++)
-        // {
-        GameObject temp = Instantiate(TimePowerUpPrefab, transform);
-        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
-        // }
-    }
-
-    public void SpawnStation() {
         GameObject temp = Instantiate(cookingStationPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        return temp.transform.position;
     }
 
-    public void SpawnFiftyFifty() {
+    public Vector3 SpawnFiftyFifty()
+    {
         GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        return temp.transform.position;
     }
 
-    public void SpawnHints() {
+    public Vector3 SpawnHints()
+    {
         GameObject temp = Instantiate(hintPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        return temp.transform.position;
     }
 }

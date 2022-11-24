@@ -22,8 +22,8 @@ public class TutorialGameManager : MonoBehaviour
     public Text timeText;
     public static float time = 90;
 
-    public static int ingredientNum = 0; 
-     TutorialPlayerMovement tutorialplayerMovement;
+    public static int ingredientNum = 0;
+    TutorialPlayerMovement tutorialplayerMovement;
     public static bool isPaused = false;
     public static bool horizontalArrows = false;
     public static bool spaceBar = false;
@@ -39,6 +39,11 @@ public class TutorialGameManager : MonoBehaviour
     private void Awake()
     {
         inst = this;
+    }
+
+    public int getHealth()
+    {
+        return health;
     }
 
 

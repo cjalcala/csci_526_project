@@ -9,26 +9,108 @@ public class TutorialGroundSpawner : MonoBehaviour
     public int hammerSpawnTime;
     public static int i = 0;
 
-    public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnIngredent, bool SpawnHammer, bool SpawnClock,bool SpawnFifty, bool SpawnHint) 
+    public static bool showArrow = false;
+
+    public Vector3 currArrowPos;
+
+    // public void SpawnTutorialTile(bool SpawnObstacle, bool SpawnIngredent, bool SpawnHammer, bool SpawnClock, bool SpawnFifty, bool SpawnHint, int state)
+    public void SpawnTutorialTile(int state)
     {
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = temp.transform.GetChild(1).transform.position;
         GameObject leftTerrain = Instantiate(terrainPrefab, new Vector3(nextSpawnPoint.x - 15, nextSpawnPoint.y, nextSpawnPoint.z), Quaternion.identity);
         GameObject rightTerrain = Instantiate(terrainPrefab, new Vector3(nextSpawnPoint.x + 15, nextSpawnPoint.y, nextSpawnPoint.z), Quaternion.identity);
 
-        if (SpawnObstacle)
+        // if (SpawnObstacle)
+        // {
+        //     currArrowPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
+        // }
+        // if (SpawnIngredent)
+        // {
+        //     temp.GetComponent<TutorialGroundTile>().TutorialSpawnIngredent();
+        // }
+        // if (SpawnHammer)
+        // {
+        //     temp.GetComponent<TutorialGroundTile>().SpawnHammer();
+        //     // temp.GetComponent<GroundTile>().SpawnClock();
+        // }
+        // if (SpawnClock)
+        // {
+        //     temp.GetComponent<TutorialGroundTile>().SpawnClock();
+        // }
+        // if (TutorialGameManager.time <= 80 && Mathf.Abs(TutorialGameManager.time % 20) <= 3)
+        // {
+        //     temp.GetComponent<TutorialGroundTile>().SpawnClock();
+        // }
+        // if (SpawnFifty)
+        // {
+        //     int rand = Random.Range(0, 3);
+        //     if (rand == 1)
+        //     {
+        //         temp.GetComponent<TutorialGroundTile>().SpawnFiftyFifty();
+        //     }
+        // }
+        // if (SpawnHint)
+        // {
+        //     int rand = Random.Range(0, 3);
+        //     if (rand == 1)
+        //     {
+        //         temp.GetComponent<TutorialGroundTile>().SpawnHints();
+        //     }
+        // }
+        state = TutorialManager.popUpIndex;
+        if (state == 1)
         {
-            temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
+            currArrowPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
         }
-        if(SpawnIngredent)
+        else if (state == 2)
+        {
+
+            currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnHammer();
+            // temp.GetComponent<GroundTile>().SpawnClock();
+
+        }
+        else if (state == 3)
+        {
+            currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnFiftyFifty();
+        }
+        else if (state == 4)
+        {
+            currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnHints();
+        }
+
+        else if (state == 5)
+        {
+            currArrowPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnIngredent();
+        }
+
+        else if (state == 6)
+        {
+            currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnStation();
+        }
+
+
+        if (!showArrow && state > 0 && state < 7)
+        {
+            showArrow = true;
+            if (state == 1)
+            {
+                temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 5);
+            }
+            else
+            {
+                temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 3);
+            }
+
+        }
+
+
+        /*
+        if (SpawnIngredent)
         {
             temp.GetComponent<TutorialGroundTile>().TutorialSpawnIngredent();
         }
-        if (SpawnHammer)
-        {
-            temp.GetComponent<TutorialGroundTile>().SpawnHammer();
-            // temp.GetComponent<GroundTile>().SpawnClock();
-        }
+
         if (SpawnClock)
         {
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
@@ -37,22 +119,31 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
         }
-        if (SpawnFifty) {
+        if (SpawnFifty)
+        {
             int rand = Random.Range(0, 3);
-            if (rand == 1) {
+            if (rand == 1)
+            {
                 temp.GetComponent<TutorialGroundTile>().SpawnFiftyFifty();
             }
         }
-        if (SpawnHint) {
+        if (SpawnHint)
+        {
             int rand = Random.Range(0, 3);
-            if (rand == 1) {
+            if (rand == 1)
+            {
                 temp.GetComponent<TutorialGroundTile>().SpawnHints();
             }
-        }
-        if (TutorialManager.getIngredent) {
+        }        
+*/
+
+        if (TutorialManager.getIngredent)
+        {
             temp.GetComponent<TutorialGroundTile>().SpawnStation();
 
         }
+
+
 
     }
 
@@ -61,25 +152,30 @@ public class TutorialGroundSpawner : MonoBehaviour
     void Start()
     {
         hammerSpawnTime = Random.Range((int)TutorialGameManager.time - 5, (int)TutorialGameManager.time);
-        for ( i = 0; i < 10; i++)
+        SpawnTutorialTile(TutorialManager.popUpIndex);
+        for (i = 0; i < 5; i++)
         {
+            SpawnTutorialTile(TutorialManager.popUpIndex);
 
-            if (i < 4) {//leftright jump hammer clock 50-50 hint onion cookingstation
-                // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
-                SpawnTutorialTile(false, false, false, false, false, false);
-            }
-            else if (i >= 4 && i < 7) {
-                SpawnTutorialTile(true, false, true, false, false, false);//SpawnObstacle SpawnHammer
-            }
-            else if (i >= 7 && i <= 10) {
-                SpawnTutorialTile(true, false, false, true, false, false);//SpawnObstacle, SpawnClock
-            }
+            //     if (i < 4)
+            //     {//leftright jump hammer clock 50-50 hint onion cookingstation
+            //         // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
+            //         SpawnTutorialTile(false, false, false, false, false, false, 0);
+            //     }
+            //     else if (i >= 4 && i < 7)
+            //     {
+            //         SpawnTutorialTile(true, false, true, false, false, false, 1);//SpawnObstacle SpawnHammer
+            //     }
+            //     else if (i >= 7 && i <= 10)
+            //     {
+            //         SpawnTutorialTile(true, false, false, true, false, false, 2);//SpawnObstacle, SpawnClock
+            //     }
 
         }
     }
 
-     void Update()
-     {
+    void Update()
+    {
         //Debug.Log(GameTracker.timeRemain);
         //     if (TutorialGameManager.time <= hammerSpawnTime)
         //     {
@@ -89,5 +185,5 @@ public class TutorialGroundSpawner : MonoBehaviour
         //     }
 
 
-      }
+    }
 }
