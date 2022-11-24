@@ -177,8 +177,11 @@ public class GameManager : MonoBehaviour
 
 
     public void IncrementFifityFiftyCount() {
-        GameTracker.fiftyFiftyCount++;
-        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        if(GameTracker.fiftyFiftyCount == 0)
+        {
+            GameTracker.fiftyFiftyCount++;
+            fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        }
     }
 
     public void IncrementHintCount() {

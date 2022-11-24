@@ -16,10 +16,19 @@ public class FiftFiftyObject : MonoBehaviour
         }
         // add to tracker
          if (!TutorialManager.tutorialActive) {
-            GameManager.inst.IncrementFifityFiftyCount();
-            GameTracker.getFiftyFiftyPowerUp = true;
+            if(GameTracker.fiftyFiftyCount<1)
+            {
+                GameManager.inst.IncrementFifityFiftyCount();
+                GameTracker.getFiftyFiftyPowerUp = true;
+                Destroy(gameObject);
+            }
+            // else
+            // {
+
+            // }
         }
         else {
+            
             TutorialGameManager.fiftyFiftyCount += 1;
         }
 

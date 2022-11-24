@@ -146,9 +146,16 @@ public class GroundTile : MonoBehaviour
     }
 
     public void SpawnFiftyFifty()
-     {    
-     GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
-     temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());   
+    {    
+        GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
+        // if(GameTracker.fiftyFiftyCount >= 1)
+        // {
+        //     Destroy(gameObject);
+        // }
+        // else
+        // {
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());  
+        // } 
     }
 
     public void SpawnHammer()
@@ -179,6 +186,14 @@ public class GroundTile : MonoBehaviour
     }
     public void SpawnHints() {
         GameObject temp = Instantiate(hintPrefab, transform);
+        // if(GameTracker.hintCount >= 1)
+        // {
+        //     Destroy(gameObject);
+        // }
+        // else
+        // {
+        // temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());  
+        // } 
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 
