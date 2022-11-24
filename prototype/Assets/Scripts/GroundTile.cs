@@ -7,6 +7,7 @@ public class GroundTile : MonoBehaviour
     GroundSpawner groundSpawner;
     public GameObject obstaclePrefab;
     public GameObject obstacle2Prefab;
+    public GameObject logPrefab;
     public GameObject coinPrefab;
     public GameObject sanctumEntrancePrefab;
     public GameObject HammerPrefab;
@@ -57,13 +58,23 @@ public class GroundTile : MonoBehaviour
 
         // Spawn the obstacle at the position
         int obstacleChoice = Random.Range(0, 2);
-        if (obstacleChoice < 1)
-        {
+        // if (obstacleChoice < 2)
+        // {
+        //     Instantiate(obstacle2Prefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        // }
+        // else
+        // {
+        //     Instantiate(obstacle2Prefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        // }
+        if (GameTracker.level == 1){
             Instantiate(obstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+
         }
-        else
-        {
+        else if (GameTracker.level == 2){
             Instantiate(obstacle2Prefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        }
+        else{
+            Instantiate(logPrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
         }
         
     }
