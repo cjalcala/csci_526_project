@@ -133,6 +133,16 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                 {
                     if (hammerFlag == 1)
                     {
+                        popUpIndex = 20;
+                        TutorialGroundSpawner.showArrow = false;
+                    }
+
+                }
+                // next step for obstacle
+                else if (popUpIndex == 20)
+                {
+                    if (hammerFlag == 0)
+                    {
                         popUpIndex = 3;
                         TutorialGroundSpawner.showArrow = false;
                     }

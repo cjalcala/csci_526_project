@@ -59,6 +59,8 @@ public class TutorialGroundSpawner : MonoBehaviour
         //     }
         // }
         state = TutorialManager.popUpIndex;
+        Vector3 obsPos = new Vector3(0, 0, 0);
+
         if (state == 1)
         {
             currArrowPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
@@ -67,7 +69,8 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
 
             currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnHammer();
-            // temp.GetComponent<GroundTile>().SpawnClock();
+            obsPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
+
 
         }
         else if (state == 3)
@@ -93,6 +96,12 @@ public class TutorialGroundSpawner : MonoBehaviour
         if (!showArrow && state > 0 && state < 7)
         {
             showArrow = true;
+            if (state == 20)
+            {
+                // currArrowPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
+                temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(obsPos, 5);
+            }
+            else
             if (state == 1)
             {
                 temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 5);
