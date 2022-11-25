@@ -23,7 +23,13 @@ public class HintObject : MonoBehaviour {
             }
         }
         else {
-            TutorialGameManager.hintCount += 1;
+            if(TutorialGameManager.hintCount<1)
+            {
+                TutorialGameManager.hintCount += 1;
+                //GameTracker.getHintPowerUp = true;
+                Destroy(gameObject);
+            }
+            //TutorialGameManager.hintCount += 1;
         }
 
         //Destroy(gameObject);

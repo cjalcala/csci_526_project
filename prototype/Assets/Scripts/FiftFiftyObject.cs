@@ -30,7 +30,13 @@ public class FiftFiftyObject : MonoBehaviour
         }
         else {
 
-            TutorialGameManager.fiftyFiftyCount += 1;
+            if(TutorialGameManager.fiftyFiftyCount<1)
+            {
+                TutorialGameManager.fiftyFiftyCount += 1;
+                //GameTracker.getFiftyFiftyPowerUp = true;
+                Destroy(gameObject);
+            }
+            //TutorialGameManager.fiftyFiftyCount += 1;
         }
 
         //Destroy(gameObject);
