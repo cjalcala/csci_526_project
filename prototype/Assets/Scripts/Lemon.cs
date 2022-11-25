@@ -14,6 +14,7 @@ public class Lemon : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient2Count();
             InventorySystemManager.inst.addIngredent("Lemon");
+            player2bag.inst.MoveToBag("Lemon");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

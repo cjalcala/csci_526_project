@@ -14,6 +14,7 @@ public class Cucumber : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient1Count();
             InventorySystemManager.inst.addIngredent("Cucumber");
+            player2bag.inst.MoveToBag("Cucumber");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

@@ -14,7 +14,9 @@ public class Yogurt : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient3Count();
             InventorySystemManager.inst.addIngredent("Yogurt");
+            player2bag.inst.MoveToBag("Yogurt");
             GameManager.inst.displayIngredentInBag();
+
             Destroy(gameObject);
         }
     }
