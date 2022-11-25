@@ -14,6 +14,7 @@ public class Steak : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient3Count();
             InventorySystemManager.inst.addIngredent("Steak");
+            player2bag.inst.MoveToBag("Steak");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

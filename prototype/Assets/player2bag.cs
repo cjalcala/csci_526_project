@@ -33,11 +33,6 @@ public class player2bag : MonoBehaviour
         // start the coroutine
         movementCoroutine = StartCoroutine(MoveToDestinationCoroutine());
     }
-    private IEnumerator disableSelf() {
-        gameObject.SetActive(false);
-        yield return null;
-
-    }
         // the coroutine
     private IEnumerator MoveToDestinationCoroutine() {
 

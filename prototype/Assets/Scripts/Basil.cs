@@ -14,6 +14,7 @@ public class Basil : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient1Count();
             InventorySystemManager.inst.addIngredent("Basil");
+            player2bag.inst.MoveToBag("Basil");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

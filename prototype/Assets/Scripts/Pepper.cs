@@ -14,6 +14,7 @@ public class Pepper : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient2Count();
             InventorySystemManager.inst.addIngredent("Pepper");
+            player2bag.inst.MoveToBag("Pepper");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

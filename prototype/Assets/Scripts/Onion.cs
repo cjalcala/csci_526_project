@@ -14,6 +14,7 @@ public class Onion : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient3Count();
             InventorySystemManager.inst.addIngredent("Onion");
+            player2bag.inst.MoveToBag("Onion");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

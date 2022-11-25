@@ -14,6 +14,7 @@ public class Mushroom : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient1Count();
             InventorySystemManager.inst.addIngredent("Mushroom");
+            player2bag.inst.MoveToBag("Mushroom");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

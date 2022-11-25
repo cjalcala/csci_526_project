@@ -14,6 +14,7 @@ public class Tomato : MonoBehaviour
         {
             GameManager.inst.IncrementIngredient2Count();
             InventorySystemManager.inst.addIngredent("Tomato");
+            player2bag.inst.MoveToBag("Tomato");
             GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }

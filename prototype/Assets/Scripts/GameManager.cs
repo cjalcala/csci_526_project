@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviour {
         bag = new List<GameObject>();
         for (int i = 0; i < InventorySystemManager.inst.size; i++) {
             GameObject bagItemBox = Instantiate(bagItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            //bagItemBox.transform.Find("Item").gameObject.GetComponent<Image>().sprite = emptySpaceSprite;
+            
             bagItemBox.transform.SetParent(BagUI.transform, false);
             bag.Add(bagItemBox);
         }
@@ -292,8 +292,9 @@ public class GameManager : MonoBehaviour {
         string[] ary = InventorySystemManager.inst.bagQueue.ToArray();
         int j = 0;
         for (int i = 0; i < InventorySystemManager.inst.size; i++) {
-            if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count) {           
+            if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count) {
                 //bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = emptySpaceSprite;
+                continue;
             }
             else {
                 Sprite obj = IngredientMapping.getSprite(ary[j++]);
