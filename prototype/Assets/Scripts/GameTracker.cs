@@ -25,9 +25,9 @@ public class GameTracker : MonoBehaviour
 
     public static string[] ingredientNames; 
     
-
     public static float timeRemain, originalTime, tutorialOriginalTime;
     public static float hammerStartTime;
+    public static float highlightTime = -1;
     public static int hammerFlag=0;
     public static string coinString = "";
     public static int timeFlag = 1;

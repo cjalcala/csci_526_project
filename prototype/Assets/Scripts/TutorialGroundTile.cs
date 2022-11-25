@@ -8,7 +8,7 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialcoinPrefab;
     public GameObject tutorialIngredentPrefab;
     public GameObject HammerPrefab;
-    public GameObject TimePowerUpPrefab;
+    //public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
     public GameObject cookingStationPrefab;
@@ -100,7 +100,7 @@ public class TutorialGroundTile : MonoBehaviour
         GameObject temp = Instantiate(HammerPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
-
+    /*
     public void SpawnClock()
     {
         // for (int i = 0; i < 2; i++)
@@ -109,7 +109,7 @@ public class TutorialGroundTile : MonoBehaviour
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         // }
     }
-
+    */
     public void SpawnStation() {
         GameObject temp = Instantiate(cookingStationPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());

@@ -159,9 +159,10 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                     }
                     else
                     {
-                        popUpIndex = 3;
+                        popUpIndex = 4;
                     }
                 }
+                /*
                 else if (popUpIndex == 3)//clock
                 {
                     if(Input.GetKeyDown(KeyCode.Return))
@@ -193,6 +194,7 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                         popUpIndex = 4;
                     }
                 }
+                */
                 else if(popUpIndex==4)//50-50
                 {
                     if (Input.GetKeyDown(KeyCode.Return)) //50-50

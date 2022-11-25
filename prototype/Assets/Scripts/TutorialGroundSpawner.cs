@@ -29,6 +29,7 @@ public class TutorialGroundSpawner : MonoBehaviour
             temp.GetComponent<TutorialGroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
+        /*
         if (SpawnClock)
         {
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
@@ -37,6 +38,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
             temp.GetComponent<TutorialGroundTile>().SpawnClock();
         }
+        */
         if (SpawnFifty) {
             int rand = Random.Range(0, 3);
             if (rand == 1) {

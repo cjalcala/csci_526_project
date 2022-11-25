@@ -11,7 +11,7 @@ public class GroundTile : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject sanctumEntrancePrefab;
     public GameObject HammerPrefab;
-    public GameObject TimePowerUpPrefab;
+    //public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
 
@@ -163,7 +163,7 @@ public class GroundTile : MonoBehaviour
         GameObject temp = Instantiate(HammerPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
-
+    /*
     public void SpawnClock()
     {
         // for (int i = 0; i < 2; i++)
@@ -172,7 +172,7 @@ public class GroundTile : MonoBehaviour
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         // }
     }
-
+    */
     public void SpawnEntrance()
     {
         Collider collider = GetComponent<Collider>();
