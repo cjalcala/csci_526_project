@@ -10,18 +10,29 @@ public class HintObject : MonoBehaviour {
         }
         // Check that the object we collided with is the player
         if (other.gameObject.name != "Player") {
+            Destroy(gameObject);
             return;
         }
         // add to tracker
         if (!TutorialManager.tutorialActive) {
-            GameManager.inst.IncrementHintCount();
-            GameTracker.getHintPowerUp = true;
+            if(GameTracker.hintCount<1)
+            {
+                GameManager.inst.IncrementHintCount();
+                GameTracker.getHintPowerUp = true;
+                Destroy(gameObject);
+            }
         }
         else {
-            TutorialGameManager.hintCount += 1;
+            if(TutorialGameManager.hintCount<1)
+            {
+                TutorialGameManager.hintCount += 1;
+                //GameTracker.getHintPowerUp = true;
+                Destroy(gameObject);
+            }
+            //TutorialGameManager.hintCount += 1;
         }
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start() {
