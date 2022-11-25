@@ -26,7 +26,7 @@ public class HintObject : MonoBehaviour {
             TutorialGameManager.hintCount += 1;
         }
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start() {
