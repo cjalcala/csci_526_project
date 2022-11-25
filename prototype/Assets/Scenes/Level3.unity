@@ -8040,6 +8040,7 @@ MonoBehaviour:
   ingredient3Icon: {fileID: 2091754967}
   rewardText: {fileID: 0}
   dishText: {fileID: 2028025998}
+  prevDishCount: 0
   fiftyFiftyText: {fileID: 1201642506}
   hintText: {fileID: 1378272534}
   gameOverScreen: {fileID: 1005963669}
@@ -8088,6 +8089,9 @@ MonoBehaviour:
   - {fileID: 1458097936}
   - {fileID: 1784569035}
   - {fileID: 130334449}
+  emptySpaceSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  bagItemPrefab: {fileID: 7620459348090823919, guid: a69c462b7b8757148b7866f4c90c010f, type: 3}
+  BagUI: {fileID: 0}
 --- !u!4 &1742117619
 Transform:
   m_ObjectHideFlags: 0
