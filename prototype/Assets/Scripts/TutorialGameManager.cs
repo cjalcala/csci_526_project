@@ -34,6 +34,9 @@ public class TutorialGameManager : MonoBehaviour
     public static int health;
     public static int fiftyFiftyCount;
     public static int hintCount;
+    public FiftyFiftySprite fiftySprite;
+    public HintSprite hintSprite;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -60,16 +63,17 @@ public class TutorialGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
         if (TimePowerUp && Math.Abs(TutorialGameManager.time - TimePowerUpStart) >= 2.5)
         {
             TimePowerUp = false;
             // timeOffText.text = "Timer Counter Slow Down FINISH";
             timeText.color = Color.black;
         }
-
+        */
         if (time > 0)
         {
+            /*
             if (TimePowerUp)
             {
                 time -= Time.deltaTime / 2;
@@ -80,16 +84,17 @@ public class TutorialGameManager : MonoBehaviour
             }
             else
             {
-                if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
-                {
-                    time -= Time.deltaTime;
-                    TimeSlider.fillAmount = time / 90;
-                    timeText.text = ": " + time.ToString("0") + "";
-                }
+            */
+            if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
+            {
+                time -= Time.deltaTime;
+                TimeSlider.fillAmount = time / 90;
+                timeText.text = ": " + time.ToString("0") + "";
+            }
                 // time -= Time.deltaTime;
                 // TimeSlider.fillAmount = time / 90;
                 // timeText.text = ": " + time.ToString("0") + "";
-            }
+            //}
 
             // int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
             // if ((forwardSeconds == GameTracker.timeFlag) && (GameTracker.sentAnalytics == false))
@@ -169,6 +174,16 @@ public class TutorialGameManager : MonoBehaviour
             {
                 hearts[h].enabled = false;
             }
+        }
+
+        if(fiftyFiftyCount > 0)
+        {
+            fiftySprite.Activate();
+        }
+
+        if(hintCount > 0)
+        {
+            hintSprite.Activate();
         }
     }
 }

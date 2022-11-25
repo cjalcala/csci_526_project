@@ -144,11 +144,12 @@ public class GroundSpawner : MonoBehaviour
             temp.GetComponent<GroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
-
+        /*
         if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1 && GameTracker.level == 3)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }
+        */
     }
 
     // Start is called before the first frame update
