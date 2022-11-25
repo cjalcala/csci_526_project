@@ -13,6 +13,8 @@ public class Lemon : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient2Count();
+            InventorySystemManager.inst.addIngredent("Lemon");
+            GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }
     }

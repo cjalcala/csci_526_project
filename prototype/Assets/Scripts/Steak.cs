@@ -13,6 +13,8 @@ public class Steak : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient3Count();
+            InventorySystemManager.inst.addIngredent("Steak");
+            GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }
     }

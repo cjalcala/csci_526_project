@@ -13,6 +13,8 @@ public class Yogurt : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient3Count();
+            InventorySystemManager.inst.addIngredent("Yogurt");
+            GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }
     }

@@ -7,8 +7,7 @@ using UnityEngine.Networking;
 using System;
 using System.Reflection;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public float sanctum_immunity_time = 1f;
     [SerializeField] private AudioSource coin_collected_sound;
     [SerializeField] private string URL;
@@ -49,7 +48,7 @@ public class GameManager : MonoBehaviour
     public int ingredient3;
     public Text ingredient3Text;
     public Image ingredient3Icon;
-    
+
     // reward & dish
     public Text rewardText;
     public Text dishText;
@@ -83,15 +82,15 @@ public class GameManager : MonoBehaviour
     public Text hammerOffText;
     public float hammerOffTexttimeDisplay = 1.5f;
     public int hflag = 0;
-    
+
     public Text fiftyFiftyPopUpText;
     public float fiftyFiftyTexttimeDisplay = 1.5f;
     public float hintTexttimeDisplay = 1.5f;
 
-    public Text notCollectedIngredient; 
+    public Text notCollectedIngredient;
     public float notCollectedIngredienttimeDisplay = 1.5f;
     //public float collectedIngredienttimeDisplay = 1.5f;
-    
+
     public Boolean TimePowerUp = false;
 
     public float TimePowerUpStart = 0;
@@ -99,6 +98,12 @@ public class GameManager : MonoBehaviour
     public Image TimeSlider;
     public Image[] hearts;
     public static int recipeCounter = 0;
+
+    //Bag 
+    public Sprite emptySpaceSprite;
+    public GameObject bagItemPrefab;
+    public GameObject BagUI;
+    List<GameObject> bag;
 
     // public Text timeOnText;
     // public Text timeOffText;
@@ -273,6 +278,32 @@ public class GameManager : MonoBehaviour
             || other.gameObject.GetComponent<Yogurt>() != null;
     }
 
+
+    public void createBag() {
+        bag = new List<GameObject>();
+        for (int i = 0; i < InventorySystemManager.inst.size; i++) {
+            GameObject bagItemBox = Instantiate(bagItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            bagItemBox.transform.Find("Item").gameObject.GetComponent<Image>().sprite = emptySpaceSprite;
+            bagItemBox.transform.SetParent(BagUI.transform, false);
+            bag.Add(bagItemBox);
+        }
+    }
+    public void displayIngredentInBag() {
+        string[] ary = InventorySystemManager.inst.bagQueue.ToArray();
+        int j = 0;
+        for (int i = 0; i < InventorySystemManager.inst.size; i++) {
+            if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count) {           
+                bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = emptySpaceSprite;
+            }
+            else {
+                Sprite obj = IngredientMapping.getSprite(ary[j++]);
+                bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = obj;
+            }
+        }
+    }
+
+
+
     private void Awake()
     {
         inst = this;
@@ -320,6 +351,8 @@ public class GameManager : MonoBehaviour
         TutorialManager.tutorialActive = false;
         //questionGenerator = new QuestionGenerator();
         Debug.Log("Game "+GameTracker.timeRemain);
+       
+        createBag();
     }
 
     // Update is called once per frame
@@ -594,7 +627,7 @@ public class GameManager : MonoBehaviour
         {
             gameOverScreen.Setup("You do not have enough balance of coins");
         }
-
+        
     }
 
     void Restart()

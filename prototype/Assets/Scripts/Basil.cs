@@ -13,6 +13,8 @@ public class Basil : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient1Count();
+            InventorySystemManager.inst.addIngredent("Basil");
+            GameManager.inst.displayIngredentInBag();
             Destroy(gameObject);
         }
     }
