@@ -258,6 +258,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         highlightFlag = 0;
+        Obstacle.hit=false;
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         hintText.text = ": " + GameTracker.hintCount;
