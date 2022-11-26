@@ -15,6 +15,7 @@ public class AvatarSkinSwitcher : MonoBehaviour
     void Update()
     {
         StartCoroutine(ChangeBleed());
+        StartCoroutine(ChangeBleedHammer());
 
 
     }
@@ -31,5 +32,14 @@ public class AvatarSkinSwitcher : MonoBehaviour
 
         }
 
+    }
+    
+    IEnumerator ChangeBleedHammer()
+    {
+        if (TutorialManager.hammerFlag != 0){
+            GetComponent<Renderer>().material = mats[1];
+            yield return new WaitForSeconds(5.0f);
+            GetComponent<Renderer>().material = mats[0];
+        }
     }
 }

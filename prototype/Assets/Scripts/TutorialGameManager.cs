@@ -89,6 +89,15 @@ public class TutorialGameManager : MonoBehaviour
 
     }
 
+    IEnumerator ChangeBleedHammer()
+    {
+        while (TutorialManager.hammerFlag != 0)
+        {
+            yield return new WaitForSeconds(5.0f);
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
