@@ -22,7 +22,7 @@ public class CookingStation : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            SceneManager.LoadScene("Sanctum");
+            SceneManager.LoadScene("TutorialSanctumOne");
 
         }
         else
