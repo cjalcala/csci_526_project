@@ -62,6 +62,34 @@ public class TutorialGameManager : MonoBehaviour
         fiftyFiftyCount = 0;
     }
 
+    IEnumerator ChangeBleed()
+    {
+        if (TutorialObstacle.hit == true)
+        {
+            // for (int h = health; h <= 4; h++)
+            // {
+            int h = health;
+            //blink
+            for (int i = 0; i < 5; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    hearts[h].enabled = false;
+                    yield return new WaitForSeconds(0.3f);
+                }
+                else
+                {
+                    hearts[h].enabled = true;
+                    yield return new WaitForSeconds(0.3f);
+                }
+            }
+            hearts[h].enabled = false;
+
+            // }
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -167,13 +195,27 @@ public class TutorialGameManager : MonoBehaviour
             }
         }
 
+        StartCoroutine(ChangeBleed());
+        // if (health < 5)
+        // {
+        //     for (int h = health; h <= 4; h++)
+        //     {
+        //         //blink
+        //         for (int i = 0; i < 5; i++)
+        //         {
+        //             if (i % 2 == 0)
+        //             {
+        //                 hearts[h].enabled = false;
+        //                 yield return new WaitForSeconds(1);
+        //             }
+        //             else
+        //             {
+        //                 hearts[h].enabled = true;
+        //                 yield return new WaitForSeconds(1);
+        //             }
+        //         }
 
-        if (health < 5)
-        {
-            for (int h = health; h <= 4; h++)
-            {
-                hearts[h].enabled = false;
-            }
-        }
+        //     }
+        // }
     }
 }

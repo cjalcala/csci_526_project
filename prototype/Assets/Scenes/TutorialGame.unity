@@ -1715,6 +1715,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433054213}
   m_CullTransparentMesh: 1
+--- !u!1 &437522566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5450526443423814944, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
+  m_PrefabInstance: {fileID: 1892922232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &437522569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437522566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0cc70ed44e2b4cec8047587b9e234f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mats:
+  - {fileID: -3579108319595051804, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
+  - {fileID: 2100000, guid: 6a6944f4904547e4fb039789da5fcd85, type: 2}
 --- !u!1 &516006398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,10 +3575,7 @@ MonoBehaviour:
   - {fileID: 1012477181}
   - {fileID: 1143607461}
   - {fileID: 643255062}
-  tutorialobstacleSpawner: {fileID: 2483905378157037388, guid: eb74e2bb46d364448822bf5842f33372, type: 3}
   spaceWaitTime: 2.5
-  coinWaitTime: 1.75
-  coinDelTime: 3
   hammerWaitTime: 2
   hammerDelTime: 4
   clockWaitTime: 2
@@ -4962,6 +4979,7 @@ MonoBehaviour:
   groundTile: {fileID: 876508528406283183, guid: ed72c172b5442408ca90a09a016aac5e, type: 3}
   terrainPrefab: {fileID: 1032551483747090, guid: 30e0c80107d6ca6498d735d6689d48ff, type: 3}
   hammerSpawnTime: 0
+  currArrowPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1885353569
 Transform:
   m_ObjectHideFlags: 0
@@ -5044,6 +5062,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ch09_nonPBR@Slow Run
       objectReference: {fileID: 0}
+    - target: {fileID: 7233867138446155668, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233867138446155668, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -3579108319595051804, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
+    - target: {fileID: 7233867138446155668, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a6944f4904547e4fb039789da5fcd85, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
 --- !u!4 &1892922233 stripped

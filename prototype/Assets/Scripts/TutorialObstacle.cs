@@ -6,7 +6,7 @@ public class TutorialObstacle : MonoBehaviour
 {
     // Start is called before the first frame update
     TutorialPlayerMovement tutorialplayerMovement;
-    bool hit = false;
+    public static bool hit = false;
     public int flag = 0;
 
     // Start is called before the first frame update
@@ -17,10 +17,10 @@ public class TutorialObstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player" && !Welcome.immunity && !hit)
+        if (collision.gameObject.name == "Player" && !Welcome.immunity && !hit)
         {
-            hit=true;
-            if(TutorialGameManager.health!=1)
+            hit = true;
+            if (TutorialGameManager.health != 1)
             {
                 TutorialGameManager.health--;
             }
@@ -33,9 +33,9 @@ public class TutorialObstacle : MonoBehaviour
                 }
             }
         }
-        else 
+        else
         {
-            if(!hit)
+            if (!hit)
             {
                 Destroy(gameObject);
             }
@@ -44,15 +44,15 @@ public class TutorialObstacle : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.name == "Player" && !Welcome.immunity && hit)
+        if (collision.gameObject.name == "Player" && !Welcome.immunity && hit)
         {
-            hit=false;
+            hit = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
