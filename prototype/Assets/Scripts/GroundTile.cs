@@ -200,7 +200,7 @@ public class GroundTile : MonoBehaviour
     public void SpawnMouse() {
         GameObject temp = Instantiate(mousePrefab, transform);
         Vector3 p = GetRandomPointInCollider(GetComponent<Collider>());
-        p.y=0.1f;
+        p.y=1f;
         temp.transform.position = p;
     }
 
