@@ -293,6 +293,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game "+GameTracker.timeRemain);
     }
 
+    IEnumerator ChangeBleedHammer()
+    {
+        while (GameTracker.hammerFlag != 0)
+        {
+            yield return new WaitForSeconds(5.0f);
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
