@@ -15,6 +15,7 @@ public class AvatarSkinSwitcher : MonoBehaviour
     void Update()
     {
         StartCoroutine(ChangeBleed());
+        StartCoroutine(ChangeHammerEffect());
 
 
     }
@@ -33,4 +34,25 @@ public class AvatarSkinSwitcher : MonoBehaviour
 
 
     }
+
+
+    IEnumerator ChangeHammerEffect()
+    {
+        if (TutorialManager.tutorialActive && TutorialManager.hammerFlag == 1)
+        {
+            GetComponent<Renderer>().material = mats[2];
+            yield return new WaitForSeconds(5.0f);
+            GetComponent<Renderer>().material = mats[0];
+        }
+        else
+
+        if (!TutorialManager.tutorialActive && GameTracker.hammerFlag == 1)
+        {
+            GetComponent<Renderer>().material = mats[2];
+            yield return new WaitForSeconds(5.0f);
+            GetComponent<Renderer>().material = mats[0];
+        }
+    }
+
+
 }
