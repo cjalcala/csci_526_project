@@ -28,19 +28,21 @@ public class TutorialGroundTile : MonoBehaviour
         int i = TutorialGroundSpawner.i;
         // SpawnObstacle,  SpawnIngredent,  SpawnHammer,  SpawnClock, SpawnFifty,  SpawnHint
 
-        if (i > 10 && i < 17)
-        {
-            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false, 4);//SpawnObstacle, SpawnFifty
-        }
-        else if (i >= 17 && i < 20)
-        {
-            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true, 5);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
-        }
-        else
-        {
-            tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex <= 7 && TutorialManager.popUpIndex >= 4, false, false, true, true, 7);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
-        }
+        // if (i > 10 && i < 17)
+        // {
+        //     tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false, 4);//SpawnObstacle, SpawnFifty
+        // }
+        // else if (i >= 17 && i < 20)
+        // {
+        //     tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true, 5);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
+        // }
+        // else
+        // {
+        //     tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex <= 7 && TutorialManager.popUpIndex >= 4, false, false, true, true, 7);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
+        // }
         
+        tutorialgroundSpawner.SpawnTutorialTile(true, true, false, false, false, false, 4);
+
         //int state = TutorialManager.popUpIndex;
 
         //tutorialgroundSpawner.SpawnTutorialTile(state);
@@ -79,11 +81,8 @@ public class TutorialGroundTile : MonoBehaviour
 
     public void TutorialSpawnArrow(Vector3 pos, float multiple)
     {
-
         GameObject temp = Instantiate(tutorialArrowPrefab, transform);
-
         temp.transform.position = new Vector3(pos.x, pos.y * multiple, pos.z);
-
     }
 
     public Vector3 TutorialSpawnIngredent()
