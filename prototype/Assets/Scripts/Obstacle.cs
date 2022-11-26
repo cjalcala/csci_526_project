@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public int flag =0;
-    bool hit = false;
+    public int flag = 0;
+    public static bool hit = false;
 
 
     PlayerMovement playerMovement;
@@ -18,11 +18,11 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Player" && !Welcome.immunity && !hit && !GameTracker.sanctumImmunity)
+        if (collision.gameObject.name == "Player" && !Welcome.immunity && !hit && !GameTracker.sanctumImmunity)
         {
             Debug.Log(GameTracker.health);
-            hit=true;
-            if(GameTracker.health!=1)
+            hit = true;
+            if (GameTracker.health != 1)
             {
                 GameTracker.health--;
             }
@@ -34,13 +34,13 @@ public class Obstacle : MonoBehaviour
                     playerMovement.Die("obstacle");
                 }
             }
-            
+
             // Kill the player
-            
+
         }
         else
         {
-            if(!hit)
+            if (!hit)
             {
                 Destroy(gameObject);
             }
@@ -49,15 +49,15 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.name == "Player" && !Welcome.immunity && hit)
+        if (collision.gameObject.name == "Player" && !Welcome.immunity && hit)
         {
-            hit=false;
+            hit = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

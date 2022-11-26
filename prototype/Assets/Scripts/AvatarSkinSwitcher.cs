@@ -21,15 +21,16 @@ public class AvatarSkinSwitcher : MonoBehaviour
 
     IEnumerator ChangeBleed()
     {
-        if (TutorialObstacle.hit == true)
+
+        if ((TutorialManager.tutorialActive && TutorialObstacle.hit == true) || (!TutorialManager.tutorialActive && Obstacle.hit == true))
+
         {
             GetComponent<Renderer>().material = mats[1];
             yield return new WaitForSeconds(1);
             GetComponent<Renderer>().material = mats[0];
-
-
-
         }
+
+
 
     }
 }
