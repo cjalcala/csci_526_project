@@ -32,4 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 24a07cdb37d094f319be7fa06fc96d74
+  - enabled: 1
+    path: Assets/Scenes/TutorialSanctumOne.unity
+    guid: f9e35085c2cc84b30bc8e902ec787b91
+  - enabled: 1
+    path: Assets/Scenes/TutorialSanctumTwo.unity
+    guid: dcd0f39e04b88498eb81135bac438114
+  - enabled: 1
+    path: Assets/Scenes/TutorialSanctumThree.unity
+    guid: 3767a611833db426d8008213cf8ef07a
   m_configObjects: {}

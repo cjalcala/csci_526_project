@@ -163,12 +163,18 @@ public class SanctumQuiz : MonoBehaviour
 
             }
             // GameTracker.LoadScenes();
-            GameTracker.sanctumImmunity = true;
-            PlayerMovement.speed = 8;
-            PlayerMovement.horizontalMultiplier = 0.8f;
-            PlayerMovement.jumpForce = 750f;
-            SceneManager.UnloadScene("Sanctum");
+
+            Invoke("UnloadSanctum", 1.5f);
         }
+    }
+
+    public void UnloadSanctum()
+    {
+        GameTracker.sanctumImmunity = true;
+        PlayerMovement.speed = 8;
+        PlayerMovement.horizontalMultiplier = 0.8f;
+        PlayerMovement.jumpForce = 750f;
+        SceneManager.UnloadScene("Sanctum");        
     }
 
     public void LoadTutorialComplete()
@@ -245,11 +251,7 @@ public class SanctumQuiz : MonoBehaviour
     public void continueGame()
     {
         // GameTracker.LoadScenes();
-        GameTracker.sanctumImmunity = true;
-        PlayerMovement.speed = 8;
-        PlayerMovement.horizontalMultiplier = 0.8f;
-        PlayerMovement.jumpForce = 750f;
-        SceneManager.UnloadScene("Sanctum");
+        Invoke("UnloadSanctum", 1.5f);
         
     }
 
@@ -351,11 +353,7 @@ public class SanctumQuiz : MonoBehaviour
             else
             {
                 // GameTracker.LoadScenes();
-                GameTracker.sanctumImmunity = true;
-                PlayerMovement.speed = 8;
-                PlayerMovement.horizontalMultiplier = 0.8f;
-                PlayerMovement.jumpForce = 750f;
-                SceneManager.UnloadScene("Sanctum");
+                Invoke("UnloadSanctum", 1.5f);
             }
         }
         else
