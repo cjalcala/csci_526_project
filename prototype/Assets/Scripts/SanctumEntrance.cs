@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SanctumEntrance : MonoBehaviour
 {
-    
+    public GameManager gameManager;
     PlayerMovement playerMovement;
     public Mesh[] mesh;
     public Material[] mat;
@@ -98,11 +98,14 @@ public class SanctumEntrance : MonoBehaviour
 
         Destroy(gameObject);
 
-        if (GameTracker.coins >= GameTracker.ingredientsList[ingredientList[ingredientID]].cost)
+        //if (GameTracker.coins >= GameTracker.ingredientsList[ingredientList[ingredientID]].cost)
+
+        if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
         {
 
-            GameTracker.coins -= GameTracker.ingredientsList[ingredientList[ingredientID]].cost;
+            //GameTracker.coins -= GameTracker.ingredientsList[ingredientList[ingredientID]].cost;
             SceneManager.LoadScene("Sanctum");
+            Debug.Log("Richa");
 
         }
         if (GameTracker.coins == 0 || GameTracker.coins < GameTracker.ingredientsList[ingredientList[ingredientID]].cost)

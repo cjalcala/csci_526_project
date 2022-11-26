@@ -151,15 +151,20 @@ public class SanctumQuiz : MonoBehaviour
             if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
             {
                 //dish = dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
-                GameTracker.dish = GameTracker.dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+              //  GameTracker.dish = GameTracker.dish + Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+                  GameTracker.dish = GameTracker.dish + 1;
 
-                int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+               // int minCount = Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3));
+               // int minCount = 1;
 
-                GameTracker.coins += (GameTracker.recipe.earning * Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
 
-                GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - minCount);
-                GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - minCount);
-                GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - minCount);
+                //GameTracker.coins += (GameTracker.recipe.earning * Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)));
+
+                GameTracker.ingred1 = Math.Max(0, GameTracker.ingred1 - 1);
+                GameTracker.ingred2 = Math.Max(0, GameTracker.ingred2 - 1);
+                GameTracker.ingred3 = Math.Max(0, GameTracker.ingred3 - 1);
+                Debug.Log("Dish Counter is : "+GameTracker.dish);
+
 
             }
             // GameTracker.LoadScenes();

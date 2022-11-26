@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class CookingStation : MonoBehaviour
 {
     PlayerMovement PlayerMovement;
+    public GameManager gameManager;
+    public GameObject vedika_1;
+    public SanctumQuiz sq;
+
+public bool i_set;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,15 +27,38 @@ public class CookingStation : MonoBehaviour
 
         if (TutorialManager.tutorialActive)
         {
-            SceneManager.LoadScene("Sanctum");
+            SceneManager.LoadScene("TutorialSanctumOne");
 
         }
         else
         {
-            PlayerMovement.speed = 0;
-            PlayerMovement.horizontalMultiplier = 0;
-            PlayerMovement.jumpForce = 0;
-            SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
+            
+            
+            
+            if (gameObject.tag=="CookingStation")
+
+                    {
+                        
+                        
+                        if ( GroundSpawner.i_set ==false)
+                        {
+                        
+                        Destroy(gameObject);
+                        
+
+                        }
+                        else
+                        {
+                            PlayerMovement.speed = 0;
+                            PlayerMovement.horizontalMultiplier = 0;
+                            PlayerMovement.jumpForce = 0;
+
+                            SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
+
+                        }
+
+                    }    
+            //SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
         }
         
         Destroy(gameObject);
