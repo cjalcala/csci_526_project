@@ -9,7 +9,7 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialArrowPrefab;
     public GameObject tutorialIngredentPrefab;
     public GameObject HammerPrefab;
-    public GameObject TimePowerUpPrefab;
+    //public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
     public GameObject cookingStationPrefab;
@@ -121,8 +121,10 @@ public class TutorialGroundTile : MonoBehaviour
         return temp.transform.position;
     }
 
+
     public Vector3 SpawnStation()
     {
+
         GameObject temp = Instantiate(cookingStationPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         return temp.transform.position;

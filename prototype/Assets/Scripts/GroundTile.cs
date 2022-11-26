@@ -7,10 +7,11 @@ public class GroundTile : MonoBehaviour
     GroundSpawner groundSpawner;
     public GameObject obstaclePrefab;
     public GameObject obstacle2Prefab;
+    public GameObject logPrefab;
     public GameObject coinPrefab;
     public GameObject sanctumEntrancePrefab;
     public GameObject HammerPrefab;
-    public GameObject TimePowerUpPrefab;
+    //public GameObject TimePowerUpPrefab;
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
 
@@ -57,13 +58,23 @@ public class GroundTile : MonoBehaviour
 
         // Spawn the obstacle at the position
         int obstacleChoice = Random.Range(0, 2);
-        if (obstacleChoice < 1)
-        {
+        // if (obstacleChoice < 2)
+        // {
+        //     Instantiate(obstacle2Prefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        // }
+        // else
+        // {
+        //     Instantiate(obstacle2Prefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        // }
+        if (GameTracker.level == 1){
             Instantiate(obstaclePrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+
         }
-        else
-        {
+        else if (GameTracker.level == 2){
             Instantiate(obstacle2Prefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
+        }
+        else{
+            Instantiate(logPrefab, spawnPoint.position, transform.rotation * Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0)), transform);
         }
         
     }
@@ -135,9 +146,16 @@ public class GroundTile : MonoBehaviour
     }
 
     public void SpawnFiftyFifty()
-     {    
-     GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
-     temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());   
+    {    
+        GameObject temp = Instantiate(fiftyFiftyPowerUpPrefab, transform);
+        // if(GameTracker.fiftyFiftyCount >= 1)
+        // {
+        //     Destroy(gameObject);
+        // }
+        // else
+        // {
+        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());  
+        // } 
     }
 
     public void SpawnHammer()
@@ -145,7 +163,7 @@ public class GroundTile : MonoBehaviour
         GameObject temp = Instantiate(HammerPrefab, transform);
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
-
+    /*
     public void SpawnClock()
     {
         // for (int i = 0; i < 2; i++)
@@ -154,7 +172,7 @@ public class GroundTile : MonoBehaviour
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         // }
     }
-
+    */
     public void SpawnEntrance()
     {
         Collider collider = GetComponent<Collider>();
@@ -168,6 +186,14 @@ public class GroundTile : MonoBehaviour
     }
     public void SpawnHints() {
         GameObject temp = Instantiate(hintPrefab, transform);
+        // if(GameTracker.hintCount >= 1)
+        // {
+        //     Destroy(gameObject);
+        // }
+        // else
+        // {
+        // temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());  
+        // } 
         temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
     }
 

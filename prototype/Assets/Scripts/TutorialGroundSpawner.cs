@@ -33,6 +33,7 @@ public class TutorialGroundSpawner : MonoBehaviour
             currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
+
         if (SpawnFifty)
         {
             int rand = Random.Range(0, 3);

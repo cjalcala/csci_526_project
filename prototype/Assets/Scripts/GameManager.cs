@@ -52,11 +52,18 @@ public class GameManager : MonoBehaviour
     
     // reward & dish
     public Text rewardText;
-    public Text dishText; 
+    public Text dishText;
 
 
-   
-
+    public DishSprite dishSprite1;
+    public DishSprite dishSprite2;
+    public DishSprite dishSprite3;
+    public HighlightSprite highlightSprite1;
+    public HighlightSprite highlightSprite2;
+    public HighlightSprite highlightSprite3;
+    public FiftyFiftySprite fiftySprite;
+    public int highlightFlag = 0;
+    public HintSprite hintSprite;
     public Text fiftyFiftyText;
     public Text hintText;
     //public Text goalText;
@@ -177,8 +184,11 @@ public class GameManager : MonoBehaviour
 
 
     public void IncrementFifityFiftyCount() {
-        GameTracker.fiftyFiftyCount++;
-        fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        if(GameTracker.fiftyFiftyCount == 0)
+        {
+            GameTracker.fiftyFiftyCount++;
+            fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
+        }
     }
 
     public void IncrementHintCount() {
@@ -245,6 +255,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        highlightFlag = 0;
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         hintText.text = ": " + GameTracker.hintCount;
@@ -263,7 +274,7 @@ public class GameManager : MonoBehaviour
 
         //goalProgress();
         //Cost();
-
+        /*
         ingredient1Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[0]);
         ingredient2Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[1]);
         ingredient3Icon.sprite = Resources.Load<Sprite>("Sprites/" + GameTracker.ingredientNames[2]);
@@ -271,7 +282,7 @@ public class GameManager : MonoBehaviour
         ingredient1Icon.gameObject.SetActive(true);
         ingredient2Icon.gameObject.SetActive(true);
         ingredient3Icon.gameObject.SetActive(true);
-
+        */
 
        
 
@@ -472,8 +483,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
-
         if (GameTracker.hammerFlag == 1)
         {
             if (hammerOnTexttimeDisplay < 0)
@@ -549,6 +558,117 @@ public class GameManager : MonoBehaviour
         if(GameTracker.coins == 0 && (Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)) == 0))
         {
             gameOverScreen.Setup("You do not have enough balance of coins");
+        }
+
+        // poweruo sprites
+        if(GameTracker.fiftyFiftyCount > 0)
+        {
+            fiftySprite.Activate();
+        }
+        else if (GameTracker.fiftyFiftyCount <= 0)
+        {
+            fiftySprite.Deactivate();
+        }
+
+        if(GameTracker.hintCount > 0)
+        {
+            hintSprite.Activate();
+        }
+        else if (GameTracker.hintCount <= 0)
+        {
+            hintSprite.Deactivate();
+        }
+
+        if(GameTracker.dish == 1)
+        {
+            dishSprite1.Activate();
+            highlightSprite1.Activate();
+
+            //just got it
+            if(highlightFlag == 0)
+            {
+                GameTracker.highlightTime = GameTracker.timeRemain;
+                highlightFlag = 1;
+            }
+            else if (highlightFlag == 1)
+            {
+                if (GameTracker.timeRemain <= GameTracker.highlightTime - 5)
+                {
+                    highlightSprite1.Deactivate();
+                }
+            }
+        }
+        else if (GameTracker.dish == 2)
+        {
+            if (highlightFlag == 1)
+            {
+                dishSprite2.Activate();
+                highlightSprite2.Activate();
+                highlightFlag = 2;
+                GameTracker.highlightTime = GameTracker.timeRemain;
+            }
+            else if (highlightFlag == 0)
+            {
+                dishSprite1.Activate();
+                dishSprite2.Activate();
+                highlightSprite1.Activate();
+                highlightSprite2.Activate();
+                highlightFlag = 2;
+                GameTracker.highlightTime = GameTracker.timeRemain;
+            }
+
+            if (highlightFlag == 2)
+            {
+                if (GameTracker.timeRemain <= GameTracker.highlightTime - 5)
+                {
+                    highlightSprite1.Deactivate();
+                    highlightSprite2.Deactivate();
+                }
+            }
+
+
+        }
+        else if (GameTracker.dish == 3)
+        {
+            if (highlightFlag == 2)
+            {
+                dishSprite3.Activate();
+                highlightSprite3.Activate();
+                highlightFlag = 3;
+                GameTracker.highlightTime = GameTracker.timeRemain;
+            }
+            else if (highlightFlag == 1)
+            {
+                dishSprite2.Activate();
+                dishSprite3.Activate();
+                highlightSprite2.Activate();
+                highlightSprite3.Activate();
+
+                highlightFlag = 3;
+                GameTracker.highlightTime = GameTracker.timeRemain;
+            }
+            else if (highlightFlag == 0)
+            {
+                dishSprite1.Activate();
+                dishSprite2.Activate();
+                dishSprite3.Activate();
+
+                highlightSprite1.Activate();
+                highlightSprite2.Activate();
+                highlightSprite3.Activate();
+                highlightFlag = 3;
+                GameTracker.highlightTime = GameTracker.timeRemain;
+            }
+
+            if (highlightFlag == 3)
+            {
+                if (GameTracker.timeRemain <= GameTracker.highlightTime - 5)
+                {
+                    highlightSprite1.Deactivate();
+                    highlightSprite2.Deactivate();
+                    highlightSprite3.Deactivate();
+                }
+            }
         }
 
     }

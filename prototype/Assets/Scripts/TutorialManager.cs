@@ -146,7 +146,6 @@ public class TutorialManager : MonoBehaviour//control all pop-up texts in the tu
                         popUpIndex = 3;
                         TutorialGroundSpawner.showArrow = false;
                     }
-
                 }
                 // else if (popUpIndex == getInsCompletedIndex(2))
                 // {

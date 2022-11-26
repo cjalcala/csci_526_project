@@ -12,18 +12,34 @@ public class FiftFiftyObject : MonoBehaviour
         }
         // Check that the object we collided with is the player
         if (other.gameObject.name != "Player") {
+            Destroy(gameObject);
             return;
         }
         // add to tracker
          if (!TutorialManager.tutorialActive) {
-            GameManager.inst.IncrementFifityFiftyCount();
-            GameTracker.getFiftyFiftyPowerUp = true;
+            if(GameTracker.fiftyFiftyCount<1)
+            {
+                GameManager.inst.IncrementFifityFiftyCount();
+                GameTracker.getFiftyFiftyPowerUp = true;
+                Destroy(gameObject);
+            }
+            // else
+            // {
+
+            // }
         }
         else {
-            TutorialGameManager.fiftyFiftyCount += 1;
+
+            if(TutorialGameManager.fiftyFiftyCount<1)
+            {
+                TutorialGameManager.fiftyFiftyCount += 1;
+                //GameTracker.getFiftyFiftyPowerUp = true;
+                Destroy(gameObject);
+            }
+            //TutorialGameManager.fiftyFiftyCount += 1;
         }
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start()

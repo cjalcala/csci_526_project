@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 903889339867568451, guid: 7691ea7a0bf254d528206e5ebe89d795, type: 3}
   obstacle2Prefab: {fileID: 7979088955839898975, guid: 72e70d8bf48cb1d44b7e1f00e30cbdb7, type: 3}
+  logPrefab: {fileID: 125238, guid: d40444b23760b4dd28151a3fa9bce5b5, type: 3}
   coinPrefab: {fileID: 3970590124211041411, guid: 8bc7f3210861b42daaeda53d9f989b30, type: 3}
   sanctumEntrancePrefab: {fileID: 3590685985430180073, guid: 9e506d499dac29541b73a60fe35616c7, type: 3}
   HammerPrefab: {fileID: 7016171195678512037, guid: 7edc688fc88624897ae647174630d1c6, type: 3}

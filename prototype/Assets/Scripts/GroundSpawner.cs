@@ -11,6 +11,7 @@ public class GroundSpawner : MonoBehaviour
     Vector3 nextSpawnPoint;
     public int hammerSpawnTime;
     int cnt = 0;
+    static int fiftyfityspawnFlag = 0;
 
     private GameObject[] stations;
 
@@ -39,26 +40,38 @@ public class GroundSpawner : MonoBehaviour
             int rand;
             if(GameTracker.fiftyFiftyCount>=1)
             {
-                rand = Random.Range(0,50);
-                if (rand == 1) {
-                    temp.GetComponent<GroundTile>().SpawnFiftyFifty();
-                }
+                // rand = Random.Range(0,50);
+                // if (rand == 1) {
+                //     temp.GetComponent<GroundTile>().SpawnFiftyFifty();
+                // }
             }
 
             else
             {
                 rand = Random.Range(0,10);
                 if (rand == 1) {
-                    temp.GetComponent<GroundTile>().SpawnFiftyFifty();
+                    if(fiftyfityspawnFlag == 0 && GameTracker.fiftyFiftyCount == 0)
+                    {
+                        temp.GetComponent<GroundTile>().SpawnFiftyFifty();
+                        if(GameTracker.fiftyFiftyCount >= 1)
+                        {
+                            fiftyfityspawnFlag = 1;
+                            GameObject fiftyfifty = GameObject.FindGameObjectWithTag("FiftyFifty").gameObject;
+                            if (fiftyfifty.CompareTag("FiftyFifty"))
+                            {
+                                Destroy(fiftyfifty);
+                            }
+                        }
+                    }
                 }
             }
 
             if(GameTracker.hintCount>=1)
             {
-                rand = Random.Range(0,50);
-                if (rand == 1) {
-                    temp.GetComponent<GroundTile>().SpawnHints();
-                }
+                // rand = Random.Range(0,50);
+                // if (rand == 1) {
+                //     temp.GetComponent<GroundTile>().SpawnHints();
+                // }
             }
 
             else
@@ -131,11 +144,12 @@ public class GroundSpawner : MonoBehaviour
             temp.GetComponent<GroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
         }
-
+        /*
         if (GameTracker.timeRemain < 75 && Mathf.Abs(GameTracker.timeRemain % 30) <= 1 && GameTracker.level == 3)
         {
             temp.GetComponent<GroundTile>().SpawnClock();
         }
+        */
     }
 
     // Start is called before the first frame update
