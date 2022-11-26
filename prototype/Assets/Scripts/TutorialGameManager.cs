@@ -65,59 +65,43 @@ public class TutorialGameManager : MonoBehaviour
         fiftyFiftyCount = 0;
     }
 
+    IEnumerator ChangeBleed()
+    {
+        if (TutorialObstacle.hit == true)
+        {
+            int h = health;
+            //blink
+            for (int i = 0; i < 5; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    hearts[h].enabled = false;
+                    yield return new WaitForSeconds(0.2f);
+                }
+                else
+                {
+                    hearts[h].enabled = true;
+                    yield return new WaitForSeconds(0.2f);
+                }
+            }
+            hearts[h].enabled = false;
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (TimePowerUp && Math.Abs(TutorialGameManager.time - TimePowerUpStart) >= 2.5)
-        {
-            TimePowerUp = false;
-            // timeOffText.text = "Timer Counter Slow Down FINISH";
-            timeText.color = Color.black;
-        }
-        */
         if (time > 0)
         {
-            /*
-            if (TimePowerUp)
-            {
-                time -= Time.deltaTime / 2;
-                TimeSlider.fillAmount = time / 90;
-                timeText.text = ": " + time.ToString("0") + "";
-                // timeText.color = Color.red;
-
-            }
-            else
-            {
-            */
             if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
             {
                 time -= Time.deltaTime;
                 TimeSlider.fillAmount = time / 90;
                 timeText.text = ": " + time.ToString("0") + "";
             }
-                // time -= Time.deltaTime;
-                // TimeSlider.fillAmount = time / 90;
-                // timeText.text = ": " + time.ToString("0") + "";
-            //}
-
-            // int forwardSeconds = (int)GameTracker.originalTime - Convert.ToInt32(Math.Truncate(GameTracker.timeRemain));
-            // if ((forwardSeconds == GameTracker.timeFlag) && (GameTracker.sentAnalytics == false))
-            // {
-            //     GameTracker.coinString = GameTracker.coinString + GameTracker.coins.ToString() + ",";
-            //     GameTracker.timeFlag++;
-            //     //Debug.Log(GameTracker.coinString);
-            // }
         }
-        // if (time > 0)
-        // {
-        //     if ((!isPaused) && (!horizontalArrows) && (!spaceBar))
-        //     {
-        //         time -= Time.deltaTime;
-        //         TimeSlider.fillAmount = time / 90;
-        //         timeText.text = ": " + time.ToString("0") + "";
-        //     }
-        // }
+
         else
         {
             tutorialplayerMovement.Die();
@@ -171,22 +155,14 @@ public class TutorialGameManager : MonoBehaviour
                 // hammerOffTexttimeDisplay -= (TimePowerUp ? Time.deltaTime / 2 : Time.deltaTime);
             }
         }
+        StartCoroutine(ChangeBleed());
 
-
-        if (health < 5)
-        {
-            for (int h = health; h <= 4; h++)
-            {
-                hearts[h].enabled = false;
-            }
-        }
-
-        if(fiftyFiftyCount > 0)
+        if (fiftyFiftyCount > 0)
         {
             fiftySprite.Activate();
         }
 
-        if(hintCount > 0)
+        if (hintCount > 0)
         {
             hintSprite.Activate();
         }

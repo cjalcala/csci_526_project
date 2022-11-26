@@ -23,7 +23,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         if (SpawnObstacle)
         {
             currArrowPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnObstacle();
-            if(state==11)
+            if (state == 11)
             {
                 temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 5);
             }
@@ -31,7 +31,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         if (SpawnIngredent)
         {
             currArrowPos = temp.GetComponent<TutorialGroundTile>().TutorialSpawnIngredent();
-            if(state==15)
+            if (state == 15)
             {
                 temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 3);
             }
@@ -40,7 +40,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         {
             currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnHammer();
             // temp.GetComponent<GroundTile>().SpawnClock();
-            if(state==12)
+            if (state == 12)
             {
                 temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 3);
             }
@@ -49,7 +49,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         if (SpawnFifty)
         {
             currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnFiftyFifty();
-            if(state==13)
+            if (state == 13)
             {
                 temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 3);
             }
@@ -57,7 +57,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         if (SpawnHint)
         {
             currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnHints();
-            if(state==14)
+            if (state == 14)
             {
                 temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 3);
             }
@@ -119,7 +119,7 @@ public class TutorialGroundSpawner : MonoBehaviour
         // }
 
 
-        if (TutorialManager.getIngredent || state==10)
+        if (TutorialManager.getIngredent || state == 10)
         {
             currArrowPos = temp.GetComponent<TutorialGroundTile>().SpawnStation();
             temp.GetComponent<TutorialGroundTile>().TutorialSpawnArrow(currArrowPos, 3);
