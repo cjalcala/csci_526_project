@@ -6,7 +6,6 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject tutorialobstaclePrefab;
     TutorialGroundSpawner tutorialgroundSpawner;
     public GameObject tutorialcoinPrefab;
-
     public GameObject tutorialArrowPrefab;
     public GameObject tutorialIngredentPrefab;
     public GameObject HammerPrefab;
@@ -14,8 +13,6 @@ public class TutorialGroundTile : MonoBehaviour
     public GameObject fiftyFiftyPowerUpPrefab;
     public GameObject hintPrefab;
     public GameObject cookingStationPrefab;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -33,22 +30,20 @@ public class TutorialGroundTile : MonoBehaviour
 
         if (i > 10 && i < 17)
         {
-            // tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false);//SpawnObstacle, SpawnFifty
-            tutorialgroundSpawner.SpawnTutorialTile(1);
+            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, false, true, false, 4);//SpawnObstacle, SpawnFifty
         }
         else if (i >= 17 && i < 20)
         {
-            // tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
-            tutorialgroundSpawner.SpawnTutorialTile(1);
+            tutorialgroundSpawner.SpawnTutorialTile(true, false, false, true, true, true, 5);//SpawnObstacle,  SpawnClock, SpawnFifty,  SpawnHint
         }
         else
         {
-            // tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex <= 7 && TutorialManager.popUpIndex >= 4, false, false, true, true);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
-            tutorialgroundSpawner.SpawnTutorialTile(1);
+            tutorialgroundSpawner.SpawnTutorialTile(true, TutorialManager.popUpIndex <= 7 && TutorialManager.popUpIndex >= 4, false, false, true, true, 7);//SpawnObstacle,  SpawnIngredent when 50-50 ins displayed, start to spawn ingredient
         }
-        int state = TutorialManager.popUpIndex;
+        
+        //int state = TutorialManager.popUpIndex;
 
-        tutorialgroundSpawner.SpawnTutorialTile(state);
+        //tutorialgroundSpawner.SpawnTutorialTile(state);
 
 
         TutorialGroundSpawner.i++;
@@ -64,8 +59,8 @@ public class TutorialGroundTile : MonoBehaviour
     public Vector3 TutorialSpawnObstacle()
     {
         // Choose random point to spawn the obstacles
-        // int obstacleSpawnIndex = Random.Range(2, 5);
-        int obstacleSpawnIndex = 2;
+        int obstacleSpawnIndex = Random.Range(2, 5);
+        // int obstacleSpawnIndex = 2;
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
 
         // Spawn the obstacle at the position
