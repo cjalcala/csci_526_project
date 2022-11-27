@@ -161,7 +161,9 @@ public class GroundTile : MonoBehaviour
     public void SpawnHammer()
     {
         GameObject temp = Instantiate(HammerPrefab, transform);
-        temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
+        Vector3 p = GetRandomPointInCollider(GetComponent<Collider>());
+        p.y=1.1f;
+        temp.transform.position = p;
     }
     /*
     public void SpawnClock()
