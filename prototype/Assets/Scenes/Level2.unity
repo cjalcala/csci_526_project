@@ -6629,7 +6629,7 @@ MonoBehaviour:
   mats:
   - {fileID: -3579108319595051804, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
   - {fileID: 2100000, guid: 6a6944f4904547e4fb039789da5fcd85, type: 2}
-  - {fileID: 2100000, guid: 377792ebe77b1854d950246193edc5b5, type: 2}
+  - {fileID: 2100000, guid: ee47644675828514c8b999edaa99ee59, type: 2}
 --- !u!1 &1486020497
 GameObject:
   m_ObjectHideFlags: 0
