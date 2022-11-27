@@ -18,6 +18,7 @@ public class Onion : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient3Count();
+            InventorySystemManager.inst.addIngredent("Onion");
             Destroy(gameObject);
         }
     }
