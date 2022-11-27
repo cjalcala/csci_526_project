@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
     public bool checkCoinsGoal()
     {
         bool goalReached = true;
-        goalReached = goalReached && (GameTracker.coins >= GameTracker.goalAmt);
+        goalReached = goalReached && (GameTracker.dish >= GameTracker.goalAmt);
         return goalReached;
     }
 
