@@ -175,7 +175,8 @@ public class SanctumQuiz : MonoBehaviour
         PlayerMovement.speed = 8;
         PlayerMovement.horizontalMultiplier = 0.8f;
         PlayerMovement.jumpForce = 750f;
-        SceneManager.UnloadScene("Sanctum");        
+        SceneManager.UnloadScene("Sanctum");
+        
     }
 
     public void LoadTutorialComplete()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7620459348090823916}
   - component: {fileID: 7620459348090823890}
   - component: {fileID: 7620459348090823917}
+  - component: {fileID: 2045723066712202586}
   m_Layer: 0
   m_Name: BagItemBox
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2045723066712202586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620459348090823919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160bbc377a4ef4061afda7a98f8a2381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img: {fileID: 7620459348090823917}
 --- !u!1 &7620459348248443348
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
