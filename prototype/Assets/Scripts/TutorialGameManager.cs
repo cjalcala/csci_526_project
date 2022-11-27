@@ -116,7 +116,7 @@ public class TutorialGameManager : MonoBehaviour
             {
                 TutorialManager.hammerStartTime = TutorialGameManager.time;
                 TutorialManager.hammerFlag = 1;
-                hammerOnText.text = "Obstacle Immunity for 5 sec";
+                // hammerOnText.text = "Obstacle Immunity for 5 sec";
             }
             else
             {
@@ -124,7 +124,7 @@ public class TutorialGameManager : MonoBehaviour
                 {
                     Welcome.immunity = false;
                     TutorialManager.hammerFlag = 0;
-                    hammerOffText.text = "Obstacle Immunity Off";
+                    // hammerOffText.text = "Obstacle Immunity Off";
                     hflag = 1;
                 }
             }
