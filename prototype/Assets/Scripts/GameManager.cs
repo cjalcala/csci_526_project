@@ -267,6 +267,9 @@ public class GameManager : MonoBehaviour
             }
             else {
                 Sprite obj = IngredientMapping.getSprite(ary[j++]);
+                Color tmp = bag[i].transform.Find("Item").gameObject.GetComponent<Image>().color;
+                tmp.a = 1.0f;
+                bag[i].transform.Find("Item").gameObject.GetComponent<Image>().color = tmp;
                 bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = obj;
             }
         }
