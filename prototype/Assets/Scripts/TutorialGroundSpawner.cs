@@ -150,7 +150,7 @@ public class TutorialGroundSpawner : MonoBehaviour
             }
             else if (i == 5)
             {
-                SpawnTutorialTile(true, false, true, false, false, false, 12);//SpawnObstacle, SpawnHammer
+                SpawnTutorialTile(false, false, true, false, false, false, 12);//SpawnObstacle, SpawnHammer
             }
             else if (i == 8)
             {
