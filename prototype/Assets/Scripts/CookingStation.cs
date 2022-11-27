@@ -39,13 +39,9 @@ public class CookingStation : MonoBehaviour
                     {
                         
                         
-                        if ( GroundSpawner.i_set ==false)
+                        if (InventorySystemManager.inst.didGetAllIngredentInBag() == false)
                         {
-                        
-                        //Destroy(gameObject);
-                        return;
-                        
-
+                            return;
                         }
                         else
                         {

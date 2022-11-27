@@ -244,6 +244,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    
     List<GameObject> bag;
     public GameObject bagItemPrefab;
     public GameObject BagUI;
@@ -262,8 +263,8 @@ public class GameManager : MonoBehaviour
         int j = 0;
         for (int i = 0; i < InventorySystemManager.inst.size; i++) {
             if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count) {
-                //bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = emptySpaceSprite;
-                continue;
+                bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = null;
+                //continue;
             }
             else {
                 Sprite obj = IngredientMapping.getSprite(ary[j++]);
@@ -271,7 +272,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
 
     private void Awake()
     {
@@ -720,7 +720,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
+        inst.displayIngredentInBag();
     }
 
     void Restart()

@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 3
+  aniamtionBox: {fileID: 8540201175548784217}
 --- !u!222 &8540201176488593724
 CanvasRenderer:
   m_ObjectHideFlags: 0

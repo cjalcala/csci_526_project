@@ -7,6 +7,7 @@ public class InventorySystemManager : MonoBehaviour {
     public static InventorySystemManager inst;
     public int size;
     public FixedQueue<string> bagQueue;
+    public GameObject aniamtionBox;
     void Start() {
         bagQueue = new FixedQueue<string>(size);
 
@@ -25,6 +26,27 @@ public class InventorySystemManager : MonoBehaviour {
         player2bag.inst.MoveToBag(name);
         
     }
+
+    public bool didGetAllIngredentInBag() {
+        List <string> list = new List<string>(bagQueue);
+        list= list.ConvertAll(d => d.ToUpper());
+        foreach (KeyValuePair<string, Ingredient> pair in GameTracker.ingredientsList) { 
+            if (!list.Contains(pair.Key.ToString().ToUpper())) {
+                
+                return false;
+            }
+            list.Remove(pair.Key.ToString());
+        }
+        inst.emptyBag();
+       
+        return true;
+
+    }
+    public void emptyBag() {
+        inst.bagQueue = new FixedQueue<string>(size);
+        aniamtionBox.SetActive(false);
+    }
+
     public class FixedQueue<T> : Queue<T> {
         public int QSize;
 
