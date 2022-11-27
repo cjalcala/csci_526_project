@@ -148,7 +148,7 @@ MonoBehaviour:
   MushroomPrefab: {fileID: 8196533582583995943, guid: 2175c6e125fbd4744a8583a350bb5f72, type: 3}
   OnionIcon: {fileID: 21300000, guid: 17f0e4163a69b2e43869ca3c83cd0cd6, type: 3}
   OnionPrefab: {fileID: 7806849474239777987, guid: 7bce4e80e5aaf46279aa675c7a02ebaf, type: 3}
-  PepperIcon: {fileID: 21300000, guid: 4d60a67e1ea580144ba2d082e8f472dc, type: 3}
+  PepperIcon: {fileID: 21300000, guid: 584928269af1cee4a99f587b340d36cf, type: 3}
   PepperPrefab: {fileID: 4603852242773812245, guid: 413aa6577f21144eeb8dbd0a91b1b2c5, type: 3}
   SteakIcon: {fileID: 21300000, guid: 4d60a67e1ea580144ba2d082e8f472dc, type: 3}
   SteakPrefab: {fileID: 3305831611645858870, guid: 137174f9317c442198d535e74ee68261, type: 3}
