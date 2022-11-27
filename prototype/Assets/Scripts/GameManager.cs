@@ -269,8 +269,8 @@ public class GameManager : MonoBehaviour
         {
             if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count)
             {
-                // bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = null;
-                continue;
+                 bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = null;
+                //continue;
             }
             else
             {

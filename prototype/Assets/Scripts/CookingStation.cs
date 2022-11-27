@@ -52,7 +52,7 @@ public class CookingStation : MonoBehaviour
                     PlayerMovement.speed = 0;
                     PlayerMovement.horizontalMultiplier = 0;
                     PlayerMovement.jumpForce = 0;
-
+                    InventorySystemManager.inst.emptyBag();
                     SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
 
                 }

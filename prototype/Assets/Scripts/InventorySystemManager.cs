@@ -37,7 +37,6 @@ public class InventorySystemManager : MonoBehaviour {
             }
             list.Remove(pair.Key.ToString());
         }
-        inst.emptyBag();
        
         return true;
 
