@@ -39,21 +39,23 @@ public class HintObject : MonoBehaviour {
     }
     // Start is called before the first frame update
     void Start() {
-
+        Debug.Log(transform.position.z);
+        Debug.Log(transform.position.y);
+        
     }
 
     // Update is called once per frame
     void Update() {
-        transform.Translate(0.0f, move*Time.deltaTime, 0.0f);
+        transform.Translate(0.0f, 0.0f, move*Time.deltaTime);
 
         if (transform.position.y > yRange)
         {
             transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
             move = -move;
         }
-        if (transform.position.y < 0.8f)
+        if (transform.position.y < 1f)
         {
-            transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
             move = -move;
         }
 

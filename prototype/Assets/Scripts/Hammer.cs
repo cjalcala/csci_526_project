@@ -41,9 +41,9 @@ public class Hammer : MonoBehaviour
             transform.position = new Vector3(transform.position.x, yRange, transform.position.z);
             move = -move;
         }
-        if (transform.position.y < 0.8f)
+        if (transform.position.y < 1f)
         {
-            transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
             move = -move;
         }
     }
