@@ -11,6 +11,11 @@ public class Basil : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        if (other.gameObject.GetComponent<CookingStation>() != null){
+            Destroy(gameObject);
+            return;
+
+        }
         if (other.gameObject.name != "Player") 
         {
             return;
@@ -18,6 +23,7 @@ public class Basil : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient1Count();
+            InventorySystemManager.inst.addIngredent("Basil");
             Destroy(gameObject);
         }
     }

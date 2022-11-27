@@ -11,6 +11,12 @@ public class Onion : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        if (other.gameObject.GetComponent<CookingStation>() != null){
+            Destroy(gameObject);
+            return;
+
+        }
+        
         if (other.gameObject.name != "Player") 
         {
             return;
@@ -18,6 +24,7 @@ public class Onion : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient3Count();
+            InventorySystemManager.inst.addIngredent("Onion");
             Destroy(gameObject);
         }
     }

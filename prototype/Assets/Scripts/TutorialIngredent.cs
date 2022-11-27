@@ -6,6 +6,11 @@ public class TutorialIngredent : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
         {
+            if (other.gameObject.GetComponent<TutorialObstacle>() != null){
+                Destroy(gameObject);
+                return;
+
+            }
             if (other.gameObject.GetComponent<Obstacle>() != null) {
                 Destroy(gameObject);
                 return;

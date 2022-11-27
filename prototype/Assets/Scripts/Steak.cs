@@ -6,7 +6,7 @@ public class Steak : MonoBehaviour
 {
     private void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.GetComponent<Obstacle>() != null)
+        if (other.gameObject.GetComponent<Obstacle>() != null || other.gameObject.GetComponent<CookingStation>() != null)
         {
             Destroy(gameObject);
             return;
@@ -18,6 +18,7 @@ public class Steak : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient3Count();
+            InventorySystemManager.inst.addIngredent("Steak");
             Destroy(gameObject);
         }
     }

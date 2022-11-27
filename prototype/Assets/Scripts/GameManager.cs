@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         GameTracker.ingred1++;
         ingredient1 = GameTracker.ingred1;
         ingredient1Text.text = ": " + GameTracker.ingred1;
-       // changeCoinAmount(-2);
+        // changeCoinAmount(-2);
     }
     public void IncrementIngredient2Count()
     {
@@ -244,6 +244,34 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    List<GameObject> bag;
+    public GameObject bagItemPrefab;
+    public GameObject BagUI;
+    public void createBag() {
+        bag = new List<GameObject>();
+        for (int i = 0; i < InventorySystemManager.inst.size; i++) {
+            GameObject bagItemBox = Instantiate(bagItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+            bagItemBox.transform.SetParent(BagUI.transform, false);
+            bag.Add(bagItemBox);
+        }
+    }
+
+    public void displayIngredentInBag() {
+        string[] ary = InventorySystemManager.inst.bagQueue.ToArray();
+        int j = 0;
+        for (int i = 0; i < InventorySystemManager.inst.size; i++) {
+            if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count) {
+                //bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = emptySpaceSprite;
+                continue;
+            }
+            else {
+                Sprite obj = IngredientMapping.getSprite(ary[j++]);
+                bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = obj;
+            }
+        }
+    }
+
 
     private void Awake()
     {
@@ -258,7 +286,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         highlightFlag = 0;
-        Obstacle.hit=false;
+        Obstacle.hit = false;
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         hintText.text = ": " + GameTracker.hintCount;
@@ -267,6 +295,8 @@ public class GameManager : MonoBehaviour
         ingredient1Text.text = ": " + GameTracker.ingred1;
         ingredient2Text.text = ": " + GameTracker.ingred2;
         ingredient3Text.text = ": " + GameTracker.ingred3;
+
+        GameTracker.hammerFlag = 0;
 
         // }
         // if (GameTracker.level == 2)
@@ -293,6 +323,7 @@ public class GameManager : MonoBehaviour
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
         //questionGenerator = new QuestionGenerator();
+        createBag();
         Debug.Log("Game " + GameTracker.timeRemain);
     }
 
@@ -805,9 +836,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeBleed()
     {
-        if (Obstacle.hit == true)
+        int h = GameTracker.health;
+        if ((Obstacle.hit || Mouse.hit) && hearts[h].enabled == true)
+        // if (h < 5 && hearts[h].enabled)
         {
-            int h = GameTracker.health;
+            for (int j = h + 1; j < 5; j++) hearts[h].enabled = false;
+            Mouse.hit = false;
             //blink
             for (int i = 0; i < 5; i++)
             {
