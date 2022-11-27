@@ -212,18 +212,20 @@ public class SanctumQuiz : MonoBehaviour
         }
         else
         {
+            notCollected = true;
+            continueGame();
 
             // Send(quizQuestion.question, 0, 1);
 
-            if (GameTracker.coins < 2)
-            {
-                notCollected = true;
-                continueGame();
-            }
-            else
-            {
-                Invoke("gameOver", 2.0f);
-            }
+            // if (GameTracker.coins < 2)
+            // {
+            //     notCollected = true;
+            //     continueGame();
+            // }
+            // else
+            // {
+            //     Invoke("gameOver", 2.0f);
+            // }
         }
     }
 

@@ -81,7 +81,7 @@ public class GameTracker : MonoBehaviour
             ingredientNames = new string[]{"cucumber", "lemon", "yogurt"};
 
 
-            goalAmt = 15;
+            goalAmt = 1;
 
         }
         else if (level == 2)
@@ -96,7 +96,7 @@ public class GameTracker : MonoBehaviour
             recipe = new Recipe("Tomato Basil Soup", 20);
             ingredientNames = new string[]{"Basil", "Tomato", "Onion"};
 
-            goalAmt = 40;
+            goalAmt = 2;
         }
         else if (level == 3)
         {
@@ -110,7 +110,7 @@ public class GameTracker : MonoBehaviour
             recipe = new Recipe("Grilled Kabob", 20);
             ingredientNames = new string[]{"Mushroom", "Pepper", "Steak"};
 
-            goalAmt = 60;
+            goalAmt = 3;
         }
 
         coins = GameTracker.coins;

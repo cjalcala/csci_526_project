@@ -23,6 +23,7 @@ public class Pepper : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient2Count();
+            InventorySystemManager.inst.addIngredent("Pepper");
             Destroy(gameObject);
         }
     }

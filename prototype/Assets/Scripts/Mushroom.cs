@@ -23,6 +23,7 @@ public class Mushroom : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient1Count();
+            InventorySystemManager.inst.addIngredent("Mushroom");
             Destroy(gameObject);
         }
     }
