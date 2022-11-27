@@ -32,10 +32,7 @@ public class AnswerScript : MonoBehaviour
             }
             else
             {
-                if (GameTracker.coins < 2)
-                {
-                    sanctumQuiz.options[correctIdx].GetComponent<Button>().image.color = Color.green;
-                }
+                sanctumQuiz.options[correctIdx].GetComponent<Button>().image.color = Color.green;
             }
             //Debug.Log("Incorrect Answer");
             sanctumQuiz.wrong();
