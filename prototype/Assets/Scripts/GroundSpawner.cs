@@ -89,6 +89,11 @@ public class GroundSpawner : MonoBehaviour
             if (rand == 1 && GameTracker.level != 1)
             {
                 temp.GetComponent<GroundTile>().SpawnMouse();
+                temp.GetComponent<GroundTile>().SpawnMouse();
+                temp.GetComponent<GroundTile>().SpawnMouse();
+                temp.GetComponent<GroundTile>().SpawnMouse();
+                temp.GetComponent<GroundTile>().SpawnMouse();
+                temp.GetComponent<GroundTile>().SpawnMouse();
             }
 
             // randomly generate ingredients along the path
