@@ -7194,6 +7194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ch09_nonPBR@Slow Run
       objectReference: {fileID: 0}
+    - target: {fileID: 7233867138446155668, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -3579108319595051804, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
 --- !u!4 &1479279441 stripped
@@ -7246,7 +7250,7 @@ MonoBehaviour:
   mats:
   - {fileID: -3579108319595051804, guid: 2db61481e2ddd4a0ca1ae6ff566a5adc, type: 3}
   - {fileID: 2100000, guid: 6a6944f4904547e4fb039789da5fcd85, type: 2}
-  - {fileID: 2100000, guid: 377792ebe77b1854d950246193edc5b5, type: 2}
+  - {fileID: 2100000, guid: ee47644675828514c8b999edaa99ee59, type: 2}
 --- !u!1 &1486020497
 GameObject:
   m_ObjectHideFlags: 0

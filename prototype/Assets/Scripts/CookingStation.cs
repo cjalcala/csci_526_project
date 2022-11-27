@@ -9,6 +9,8 @@ public class CookingStation : MonoBehaviour
     public GameManager gameManager;
     public bool i_set;
 
+    public static bool hit = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Obstacle>() != null)
@@ -16,7 +18,8 @@ public class CookingStation : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        if (other.gameObject.GetComponent<TutorialObstacle>() != null){
+        if (other.gameObject.GetComponent<TutorialObstacle>() != null)
+        {
             Destroy(gameObject);
             return;
 
@@ -34,33 +37,30 @@ public class CookingStation : MonoBehaviour
         }
         else
         {
-            if (gameObject.tag=="CookingStation")
+            if (gameObject.tag == "CookingStation")
 
-                    {
-                        
-                        
-                        if ( GroundSpawner.i_set ==false)
-                        {
-                        
-                        //Destroy(gameObject);
-                        return;
-                        
+            {
+                hit = true;
 
-                        }
-                        else
-                        {
-                            PlayerMovement.speed = 0;
-                            PlayerMovement.horizontalMultiplier = 0;
-                            PlayerMovement.jumpForce = 0;
 
-                            SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
+                if (InventorySystemManager.inst.didGetAllIngredentInBag() == false)
+                {
+                    return;
+                }
+                else
+                {
+                    PlayerMovement.speed = 0;
+                    PlayerMovement.horizontalMultiplier = 0;
+                    PlayerMovement.jumpForce = 0;
+                    InventorySystemManager.inst.emptyBag();
+                    SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
 
-                        }
+                }
 
-                    }    
+            }
         }
-        
         Destroy(gameObject);
+
     }
 
     // Start is called before the first frame update
@@ -72,6 +72,6 @@ public class CookingStation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
