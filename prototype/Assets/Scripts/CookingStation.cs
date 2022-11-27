@@ -16,6 +16,11 @@ public class CookingStation : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        if (other.gameObject.GetComponent<TutorialObstacle>() != null){
+            Destroy(gameObject);
+            return;
+
+        }
 
         if (other.gameObject.name != "Player")
         {

@@ -11,6 +11,11 @@ public class Pepper : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        if (other.gameObject.GetComponent<CookingStation>() != null){
+            Destroy(gameObject);
+            return;
+
+        }
         if (other.gameObject.name != "Player") 
         {
             return;
