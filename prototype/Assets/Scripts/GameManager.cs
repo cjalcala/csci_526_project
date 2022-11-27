@@ -479,7 +479,7 @@ public class GameManager : MonoBehaviour
         if (SanctumQuiz.notCollected == true && notCollectedIngredienttimeDisplay >= 0)
         {
             notCollectedIngredient.color = Color.red;
-            notCollectedIngredient.text = "No Reward Collected!";
+            // notCollectedIngredient.text = "No Reward Collected!";
             notCollectedIngredienttimeDisplay -= (Time.deltaTime / 2);
 
         }
@@ -497,7 +497,7 @@ public class GameManager : MonoBehaviour
             {
                 GameTracker.hammerStartTime = GameTracker.timeRemain;
                 GameTracker.hammerFlag = 1;
-                fiftyFiftyPopUpText.text = "Obstacle immunity for 5 sec";
+                // fiftyFiftyPopUpText.text = "Obstacle immunity for 5 sec";
             }
             else
             {
@@ -505,7 +505,7 @@ public class GameManager : MonoBehaviour
                 {
                     Welcome.immunity = false;
                     GameTracker.hammerFlag = 0;
-                    hammerOffText.text = "Obstacle immunity off";
+                    // hammerOffText.text = "Obstacle immunity off";
                     hflag = 1;
                 }
             }
@@ -543,7 +543,7 @@ public class GameManager : MonoBehaviour
         {
             GameTracker.fiftyFiftyPopUpStartTime = GameTracker.timeRemain;
             GameTracker.fiftyFiftyPopUpFlag = 1;
-            fiftyFiftyPopUpText.text = "You can eliminate 2 wrong answers!";
+            // fiftyFiftyPopUpText.text = "You can eliminate 2 wrong answers!";
             GameTracker.getFiftyFiftyPowerUp = false;
         }
         if (GameTracker.fiftyFiftyPopUpFlag == 1)
@@ -563,7 +563,7 @@ public class GameManager : MonoBehaviour
         {
             GameTracker.hintPopUpStartTime = GameTracker.timeRemain;
             GameTracker.hintPopUpFlag = 1;
-            fiftyFiftyPopUpText.text = "You got a hint!";
+            // fiftyFiftyPopUpText.text = "You got a hint!";
             GameTracker.getHintPowerUp = false;
         }
         if (GameTracker.hintPopUpFlag == 1)
