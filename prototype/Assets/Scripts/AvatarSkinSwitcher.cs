@@ -23,7 +23,7 @@ public class AvatarSkinSwitcher : MonoBehaviour
     IEnumerator ChangeBleed()
     {
 
-        if ((TutorialManager.tutorialActive && TutorialObstacle.hit == true) || (!TutorialManager.tutorialActive && Obstacle.hit == true))
+        if ((TutorialManager.tutorialActive && TutorialObstacle.hit) || (!TutorialManager.tutorialActive && (Obstacle.hit || Mouse.hit)))
 
         {
             GetComponent<Renderer>().material = mats[1];

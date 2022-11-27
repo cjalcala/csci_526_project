@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         GameTracker.ingred1++;
         ingredient1 = GameTracker.ingred1;
         ingredient1Text.text = ": " + GameTracker.ingred1;
-       // changeCoinAmount(-2);
+        // changeCoinAmount(-2);
     }
     public void IncrementIngredient2Count()
     {
@@ -286,7 +286,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         highlightFlag = 0;
-        Obstacle.hit=false;
+        Obstacle.hit = false;
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         hintText.text = ": " + GameTracker.hintCount;
@@ -834,9 +834,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeBleed()
     {
-        if (Obstacle.hit == true)
+        int h = GameTracker.health;
+        if ((Obstacle.hit || Mouse.hit) && hearts[h].enabled == true)
+        // if (h < 5 && hearts[h].enabled)
         {
-            int h = GameTracker.health;
+            for (int j = h + 1; j < 5; j++) hearts[h].enabled = false;
+            Mouse.hit = false;
             //blink
             for (int i = 0; i < 5; i++)
             {
