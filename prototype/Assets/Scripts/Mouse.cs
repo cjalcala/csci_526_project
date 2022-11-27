@@ -11,6 +11,8 @@ public class Mouse : MonoBehaviour
 
     public static bool hit = false;
 
+    PlayerMovement playerMovement;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Obstacle>() != null)
@@ -34,7 +36,14 @@ public class Mouse : MonoBehaviour
         if (ingredient_one_count == 0 && ingredient_two_count == 0 && ingredient_three_count == 0)
         {
             hit = true;
-            GameTracker.health--;
+            if (GameTracker.health != 1)
+            {
+                GameTracker.health--;
+            }
+            else
+            {
+                playerMovement.Die("obstacle");
+            }
         }
         else if (ingredient_one_count != 0 && ingredient_two_count == 0 && ingredient_three_count == 0)
         {
@@ -123,7 +132,7 @@ public class Mouse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
