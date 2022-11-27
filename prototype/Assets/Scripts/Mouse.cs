@@ -35,6 +35,10 @@ public class Mouse : MonoBehaviour
             int ingredient_two_count = GameTracker.ingred2;
             int ingredient_three_count = GameTracker.ingred3;
             hit = true;
+            if (InventorySystemManager.inst.qSize() != 0) 
+            {
+                InventorySystemManager.inst.loseRecentIngredient();
+            }
             if (GameTracker.health != 1)
             {
                 GameTracker.health--;
@@ -43,83 +47,6 @@ public class Mouse : MonoBehaviour
             {
                 playerMovement.Die("obstacle");
             }
-
-            // if (ingredient_one_count == 0 && ingredient_two_count == 0 && ingredient_three_count == 0)
-            // {
-                
-            //     if (GameTracker.health != 1)
-            //     {
-            //         GameTracker.health--;
-            //     }
-            //     else
-            //     {
-            //         playerMovement.Die("obstacle");
-            //     }
-            // }
-            // else if (ingredient_one_count != 0 && ingredient_two_count == 0 && ingredient_three_count == 0)
-            // {
-            //     GameTracker.ingred1 -= 1;
-            // }
-            // else if (ingredient_one_count == 0 && ingredient_two_count != 0 && ingredient_three_count == 0)
-            // {
-            //     GameTracker.ingred2 -= 1;
-            // }
-            // else if (ingredient_one_count == 0 && ingredient_two_count == 0 && ingredient_three_count != 0)
-            // {
-            //     GameTracker.ingred3 -= 1;
-            // }
-            // else if (ingredient_one_count != 0 && ingredient_two_count != 0 && ingredient_three_count == 0)
-            // {
-            //     int rand = Random.Range(1, 3);
-            //     if (rand == 1)
-            //     {
-            //         GameTracker.ingred1 -= 1;
-            //     }
-            //     else
-            //     {
-            //         GameTracker.ingred2 -= 1;
-            //     }
-            // }
-            // else if (ingredient_one_count != 0 && ingredient_two_count == 0 && ingredient_three_count != 0)
-            // {
-            //     int rand = Random.Range(1, 3);
-            //     if (rand == 1)
-            //     {
-            //         GameTracker.ingred1 -= 1;
-            //     }
-            //     else
-            //     {
-            //         GameTracker.ingred3 -= 1;
-            //     }
-            // }
-            // else if (ingredient_one_count == 0 && ingredient_two_count != 0 && ingredient_three_count != 0)
-            // {
-            //     int rand = Random.Range(1, 3);
-            //     if (rand == 1)
-            //     {
-            //         GameTracker.ingred2 -= 1;
-            //     }
-            //     else
-            //     {
-            //         GameTracker.ingred3 -= 1;
-            //     }
-            // }
-            // else
-            // {
-            //     int rand = Random.Range(1, 4);
-            //     if (rand == 1)
-            //     {
-            //         GameTracker.ingred1 -= 1;
-            //     }
-            //     else if (rand == 2)
-            //     {
-            //         GameTracker.ingred2 -= 1;
-            //     }
-            //     else
-            //     {
-            //         GameTracker.ingred3 -= 1;
-            //     }
-            // }
         }
         else
         {
@@ -128,6 +55,8 @@ public class Mouse : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+       
+
 
         // hit = false;
         //Destroy(gameObject);
