@@ -63,6 +63,8 @@ public class TutorialGameManager : MonoBehaviour
         ingredientNum = 0;
         hintCount = 0;
         fiftyFiftyCount = 0;
+        TutorialObstacle.hit = false;
+        TutorialManager.hammerFlag = 0;
     }
 
     IEnumerator ChangeBleed()
