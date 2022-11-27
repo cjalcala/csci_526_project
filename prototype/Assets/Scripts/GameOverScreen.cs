@@ -25,6 +25,7 @@ public class GameOverScreen : MonoBehaviour
         Welcome.immunity = false;
         GameTracker.health=5;
         GameTracker.fiftyFiftyCount = 0;
+        GameTracker.hintCount = 0;
         GameTracker.ingred1 = 0;
         GameTracker.ingred2 = 0;
         GameTracker.ingred3 = 0;
