@@ -157,7 +157,7 @@ public class Mouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rb.position.x >= 4.5f)
+        if (rb.position.x >= 4f)
         {
             //horizontalDir = -1;
             if(r==1)
@@ -169,7 +169,7 @@ public class Mouse : MonoBehaviour
             
             //Debug.Log("right");
         }
-        else if (rb.position.x <= -4.5f)
+        else if (rb.position.x <= -4f)
         {
             //horizontalDir = 1;
             //Debug.Log("left");
