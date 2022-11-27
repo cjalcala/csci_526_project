@@ -296,6 +296,7 @@ public class GameManager : MonoBehaviour
     {
         highlightFlag = 0;
         Obstacle.hit = false;
+        Mouse.hit = false;
         coinText.text = ": " + GameTracker.coins;
         fiftyFiftyText.text = ": " + GameTracker.fiftyFiftyCount;
         hintText.text = ": " + GameTracker.hintCount;
