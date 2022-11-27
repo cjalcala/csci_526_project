@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class CookingStation : MonoBehaviour
 {
     PlayerMovement PlayerMovement;
+    public GameManager gameManager;
+    public bool i_set;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,10 +29,30 @@ public class CookingStation : MonoBehaviour
         }
         else
         {
-            PlayerMovement.speed = 0;
-            PlayerMovement.horizontalMultiplier = 0;
-            PlayerMovement.jumpForce = 0;
-            SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
+            if (gameObject.tag=="CookingStation")
+
+                    {
+                        
+                        
+                        if ( GroundSpawner.i_set ==false)
+                        {
+                        
+                        //Destroy(gameObject);
+                        return;
+                        
+
+                        }
+                        else
+                        {
+                            PlayerMovement.speed = 0;
+                            PlayerMovement.horizontalMultiplier = 0;
+                            PlayerMovement.jumpForce = 0;
+
+                            SceneManager.LoadScene("Sanctum", LoadSceneMode.Additive);
+
+                        }
+
+                    }    
         }
         
         Destroy(gameObject);

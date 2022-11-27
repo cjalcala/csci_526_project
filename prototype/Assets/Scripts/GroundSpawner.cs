@@ -7,7 +7,7 @@ public class GroundSpawner : MonoBehaviour
     public GameObject groundTile;
     public GameObject terrainPrefab;
     public SanctumEntrance entrance;
-    
+    public static bool i_set;
     Vector3 nextSpawnPoint;
     public int hammerSpawnTime;
     int cnt = 0;
@@ -127,7 +127,7 @@ public class GroundSpawner : MonoBehaviour
                 }
                 
             }
-
+            i_set=gameManager.CheckIngredientSet();
             
             if (gameManager.CheckIngredientSet())
 
@@ -138,6 +138,15 @@ public class GroundSpawner : MonoBehaviour
                     temp.GetComponent<GroundTile>().SpawnStation();
                 }
             }
+            else
+            {
+                stations = GameObject.FindGameObjectsWithTag("CookingStation");
+                if (stations.Length < 1)
+                {
+                    temp.GetComponent<GroundTile>().SpawnStation();
+                }
+            }
+             
         }
         if (spawnHammer && GameTracker.level != 1)
         {
