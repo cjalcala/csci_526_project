@@ -489,8 +489,8 @@ public class GameManager : MonoBehaviour
 
         if (SanctumQuiz.notCollected == true && notCollectedIngredienttimeDisplay >= 0)
         {
-            notCollectedIngredient.color = Color.red;
-            notCollectedIngredient.text = "No Reward Collected!";
+            notCollectedIngredient.color = Color.black;
+            notCollectedIngredient.text = "Did not cook dish!";
             notCollectedIngredienttimeDisplay -= (Time.deltaTime / 2);
 
         }
