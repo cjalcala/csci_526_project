@@ -38,7 +38,7 @@ public class GroundSpawner : MonoBehaviour
             // }
 
             int rand;
-            if(GameTracker.fiftyFiftyCount>=1)
+            if (GameTracker.fiftyFiftyCount >= 1)
             {
                 // rand = Random.Range(0,50);
                 // if (rand == 1) {
@@ -48,12 +48,13 @@ public class GroundSpawner : MonoBehaviour
 
             else
             {
-                rand = Random.Range(0,10);
-                if (rand == 1) {
-                    if(fiftyfityspawnFlag == 0 && GameTracker.fiftyFiftyCount == 0)
+                rand = Random.Range(0, 10);
+                if (rand == 1)
+                {
+                    if (fiftyfityspawnFlag == 0 && GameTracker.fiftyFiftyCount == 0)
                     {
                         temp.GetComponent<GroundTile>().SpawnFiftyFifty();
-                        if(GameTracker.fiftyFiftyCount >= 1)
+                        if (GameTracker.fiftyFiftyCount >= 1)
                         {
                             fiftyfityspawnFlag = 1;
                             GameObject fiftyfifty = GameObject.FindGameObjectWithTag("FiftyFifty").gameObject;
@@ -66,7 +67,7 @@ public class GroundSpawner : MonoBehaviour
                 }
             }
 
-            if(GameTracker.hintCount>=1)
+            if (GameTracker.hintCount >= 1)
             {
                 // rand = Random.Range(0,50);
                 // if (rand == 1) {
@@ -76,59 +77,73 @@ public class GroundSpawner : MonoBehaviour
 
             else
             {
-                rand = Random.Range(0,10);
-                if (rand == 1) {
+                rand = Random.Range(0, 10);
+                if (rand == 1)
+                {
                     temp.GetComponent<GroundTile>().SpawnHints();
                 }
             }
-            
+
 
             rand = Random.Range(0, 5);
-            if (rand == 1 && GameTracker.level!=1) {
+            if (rand == 1 && GameTracker.level != 1)
+            {
                 temp.GetComponent<GroundTile>().SpawnMouse();
             }
 
             // randomly generate ingredients along the path
             int rand_ingredient = Random.Range(1, 4);
-            if (rand_ingredient == 1) {
-                if (GameTracker.level == 1) {
+            if (rand_ingredient == 1)
+            {
+                if (GameTracker.level == 1)
+                {
                     temp.GetComponent<GroundTile>().SpawnCucumber();
                 }
-                if (GameTracker.level == 2) {
+                if (GameTracker.level == 2)
+                {
                     temp.GetComponent<GroundTile>().SpawnBasil();
                 }
-                if (GameTracker.level == 3) {
+                if (GameTracker.level == 3)
+                {
                     temp.GetComponent<GroundTile>().SpawnMushroom();
                 }
-                
+
             }
-            if (rand_ingredient == 2) {
-                if (GameTracker.level == 1) {
+            if (rand_ingredient == 2)
+            {
+                if (GameTracker.level == 1)
+                {
                     temp.GetComponent<GroundTile>().SpawnLemon();
-                } 
-                if (GameTracker.level == 2) {
+                }
+                if (GameTracker.level == 2)
+                {
                     temp.GetComponent<GroundTile>().SpawnTomato();
                 }
-                if (GameTracker.level == 3) {
+                if (GameTracker.level == 3)
+                {
                     temp.GetComponent<GroundTile>().SpawnPepper();
-                } 
+                }
 
-                
+
             }
-            if (rand_ingredient == 3) {
-                if (GameTracker.level == 1) {
+            if (rand_ingredient == 3)
+            {
+                if (GameTracker.level == 1)
+                {
                     temp.GetComponent<GroundTile>().SpawnYogurt();
                 }
-                if (GameTracker.level == 2) {
+                if (GameTracker.level == 2)
+                {
                     temp.GetComponent<GroundTile>().SpawnOnion();
                 }
-                if (GameTracker.level == 3) {
+                if (GameTracker.level == 3)
+                {
                     temp.GetComponent<GroundTile>().SpawnSteak();
                 }
-                
+
             }
-            i_set=gameManager.CheckIngredientSet();
-            
+            i_set = gameManager.CheckIngredientSet();
+
             if (gameManager.CheckIngredientSet())
 
             {
@@ -146,7 +161,7 @@ public class GroundSpawner : MonoBehaviour
                     temp.GetComponent<GroundTile>().SpawnStation();
                 }
             }
-             
+
         }
         if (spawnHammer && GameTracker.level != 1)
         {
