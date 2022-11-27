@@ -18,6 +18,11 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<Onion>() != null || collision.gameObject.GetComponent<Cucumber>() != null || collision.gameObject.GetComponent<Basil>() != null || collision.gameObject.GetComponent<Lemon>() != null || collision.gameObject.GetComponent<Mushroom>() != null || collision.gameObject.GetComponent<Pepper>() != null || collision.gameObject.GetComponent<Tomato>() != null )
+        {
+            Destroy(gameObject);
+            return;
+        } 
         if (collision.gameObject.name == "Player" && !Welcome.immunity && !hit && !GameTracker.sanctumImmunity)
         {
             Debug.Log(GameTracker.health);

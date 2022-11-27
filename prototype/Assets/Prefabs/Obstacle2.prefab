@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 1272039014328622777}
   - component: {fileID: 1767003827637097587}
   - component: {fileID: 7268698654253770804}
+
   - component: {fileID: 3847727203828128829}
+
   m_Layer: 0
   m_Name: Obstacle2
   m_TagString: Untagged
@@ -113,7 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
+
 --- !u!54 &3847727203828128829
+
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

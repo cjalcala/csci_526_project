@@ -17,6 +17,16 @@ public class TutorialObstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<TutorialIngredent>() != null){
+            Destroy(gameObject);
+            return;
+        }
+        if (collision.gameObject.GetComponent<CookingStation>() != null){
+            Destroy(gameObject);
+            return;
+
+        }
+
         if (collision.gameObject.name == "Player" && !Welcome.immunity && !hit)
         {
             hit = true;

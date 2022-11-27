@@ -6,7 +6,7 @@ public class Yogurt : MonoBehaviour
 {
     private void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.GetComponent<Obstacle>() != null)
+        if (other.gameObject.GetComponent<Obstacle>() != null || other.gameObject.GetComponent<CookingStation>() != null)
         {
             Destroy(gameObject);
             return;
