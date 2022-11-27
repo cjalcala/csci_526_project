@@ -268,6 +268,8 @@ public class GameManager : MonoBehaviour
         ingredient2Text.text = ": " + GameTracker.ingred2;
         ingredient3Text.text = ": " + GameTracker.ingred3;
 
+        GameTracker.hammerFlag = 0;
+
         // }
         // if (GameTracker.level == 2)
         // {
