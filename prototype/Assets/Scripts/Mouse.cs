@@ -29,19 +29,17 @@ public class Mouse : MonoBehaviour
             return;
         }
 
-        if (other.gameObject.name == "Player" && !Welcome.immunity && !hit && !GameTracker.sanctumImmunity)
+        if (!Welcome.immunity && !hit && !GameTracker.sanctumImmunity)
         {
-            int ingredient_one_count = GameTracker.ingred1;
-            int ingredient_two_count = GameTracker.ingred2;
-            int ingredient_three_count = GameTracker.ingred3;
-            hit = true;
+            
             if (InventorySystemManager.inst.qSize() != 0) 
             {
                 InventorySystemManager.inst.loseRecentIngredient();
             }
-            if (GameTracker.health != 1)
+            else if (GameTracker.health != 1)
             {
                 GameTracker.health--;
+                hit = true;
             }
             else
             {

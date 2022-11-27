@@ -19,7 +19,7 @@ public class player2bag : MonoBehaviour
         gameObject.SetActive(false); 
     }
     public void MoveToBag(string name) {
-        destination = bagUI.transform.GetChild(bagUI.transform.childCount - 1);
+        destination = bagUI.transform.GetChild(InventorySystemManager.inst.qSize() - 1);
         gameObject.SetActive(true);
         gameObject.GetComponent<Image>().sprite = IngredientMapping.getSprite(name);
         transform.position = RectTransformUtility.WorldToScreenPoint(cam,rb.position);

@@ -264,21 +264,20 @@ public class GameManager : MonoBehaviour
     public void displayIngredentInBag()
     {
         string[] ary = InventorySystemManager.inst.bagQueue.ToArray();
-        int j = 0;
         for (int i = 0; i < InventorySystemManager.inst.size; i++)
         {
-            if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count)
-            {
-                 bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = null;
-                //continue;
-            }
-            else
-            {
-                Sprite obj = IngredientMapping.getSprite(ary[j++]);
+            if (i < InventorySystemManager.inst.bagQueue.Count)
+            {                
+                Sprite obj = IngredientMapping.getSprite(ary[i]);
                 Color tmp = bag[i].transform.Find("Item").gameObject.GetComponent<Image>().color;
                 tmp.a = 1.0f;
                 bag[i].transform.Find("Item").gameObject.GetComponent<Image>().color = tmp;
                 bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = obj;
+            }
+            else
+            {
+                bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = null;
+                //continue;
             }
         }
     }
