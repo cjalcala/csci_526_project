@@ -18,6 +18,7 @@ public class Cucumber : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient1Count();
+            InventorySystemManager.inst.addIngredent("Cucumber");
             Destroy(gameObject);
         }
     }

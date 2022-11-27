@@ -18,6 +18,7 @@ public class Tomato : MonoBehaviour
         if (GameTracker.coins >= 2)
         {
             GameManager.inst.IncrementIngredient2Count();
+            InventorySystemManager.inst.addIngredent("Tomato");
             Destroy(gameObject);
         }
     }

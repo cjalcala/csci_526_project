@@ -244,6 +244,34 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    List<GameObject> bag;
+    public GameObject bagItemPrefab;
+    public GameObject BagUI;
+    public void createBag() {
+        bag = new List<GameObject>();
+        for (int i = 0; i < InventorySystemManager.inst.size; i++) {
+            GameObject bagItemBox = Instantiate(bagItemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+            bagItemBox.transform.SetParent(BagUI.transform, false);
+            bag.Add(bagItemBox);
+        }
+    }
+
+    public void displayIngredentInBag() {
+        string[] ary = InventorySystemManager.inst.bagQueue.ToArray();
+        int j = 0;
+        for (int i = 0; i < InventorySystemManager.inst.size; i++) {
+            if (i < InventorySystemManager.inst.size - InventorySystemManager.inst.bagQueue.Count) {
+                //bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = emptySpaceSprite;
+                continue;
+            }
+            else {
+                Sprite obj = IngredientMapping.getSprite(ary[j++]);
+                bag[i].transform.Find("Item").gameObject.GetComponent<Image>().sprite = obj;
+            }
+        }
+    }
+
 
     private void Awake()
     {
@@ -293,6 +321,7 @@ public class GameManager : MonoBehaviour
         playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
         TutorialManager.tutorialActive = false;
         //questionGenerator = new QuestionGenerator();
+        createBag();
         Debug.Log("Game " + GameTracker.timeRemain);
     }
 
