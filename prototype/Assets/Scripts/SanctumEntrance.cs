@@ -7,6 +7,8 @@ public class SanctumEntrance : MonoBehaviour
 {
     
     PlayerMovement playerMovement;
+    public GameManager gameManager;
+
     public Mesh[] mesh;
     public Material[] mat;
     public int ingredientID;
@@ -98,10 +100,11 @@ public class SanctumEntrance : MonoBehaviour
 
         Destroy(gameObject);
 
-        if (GameTracker.coins >= GameTracker.ingredientsList[ingredientList[ingredientID]].cost)
+       // if (GameTracker.coins >= GameTracker.ingredientsList[ingredientList[ingredientID]].cost)
+         if (GameTracker.ingred1 >= 1 && GameTracker.ingred2 >= 1 && GameTracker.ingred3 >= 1)
         {
 
-            GameTracker.coins -= GameTracker.ingredientsList[ingredientList[ingredientID]].cost;
+            //GameTracker.coins -= GameTracker.ingredientsList[ingredientList[ingredientID]].cost;
             SceneManager.LoadScene("Sanctum");
 
         }

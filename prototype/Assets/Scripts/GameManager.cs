@@ -135,21 +135,21 @@ public class GameManager : MonoBehaviour
         GameTracker.ingred1++;
         ingredient1 = GameTracker.ingred1;
         ingredient1Text.text = ": " + GameTracker.ingred1;
-        changeCoinAmount(-2);
+       // changeCoinAmount(-2);
     }
     public void IncrementIngredient2Count()
     {
         GameTracker.ingred2++;
         ingredient2 = GameTracker.ingred2;
         ingredient2Text.text = ": " + GameTracker.ingred2;
-        changeCoinAmount(-2);
+        //changeCoinAmount(-2);
     }
     public void IncrementIngredient3Count()
     {
         GameTracker.ingred3++;
         ingredient3 = GameTracker.ingred3;
         ingredient3Text.text = ": " + GameTracker.ingred3;
-        changeCoinAmount(-2);
+        //changeCoinAmount(-2);
     }
 
     // public void IncrementLemonCount() 
@@ -574,10 +574,10 @@ public class GameManager : MonoBehaviour
         // }
 
 
-        if (GameTracker.coins == 0 && (Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)) == 0))
-        {
-            gameOverScreen.Setup("You do not have enough balance of coins");
-        }
+        // if (GameTracker.coins == 0 && (Math.Min(GameTracker.ingred1, Math.Min(GameTracker.ingred2, GameTracker.ingred3)) == 0))
+        // {
+        //     gameOverScreen.Setup("You do not have enough balance of coins");
+        // }
 
         // poweruo sprites
         if (GameTracker.fiftyFiftyCount > 0)
