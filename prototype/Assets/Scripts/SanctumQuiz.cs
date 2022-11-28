@@ -187,10 +187,11 @@ public class SanctumQuiz : MonoBehaviour
     public void wrong()
     {
 
-        Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
+        //Button[] buttons = QuizPanel.GetComponentsInChildren<Button>();
         for (int b = 0; b < 4; b++)
         {
-            buttons[b].enabled = false;
+            //buttons[b].enabled = false;
+            options[b].GetComponent<Button>().enabled = false;
         }
 
 
